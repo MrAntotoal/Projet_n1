@@ -1,3 +1,4 @@
+#info trame
 |Message dans le buffer	|Résultat	|en plus	|En pratique	|Temps|
 |CREER_EQUIPE	|avec le créateur comme chef d’équipe	| |		X|
 |REJOINDRE_EQUIPE	|rejoint l’équipe |	numéro de l’équipe a rejoindre (char 256)|	Buff + \0 + numéro |	X|
