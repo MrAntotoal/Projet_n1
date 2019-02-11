@@ -8,3 +8,13 @@ si idée : post ici
 
 
 Mat : clients localhost toto
+
+socket client = identifiant 
+
+Mettre équipe, nb joueur, 
+
+si perte de connexion, trame spécial envoyé par serveur (2s)
+
+
+
+
