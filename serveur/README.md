@@ -13,4 +13,4 @@
 |TIR	|	|munition spécial|	Buff + \0 + (0-9)|	X
 |MORT	||||			X|
 |TUER||		numéro char ?|Buff + \0 + (0-256)|	X|
-|POSITION	||	(dans la matrice ?)	|Buff + \0 + (0-256) + (0-256) ou si pas assez (0-512) ou (0-1024)	|1 s|
+|TIMEOUT	||	|Buff |2 s|
