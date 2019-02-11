@@ -1,1 +1,4 @@
 *.o
+serveur/clients
+serveur/serveur
+serveur/.*
