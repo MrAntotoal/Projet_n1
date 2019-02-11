@@ -1,4 +1,4 @@
-#info trame
+# info trame
 
 |Message dans le buffer|	Résultat|	En plus	|En pratique	|Temps|
 |:---------------------|:---------|:--------|:------------|:----|
