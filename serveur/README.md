@@ -14,3 +14,7 @@
 |MORT	||||			X|
 |TUER||		numéro char ?|Buff + \0 + (0-256)|	X|
 |TIMEOUT	||	|Buff |2 s|
+|PSEUDO_OK ||||X|
+DISABLE_BUTT | désactive les boutons | |X|
+|MODE_JEUX|+1 pour décision mode | numéro |Buff +/0 + (0-256)|X|
+| INVITER_AMI| |pseudo de l'ami | Buff + /0 + pseudo + /0 | X|
