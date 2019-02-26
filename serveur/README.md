@@ -15,7 +15,7 @@
 |TUER||		numéro char ?|Buff + \0 + (0-256)|	X|
 |TIMEOUT	||	|Buff |2 s|
 |PSEUDO_OK | Passe dans choix équipe |||X|
-DISABLE_BUTT | désactive les boutons | ||X|
+|DISABLE_BUTT | désactive les boutons | ||X|
 |MODE_JEUX|+1 pour décision mode | numéro |Buff +/0 + (0-256)|X|
 | INVITER_AMI| |pseudo de l'ami | Buff + /0 + pseudo + /0 | X|
 | NEW_BUTT| change les boutons du joueur | code des boutons g, h, d, U| Buff + /0 + code bouton x4 | 1 minute ou toucher |
