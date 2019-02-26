@@ -5,6 +5,7 @@ static void app(void)
 {
   SOCKET sock = init_connection();
   char buffer[BUF_SIZE];
+  char truc[BUF_SIZE];
   /* the index for the array */
   int actual = 0;
   int max = sock;
@@ -61,17 +62,60 @@ static void app(void)
         printf("déconnection\n");
         continue;
       }
-      printf("client : %s connecté\n",buffer);
       /* what is the new maximum fd ? */
       max = csock > max ? csock : max;
 
       FD_SET(csock, &rdfs);
+      strncpy(truc,buffer,BUF_SIZE - 1);
+      /*****************************/
+      /*    on vérifie le pseudo   */
+      /*****************************/
+      int bool = 0;
+      for (int k = 0; k < actual; k++) {
+        printf("%s ! %s\n",clients[k].name,buffer);
+        if(strcmp(clients[k].name,buffer) == 0)
+        {
+          printf("PSEUDO_POK\n");
+          strncpy(buffer, PSEUDO_POK, BUF_SIZE - 1);
+          write_client(csock,buffer);
+          memset(buffer,'\0',sizeof(buffer)); // on efface le buffer
+          bool = 1;
+          break;
+        }
+      }
+      if(bool == 0)
+      {
+        // PSEUDO_OK
+        printf("PSEUDO_OK\n");
+        strncpy(buffer, PSEUDO_OK, BUF_SIZE - 1);
+        write_client(csock,buffer);
+        memset(buffer,'\0',sizeof(buffer)); // on efface le buffer
 
-      Client c = { csock };
-      strncpy(c.name, buffer, BUF_SIZE - 1);
-      memset(buffer,'\0',sizeof(buffer));
-      clients[actual] = c;
-      actual++;
+        strncpy(buffer,truc,BUF_SIZE - 1);
+        Client c = { csock };
+        strncpy(c.name, buffer, BUF_SIZE - 1);
+        printf("|%s|%s\n",c.name,buffer);
+        printf("client : %s connecté\n",buffer);
+        memset(buffer,'\0',sizeof(buffer));
+        clients[actual] = c;
+        actual++;
+
+        /*****************************/
+        /*          on répond        */
+        /*****************************/
+
+        strncpy(buffer, MENU_JOUEUR, BUF_SIZE - 1);
+        write_client(csock,buffer);
+        memset(buffer,'\0',sizeof(buffer)); // on efface le buffer
+
+      }
+      else
+      {
+        // on le déco ?
+        closesocket(csock);
+        printf("client déco car mauvais pseudo\n");
+        
+      }
     }
     else
     {
@@ -102,6 +146,8 @@ static void app(void)
   clear_clients(clients, actual);
   end_connection(sock);
 }
+
+
 
 static void clear_clients(Client *clients, int actual)
 {
@@ -166,7 +212,7 @@ static int read_client(SOCKET sock, char *buffer)
     /* if recv error we disonnect the client */
     n = 0;
   }
-  printf("%s\n",buffer);
+  printf("Reçue ~> %s\n",buffer);
   buffer[n] = 0;
 
   return n;

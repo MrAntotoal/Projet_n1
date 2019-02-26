@@ -13,7 +13,7 @@
 #include <string.h>
 
 #include "structure.h"
-
+#include "message_serveur.h"
 #define INVALID_SOCKET -1
 #define SOCKET_ERROR -1
 #define closesocket(s) close(s)
