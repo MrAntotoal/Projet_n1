@@ -87,9 +87,6 @@ static void app(void)
       {
         // PSEUDO_OK
         printf("PSEUDO_OK\n");
-        strncpy(buffer, PSEUDO_OK, BUF_SIZE - 1);
-        write_client(csock,buffer);
-        memset(buffer,'\0',sizeof(buffer)); // on efface le buffer
 
         strncpy(buffer,truc,BUF_SIZE - 1);
         Client c = { csock };
@@ -114,7 +111,7 @@ static void app(void)
         // on le déco ?
         closesocket(csock);
         printf("client déco car mauvais pseudo\n");
-        
+
       }
     }
     else
@@ -136,8 +133,9 @@ static void app(void)
             // strncpy(buffer, client.name, BUF_SIZE - 1);
             // strncat(buffer, " disconnected !", BUF_SIZE - strlen(buffer) - 1);
             printf("connection perdu %s\n",client.name);
+            break; // on arrete pour relancer la boucle proprement
           }
-          break;
+          /* switch pour traitement des messages clients */
         }
       }
     }
@@ -220,6 +218,7 @@ static int read_client(SOCKET sock, char *buffer)
 
 static void write_client(SOCKET sock, const char *buffer)
 {
+  // https://linux.die.net/man/2/send
   if(send(sock, buffer, strlen(buffer), 0) < 0)
   {
     perror("send()");
