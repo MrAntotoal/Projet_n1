@@ -16,7 +16,6 @@ typedef struct
    SOCKET sock;
    char name[BUF_SIZE];
    int numEquipe;
-   Equipe eq;
 }Client;
 
 

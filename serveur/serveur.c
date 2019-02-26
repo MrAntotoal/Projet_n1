@@ -45,7 +45,6 @@ static void app(void)
     else if(FD_ISSET(sock, &rdfs))
     {
       /* new client */
-      printf("Nouveau Client\n");
       SOCKADDR_IN csin = { 0 };
       size_t sinsize = sizeof(csin);
       int csock = accept(sock, (SOCKADDR *)&csin, (socklen_t *)&sinsize);
@@ -70,6 +69,7 @@ static void app(void)
 
       Client c = { csock };
       strncpy(c.name, buffer, BUF_SIZE - 1);
+      memset(buffer,'\0',sizeof(buffer));
       clients[actual] = c;
       actual++;
     }
@@ -87,10 +87,11 @@ static void app(void)
           if(c == 0)
           {
             closesocket(clients[i].sock);
-            remove_client(clients, i, &actual);
-            strncpy(buffer, client.name, BUF_SIZE - 1);
-            strncat(buffer, " disconnected !", BUF_SIZE - strlen(buffer) - 1);
+            remove_client(clients, i, &actual); // on enlève le client
 
+            // strncpy(buffer, client.name, BUF_SIZE - 1);
+            // strncat(buffer, " disconnected !", BUF_SIZE - strlen(buffer) - 1);
+            printf("connection perdu %s\n",client.name);
           }
           break;
         }

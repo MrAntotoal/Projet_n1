@@ -9,3 +9,7 @@ serveur : serveur.c serveur.h
 
 clients : client/client.c client/client.h
 	$(CC) $(Option) client/client.c -o clients
+
+clean:
+	rm -f clients
+	rm -f serveur
