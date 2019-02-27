@@ -12,6 +12,10 @@
 #include <errno.h>
 #include <string.h>
 
+
+#include <signal.h>
+
+
 #include "structure.h"
 #include "message_serveur.h"
 #define INVALID_SOCKET -1
@@ -24,7 +28,7 @@ typedef struct in_addr IN_ADDR;
 
 #define CRLF		"\r\n"
 #define PORT	 	1977
-#define MAX_CLIENTS 	100
+#define MAX_CLIENTS 	1000
 
 
 

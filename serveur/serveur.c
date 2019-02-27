@@ -1,9 +1,10 @@
 #include "serveur.h"
 
-
+int GL_SOCK;
 static void app(void)
 {
   SOCKET sock = init_connection();
+  GL_SOCK = sock;
   char buffer[BUF_SIZE];
   char truc[BUF_SIZE];
   memset(buffer,'\0',BUF_SIZE);
@@ -137,6 +138,8 @@ static void app(void)
             break; // on arrete pour relancer la boucle proprement
           }
           /* switch pour traitement des messages clients */
+
+          memset(buffer,'\0',sizeof(buffer)); // on efface le buffer
         }
       }
     }
@@ -227,6 +230,12 @@ static void write_client(SOCKET sock, const char *buffer)
   }
 }
 
+void my_handler(int s){
+  end_connection(GL_SOCK);
+  exit(-1);
+}
+
+
 int main(int argc, char **argv)
 {
   /**********************/
@@ -236,6 +245,20 @@ int main(int argc, char **argv)
   //memset(truc,'\0',50);
   //strcpy(truc,"bidule\0machin\0");
   //printf("%s\n",get_msg_next(truc));
+
+  /***********************************/
+  /*         CAPTURE DE CTRL C       */
+  /***********************************/
+  struct sigaction sigIntHandler;
+
+  sigIntHandler.sa_handler = my_handler;
+  sigemptyset(&sigIntHandler.sa_mask);
+  sigIntHandler.sa_flags = 0;
+
+  sigaction(SIGINT, &sigIntHandler, NULL);
+  // sigaction(SIGSEGV, &sigIntHandler, NULL);
+
+  /***********************************/
 
   app();
   return EXIT_SUCCESS;
