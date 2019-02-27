@@ -23,3 +23,5 @@
 
 TO DO :
   faire les déplacements en premier (sémaphore entre programme traitement et jeux)
+
+Table de hash pour les pseudos ?
