@@ -232,11 +232,12 @@ int main(int argc, char **argv)
   /**********************/
   /* test               */
   /**********************/
-  char truc[50];
-  strcpy(truc,"bidule\0machin\0");
-  printf("%s\n",get_msg_next(truc));
+  //char truc[50];
+  //memset(truc,'\0',50);
+  //strcpy(truc,"bidule\0machin\0");
+  //printf("%s\n",get_msg_next(truc));
 
-  //app();
+  app();
   return EXIT_SUCCESS;
 }
 
@@ -246,22 +247,22 @@ char * get_msg_next(char *buffer){
   int nb_zero = 0;
   int i = 0;
   printf("%s\n", buffer);
-  while(nb_zero < 2) {
+  while(nb_zero < 3) {
     if(buffer[i] == '\0')
     {
       nb_zero++;
     }
     else
     {
-      if(nb_zero == 1)
+      if(nb_zero == 1 )
       {
         res[cop] = buffer[i];
         fprintf(stderr,"|%c|\n", buffer[i]);
         cop++;
       }
-      
     }
     i++;
+    printf("oui\n");
   }
   return res;
 }
