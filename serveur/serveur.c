@@ -259,6 +259,7 @@ char * get_msg_next(char *buffer){
         fprintf(stderr,"|%c|\n", buffer[i]);
         cop++;
       }
+      
     }
     i++;
   }
