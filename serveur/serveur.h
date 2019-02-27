@@ -36,4 +36,6 @@ static void write_client(SOCKET sock, const char *buffer);
 static void remove_client(Client *clients, int to_remove, int *actual);
 static void clear_clients(Client *clients, int actual);
 
+char * get_msg_next(char *buffer);
+
 #endif /* guard */

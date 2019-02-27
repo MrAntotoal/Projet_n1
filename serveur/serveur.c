@@ -6,6 +6,7 @@ static void app(void)
   SOCKET sock = init_connection();
   char buffer[BUF_SIZE];
   char truc[BUF_SIZE];
+  memset(buffer,'\0',BUF_SIZE);
   /* the index for the array */
   int actual = 0;
   int max = sock;
@@ -228,6 +229,38 @@ static void write_client(SOCKET sock, const char *buffer)
 
 int main(int argc, char **argv)
 {
-  app();
+  /**********************/
+  /* test               */
+  /**********************/
+  char truc[50];
+  strcpy(truc,"bidule\0machin\0");
+  printf("%s\n",get_msg_next(truc));
+
+  //app();
   return EXIT_SUCCESS;
+}
+
+char * get_msg_next(char *buffer){
+  char *res = malloc(sizeof(char)*30); // free a la fin
+  int cop = 0;
+  int nb_zero = 0;
+  int i = 0;
+  printf("%s\n", buffer);
+  while(nb_zero < 2) {
+    if(buffer[i] == '\0')
+    {
+      nb_zero++;
+    }
+    else
+    {
+      if(nb_zero == 1)
+      {
+        res[cop] = buffer[i];
+        fprintf(stderr,"|%c|\n", buffer[i]);
+        cop++;
+      }
+    }
+    i++;
+  }
+  return res;
 }
