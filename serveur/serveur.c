@@ -147,28 +147,29 @@ static void app(void)
               {
                 printf("%s\n",a_comparer);
               }
-            } else
-            {
-              strncpy(a_comparer,QUITTER_EQUIPE,BUF_SIZE - 1);
-              if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
-              {
-                printf("%s\n",a_comparer);
-              }
               else
               {
-                // fork pour traitement
+                strncpy(a_comparer,QUITTER_EQUIPE,BUF_SIZE - 1);
+                if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
+                {
+                  printf("%s\n",a_comparer);
+                }
+                else
+                {
+                  // fork pour traitement
+                  ;
+                }
               }
             }
           }
+          Clean_Buf;
         }
-        Clean_Buf;
       }
     }
   }
-}
 
-clear_clients(clients, actual);
-end_connection(sock);
+  clear_clients(clients, actual);
+  end_connection(sock);
 }
 
 

@@ -1,4 +1,5 @@
 *.o
 serveur/clients
 serveur/serveur
+serveur/traitement_client
 serveur/.*
