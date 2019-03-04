@@ -127,15 +127,48 @@ static void app(void)
             break; // on arrete pour relancer la boucle proprement
           }
           /* switch pour traitement des messages clients */
+          char a_comparer[BUF_SIZE];
 
-          Clean_Buf;
+          strncpy(a_comparer,MODE_JEUX,BUF_SIZE - 1);
+          if(fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
+          {
+            printf("%s\n",a_comparer);
+          }
+          else
+          {
+            strncpy(a_comparer,CREER_EQUIPE,BUF_SIZE - 1);
+            if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
+            {
+              printf("%s\n",a_comparer);
+            } else
+            {
+              strncpy(a_comparer,REJOINDRE_EQUIPE,BUF_SIZE - 1);
+              if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
+              {
+                printf("%s\n",a_comparer);
+              }
+            } else
+            {
+              strncpy(a_comparer,QUITTER_EQUIPE,BUF_SIZE - 1);
+              if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
+              {
+                printf("%s\n",a_comparer);
+              }
+              else
+              {
+                // fork pour traitement
+              }
+            }
+          }
         }
+        Clean_Buf;
       }
     }
   }
+}
 
-  clear_clients(clients, actual);
-  end_connection(sock);
+clear_clients(clients, actual);
+end_connection(sock);
 }
 
 

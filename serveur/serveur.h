@@ -31,7 +31,7 @@ typedef struct in_addr IN_ADDR;
 
 
 #include "analyse_lexicographique.h"
-
+#include "strcmp_rapide.h"
 
 static void app(void);
 static int init_connection(void);

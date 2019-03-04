@@ -1,3 +1,5 @@
+#include "strcmp_rapide.h"
+
 int fast_compare( const char *ptr0, const char *ptr1, int len ){
   int fast = len/sizeof(size_t) + 1;
   int offset = (fast-1)*sizeof(size_t);
