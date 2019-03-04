@@ -34,6 +34,9 @@ si il n'appartient pas deja on l'ajoute et on renvoie sa position
 sinon on renvoie l'index de sa position */
 int inserer_lexeme(char *lexeme);
 
+// -1 si dedans 0 sinon
+int est_dans_table(char * lexeme);
+
 /* renvoie un lexeme, prends l'index du lexeme dans le tableau
 lexico_table_lex */
 char *get_lexeme(int index_t_lex);

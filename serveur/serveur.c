@@ -1,5 +1,7 @@
 #include "serveur.h"
 
+#define Clean_Buf memset(buffer,'\0',BUF_SIZE)
+
 int GL_SOCK;
 static void app(void)
 {
@@ -7,7 +9,7 @@ static void app(void)
   GL_SOCK = sock;
   char buffer[BUF_SIZE];
   char truc[BUF_SIZE];
-  memset(buffer,'\0',BUF_SIZE);
+  Clean_Buf;
   /* the index for the array */
   int actual = 0;
   int max = sock;
@@ -72,30 +74,26 @@ static void app(void)
       /*****************************/
       /*    on vérifie le pseudo   */
       /*****************************/
-      int bool = 0;
-      for (int k = 0; k < actual; k++) {
-        printf("%s ! %s\n",clients[k].name,buffer);
-        if(strcmp(clients[k].name,buffer) == 0)
-        {
-          printf("PSEUDO_POK\n");
-          strncpy(buffer, PSEUDO_POK, BUF_SIZE - 1);
-          write_client(csock,buffer);
-          memset(buffer,'\0',sizeof(buffer)); // on efface le buffer
-          bool = 1;
-          break;
-        }
+
+      if(est_dans_table(truc) == -1)
+      {
+        printf("PSEUDO_POK\n");
+        strncpy(buffer, PSEUDO_POK, BUF_SIZE - 1);
+        write_client(csock,buffer);
+        Clean_Buf;
+        closesocket(csock); // on déco le client
       }
-      if(bool == 0)
+      else
       {
         // PSEUDO_OK
         printf("PSEUDO_OK\n");
 
         strncpy(buffer,truc,BUF_SIZE - 1);
         Client c = { csock };
-        strncpy(c.name, buffer, BUF_SIZE - 1);
-        printf("|%s|%s\n",c.name,buffer);
+
+        c.pseudo = inserer_lexeme(truc);
         printf("client : %s connecté\n",buffer);
-        memset(buffer,'\0',sizeof(buffer));
+        Clean_Buf;
         clients[actual] = c;
         actual++;
 
@@ -105,15 +103,7 @@ static void app(void)
 
         strncpy(buffer, MENU_JOUEUR, BUF_SIZE - 1);
         write_client(csock,buffer);
-        memset(buffer,'\0',sizeof(buffer)); // on efface le buffer
-
-      }
-      else
-      {
-        // on le déco ?
-        closesocket(csock);
-        printf("client déco car mauvais pseudo\n");
-
+        Clean_Buf;
       }
     }
     else
@@ -124,7 +114,6 @@ static void app(void)
         /* a client is talking */
         if(FD_ISSET(clients[i].sock, &rdfs))
         {
-          Client client = clients[i];
           int c = read_client(clients[i].sock, buffer);
           /* client disconnected */
           if(c == 0)
@@ -134,12 +123,12 @@ static void app(void)
 
             // strncpy(buffer, client.name, BUF_SIZE - 1);
             // strncat(buffer, " disconnected !", BUF_SIZE - strlen(buffer) - 1);
-            printf("connection perdu %s\n",client.name);
+            printf("connection perdu %s\n",get_lexeme(clients[i].pseudo));
             break; // on arrete pour relancer la boucle proprement
           }
           /* switch pour traitement des messages clients */
 
-          memset(buffer,'\0',sizeof(buffer)); // on efface le buffer
+          Clean_Buf;
         }
       }
     }
@@ -259,7 +248,7 @@ int main(int argc, char **argv)
   // sigaction(SIGSEGV, &sigIntHandler, NULL);
 
   /***********************************/
-
+  init_lexico(); // on initialise table hash pour pseudo
   app();
   return EXIT_SUCCESS;
 }

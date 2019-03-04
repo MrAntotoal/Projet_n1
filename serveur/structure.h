@@ -14,7 +14,7 @@ typedef int SOCKET;
 typedef struct
 {
    SOCKET sock;
-   char name[BUF_SIZE];
+   int pseudo;
    int numEquipe;
 }Client;
 
