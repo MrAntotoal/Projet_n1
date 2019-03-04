@@ -15,7 +15,6 @@
 |TUER||		numéro char ?|Buff + \0 + (0-256)|	X|
 |TIMEOUT	||	|Buff |2 s|
 |PSEUDO_POK |(le programme client recoit server disconnected mais doit relancer init_connection) le serveur déconnecte le client, le client doit donc se reconnecter avant de retenter| pseudo déjà utilisé ||X|
-|CHANGER_PSEUDO | |que si envoyer POK |Buff + /0 + pseudo + /0 |X|
 |DISABLE_BUTT | désactive les boutons | ||X|
 |MODE_JEUX|+1 pour décision mode | numéro |Buff +/0 + (0-256)|X|
 | INVITER_AMI| |pseudo de l'ami | Buff + /0 + pseudo + /0 | X|
