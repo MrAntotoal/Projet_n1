@@ -4,6 +4,7 @@
 
 #include "strcmp_rapide.h"
 #include "message_serveur.h"
+
 /* usage */
 /*  traitement_client buffer*/
 int main(int argc, char *argv[]) {
@@ -20,15 +21,13 @@ int main(int argc, char *argv[]) {
   /* recuperer fdm  */
   /******************/
 
-  printf("%s\n",buffer);
-
   char a_comparer[50];
   strcpy(a_comparer, DEPLACEMENT);
   printf("%s\n",a_comparer);
   if (strncmp(a_comparer,buffer,strlen(a_comparer)) == 0)
   {
     /* alors recuperer selon codage */
-    printf("D %s\n",buffer);
+    //printf("D %s\n",buffer);
   }
   else
   {

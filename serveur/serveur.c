@@ -18,6 +18,11 @@ static void app(void)
 
   fd_set rdfs;
 
+  char * args[3];
+  args[0] = "traitement_client";
+  args[2] = NULL;
+
+  int pid;
   while(1)
   {
     int i = 0;
@@ -128,7 +133,7 @@ static void app(void)
           }
           /* switch pour traitement des messages clients */
           char a_comparer[BUF_SIZE];
-
+          fprintf(stderr, "YA\n");
           strncpy(a_comparer,MODE_JEUX,BUF_SIZE - 1);
           if(fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
           {
@@ -157,7 +162,21 @@ static void app(void)
                 else
                 {
                   // fork pour traitement
-                  ;
+                  fprintf(stderr, "YO\n");
+                  args[1] = buffer;
+                  fprintf(stderr, "YO\n");
+                  pid = fork();
+                  if(pid == -1)
+                  {
+                    fprintf(stderr,"FORK\n");
+
+                    exit(-1);
+                  }
+                  if(pid == 0)
+                  {
+                    execve("traitement_client",args,NULL);
+                    fprintf(stderr,"Aie execve mal passer \n");
+                  }
                 }
               }
             }

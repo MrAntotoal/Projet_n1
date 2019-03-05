@@ -9,7 +9,7 @@
 |MENU_CHOIX_EQ	|envoie le code du menu choix équipe|	|	|	X|
 |START	|envoie ordre début partie	| 	|  | 	X|
 | END |	fin de partie	|	|	| 5-15 min|
-|DEPLACEMENT	||	direction|	Buff + \0 + (z,s,q,d) |	X|
+|DEPLACEMENT	||	direction|	Buff + \0 + type + \0 + (z,s,q,d) |	X|
 |TIR	|	|munition spécial|	Buff + \0 + (0-9)|	X
 |MORT	||||			X|
 |TUER||		numéro char ?|Buff + \0 + (0-256)|	X|
@@ -22,5 +22,3 @@
 
 TO DO :
   faire les déplacements en premier (sémaphore entre programme traitement et jeux)
-
-Table de hash pour les pseudos ?
