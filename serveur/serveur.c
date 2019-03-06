@@ -18,9 +18,8 @@ void app(void)
 
   fd_set rdfs;
 
-  char * args[3];
+  char * args[4];
   args[0] = "traitement_client";
-  args[2] = NULL;
 
   int pid;
   while(1)
@@ -124,7 +123,6 @@ void app(void)
           }
           /* switch pour traitement des messages clients */
           char a_comparer[BUF_SIZE];
-          fprintf(stderr, "YA\n");
           strncpy(a_comparer,MODE_JEUX,BUF_SIZE - 1);
           if(fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
           {
@@ -156,6 +154,9 @@ void app(void)
                 {
                   // fork pour traitement
                   args[1] = buffer;
+                  get_msg_next(buffer,truc);
+                  args[2] = truc;
+                  args[3] = NULL;
                   pid = fork();
                   if(pid == -1)
                   {

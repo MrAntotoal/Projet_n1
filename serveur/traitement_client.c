@@ -6,7 +6,7 @@
 #include "message_serveur.h"
 #include "message.h"
 /* usage */
-/*  traitement_client buffer*/
+/*  traitement_client buffer ... */
 int main(int argc, char *argv[]) {
   /* code */
 
@@ -20,14 +20,15 @@ int main(int argc, char *argv[]) {
   /******************/
   /* recuperer fdm  */
   /******************/
-
   char a_comparer[50];
+  char *RX; // a envoyer
   strcpy(a_comparer, DEPLACEMENT);
   printf("%s\n",a_comparer);
   if (strncmp(a_comparer,buffer,strlen(a_comparer)) == 0)
   {
     /* alors recuperer selon codage */
-    //printf("D %s\n",buffer);
+    RX = argv[2];
+    printf("FDM %s\n",RX);
   }
   else
   {
