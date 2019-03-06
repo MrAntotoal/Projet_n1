@@ -176,6 +176,7 @@ static void app(void)
                   {
                     execve("traitement_client",args,NULL);
                     fprintf(stderr,"Aie execve mal passer \n");
+                    exit(-1); // désolé mdr 
                   }
                 }
               }
