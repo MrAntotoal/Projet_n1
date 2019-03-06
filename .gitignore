@@ -2,4 +2,6 @@
 serveur/clients
 serveur/serveur
 serveur/traitement_client
+serveur/test
+serveur/test0
 serveur/.*
