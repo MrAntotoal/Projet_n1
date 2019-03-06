@@ -10,7 +10,8 @@
 |START	|envoie ordre début partie	| 	|  | 	X|
 | END |	fin de partie	|	|	| 5-15 min|
 |DEPLACEMENT	||	type = T tourelle B bouclier C char|	Buff + \0 + type + (z,s,q,d) |	X|
-|TIR	|	|munition spécial|	Buff + \0 + (0-9)|	X
+|TIR	|	|munition spécial|	Buff + \0 + (0-9)|	X|
+|RECHARGEMENT| | ||X|
 |TIMEOUT	||	|Buff |2 s|
 |PSEUDO_POK |(le programme client recoit server disconnected mais doit relancer init_connection) le serveur déconnecte le client, le client doit donc se reconnecter avant de retenter| pseudo déjà utilisé ||X|
 |DISABLE_BUTT | désactive les boutons | ||X|
@@ -21,4 +22,4 @@
 # Communication avec file de message
 |Message | En pratique |
 |:-------|:------------|
-|DEPLACEMENT | D A/B/C z/q/s/d|
+|DEPLACEMENT | D T/B/C z/q/s/d|
