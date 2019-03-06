@@ -9,10 +9,8 @@
 |MENU_CHOIX_EQ	|envoie le code du menu choix équipe|	|	|	X|
 |START	|envoie ordre début partie	| 	|  | 	X|
 | END |	fin de partie	|	|	| 5-15 min|
-|DEPLACEMENT	||	direction|	Buff + \0 + type + \0 + (z,s,q,d) |	X|
+|DEPLACEMENT	||	type = T tourelle B bouclier C char|	Buff + \0 + type + (z,s,q,d) |	X|
 |TIR	|	|munition spécial|	Buff + \0 + (0-9)|	X
-|MORT	||||			X|
-|TUER||		numéro char ?|Buff + \0 + (0-256)|	X|
 |TIMEOUT	||	|Buff |2 s|
 |PSEUDO_POK |(le programme client recoit server disconnected mais doit relancer init_connection) le serveur déconnecte le client, le client doit donc se reconnecter avant de retenter| pseudo déjà utilisé ||X|
 |DISABLE_BUTT | désactive les boutons | ||X|
@@ -20,5 +18,7 @@
 | INVITER_AMI| |pseudo de l'ami | Buff + /0 + pseudo + /0 | X|
 | NEW_BUTT| change les boutons du joueur | code des boutons g, h, d, U| Buff + /0 + code bouton x4 | 1 minute ou toucher |
 
-TO DO :
-  faire les déplacements en premier (sémaphore entre programme traitement et jeux)
+# Communication avec file de message
+|Message | En pratique |
+|:-------|:------------|
+|DEPLACEMENT | D A/B/C z/q/s/d|
