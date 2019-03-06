@@ -32,15 +32,15 @@ typedef struct in_addr IN_ADDR;
 
 #include "analyse_lexicographique.h"
 #include "strcmp_rapide.h"
+#include "equipe.h"
+void app(void);
+int init_connection(void);
+void end_connection(int sock);
+int read_client(SOCKET sock, char *buffer);
+void write_client(SOCKET sock, const char *buffer);
+void remove_client(Client *clients, int to_remove, int *actual);
+void clear_clients(Client *clients, int actual);
 
-static void app(void);
-static int init_connection(void);
-static void end_connection(int sock);
-static int read_client(SOCKET sock, char *buffer);
-static void write_client(SOCKET sock, const char *buffer);
-static void remove_client(Client *clients, int to_remove, int *actual);
-static void clear_clients(Client *clients, int actual);
-
-char * get_msg_next(char *buffer);
+void get_msg_next(char *buffer, char *res);
 
 #endif /* guard */

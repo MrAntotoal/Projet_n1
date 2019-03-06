@@ -1,7 +1,7 @@
 #ifndef STRUCTURE_H
 #define STRUCTURE_H
 
-#include "serveur.h"
+//#include "serveur.h"
 
 #define NB_J_EQUIPE_MAX 3
 #define NB_EQUIPE_MAX 50

@@ -4,7 +4,7 @@
 
 #include "strcmp_rapide.h"
 #include "message_serveur.h"
-
+#include "message.h"
 /* usage */
 /*  traitement_client buffer*/
 int main(int argc, char *argv[]) {

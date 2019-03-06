@@ -3,7 +3,7 @@
 #define Clean_Buf memset(buffer,'\0',BUF_SIZE)
 
 int GL_SOCK;
-static void app(void)
+void app(void)
 {
   SOCKET sock = init_connection();
   GL_SOCK = sock;
@@ -28,9 +28,6 @@ static void app(void)
     int i = 0;
     FD_ZERO(&rdfs);
 
-    /* add STDIN_FILENO */
-    FD_SET(STDIN_FILENO, &rdfs);
-
     /* add the connection socket */
     FD_SET(sock, &rdfs);
 
@@ -46,13 +43,7 @@ static void app(void)
       exit(errno);
     }
 
-    /* something from standard input : i.e keyboard */
-    if(FD_ISSET(STDIN_FILENO, &rdfs))
-    {
-      /* stop process when type on keyboard */
-      break;
-    }
-    else if(FD_ISSET(sock, &rdfs))
+    if(FD_ISSET(sock, &rdfs))
     {
       /* new client */
       SOCKADDR_IN csin = { 0 };
@@ -145,6 +136,8 @@ static void app(void)
             if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
             {
               printf("%s\n",a_comparer);
+              creer_equipe(&clients[i]);
+              affiche_equipe(0);
             } else
             {
               strncpy(a_comparer,REJOINDRE_EQUIPE,BUF_SIZE - 1);
@@ -162,9 +155,7 @@ static void app(void)
                 else
                 {
                   // fork pour traitement
-                  fprintf(stderr, "YO\n");
                   args[1] = buffer;
-                  fprintf(stderr, "YO\n");
                   pid = fork();
                   if(pid == -1)
                   {
@@ -176,6 +167,7 @@ static void app(void)
                   {
                     execve("traitement_client",args,NULL);
                     fprintf(stderr,"Aie execve mal passer \n");
+                    exit(-1);
                   }
                 }
               }
@@ -186,14 +178,13 @@ static void app(void)
       }
     }
   }
-
   clear_clients(clients, actual);
   end_connection(sock);
 }
 
 
 
-static void clear_clients(Client *clients, int actual)
+void clear_clients(Client *clients, int actual)
 {
   int i = 0;
   for(i = 0; i < actual; i++)
@@ -202,7 +193,7 @@ static void clear_clients(Client *clients, int actual)
   }
 }
 
-static void remove_client(Client *clients, int to_remove, int *actual)
+void remove_client(Client *clients, int to_remove, int *actual)
 {
   /* we remove the client in the array */
   memmove(clients + to_remove, clients + to_remove + 1, (*actual - to_remove - 1) * sizeof(Client));
@@ -211,7 +202,7 @@ static void remove_client(Client *clients, int to_remove, int *actual)
 }
 
 
-static int init_connection(void)
+int init_connection(void)
 {
   SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
   SOCKADDR_IN sin = { 0 };
@@ -241,12 +232,12 @@ static int init_connection(void)
   return sock;
 }
 
-static void end_connection(int sock)
+void end_connection(int sock)
 {
   closesocket(sock);
 }
 
-static int read_client(SOCKET sock, char *buffer)
+int read_client(SOCKET sock, char *buffer)
 {
   int n = 0;
 
@@ -262,7 +253,7 @@ static int read_client(SOCKET sock, char *buffer)
   return n;
 }
 
-static void write_client(SOCKET sock, const char *buffer)
+void write_client(SOCKET sock, const char *buffer)
 {
   // https://linux.die.net/man/2/send
   if(send(sock, buffer, strlen(buffer), 0) < 0)
@@ -283,10 +274,11 @@ int main(int argc, char **argv)
   /**********************/
   /* test               */
   /**********************/
-  //char truc[50];
-  //memset(truc,'\0',50);
-  //strcpy(truc,"bidule\0machin\0");
-  //printf("%s\n",get_msg_next(truc));
+  /*char truc[50] = {'t','r','u','c','\0','m','a','c','h','i','n'};
+  char bid[50];
+  get_msg_next(truc,bid);
+  printf("%s\n",bid);
+  */
 
   /***********************************/
   /*         CAPTURE DE CTRL C       */
@@ -302,32 +294,8 @@ int main(int argc, char **argv)
 
   /***********************************/
   init_lexico(); // on initialise table hash pour pseudo
+  init_equipe();
+
   app();
   return EXIT_SUCCESS;
-}
-
-char * get_msg_next(char *buffer){
-  char *res = malloc(sizeof(char)*30); // free a la fin
-  int cop = 0;
-  int nb_zero = 0;
-  int i = 0;
-  printf("%s\n", buffer);
-  while(nb_zero < 3) {
-    if(buffer[i] == '\0')
-    {
-      nb_zero++;
-    }
-    else
-    {
-      if(nb_zero == 1 )
-      {
-        res[cop] = buffer[i];
-        fprintf(stderr,"|%c|\n", buffer[i]);
-        cop++;
-      }
-    }
-    i++;
-    printf("oui\n");
-  }
-  return res;
 }

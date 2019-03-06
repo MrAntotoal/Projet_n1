@@ -4,8 +4,8 @@ Option = -Wall
 
 all : serveur clients traitement_client
 
-serveur : serveur.c serveur.h analyse_lexicographique.o strcmp_rapide.o
-	$(CC) $(Option) strcmp_rapide.o analyse_lexicographique.o serveur.c -o serveur
+serveur : serveur.c serveur.h analyse_lexicographique.o strcmp_rapide.o equipe.o
+	$(CC) $(Option) strcmp_rapide.o analyse_lexicographique.o serveur.c equipe.o -o serveur
 
 clients : client/client.c client/client.h
 	$(CC) $(Option) client/client.c -o clients
@@ -18,6 +18,9 @@ analyse_lexicographique.o : analyse_lexicographique.c analyse_lexicographique.h
 
 strcmp_rapide.o : strcmp_rapide.c
 	$(CC) $(Option) -c strcmp_rapide.c
+
+equipe.o : equipe.c equipe.h
+	$(CC) $(Option) -c equipe.c
 
 clean:
 	rm -f clients
