@@ -2,6 +2,9 @@ cc=gcc
 option=-Wall
 option_gl=""
 
+run: run.c collisions.o liste.o point_vecteur.o allocation_memoire.o polygones.o
+	$(cc) $(option) run.c collisions.o liste.o point_vecteur.o allocation_memoire.o polygones.o -o run -lm
+
 collisions.o: collisions.c collisions.h
 	$(cc) $(option) collisions.c -c
 
