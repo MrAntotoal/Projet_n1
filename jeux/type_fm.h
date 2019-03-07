@@ -1,13 +1,13 @@
 #define FICHIER_CLE "Makefile"
 
 typedef struct{
-  int numero_char;
-  int type_action;
-  int a_repeter;
+  unsigned char numero_char;
+  unsigned char type_action;
+  unsigned char a_repeter;
 }requete_t;
 
 typedef struct{
-  int numero_char;
-  int type;
+  unsigned char numero_char;
+  unsigned char type;
 }reponse_t;
 
