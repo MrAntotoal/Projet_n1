@@ -116,11 +116,9 @@ double degre_de_2_points(Points O ,Points A,Points B){
   double res;
   v1=cree_vecteur_2p(O,A);
   v2=cree_vecteur_2p(O,B);
-  fprintf(stderr,"%f %f %f\n",norme_vecteur(v1),norme_vecteur(v2),produit_scalaire(v1,v2));
   res=acos(produit_scalaire(v1,v2)/(norme_vecteur(v1)*norme_vecteur(v2)));
   libere_points(v1);
   libere_points(v2);
-  fprintf(stderr,"%f\n",res);
   return res*180/M_PI;
 }
 

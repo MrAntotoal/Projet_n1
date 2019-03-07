@@ -27,16 +27,16 @@ polygone cree_polygone_d(int nbr_points,double x1,double y1,double x2,double y2,
   polygone poly;
   va_list params;
   int i;
-  int x,y;
+  double x,y;
   poly=list_vide();
   poly=insere_elem_liste(poly,cree_point(x1,y1));
   poly=insere_elem_liste(poly,cree_point(x2,y2));
   poly=insere_elem_liste(poly,cree_point(x3,y3));
 
   va_start(params,y3);
-  for(i=6;i<nbr_points*2;i+=2){
-    x=va_arg(params,int);
-    y=va_arg(params,int);
+  for(i=3;i<nbr_points;i++){
+    x=va_arg(params,double);
+    y=va_arg(params,double);
     poly=insere_elem_liste(poly,cree_point(x,y));
   }
   va_end(params);
@@ -71,4 +71,11 @@ void rotation_poly(polygone p,Points O,double deg){
 
 polygone union_polygones(polygone p1,polygone p2){
   return concat_liste(p1,p2);
+}
+
+void afficher_polygone(polygone p){
+  if(!est_list_vide(p)){
+    afficher_point(renvoie_sommet_liste(p));
+    afficher_polygone(liste_sans_premier(p));
+  }
 }
