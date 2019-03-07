@@ -8,10 +8,10 @@ rapelle des struct :
 * requete pour parler au jeux 
 ```c
 typedef struct{
-		signed char numero_char;
-		signed char type_action;
-		signed char a_repeter;
-	}requete_t;
+  signed char numero_char;
+  signed char type_action;
+  signed char a_repeter;
+}requete_t;
 ```
 
 * reponse du jeux au serveur
