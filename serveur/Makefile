@@ -24,7 +24,10 @@ equipe.o : equipe.c equipe.h
 
 message.o : message.c message.h
 	$(CC) $(Option) -c message.c
-	
+
+fdm.o : fdm.c fdm.h
+	$(CC) $(Option) -c fdm.c
+
 clean:
 	rm -f clients
 	rm -f serveur
