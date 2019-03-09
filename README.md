@@ -8,19 +8,23 @@ rapelle des struct :
 * requete pour parler au jeux 
 ```c
 typedef struct{
-  signed char numero_char;
-  signed char type_action;
-  signed char a_repeter;
+  long mtype;
+  char numero_char;
+  char type_action;
+  char a_repeter;
 }requete_t;
 ```
 
 * reponse du jeux au serveur
 ```c
 typedef struct{
-  signed char numero_char;
-  signed char type;
+  long mtype;
+  char numero_char;
+  char type;
 }reponse_t;
 ```
+
+(ne pas oublier comme je l'ai fait ) long mtype pour le numero de celui a qui on envoie
 
 ## info valeurs requete_t
 * numero char -> ba le num du char (debut a 1)
