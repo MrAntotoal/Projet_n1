@@ -1,13 +1,19 @@
 #define FICHIER_CLE "Makefile"
+#include <sys/msg.h>
+#include <sys/ipc.h>
+#include <sys/types.h>
+#include <errno.h>
 
 typedef struct{
-  signed char numero_char;
-  signed char type_action;
-  signed char a_repeter;
+  long mtype;
+  char numero_char;
+  char type_action;
+  char a_repeter;
 }requete_t;
 
 typedef struct{
-  signed char numero_char;
-  signed char type;
+  long mtype;
+  char numero_char;
+  char type;
 }reponse_t;
 
