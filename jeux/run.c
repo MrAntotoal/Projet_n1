@@ -1,4 +1,4 @@
-#include "collisions.h"
+#include "traitement_fm.h"
 #include "time.h"
 
 
@@ -13,6 +13,10 @@ int main(int argc, char * argv[]){
   int nbr_fps=0;
   double somme=0.0;;
   double somme2=0.0;
+  int id_fm;
+  liste liste_action;
+  id_fm=recuperer_id_fm();
+  liste_action=list_vide();
   start = clock(); 
 
   while(run){
@@ -21,7 +25,12 @@ int main(int argc, char * argv[]){
     if(somme2>fps_d){
       nbr_fps++;
       somme2=0.0;
+      liste_action=lire_fm(id_fm,liste_action);
+      liste_action=boucle_de_traitement_liste_requete(liste_action);
       //fprintf(stderr,"-   fps %d  somme %f\n",nbr_fps,somme);
+      fprintf(stderr,"l %d\n",longueur_liste(liste_action));
+      
+      
     }
     start=end;
     somme+=diff;
