@@ -18,10 +18,6 @@ void app(void)
 
   fd_set rdfs;
 
-  char * args[4];
-  args[0] = "traitement_client";
-
-  int pid;
   while(1)
   {
     int i = 0;
@@ -96,7 +92,7 @@ void app(void)
         /*          on répond        */
         /*****************************/
 
-        strncpy(buffer, MENU_JOUEUR, BUF_SIZE - 1);
+        strncpy(buffer, MENU_JOUEUR"\n", BUF_SIZE - 1);
         write_client(csock,buffer);
         Clean_Buf;
       }
@@ -152,23 +148,33 @@ void app(void)
                 }
                 else
                 {
-                  // fork pour traitement
-                  args[1] = buffer;
-                  get_msg_next(buffer,truc);
-                  args[2] = truc;
-                  args[3] = NULL;
-                  pid = fork();
-                  if(pid == -1)
+                  strncpy(a_comparer,DEPLACEMENT,BUF_SIZE - 1);
+                  if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
                   {
-                    fprintf(stderr,"FORK\n");
-
-                    exit(-1);
+                    envoyer_requete(1,AVANCE,0);
+                    printf("** requete envoyé **\n");
                   }
-                  if(pid == 0)
+                  else
                   {
-                    execve("traitement_client",args,NULL);
-                    fprintf(stderr,"Aie execve mal passer \n");
-                    exit(-1); // désolé mdr
+                    strncpy(a_comparer, TIR,BUF_SIZE - 1);
+                    if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
+                    {
+                      /* alors recuperer selon codage */
+                      //envoyer_requete(1,AVANCE,0);
+                      printf("TIR TX\n");
+                    }
+                    else
+                    {
+                      strncpy(a_comparer, RECHARGEMENT,BUF_SIZE - 1);
+                      if(fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
+                      {
+                        printf("RECHARGEMENT TX\n");
+                      }
+                      else
+                      {
+                        printf("******* %s non reconnu *******\n", buffer);
+                      }
+                    }
                   }
                 }
               }
@@ -221,12 +227,14 @@ int init_connection(void)
   if(bind(sock,(SOCKADDR *) &sin, sizeof sin) == SOCKET_ERROR)
   {
     perror("bind()");
+    fermer_fdm();
     exit(errno);
   }
 
   if(listen(sock, MAX_CLIENTS) == SOCKET_ERROR)
   {
     perror("listen()");
+    fermer_fdm();
     exit(errno);
   }
 
@@ -266,6 +274,7 @@ void write_client(SOCKET sock, const char *buffer)
 
 void my_handler(int s){
   end_connection(GL_SOCK);
+  fermer_fdm();
   exit(-1);
 }
 
@@ -296,6 +305,8 @@ int main(int argc, char **argv)
   /***********************************/
   init_lexico(); // on initialise table hash pour pseudo
   init_equipe();
+
+  if(creer_fdm() == 0)printf("File De Message Créer \n");
 
   app();
   return EXIT_SUCCESS;

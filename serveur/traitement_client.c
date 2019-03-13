@@ -5,6 +5,7 @@
 #include "strcmp_rapide.h"
 #include "message_serveur.h"
 #include "message.h"
+#include "fdm.h"
 /* usage */
 /*  traitement_client buffer ... */
 int main(int argc, char *argv[]) {
@@ -20,15 +21,15 @@ int main(int argc, char *argv[]) {
   /******************/
   /* recuperer fdm  */
   /******************/
+  ouvrir_fdm();
+
   char a_comparer[50];
   char *RX; // a envoyer
   strcpy(a_comparer, DEPLACEMENT);
-  printf("%s\n",a_comparer);
   if (strncmp(a_comparer,buffer,strlen(a_comparer)) == 0)
   {
-    /* alors recuperer selon codage */
-    RX = argv[2];
-    printf("FDM %s\n",RX);
+      envoyer_requete(1,AVANCE,0);
+      printf("** requete envoyé **\n");
   }
   else
   {
@@ -36,29 +37,19 @@ int main(int argc, char *argv[]) {
     if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
     {
       /* alors recuperer selon codage */
-      printf("Tir %s\n",buffer);
+      //printf("FDM %s\n",RX);
     }
     else
     {
-      strcpy(a_comparer, MORT);
-      if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
+      strcpy(a_comparer, RECHARGEMENT);
+      if(fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
       {
-        /* alors recuperer selon codage */
-        printf("M %s\n",buffer);
+        //printf("FDM %s\n",RX);
       }
       else
       {
-        strcpy(a_comparer, TUER);
-        if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
-        {
-          /* alors recuperer selon codage */
-          printf("T %s\n",buffer);
-        }
-        else
-        {
-          printf("%s non reconnu\n", buffer);
-          exit(-1);
-        }
+        printf("%s non reconnu\n", buffer);
+        exit(-1);
       }
     }
   }

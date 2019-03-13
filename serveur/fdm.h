@@ -8,14 +8,23 @@
 #define FICHIER_CLE "Makefile"
 #define LETTRE 'a'
 #define NUM_EXP 1
+#define A_JEUX 20
+
+#define AVANCE 1
+#define RECULE 2
+#define DROITE 3
+#define GAUCHE 4
+#define FTIR 5
 
 typedef struct{
+  long m_type;
   signed char numero_char;
   signed char type_action;
   signed char a_repeter;
 }requete_t;
 
 typedef struct{
+  long m_type;
   signed char numero_char;
   signed char type;
 }reponse_t;

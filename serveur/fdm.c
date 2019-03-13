@@ -30,6 +30,7 @@ void fermer_fdm(){
 
 int envoyer_requete(char nc, char action, char a_repeter){
   requete_t msg = {0};
+  msg.m_type = A_JEUX;
   msg.numero_char = nc;
   msg.type_action = action;
   msg.a_repeter = a_repeter;
