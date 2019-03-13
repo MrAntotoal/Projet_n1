@@ -9,12 +9,13 @@ static void app(const char *address, const char *name)
 {
    SOCKET sock = init_connection(address);
    char buffer[BUF_SIZE];
-
+   char test[BUF_SIZE] = {'D','E','P','L','A','C','E','M','E','N','T',' ',1,'\n'};
    fd_set rdfs;
 
    /* send our name */
    write_server(sock, name);
-
+   sleep(1);
+   write_server(sock,test);
    while(1)
    {
       FD_ZERO(&rdfs);

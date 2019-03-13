@@ -15,3 +15,5 @@
 #define INVITER_AMI "INVITER_AMI"
 #define NEW_BUTT "NEW_BUTT"
 #define KICK_AMI "KICK_AMI"
+
+#define TAILLE_DEP 11

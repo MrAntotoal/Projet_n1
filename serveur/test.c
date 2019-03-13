@@ -35,6 +35,14 @@ int main(int argc, char *argv[]) {
     printf("\n*********Equipe 0\n");
     affiche_equipe(0);
 
+    quitter_equipe(&r1);
+    printf("\n*********Equipe 0\n");
+    affiche_equipe(0);
+
+    rejoindre_equipe(&r1,0);
+    printf("\n*********Equipe 0\n");
+    affiche_equipe(0);
+
 
     printf("FIN\n");
     exit(0);

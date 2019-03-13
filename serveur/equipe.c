@@ -30,9 +30,22 @@ void rejoindre_equipe(Client * c, int num){
 
 
 void quitter_equipe(Client *c){
+
+  int place = 0;
+  for (int i = 0; i < GL_equipe[c->numEquipe].nb_joueur; i++) {
+    if(GL_equipe[c->numEquipe].membre[i].pseudo == c->pseudo) break;
+    place++;
+  }
+  for (int i = place; i < GL_equipe[c->numEquipe].nb_joueur - 1; i++) {
+    GL_equipe[c->numEquipe].membre[i] = GL_equipe[c->numEquipe].membre[i + 1];
+  }
+
   GL_equipe[c->numEquipe].nb_joueur--;
   GL_equipe[c->numEquipe].numj--;
   c->numEquipe = -1;
+
+
+
 }
 
 void supprimer_equipe();

@@ -99,6 +99,13 @@ void app(void)
     }
     else
     {
+
+      /* Reception depuis la file de message */
+      // rcv
+      while (prendre_reponse() != -1) {
+        /* traiter les != cas */
+      }
+
       int i = 0;
       for(i = 0; i < actual; i++)
       {
@@ -148,11 +155,12 @@ void app(void)
                 }
                 else
                 {
+                  //strncpy(a_comparer,DEPLACEMENT,BUF_SIZE - 1);
                   strncpy(a_comparer,DEPLACEMENT,BUF_SIZE - 1);
-                  if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
+                  if (fast_compare(a_comparer,buffer,TAILLE_DEP) == 0)
                   {
-                    envoyer_requete(1,AVANCE,0);
-                    printf("** requete envoyé **\n");
+                    envoyer_requete(1,buffer[TAILLE_DEP+2],0);
+                    printf("** D %d **\n",buffer[TAILLE_DEP+2]);
                   }
                   else
                   {
@@ -180,8 +188,8 @@ void app(void)
               }
             }
           }
-          Clean_Buf;
         }
+        Clean_Buf;
       }
     }
   }
