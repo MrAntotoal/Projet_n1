@@ -9,7 +9,7 @@
 |MENU_JOUEUR	|envoie le code du menu au joueur|	 (plusieurs menu. )	| si plusieurs Buff + ' ' + numéro sinon buff|	Après connexion + pseudo ok |serveur|
 |START	|envoie ordre début partie	| 	|  | 	X|serveur|
 | END |	fin de partie	|	|	| 5-15 min|serveur|
-|DEPLACEMENT	||	type = T tourelle B bouclier C char|	Buff + ' ' + type + (z,s,q,d) |	Durant partie|client|
+|DEPLACEMENT	||	type = T tourelle B bouclier C char|	Buff + ' ' + type + (1,2,3,4)(int) |	Durant partie|client|
 |TIR	|	|munition spécial|	Buff + ' ' + (0-9)|	X|Client|
 |RECHARGEMENT| | ||Durant partie|client|
 |TIMEOUT	||	|Buff |2 s|
