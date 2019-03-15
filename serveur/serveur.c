@@ -168,7 +168,7 @@ void app(void)
                   else
                   {
                     strncpy(a_comparer, TIR,BUF_SIZE - 1);
-                    if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
+                    if (fast_compare(a_comparer,buffer,TAILLE_TIR) == 0)
                     {
                       /* alors recuperer selon codage */
                       envoyer_requete(1,FTIR,0);
@@ -177,7 +177,7 @@ void app(void)
                     else
                     {
                       strncpy(a_comparer, RECHARGEMENT,BUF_SIZE - 1);
-                      if(fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
+                      if(fast_compare(a_comparer,buffer,TAILLE_RECH) == 0)
                       {
                         envoyer_requete(buffer[TAILLE_DEP + 2],RECH,0);
                         printf("RECHARGEMENT TX\n");

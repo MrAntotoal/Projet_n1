@@ -19,3 +19,5 @@
 /* pour comparer sur ce nombre et pas les paramètres suivant */
 #define TAILLE_REJ 16
 #define TAILLE_DEP 11
+#define TAILLE_TIR 3
+#define TAILLE_RECH 12
