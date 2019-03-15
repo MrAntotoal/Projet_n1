@@ -9,9 +9,9 @@
 |MENU_JOUEUR	|envoie le code du menu au joueur|	 (plusieurs menu. )	| si plusieurs Buff + ' ' + numéro sinon buff|	Après connexion + pseudo ok |serveur|
 |START	|envoie ordre début partie	| 	|  | 	X|serveur|
 | END |	fin de partie	|	|	| 5-15 min|serveur|
-|DEPLACEMENT	||	type = T tourelle B bouclier C char|	Buff + ' ' + type + (1,2,3,4)(int) |	Durant partie|client|
-|TIR	|	|munition spécial|	Buff + ' ' + (0-9)|	X|Client|
-|RECHARGEMENT| | ||Durant partie|client|
+|DEPLACEMENT	||	type = T tourelle B bouclier C char|	Buff + ' ' + type + numero_char + (1,2,3,4)(int) + (0,1)(int)(appuie / relache) |	Durant partie|client|
+|TIR	|	|munition spécial|	Buff + ' ' + numero_char + (0-9)|	X|Client|
+|RECHARGEMENT| | |	Buff + ' ' + numero_char |Durant partie|client|
 |TIMEOUT	||	|Buff |2 s|
 |PSEUDO_POK |(le programme client recoit server disconnected mais doit relancer init_connection) le serveur déconnecte le client, le client doit donc se reconnecter avant de retenter| pseudo déjà utilisé ||Connection|serveur|
 |DISABLE_BUTT | désactive les boutons | ||Durant partie|serveur|
@@ -29,3 +29,4 @@
 |2          |recule|1        |
 |3          |droite|1        |
 |4          |gauche|1        |
+|5          |tirer |0        |

@@ -16,7 +16,7 @@ void creer_equipe(Client * c){
   c->numEquipe = index_equipe;
   GL_equipe[index_equipe].membre[0] = *c;
   index_equipe++;
-  printf("Création OK\n");
+  printf("Création OK %d\n",index_equipe);
 }
 
 /*  avec num le numéro de l'équipe dans le tableau global */
@@ -40,15 +40,26 @@ void quitter_equipe(Client *c){
     GL_equipe[c->numEquipe].membre[i] = GL_equipe[c->numEquipe].membre[i + 1];
   }
 
+  place = c->numEquipe;
+
   GL_equipe[c->numEquipe].nb_joueur--;
   GL_equipe[c->numEquipe].numj--;
   c->numEquipe = -1;
 
-
-
+  if(GL_equipe[c->numEquipe].nb_joueur == 0)
+  {
+    supprimer_equipe(place);
+    printf("Equipe supprimé %d\n",place);
+  }
+  index_equipe--;
 }
 
-void supprimer_equipe();
+void supprimer_equipe(int place){
+  for (int i = place; i <= index_equipe; i++) {
+    GL_equipe[i] = GL_equipe[i+1];
+  }
+    //index_equipe--;
+}
 
 
 void affiche_equipe(int n){

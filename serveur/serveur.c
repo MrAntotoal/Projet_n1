@@ -145,6 +145,7 @@ void app(void)
               if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
               {
                 printf("%s\n",a_comparer);
+                rejoindre_equipe(&clients[i],buffer[TAILLE_REJ + 2]); // ' ' puis num
               }
               else
               {
@@ -152,6 +153,7 @@ void app(void)
                 if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
                 {
                   printf("%s\n",a_comparer);
+                  quitter_equipe(&clients[i]);
                 }
                 else
                 {
@@ -159,8 +161,9 @@ void app(void)
                   strncpy(a_comparer,DEPLACEMENT,BUF_SIZE - 1);
                   if (fast_compare(a_comparer,buffer,TAILLE_DEP) == 0)
                   {
-                    envoyer_requete(1,buffer[TAILLE_DEP+2],0);
-                    printf("** D %d **\n",buffer[TAILLE_DEP+2]);
+                    // numéro char
+                    envoyer_requete(buffer[TAILLE_DEP + 3],buffer[TAILLE_DEP + 2],buffer[TAILLE_DEP + 4]);
+                    printf("** D char %d Type %d A repeter %d**\n",buffer[TAILLE_DEP + 3],buffer[TAILLE_DEP + 2],buffer[TAILLE_DEP + 4]);
                   }
                   else
                   {
@@ -168,14 +171,15 @@ void app(void)
                     if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
                     {
                       /* alors recuperer selon codage */
-                      //envoyer_requete(1,AVANCE,0);
-                      printf("TIR TX\n");
+                      envoyer_requete(1,FTIR,0);
+                      printf("TIR\n");
                     }
                     else
                     {
                       strncpy(a_comparer, RECHARGEMENT,BUF_SIZE - 1);
                       if(fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
                       {
+                        envoyer_requete(buffer[TAILLE_DEP + 2],RECH,0);
                         printf("RECHARGEMENT TX\n");
                       }
                       else

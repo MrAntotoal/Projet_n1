@@ -16,4 +16,6 @@
 #define NEW_BUTT "NEW_BUTT"
 #define KICK_AMI "KICK_AMI"
 
+/* pour comparer sur ce nombre et pas les paramètres suivant */
+#define TAILLE_REJ 16
 #define TAILLE_DEP 11

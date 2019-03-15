@@ -13,6 +13,6 @@ void rejoindre_equipe(Client * c, int num);
 
 void quitter_equipe(Client *c);
 
-void supprimer_equipe();
+void supprimer_equipe(int place);
 
 void affiche_equipe(int n);

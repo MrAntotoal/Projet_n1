@@ -15,6 +15,7 @@
 #define DROITE 3
 #define GAUCHE 4
 #define FTIR 5
+#define RECH 6
 
 typedef struct{
   long m_type;
