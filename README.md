@@ -30,3 +30,4 @@
 |3          |droite|1        |
 |4          |gauche|1        |
 |5          |tirer |0        |
+|6          |recharger | 0   |
