@@ -179,7 +179,7 @@ void app(void)
                       strncpy(a_comparer, RECHARGEMENT,BUF_SIZE - 1);
                       if(fast_compare(a_comparer,buffer,TAILLE_RECH) == 0)
                       {
-                        envoyer_requete(buffer[TAILLE_DEP + 2],RECH,0);
+                        envoyer_requete(buffer[TAILLE_RECH + 2],RECH,0);
                         printf("RECHARGEMENT TX\n");
                       }
                       else
