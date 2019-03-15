@@ -171,7 +171,7 @@ void app(void)
                     if (fast_compare(a_comparer,buffer,TAILLE_TIR) == 0)
                     {
                       /* alors recuperer selon codage */
-                      envoyer_requete(1,FTIR,0);
+                      envoyer_requete(buffer[TAILLE_TIR + 2],FTIR,0);
                       printf("TIR\n");
                     }
                     else
