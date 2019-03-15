@@ -99,11 +99,14 @@ void app(void)
     }
     else
     {
-
+      /***************************************/
       /* Reception depuis la file de message */
-      // rcv
+      /***************************************/
+
       while (prendre_reponse() != -1) {
-        /* traiter les != cas */
+        // rcv
+        /* traiter les différents cas */
+
       }
 
       int i = 0;
@@ -124,12 +127,17 @@ void app(void)
             printf("connection perdu %s\n",get_lexeme(clients[i].pseudo));
             break; // on arrete pour relancer la boucle proprement
           }
+
+          /***********************************************/
           /* switch pour traitement des messages clients */
+          /***********************************************/
+
           char a_comparer[BUF_SIZE];
           strncpy(a_comparer,MODE_JEUX,BUF_SIZE - 1);
           if(fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
           {
             printf("%s\n",a_comparer);
+            Clean_Buf;
           }
           else
           {
@@ -138,7 +146,7 @@ void app(void)
             {
               printf("%s\n",a_comparer);
               creer_equipe(&clients[i]);
-              affiche_equipe(0);
+              Clean_Buf;
             } else
             {
               strncpy(a_comparer,REJOINDRE_EQUIPE,BUF_SIZE - 1);
@@ -146,6 +154,7 @@ void app(void)
               {
                 printf("%s\n",a_comparer);
                 rejoindre_equipe(&clients[i],buffer[TAILLE_REJ + 2]); // ' ' puis num
+                Clean_Buf;
               }
               else
               {
@@ -154,6 +163,7 @@ void app(void)
                 {
                   printf("%s\n",a_comparer);
                   quitter_equipe(&clients[i]);
+                  Clean_Buf;
                 }
                 else
                 {
@@ -164,6 +174,7 @@ void app(void)
                     // numéro char
                     envoyer_requete(buffer[TAILLE_DEP + 3],buffer[TAILLE_DEP + 2],buffer[TAILLE_DEP + 4]);
                     printf("** D char %d Type %d A repeter %d**\n",buffer[TAILLE_DEP + 3],buffer[TAILLE_DEP + 2],buffer[TAILLE_DEP + 4]);
+                    Clean_Buf;
                   }
                   else
                   {
@@ -173,6 +184,7 @@ void app(void)
                       /* alors recuperer selon codage */
                       envoyer_requete(buffer[TAILLE_TIR + 2],FTIR,0);
                       printf("TIR\n");
+                      Clean_Buf;
                     }
                     else
                     {
@@ -181,10 +193,12 @@ void app(void)
                       {
                         envoyer_requete(buffer[TAILLE_RECH + 2],RECH,0);
                         printf("RECHARGEMENT TX\n");
+                        Clean_Buf;
                       }
                       else
                       {
                         printf("******* %s non reconnu *******\n", buffer);
+                        Clean_Buf;
                       }
                     }
                   }
@@ -193,7 +207,6 @@ void app(void)
             }
           }
         }
-        Clean_Buf;
       }
     }
   }
@@ -293,15 +306,6 @@ void my_handler(int s){
 
 int main(int argc, char **argv)
 {
-  /**********************/
-  /* test               */
-  /**********************/
-  /*char truc[50] = {'t','r','u','c','\0','m','a','c','h','i','n'};
-  char bid[50];
-  get_msg_next(truc,bid);
-  printf("%s\n",bid);
-  */
-
   /***********************************/
   /*         CAPTURE DE CTRL C       */
   /***********************************/
@@ -315,9 +319,14 @@ int main(int argc, char **argv)
   // sigaction(SIGSEGV, &sigIntHandler, NULL);
 
   /***********************************/
+  /*          Initialisation         */
+  /***********************************/
   init_lexico(); // on initialise table hash pour pseudo
   init_equipe();
 
+  /***********************************/
+  /*         File de message         */
+  /***********************************/
   if(creer_fdm() == 0)printf("File De Message Créer \n");
 
   app();
