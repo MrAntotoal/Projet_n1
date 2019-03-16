@@ -26,3 +26,4 @@ double norme_vecteur(Vecteurs v1);
 double distance_2_points(Points p1,Points p2);
 double produit_scalaire(Vecteurs v1,Vecteurs v2);
 double degre_de_2_points(Points O ,Points A,Points B);
+void re_calcule_un_vecteur(Points p1,Points p2,Vecteurs v);

@@ -26,24 +26,64 @@ void stop_requete(char numero_char,char type_action,liste l){
   }
 }
 
-liste boucle_de_traitement_liste_requete(liste l){
+liste boucle_de_traitement_liste_requete(liste l,liste l_char){
   int nbr;
   int i;
   requete_t* r;
   nbr=longueur_liste(l);
+  fprintf(stderr,"long %d \n",nbr);
   for(i=0;i<nbr;i++){
-    //printf("traitment requete n %d\n",i);
+    printf("traitment requete n %d\n",i);
     r=renvoie_sommet_liste(l);
     l=supprime_elem(l,r);
+    fprintf(stderr,"requette %d %d %d \n",r->numero_char,r->type_action,r->a_repeter);
     if(r->a_repeter!=1){
       if(r->a_repeter==0){
       /*faire l'action*/
+	if(r->type_action<0){// les arretes
+	  stop_requete(r->numero_char,-r->type_action,l);
+	}
+	else{//actions unique
 
+	}
+	
       }
       libere(r);
     }
     else{
       /*faire l'action*/
+      switch(r->type_action){
+      case 1://avance char
+	char_avance(get_index(r->numero_char-1,l_char));
+	//verif si pas collisions
+
+	if(est_en_collisions_avec_un_autre(get_index(r->numero_char-1,l_char),l_char)){
+	  char_recule(get_index(r->numero_char-1,l_char));
+	}
+	
+	break;
+      case 2://recule char
+	char_recule(get_index(r->numero_char-1,l_char));
+	if(est_en_collisions_avec_un_autre(get_index(r->numero_char-1,l_char),l_char)){
+	  char_avance(get_index(r->numero_char-1,l_char));
+	}
+	break;
+      case 3://go droite char
+	char_droite(get_index(r->numero_char-1,l_char));
+
+	if(est_en_collisions_avec_un_autre(get_index(r->numero_char-1,l_char),l_char)){
+	  char_gauche(get_index(r->numero_char-1,l_char));
+	}
+	break;
+      case 4://go gauche char
+	char_gauche(get_index(r->numero_char-1,l_char));
+
+	if(est_en_collisions_avec_un_autre(get_index(r->numero_char-1,l_char),l_char)){
+	  char_droite(get_index(r->numero_char-1,l_char));
+	}
+	break;
+	
+      }
       l=insere_elem_liste(l,r);
     } 
   }
@@ -69,6 +109,7 @@ liste lire_fm(int id_fm,liste l){
     /*ajoute a la liste*/
       printf("ajoute \n");
       l=ajoute_requete(requete, l);
+      fprintf(stderr,"aprers ajout\n");
     }
   }
   return l;

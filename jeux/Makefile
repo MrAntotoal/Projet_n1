@@ -1,9 +1,16 @@
 cc=gcc
 option=-Wall
-option_gl=""
+o_sdl=`sdl-config --cflags --libs`
+o_opengl=-lGL -lGLU
 
-run: run.c traitement_fm.o collisions.o liste.o point_vecteur.o allocation_memoire.o polygones.o
-	$(cc) $(option) run.c traitement_fm.o collisions.o liste.o point_vecteur.o allocation_memoire.o polygones.o -o run -lm
+run: run.c affichage.o char.o traitement_fm.o collisions.o liste.o point_vecteur.o allocation_memoire.o polygones.o
+	$(cc) $(option) run.c affichage.o char.o traitement_fm.o collisions.o liste.o point_vecteur.o allocation_memoire.o polygones.o -o run -lm $(o_sdl) $(o_opengl)
+
+affichage.o:affichage.c affichage.h
+	$(cc) $(option) affichage.c -c
+
+char.o: char.c char.h
+	$(cc) $(option) char.c -c
 
 traitement_fm.o:traitement_fm.c traitement_fm.h
 	$(cc) $(option) traitement_fm.c -c
@@ -26,6 +33,17 @@ liste.o: liste.c liste.h
 
 test_fm: test_fm.c type_fm.h
 	$(cc) $(option) test_fm.c type_fm.h -o test_fm
+
+
+
+
+
+
+test_sdl_opengl:test_sdl_opengl.c
+	$(cc) $(option) test_sdl_opengl.c -o test_sdl_opengl $(o_sdl) $(o_opengl)
+
+test_char: test_char.c char.o collisions.o liste.o point_vecteur.o allocation_memoire.o polygones.o
+	$(cc) $(option) test_char.c char.o collisions.o liste.o point_vecteur.o allocation_memoire.o polygones.o -o test_char -lm
 
 test_collisions: test_collisions.c collisions.o liste.o point_vecteur.o allocation_memoire.o polygones.o
 

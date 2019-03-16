@@ -79,3 +79,4 @@ void afficher_polygone(polygone p){
     afficher_polygone(liste_sans_premier(p));
   }
 }
+

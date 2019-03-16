@@ -126,3 +126,8 @@ double degre_de_2_points(Points O ,Points A,Points B){
 void afficher_point(Points p){
   printf("points : \nx : %f\ny: %f\n",p->x,p->y);
 }
+
+void re_calcule_un_vecteur(Points p1,Points p2,Vecteurs v){
+  v->x=p2->x-p1->x;
+  v->y=p2->y-p1->y;
+}

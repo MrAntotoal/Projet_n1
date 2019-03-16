@@ -73,5 +73,7 @@ void affiche_liste(liste l);
 
 elem get_last_elem(liste l);
 
+elem get_index(int index,liste l);
+
 
 #endif

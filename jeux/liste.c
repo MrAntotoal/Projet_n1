@@ -149,3 +149,11 @@ elem get_last_elem(liste l){
   return tmp->objet;
 
 }
+
+
+elem get_index(int index,liste l){
+  if(index==0){
+    return renvoie_sommet_liste(l);
+  }
+  return get_index(index-1,liste_sans_premier(l));
+}
