@@ -25,7 +25,7 @@ int main(int argc, char * argv[]){
   char3p c;
   c=init_char(cree_point(1000.0,500.0),30.0,40.0);
   liste_chars=insere_elem_liste(liste_chars,c);
-  c=init_char(cree_point(1200.0,700.0),30.0,40.0);
+  c=init_char(cree_point(1080.0,500.0),30.0,40.0);
   liste_chars=insere_elem_liste(liste_chars,c);
   //
 

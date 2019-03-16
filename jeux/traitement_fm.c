@@ -82,6 +82,20 @@ liste boucle_de_traitement_liste_requete(liste l,liste l_char){
 	  char_droite(get_index(r->numero_char-1,l_char));
 	}
 	break;
+      case 5://go droite tourelle
+	tourelle_droite(get_index(r->numero_char-1,l_char));
+
+	if(est_en_collisions_avec_un_autre(get_index(r->numero_char-1,l_char),l_char)){
+	  tourelle_gauche(get_index(r->numero_char-1,l_char));
+	}
+	break;
+      case 6://go gauche tourelle
+	tourelle_gauche(get_index(r->numero_char-1,l_char));
+
+	if(est_en_collisions_avec_un_autre(get_index(r->numero_char-1,l_char),l_char)){
+	  tourelle_droite(get_index(r->numero_char-1,l_char));
+	}
+	break;
 	
       }
       l=insere_elem_liste(l,r);
