@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <!-- boutons avancer/reculer-->
+
+   <!--  <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <TableLayout
+        android:id="+id/buttonHB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="35dp"
+        android:layout_y="218dp"
+        android:stretchColumns="1">
+
+        <TableRow>
+
+            <Button android:text="Haut" />
+        </TableRow>
+        <TableRow>
+            <Button android:text="Bas"/>
+        </TableRow>
+    </TableLayout>  -->
+
+
+    <!-- bouton feu taille a déterminer
+    <Button
+        android:id="+id/buttonF"
+        android:layout_x="35dp"
+        android:layout_y="218dp"
+
+        />
+-->
+
+    <!-- bouton shield
+    <Button
+        android:id="+id/buttonS"
+        android:layout_x="35dp"
+        android:layout_y="218dp"
+        />
+        -->
+
+    <!-- gauche GC = gauche conducteur
+                GT = gauche tireur
+                GP = gauche protecteur-
+    <Button
+        android:id="@+id/buttonGC"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_x="359dp"
+        android:layout_y="270dp"
+        android:text="Gauche"
+        />
+
+    <Button
+        android:id="@+id/buttonGT"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_x="359dp"
+        android:layout_y="270dp"
+        android:text="Gauche"
+        />
+    <Button
+        android:id="@+id/buttonGP"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_x="359dp"
+        android:layout_y="270dp"
+        android:text="Gauche"
+        />
+
+    < droite same que pour gauche
+    <Button
+        android:id="@+id/buttonDC"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="234dp"
+        android:layout_marginRight="234dp"
+        android:layout_x="508dp"
+        android:layout_y="270dp"
+        android:text="Droite"
+        />
+
+    <Button
+        android:id="@+id/buttonDT"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="234dp"
+        android:layout_marginRight="234dp"
+        android:layout_x="508dp"
+        android:layout_y="270dp"
+        android:text="Droite"
+        />
+
+    <Button
+        android:id="@+id/buttonDP"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="234dp"
+        android:layout_marginRight="234dp"
+        android:layout_x="508dp"
+        android:layout_y="270dp"
+        android:text="Droite"
+        />
+-->
+    <!--Ultime-
+    <Button
+        android:id="@+id/buttonU"
+        android:layout_width="165dp"
+        android:layout_height="81dp"
+        android:layout_x="419dp"
+        android:layout_y="174dp"
+        android:text="Special"
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="85dp"
+        />
+-->
+    <!-- TODO bonus boutton mais pour iteration 2-->
+</resources>

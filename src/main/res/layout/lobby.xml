@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
+        android:layout_weight="1"
+        android:background="#000000">
+
+
+        <TextView
+            android:layout_width="224dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_span="2"
+            android:layout_weight="@android:integer/status_bar_notification_info_maxnum"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text="timer"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="1"
+        android:background="#000000">
+
+        <TextView
+            android:layout_width="366dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_span="2"
+            android:layout_weight="@android:integer/status_bar_notification_info_maxnum"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text=" Chef de section"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
+        android:layout_weight="1"
+        android:background="#000000">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_column="0"
+            android:layout_margin="1dp"
+            android:layout_weight="@android:integer/status_bar_notification_info_maxnum"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text=" Text"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:layout_weight="@android:integer/status_bar_notification_info_maxnum"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text=" Text"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+    </TableRow>
+
+
+</TableLayout>

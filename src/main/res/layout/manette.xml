@@ -13,8 +13,8 @@
         android:layout_marginTop="78dp"
         android:layout_marginEnd="234dp"
         android:layout_marginRight="234dp"
-        android:layout_x="158dp"
-        android:layout_y="282dp"
+        android:layout_x="508dp"
+        android:layout_y="270dp"
         android:text="Droite" />
 
     <Button
@@ -27,8 +27,8 @@
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginBottom="0dp"
-        android:layout_x="9dp"
-        android:layout_y="282dp"
+        android:layout_x="359dp"
+        android:layout_y="270dp"
         android:text="Gauche" />
 
     <Button
@@ -41,8 +41,8 @@
         android:layout_marginRight="-459dp"
         android:layout_toStartOf="@+id/buttonD"
         android:layout_toLeftOf="@+id/buttonD"
-        android:layout_x="469dp"
-        android:layout_y="223dp"
+        android:layout_x="35dp"
+        android:layout_y="218dp"
         android:text="Haut" />
 
     <Button
@@ -55,16 +55,16 @@
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
         android:layout_marginBottom="12dp"
-        android:layout_x="468dp"
-        android:layout_y="276dp"
+        android:layout_x="34dp"
+        android:layout_y="271dp"
         android:text="Bas" />
 
     <Button
         android:id="@+id/buttonU"
         android:layout_width="165dp"
         android:layout_height="81dp"
-        android:layout_x="69dp"
-        android:layout_y="186dp"
+        android:layout_x="419dp"
+        android:layout_y="174dp"
         android:text="Special"
         tools:layout_editor_absoluteX="87dp"
         tools:layout_editor_absoluteY="85dp" />

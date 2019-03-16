@@ -6,6 +6,26 @@
     android:orientation="vertical">
 
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="146dp"
+        android:text="Monter dans un Véhicule" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Rejoindre  un char"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Valider" />
+
     <TableLayout
         android:id="@+id/table"
         android:layout_width="796dp"

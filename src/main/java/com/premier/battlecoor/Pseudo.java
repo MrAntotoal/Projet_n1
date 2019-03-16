@@ -1,6 +1,7 @@
 package com.premier.battlecoor;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -21,8 +22,24 @@ public class Pseudo extends Activity {
             @Override
             public void onClick(View v) {
                 String mes = nickname.getText().toString();
-                Thread t = new Thread(new EnvoieMessage(mes));
+                EnvoieMessage message = new EnvoieMessage(mes);
+                Thread t = new Thread(message);
                 t.start();
+                try {
+                    t.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                switch(message.getReponse()){
+                    case "MENU_JOUEUR":
+                        Intent i;
+                        i = new Intent(Pseudo.this, Formation.class);
+                        startActivity(i);
+                        break;
+                    case "PSEUDO_POK":
+                        nickname.setHint("Pseudo déjà existant");
+                        break;
+                }
             }
         });
     }
