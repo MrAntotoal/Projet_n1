@@ -7,13 +7,13 @@
 
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/monter"
         android:layout_width="match_parent"
         android:layout_height="146dp"
         android:text="Monter dans un Véhicule" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/numchar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -21,29 +21,10 @@
         android:inputType="number" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/rejoindre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Valider" />
 
-    <TableLayout
-        android:id="@+id/table"
-        android:layout_width="796dp"
-        android:layout_height="match_parent"
-        android:visibility="visible">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-        </TableRow>
-
-    </TableLayout>
 </LinearLayout>

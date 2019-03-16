@@ -16,7 +16,7 @@ public class Acceuil extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.acceuil);
-
+        Log.d("affichage", "DANS ACCEUIL");
         Log.d(TAG, "onCreate: started.");
         ImageButton imageButton =  (ImageButton) findViewById(R.id.imageButton);
         int imageRessource = getResources().getIdentifier("@drawable/images", null, this.getPackageName() );

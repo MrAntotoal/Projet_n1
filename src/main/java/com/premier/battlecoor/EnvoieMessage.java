@@ -15,50 +15,32 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class EnvoieMessage  implements Runnable{
-    //TODO confirmation du serveur pour s'assurer que le pseudo est unique
-    //message erreur pseudo non existat déjà
     //Mettre la socekt en variable envoie message
-    private String pseudo;
-    private Socket s;
-    private String res; //reponse du serveur
-    EnvoieMessage(String nickname){
-        pseudo = nickname;
-    }
+
+
+
+
+
     @Override
     public void run() {
-        final int PORT = 1977;
-        final String ip = "192.168.1.28";
         try {
-            /*Socket*/ s = new Socket(ip, PORT);
-            InputStream in = s.getInputStream();
-            OutputStream out = s.getOutputStream();
+            /*Socket*/
+            InputStream in = Joueur.getSocket().getInputStream();
+            OutputStream out = Joueur.getSocket().getOutputStream();
             BufferedReader reader =new BufferedReader(new InputStreamReader(in));
 
             //envoie de la requête au serveur
             PrintWriter writer = new PrintWriter(out);
-            writer.print(pseudo);
+            writer.print(Joueur.getMessage());
             writer.flush();
 
 
             //attente bloquante de la reponse su serveur
-            Log.d("affichage", "TESTTEST");
-            String reponse = reader.readLine();
+            Joueur.setReponse(reader.readLine());
 
-            Log.d("affichage", "Réponse reçu : "+reponse);
+            Log.d("affichage", "Réponse reçu : "+Joueur.getReponse());
 
 
-            //Vérification unicité du pseudo
-            res = reponse;
-            /*Modification pour ne pas perdre la connextion
-            if( reponse.equals("PSEUDO_POK")) {
-
-            }
-            if (reponse.equals("MENU_JOUEUR")) {
-
-            }
-
-            s.close();
-            ***************************************/
         }
         catch (UnknownHostException e1) {
             e1.printStackTrace();
@@ -69,11 +51,5 @@ public class EnvoieMessage  implements Runnable{
 
     }
 
-    public void fermerSocket() throws IOException {
-        s.close();
-    }
 
-    public String getReponse(){
-        return res;
-    }
 }
