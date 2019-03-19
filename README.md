@@ -3,7 +3,7 @@
 |Message dans le buffer|	Résultat|	En plus	|En pratique	|Temps|Expéditaire|
 |:---------------------|:---------|:--------|:------------|:----|:----------|
 |CREER_EQUIPE	|avec le créateur comme chef d’équipe	|	||	equipe|Client|
-|REJOINDRE_EQUIPE	|rejoint l’équipe ?|	numéro de l’équipe a rejoindre (char 256)|	Buff + ' ' + numéro 	|equipe|client|
+|REJOINDRE_EQUIPE	|rejoint l’équipe ?|	numéro de l’équipe a rejoindre|	Buff + ' ' + numéro 	|equipe|client|
 |QUICK_EQUIPE|vire le gars de l'équipe||Buff + ' ' + pseudo + ' '|equipe|client|
 |QUITTER_EQUIPE	|quitte et si plus de membre supprime	|	||equipe|client|
 |MENU_JOUEUR	|envoie le code du menu au joueur|	 (plusieurs menu. )	| si plusieurs Buff + ' ' + numéro sinon buff|	Après connexion + pseudo ok |serveur|
