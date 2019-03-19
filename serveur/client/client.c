@@ -5,64 +5,29 @@
 
 #include "client.h"
 
+int version;
+
 static void app(const char *address, const char *name)
 {
    SOCKET sock = init_connection(address);
    char buffer[BUF_SIZE];
-   char test[BUF_SIZE] = {'D','E','P','L','A','C','E','M','E','N','T',' ','T',1,1,1,'\n'};
-   fd_set rdfs;
+
 
    /* send our name */
    write_server(sock, name);
    sleep(1);
+   char test[BUF_SIZE] = {'D','E','P','L','A','C','E','M','E','N','T',' ','2',' ','-','2',' ','0','\n'};
+   //char test[BUF_SIZE] = {'D','E','P','L','A','C','E','M','E','N','T',' ','2',' ','2',' ','1','\n'};
+
    write_server(sock,test);
-   while(1)
-   {
-      FD_ZERO(&rdfs);
 
-      /* add STDIN_FILENO */
-      FD_SET(STDIN_FILENO, &rdfs);
 
-      /* add the socket */
-      FD_SET(sock, &rdfs);
-
-      if(select(sock + 1, &rdfs, NULL, NULL, NULL) == -1)
-      {
-         perror("select()");
-         exit(errno);
-      }
-
-      /* something from standard input : i.e keyboard */
-      if(FD_ISSET(STDIN_FILENO, &rdfs))
-      {
-         fgets(buffer, BUF_SIZE - 1, stdin);
-         {
-            char *p = NULL;
-            p = strstr(buffer, "\n");
-            if(p != NULL)
-            {
-               *p = 0;
-            }
-            else
-            {
-               /* fclean */
-               buffer[BUF_SIZE - 1] = 0;
-            }
-         }
-         write_server(sock, buffer);
-      }
-      else if(FD_ISSET(sock, &rdfs))
-      {
-         int n = read_server(sock, buffer);
-         /* server down */
-         if(n == 0)
-         {
-            printf("Server disconnected !\n");
-            break;
-         }
-         puts(buffer);
-      }
-   }
+   int numero_char;
+   int type;
+   int repeter;
+   sscanf(test,"%s %d %d %d\n",buffer,&numero_char,&type,&repeter);
+   printf("** D char %d Type %d A repeter %d**\n",numero_char,type,repeter);
+   sleep(5);
 
    end_connection(sock);
 }

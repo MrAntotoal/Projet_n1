@@ -9,7 +9,7 @@
 |MENU_JOUEUR	|envoie le code du menu au joueur|	 (plusieurs menu. )	| si plusieurs Buff + ' ' + numéro sinon buff|	Après connexion + pseudo ok |serveur|
 |START	|envoie ordre début partie	| 	|  | 	X|serveur|
 | END |	fin de partie	|	|	| 5-15 min|serveur|
-|DEPLACEMENT	||	type = T tourelle B bouclier C char|	Buff + ' ' + type + numero_char + (1,2,3,4)(int) + (0,1)(int)(appuie / relache) |	Durant partie|client|
+|DEPLACEMENT	||	annuler déplacement : Buff + ' ' + numero_char + ' ' + -(1,2,3,4) + ' ' + '0'|	Buff + ' ' + numero_char + ' ' + (1,2,3,4,...) + ' ' + (0,1)(appuie / relache) |	Durant partie|client|
 |TIR	|	|munition spécial|	Buff + ' ' + numero_char + (0-9)|	X|Client|
 |RECHARGEMENT| | |	Buff + ' ' + numero_char |Durant partie|client|
 |TIMEOUT	||	|Buff |2 s|
@@ -18,6 +18,7 @@
 |MODE_JEUX|+1 pour décision mode | numéro |Buff +' ' + (0-256)|Décision mode de jeux|client|
 |NEW_BUTT| change les boutons du joueur | code des boutons g, h, d, U| Buff + ' ' + code bouton x4 | 1 minute ou toucher |serveur|
 |NUM_CHAR|Le client enregistre le numéro du char|numéro du char (0-256)|Buff + ' ' + numéro|Début partie|serveur|
+
 
 ## info valeurs requete_t
 * numero char -> ba le num du char (debut a 1)
@@ -31,3 +32,8 @@
 |4          |gauche|1        |
 |5          |tirer |0        |
 |6          |recharger | 0   |
+
+
+|Réponse | type |
+|:-------|:-----|
+|désactive bouttons | 0

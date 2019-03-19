@@ -159,14 +159,14 @@ void app(void)
               printf("%s\n",a_comparer);
               #endif
               creer_equipe(&clients[i]);
-              sprintf(buffer, NUM_CHAR"%d\n",index_equipe);
+              sprintf(buffer, NUM_CHAR"%d\n",index_equipe--);
               printf("%s\n",buffer);
               write_client(clients[i].sock,buffer);
               Clean_Buf;
             } else
             {
               strncpy(a_comparer,REJOINDRE_EQUIPE,BUF_SIZE - 1);
-              if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
+              if (fast_compare(a_comparer,buffer,TAILLE_REJ) == 0)
               {
                 #ifdef AFFICHAGE
                 printf("%s\n",a_comparer);
@@ -192,11 +192,17 @@ void app(void)
                   if (fast_compare(a_comparer,buffer,TAILLE_DEP) == 0)
                   {
                     // numéro char
-                    envoyer_requete(buffer[TAILLE_DEP + 3],buffer[TAILLE_DEP + 2],buffer[TAILLE_DEP + 4]);
+                    int numero_char = 0;
+                    int type = 0;
+                    int repeter = 0;
+                    sscanf(buffer,"%s %d %d %d\n",truc,&numero_char,&type,&repeter);
                     #ifdef AFFICHAGE
-                    printf("** D char %d Type %d A repeter %d**\n",buffer[TAILLE_DEP + 3],buffer[TAILLE_DEP + 2],buffer[TAILLE_DEP + 4]);
+                    printf("** D char %d Type %d A repeter %d**\n",numero_char,type,repeter);
                     #endif
+
+                    envoyer_requete(numero_char,type,repeter);
                     Clean_Buf;
+                    write_client(clients[i].sock,"OK\n");
                   }
                   else
                   {
