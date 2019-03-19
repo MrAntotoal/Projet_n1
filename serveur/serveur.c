@@ -171,7 +171,9 @@ void app(void)
                 #ifdef AFFICHAGE
                 printf("%s\n",a_comparer);
                 #endif
-                rejoindre_equipe(&clients[i],buffer[TAILLE_REJ + 2]); // ' ' puis num
+                int rej = 0;
+                sscanf(buffer,"%s %d\n",truc,&rej);
+                rejoindre_equipe(&clients[i],rej); // ' ' puis num
                 Clean_Buf;
               }
               else
