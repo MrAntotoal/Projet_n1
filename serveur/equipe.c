@@ -1,7 +1,6 @@
 #include "equipe.h"
 
 Equipe GL_equipe[MAX_CLIENTS];
-int index_equipe;
 
 
 void init_equipe(){
@@ -16,7 +15,9 @@ void creer_equipe(Client * c){
   c->numEquipe = index_equipe;
   GL_equipe[index_equipe].membre[0] = *c;
   index_equipe++;
+  #ifdef AFFICHAGE
   printf("Création OK %d\n",index_equipe);
+  #endif
 }
 
 /*  avec num le numéro de l'équipe dans le tableau global */
@@ -25,7 +26,9 @@ void rejoindre_equipe(Client * c, int num){
   GL_equipe[num].membre[GL_equipe[num].numj] = *c;
   GL_equipe[num].numj++;
   c->numEquipe = num;
+  #ifdef AFFICHAGE
   printf("equipe rejointe %d\n",num);
+  #endif
 }
 
 
@@ -49,7 +52,9 @@ void quitter_equipe(Client *c){
   if(GL_equipe[c->numEquipe].nb_joueur == 0)
   {
     supprimer_equipe(place);
+    #ifdef AFFICHAGE
     printf("Equipe supprimé %d\n",place);
+    #endif
   }
   index_equipe--;
 }
@@ -63,9 +68,11 @@ void supprimer_equipe(int place){
 
 
 void affiche_equipe(int n){
+  #ifdef AFFICHAGE
   char *t = get_lexeme(GL_equipe[n].membre[0].pseudo);
   fprintf(stderr,"Chef d'équipe : %s\n",t);
   for (int i = 0; i < GL_equipe[n].nb_joueur; i++) {
     printf("%d : %s\n",i,get_lexeme(GL_equipe[n].membre[i].pseudo));
   }
+  #endif
 }

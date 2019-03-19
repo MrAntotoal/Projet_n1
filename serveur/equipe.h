@@ -4,6 +4,10 @@
 #include "structure.h"
 #include "serveur.h"
 #include "analyse_lexicographique.h"
+#include "affich.h"
+
+int index_equipe;
+
 void init_equipe();
 
 void creer_equipe(Client * c);

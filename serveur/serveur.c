@@ -54,7 +54,9 @@ void app(void)
       if(read_client(csock, buffer) == -1)
       {
         /* disconnected */
+        #ifdef AFFICHAGE
         printf("déconnection\n");
+        #endif
         continue;
       }
       /* what is the new maximum fd ? */
@@ -68,7 +70,9 @@ void app(void)
 
       if(est_dans_table(truc) == -1)
       {
+        #ifdef AFFICHAGE
         printf("PSEUDO_POK\n");
+        #endif
         strncpy(buffer, PSEUDO_POK, BUF_SIZE - 1);
         write_client(csock,buffer);
         Clean_Buf;
@@ -77,13 +81,16 @@ void app(void)
       else
       {
         // PSEUDO_OK
+        #ifdef AFFICHAGE
         printf("PSEUDO_OK\n");
-
+        #endif
         strncpy(buffer,truc,BUF_SIZE - 1);
         Client c = { csock };
 
         c.pseudo = inserer_lexeme(truc);
+        #ifdef AFFICHAGE
         printf("client : %s connecté\n",buffer);
+        #endif
         Clean_Buf;
         clients[actual] = c;
         actual++;
@@ -124,7 +131,9 @@ void app(void)
 
             // strncpy(buffer, client.name, BUF_SIZE - 1);
             // strncat(buffer, " disconnected !", BUF_SIZE - strlen(buffer) - 1);
+            #ifdef AFFICHAGE
             printf("connection perdu %s\n",get_lexeme(clients[i].pseudo));
+            #endif
             break; // on arrete pour relancer la boucle proprement
           }
 
@@ -136,7 +145,9 @@ void app(void)
           strncpy(a_comparer,MODE_JEUX,BUF_SIZE - 1);
           if(fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
           {
+            #ifdef AFFICHAGE
             printf("%s\n",a_comparer);
+            #endif
             Clean_Buf;
           }
           else
@@ -144,15 +155,22 @@ void app(void)
             strncpy(a_comparer,CREER_EQUIPE,BUF_SIZE - 1);
             if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
             {
+              #ifdef AFFICHAGE
               printf("%s\n",a_comparer);
+              #endif
               creer_equipe(&clients[i]);
+              sprintf(buffer, NUM_CHAR"%d\n",index_equipe);
+              printf("%s\n",buffer);
+              write_client(clients[i].sock,buffer);
               Clean_Buf;
             } else
             {
               strncpy(a_comparer,REJOINDRE_EQUIPE,BUF_SIZE - 1);
               if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
               {
+                #ifdef AFFICHAGE
                 printf("%s\n",a_comparer);
+                #endif
                 rejoindre_equipe(&clients[i],buffer[TAILLE_REJ + 2]); // ' ' puis num
                 Clean_Buf;
               }
@@ -161,7 +179,9 @@ void app(void)
                 strncpy(a_comparer,QUITTER_EQUIPE,BUF_SIZE - 1);
                 if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
                 {
+                  #ifdef AFFICHAGE
                   printf("%s\n",a_comparer);
+                  #endif
                   quitter_equipe(&clients[i]);
                   Clean_Buf;
                 }
@@ -173,7 +193,9 @@ void app(void)
                   {
                     // numéro char
                     envoyer_requete(buffer[TAILLE_DEP + 3],buffer[TAILLE_DEP + 2],buffer[TAILLE_DEP + 4]);
+                    #ifdef AFFICHAGE
                     printf("** D char %d Type %d A repeter %d**\n",buffer[TAILLE_DEP + 3],buffer[TAILLE_DEP + 2],buffer[TAILLE_DEP + 4]);
+                    #endif
                     Clean_Buf;
                   }
                   else
@@ -183,7 +205,9 @@ void app(void)
                     {
                       /* alors recuperer selon codage */
                       envoyer_requete(buffer[TAILLE_TIR + 2],FTIR,0);
+                      #ifdef AFFICHAGE
                       printf("TIR\n");
+                      #endif
                       Clean_Buf;
                     }
                     else
@@ -192,12 +216,16 @@ void app(void)
                       if(fast_compare(a_comparer,buffer,TAILLE_RECH) == 0)
                       {
                         envoyer_requete(buffer[TAILLE_RECH + 2],RECH,0);
+                        #ifdef AFFICHAGE
                         printf("RECHARGEMENT TX\n");
+                        #endif
                         Clean_Buf;
                       }
                       else
                       {
+                        #ifdef AFFICHAGE
                         printf("******* %s non reconnu *******\n", buffer);
+                        #endif
                         Clean_Buf;
                       }
                     }
@@ -241,7 +269,9 @@ int init_connection(void)
 
   if(sock == INVALID_SOCKET)
   {
+    #ifdef AFFICHAGE
     perror("socket()");
+    #endif
     exit(errno);
   }
 
@@ -251,14 +281,18 @@ int init_connection(void)
 
   if(bind(sock,(SOCKADDR *) &sin, sizeof sin) == SOCKET_ERROR)
   {
+    #ifdef AFFICHAGE
     perror("bind()");
+    #endif
     fermer_fdm();
     exit(errno);
   }
 
   if(listen(sock, MAX_CLIENTS) == SOCKET_ERROR)
   {
+    #ifdef AFFICHAGE
     perror("listen()");
+    #endif
     fermer_fdm();
     exit(errno);
   }
@@ -277,11 +311,15 @@ int read_client(SOCKET sock, char *buffer)
 
   if((n = recv(sock, buffer, BUF_SIZE - 1, 0)) < 0)
   {
+    #ifdef AFFICHAGE
     perror("recv()");
+    #endif
     /* if recv error we disonnect the client */
     n = 0;
   }
+  #ifdef AFFICHAGE
   printf("Reçue ~> %s\n",buffer);
+  #endif
   buffer[n] = 0;
 
   return n;
@@ -292,7 +330,9 @@ void write_client(SOCKET sock, const char *buffer)
   // https://linux.die.net/man/2/send
   if(send(sock, buffer, strlen(buffer), 0) < 0)
   {
+    #ifdef AFFICHAGE
     perror("send()");
+    #endif
     exit(errno);
   }
 }
@@ -327,8 +367,13 @@ int main(int argc, char **argv)
   /***********************************/
   /*         File de message         */
   /***********************************/
-  if(creer_fdm() == 0)printf("File De Message Créer \n");
-
+  if(creer_fdm() == 0)
+  {
+    #ifdef AFFICHAGE
+    printf("File De Message Créer \n");
+    #endif
+    ;
+  }
   app();
   return EXIT_SUCCESS;
 }

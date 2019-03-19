@@ -7,7 +7,9 @@ int creer_fdm(){
   id_fdm = msgget(cle, IPC_CREAT | IPC_EXCL | 0666);
   if(id_fdm == -1)
   {
+    #ifdef AFFICHAGE
     printf("********** Création FDM Erreur **********\n");
+    #endif
     return -1;
   }
   return 0;
@@ -18,7 +20,9 @@ int ouvrir_fdm(){
   id_fdm = msgget(cle, 0);
   if(id_fdm == -1)
   {
+    #ifdef AFFICHAGE
     printf("********** ID FDM Erreur **********\n");
+    #endif
     return -1;
   }
   return 0;
@@ -37,7 +41,9 @@ int envoyer_requete(char nc, char action, char a_repeter){
 
   if(msgsnd(id_fdm,&msg,sizeof(requete_t)- sizeof(long),0) == -1)
   {
+    #ifdef AFFICHAGE
     printf("********** msg non envoyé **********\n");
+    #endif
     return -1;
   }
   return 0;
@@ -45,7 +51,9 @@ int envoyer_requete(char nc, char action, char a_repeter){
 
 int prendre_reponse(){
   if(msgrcv(id_fdm,&rcv,sizeof(reponse_t)- sizeof(long),NUM_EXP,IPC_NOWAIT)==-1){
-    printf("********** pas de truc recu **********\n");
+    #ifdef AFFICHAGE
+    printf("********** fdm : pas de truc recu **********\n");
+    #endif
     return -1;
   }
   return 0;

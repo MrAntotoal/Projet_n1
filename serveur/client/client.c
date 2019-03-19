@@ -9,7 +9,7 @@ static void app(const char *address, const char *name)
 {
    SOCKET sock = init_connection(address);
    char buffer[BUF_SIZE];
-   char test[BUF_SIZE] = {'D','E','P','L','A','C','E','M','E','N','T',' ',1,'\n'};
+   char test[BUF_SIZE] = {'D','E','P','L','A','C','E','M','E','N','T',' ','T',1,1,1,'\n'};
    fd_set rdfs;
 
    /* send our name */

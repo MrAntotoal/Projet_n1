@@ -5,10 +5,12 @@
 #include <sys/types.h>
 #include <sys/msg.h>
 
-#define FICHIER_CLE "Makefile"
+#include "affich.h"
+
+#define FICHIER_CLE "../README.md"
 #define LETTRE 'a'
 #define NUM_EXP 1
-#define A_JEUX 20
+#define A_JEUX 20001
 
 #define AVANCE 1
 #define RECULE 2
