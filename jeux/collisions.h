@@ -1,4 +1,4 @@
-#include "polygones.h"
+#include "affichage.h"
 
 
 int point_dans_polygone(Points p,polygone poly);

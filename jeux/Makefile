@@ -3,11 +3,14 @@ option=-Wall
 o_sdl=`sdl-config --cflags --libs`
 o_opengl=-lGL -lGLU
 
-run: run.c affichage.o char.o traitement_fm.o collisions.o liste.o point_vecteur.o allocation_memoire.o polygones.o
-	$(cc) $(option) run.c affichage.o char.o traitement_fm.o collisions.o liste.o point_vecteur.o allocation_memoire.o polygones.o -o run -lm $(o_sdl) $(o_opengl)
+run: run.c obus.o affichage.o char.o traitement_fm.o collisions.o liste.o point_vecteur.o allocation_memoire.o polygones.o
+	$(cc) $(option) run.c obus.o affichage.o char.o traitement_fm.o collisions.o liste.o point_vecteur.o allocation_memoire.o polygones.o -o run -lm $(o_sdl) $(o_opengl)
 
 affichage.o:affichage.c affichage.h
 	$(cc) $(option) affichage.c -c
+
+obus.o:obus.c obus.h
+	$(cc) $(option) obus.c -c
 
 char.o: char.c char.h
 	$(cc) $(option) char.c -c

@@ -22,3 +22,15 @@ void go_ecran(){
 }
 
 
+void affiche_poly(polygone poly, int r,int g,int b){
+  Points p;
+  glBegin(GL_QUADS);
+  glColor3ub(r,g,b);
+  while(!est_list_vide(poly)){
+    p=renvoie_sommet_liste(poly);
+    glVertex2d(p->x,p->y);
+    poly=liste_sans_premier(poly);
+  }
+  glEnd();
+}
+
