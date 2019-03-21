@@ -197,6 +197,16 @@ void app(void)
                     int numero_char = 0;
                     int type = 0;
                     int repeter = 0;
+
+                    /*
+                    1 	avance
+                    2 	recule
+                    3 	droite
+                    4 	gauche
+                    5   tir
+                    6   recharger
+                    */
+
                     sscanf(buffer,"%s %d %d %d\n",truc,&numero_char,&type,&repeter);
                     #ifdef AFFICHAGE
                     printf("** D char %d Type %d A repeter %d**\n",numero_char,type,repeter);
