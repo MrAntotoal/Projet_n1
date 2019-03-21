@@ -1,6 +1,5 @@
 #include "traitement_fm.h"
 #include "time.h"
-#include "affichage.h"
 
 
 int main(int argc, char * argv[]){
@@ -15,10 +14,15 @@ int main(int argc, char * argv[]){
   int id_fm;
   liste liste_action;
   liste liste_chars;
+  liste liste_obus;
+  t_liste t_listes;
   SDL_Event event;
   id_fm=recuperer_id_fm();
   liste_action=list_vide();
   liste_chars=list_vide();
+  liste_obus=list_vide();
+
+  t_listes=alloc_mem(1,sizeof(toutes_listes));
 
 
   //tmp
@@ -48,14 +52,16 @@ int main(int argc, char * argv[]){
       buffer_image_0();
       nbr_fps++;
       somme2=0.0;
-      liste_action=lire_fm(id_fm,liste_action);
-      liste_action=boucle_de_traitement_liste_requete(liste_action,liste_chars);
-      fprintf(stderr,"apres boucle traitment\n");
-      //fprintf(stderr,"-   fps %d  somme %f\n",nbr_fps,somme);
-      fprintf(stderr,"l %d\n",longueur_liste(liste_action));
+      //printf("lire fm\n");
+      t_listes->l_requette=lire_fm(id_fm,t_listes->l_requette);
+      //printf("fin lire fm et boucle t\n");
+      boucle_de_traitement_liste_requete(t_listes);
+      //printf("fin boucle t debut obus\n");
+      t_listes->l_obus=traitement_tous_obus(t_listes->l_obus,t_listes->l_char);
+      //printf("fin obus\n");
 
-
-      afficher_liste_chars(liste_chars);
+      afficher_liste_chars(t_listes->l_char);
+      //printf("aff \n");
 
       go_ecran();
     }

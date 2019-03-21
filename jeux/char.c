@@ -150,7 +150,6 @@ int est_en_collisions_avec_un_autre(char3p c,liste l_char){
   if(!est_list_vide(l_char)){
     c2=renvoie_sommet_liste(l_char);
     if(c!=c2){
-      printf("test_collision\n");
       if(polygone_dans_polygone(c->c,c2->c)||polygone_dans_polygone(c->t,c2->c)||polygone_dans_polygone(c->c,c2->t)||polygone_dans_polygone(c->t,c2->t)){
 	return 1;
       }
