@@ -31,12 +31,14 @@ typedef struct{
 * type_action a_repeter
 
 |type_action|action|a_repeter|
-|:---------:|:----:|:-------:|
-|1          |avance|1        |
-|2          |recule|1        |
-|3          |droite|1        |
-|4          |gauche|1        |
-
+|:---------:|:--------------:|:-------:|
+|1          |avance          |1        |
+|2          |recule          |1        |
+|3          |droite          |1        |
+|4          |gauche          |1        |
+|5          |droite_tourelle |1        |
+|6          |gauche_tourelle |1        |
+|10         |tire            |0        |
 pour le reste on verra plus tard
 
 * a_reperter -> on repete cette action jusqu'au signe d'interuption
