@@ -16,8 +16,9 @@
 #define RECULE 2
 #define DROITE 3
 #define GAUCHE 4
-#define FTIR 5
-#define RECH 6
+#define DROITE_TOURELLE 5
+#define GAUCHE_TOURELLE 6
+#define TIRER 10
 
 typedef struct{
   long m_type;

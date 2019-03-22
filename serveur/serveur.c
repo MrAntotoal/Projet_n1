@@ -203,8 +203,9 @@ void app(void)
                     2 	recule
                     3 	droite
                     4 	gauche
-                    5   tir
-                    6   recharger
+                    5   DROITE_TOURELLE
+                    6   GAUCHE_TOURELLE
+                    10  TIRER
                     */
 
                     sscanf(buffer,"%s %d %d %d\n",truc,&numero_char,&type,&repeter);
@@ -222,7 +223,9 @@ void app(void)
                     if (fast_compare(a_comparer,buffer,TAILLE_TIR) == 0)
                     {
                       /* alors recuperer selon codage */
-                      envoyer_requete(buffer[TAILLE_TIR + 2],FTIR,0);
+                      int numero_char = 0;
+                      sscanf(buffer,"%s %d",truc,&numero_char)
+                      envoyer_requete(numero_char,TIRER,0);
                       #ifdef AFFICHAGE
                       printf("TIR\n");
                       #endif

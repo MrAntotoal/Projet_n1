@@ -6,7 +6,7 @@ int main(int argc, char * argv[]){
   int run=1;
   int fps=120;
   double fps_d=1.0/(double)fps;
-  clock_t start, end;
+  clock_t start, end; 
   double diff;
   int nbr_fps=0;
   double somme=0.0;;
@@ -33,13 +33,17 @@ int main(int argc, char * argv[]){
   liste_chars=insere_elem_liste(liste_chars,c);
   //
 
-  cree_fen(1600/2,900/2,"run");
+  t_listes->l_requette=liste_action;
+  t_listes->l_char=liste_chars;
+  t_listes->l_obus=liste_obus;
 
-  start = clock();
+  cree_fen(1600/2,900/2,"run");
+  
+  start = clock(); 
 
   while(run){
-    end = clock();
-    diff = (double)(end - start) / CLOCKS_PER_SEC;
+    end = clock(); 
+    diff = (double)(end - start) / CLOCKS_PER_SEC; 
     if(somme2>fps_d){
 
       SDL_PollEvent(&event);
@@ -48,7 +52,7 @@ int main(int argc, char * argv[]){
           case SDL_QUIT:
                run = 0;
        }
-
+      
       buffer_image_0();
       nbr_fps++;
       somme2=0.0;
@@ -59,10 +63,10 @@ int main(int argc, char * argv[]){
       //printf("fin boucle t debut obus\n");
       t_listes->l_obus=traitement_tous_obus(t_listes->l_obus,t_listes->l_char);
       //printf("fin obus\n");
-
+      
       afficher_liste_chars(t_listes->l_char);
       //printf("aff \n");
-
+      
       go_ecran();
     }
     start=end;

@@ -30,8 +30,9 @@
 |2          |recule|1        |
 |3          |droite|1        |
 |4          |gauche|1        |
-|5          |tirer |0        |
-|6          |recharger | 0   |
+|5          |droite_tourelle |0        |
+|6          |gauche_tourelle | 0   |
+|10 	|tire |	0|
 
 
 |Réponse | type |
