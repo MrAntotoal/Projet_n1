@@ -224,7 +224,7 @@ void app(void)
                     {
                       /* alors recuperer selon codage */
                       int numero_char = 0;
-                      sscanf(buffer,"%s %d",truc,&numero_char)
+                      sscanf(buffer,"%s %d",truc,&numero_char);
                       envoyer_requete(numero_char,TIRER,0);
                       #ifdef AFFICHAGE
                       printf("TIR\n");
@@ -236,7 +236,7 @@ void app(void)
                       strncpy(a_comparer, RECHARGEMENT,BUF_SIZE - 1);
                       if(fast_compare(a_comparer,buffer,TAILLE_RECH) == 0)
                       {
-                        envoyer_requete(buffer[TAILLE_RECH + 2],RECH,0);
+                        //envoyer_requete(buffer[TAILLE_RECH + 2],RECH,0);
                         #ifdef AFFICHAGE
                         printf("RECHARGEMENT TX\n");
                         #endif
