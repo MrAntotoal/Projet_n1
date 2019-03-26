@@ -127,13 +127,14 @@ void app(void)
           if(c == 0)
           {
             closesocket(clients[i].sock);
+            #ifdef AFFICHAGE
+            printf("connection perdu %s\n",get_lexeme(clients[i].pseudo));
+            #endif
             remove_client(clients, i, &actual); // on enlève le client
 
             // strncpy(buffer, client.name, BUF_SIZE - 1);
             // strncat(buffer, " disconnected !", BUF_SIZE - strlen(buffer) - 1);
-            #ifdef AFFICHAGE
-            printf("connection perdu %s\n",get_lexeme(clients[i].pseudo));
-            #endif
+
             break; // on arrete pour relancer la boucle proprement
           }
 
@@ -159,10 +160,12 @@ void app(void)
               printf("%s\n",a_comparer);
               #endif
               creer_equipe(&clients[i]);
-              sprintf(buffer, NUM_CHAR"%d\n",index_equipe--);
+              sprintf(buffer, "%d\n",index_equipe);
               printf("%s\n",buffer);
               write_client(clients[i].sock,buffer);
               Clean_Buf;
+              //write_client(clients[i].sock,"OK\n");
+
             } else
             {
               strncpy(a_comparer,REJOINDRE_EQUIPE,BUF_SIZE - 1);
@@ -175,6 +178,8 @@ void app(void)
                 sscanf(buffer,"%s %d\n",truc,&rej);
                 rejoindre_equipe(&clients[i],rej); // ' ' puis num
                 Clean_Buf;
+                write_client(clients[i].sock,"OK\n");
+
               }
               else
               {
@@ -186,6 +191,8 @@ void app(void)
                   #endif
                   quitter_equipe(&clients[i]);
                   Clean_Buf;
+                  write_client(clients[i].sock,"OK\n");
+
                 }
                 else
                 {
@@ -230,6 +237,7 @@ void app(void)
                       printf("TIR\n");
                       #endif
                       Clean_Buf;
+                      write_client(clients[i].sock,"OK\n");
                     }
                     else
                     {
