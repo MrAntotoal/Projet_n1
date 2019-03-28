@@ -15,11 +15,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class EnvoieMessage  implements Runnable{
-    //Mettre la socekt en variable envoie message
-
-
-
-
+    //Cette classe envoie un message au serveur et attent toujours une réponse du serveur
 
     @Override
     public void run() {
@@ -38,7 +34,11 @@ public class EnvoieMessage  implements Runnable{
             //attente bloquante de la reponse su serveur
             Joueur.setReponse(reader.readLine());
 
-            Log.d("affichage", "Réponse reçu : "+Joueur.getReponse());
+            //verification si modification des bourons
+            if(Joueur.getReponse().equals("NEW_BUTT")){
+
+
+            }
 
 
         }

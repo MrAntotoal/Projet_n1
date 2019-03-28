@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/buttonD"
+        android:layout_width="166dp"
+        android:layout_height="75dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="234dp"
+        android:layout_marginRight="234dp"
+        android:layout_x="476dp"
+        android:layout_y="241dp"
+        android:text="Droite" />
+
+    <Button
+        android:id="@+id/buttonG"
+        android:layout_width="159dp"
+        android:layout_height="77dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_x="309dp"
+        android:layout_y="241dp"
+        android:text="Gauche" />
+
+    <Button
+        android:id="@+id/buttonH"
+        android:layout_width="173dp"
+        android:layout_height="75dp"
+        android:layout_alignTop="@+id/buttonG"
+        android:layout_marginTop="-48dp"
+        android:layout_marginEnd="-459dp"
+        android:layout_marginRight="-459dp"
+        android:layout_toStartOf="@+id/buttonD"
+        android:layout_toLeftOf="@+id/buttonD"
+        android:layout_x="20dp"
+        android:layout_y="157dp"
+        android:text="Haut" />
+
+    <Button
+        android:id="@+id/buttonB"
+        android:layout_width="171dp"
+        android:layout_height="78dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="12dp"
+        android:layout_x="21dp"
+        android:layout_y="254dp"
+        android:text="Bas" />
+
+    <Button
+        android:id="@+id/buttonU"
+        android:layout_width="165dp"
+        android:layout_height="81dp"
+        android:layout_x="398dp"
+        android:layout_y="146dp"
+        android:text="Special"
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="85dp" />
+</AbsoluteLayout>

@@ -9,22 +9,40 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.io.IOException;
-
-import static com.premier.battlecoor.R.*;
+import static com.premier.battlecoor.R.id;
+import static com.premier.battlecoor.R.layout;
 
 public class Formation extends Activity {
+    //TODO faire le timer qui s'affiche
+    //TODO dans les classes lobby lorsque timer terminé lancer les manettes
+
+    // TODO Pas dans la bonne classe: A deplacer dans lobby
+    private void chargerManette(String role){
+        Intent manette_conducteur=null;
+        switch(role){
+            case "Tireur":
+                manette_conducteur = new Intent(Formation.this, ManetteT.class);
+                break;
+            case "Conducteur":
+                manette_conducteur = new Intent(Formation.this, ManetteC.class);
+                break;
+            case "Protecteur":
+                manette_conducteur = new Intent(Formation.this, ManetteP.class);
+                break;
+        }
+        startActivity(manette_conducteur);
+    }
+
+
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(layout.formation);
 
-        Button M = (Button) findViewById(id.monter);
-        Button R = (Button) findViewById(id.rejoindre);
-        final EditText Num = (EditText) findViewById(id.numchar);
+        Button M = findViewById(id.monter);
+        Button R = findViewById(id.rejoindre);
+        final EditText Num = findViewById(id.numchar);
 
-        //Recuperation des donnees Joeur de l'activité précédente
-        Intent i = getIntent();
 
 
         M.setOnClickListener(new View.OnClickListener() {
@@ -34,7 +52,13 @@ public class Formation extends Activity {
                 EnvoieMessage N = new EnvoieMessage();
                 Thread t = new Thread(N);
                 t.start();
-
+                try {
+                    t.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Joueur.setNumChar(Joueur.getReponse());
+                chargerManette("Conducteur"); //TODO A deplacer chargerManette(Joueur.getReponse());
                 //TODO CHANGEMENT DACTIVITE
             }
         });
@@ -44,12 +68,19 @@ public class Formation extends Activity {
             public void onClick(View v) {
                 //Recupérer le num du char
                 String num_char =  Num.getText().toString();
-                Joueur.setMessage("REJOINDRE_EQUIPE "+num_char);
+                Joueur.setNumChar(num_char);
+                Joueur.setMessage("REJOINDRE_EQUIPE "+num_char); //le joueur souhaite rejoindre le char numéro num_char
                 EnvoieMessage N = new EnvoieMessage();
                 Thread t = new Thread(N);
-                t.start();
+                t.start();                                      //en réponse le joueur dispose de son rôle
+                try {
+                    t.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-                //TODO CHANGEMENT DACTIVITE
+                // chargerManette(Joueur.getReponse());//TODO A deplacer
+                chargerManette("Tireur");
             }
         });
 

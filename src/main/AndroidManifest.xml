@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.premier.battlecoor">
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:allowBackup="true"
@@ -28,7 +29,7 @@
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
-
+        <!--TODO mais iteration 2-
         <activity android:name=".Vote"
             android:screenOrientation="landscape"
             android:label="@string/app_name">
@@ -36,7 +37,7 @@
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
-
+-->
         <activity android:name=".Formation"
             android:screenOrientation="landscape"
             android:label="Battlecoor">
@@ -45,7 +46,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Manette"
+        <activity android:name=".ManetteC"
+            android:screenOrientation="landscape"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ManetteT"
             android:screenOrientation="landscape"
             android:label="@string/app_name">
             <intent-filter>
