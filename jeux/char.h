@@ -1,9 +1,11 @@
-#include "collisions.h"
+#include "map.h"
 #include <SDL/SDL.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 
 typedef struct{
+  char numero_char;
+  char num_equipe;
   Points centre;
   Points devant;
   Points devant_t;
@@ -20,13 +22,16 @@ typedef struct{
   double vitesse_c;
   double vitesse_rotation_c;
   double vitesse_rotation_t;
+
+  //vie
+  double pv;
   //idem pour tourelle et shield
 }char_3_places;
 
 typedef char_3_places * char3p;
 
 
-char3p init_char(Points centre,double largeur,double longueur);
+char3p init_char(Points centre,double largeur,double longueur,char numero,char num_equipe);
 
 void char_avance(char3p c);
 void char_recule(char3p c);
@@ -37,3 +42,6 @@ void afficher_liste_chars(liste chars);
 int est_en_collisions_avec_un_autre(char3p c,liste l_char);
 void tourelle_droite(char3p c);
 void tourelle_gauche(char3p c);
+
+int est_collision_avec_map(char3p c,liste map);
+void retirer_pv(char3p c,double pv,int id_fm);

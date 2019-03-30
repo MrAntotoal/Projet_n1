@@ -14,7 +14,7 @@ Obus cree_obus(char3p c){
 		       o->centre->x+TAILLE_X_O,o->centre->y+TAILLE_Y_O,
 		       o->centre->x-TAILLE_X_O,o->centre->y+TAILLE_Y_O,
 		       o->centre->x-TAILLE_X_O,o->centre->y-TAILLE_Y_O);
-
+  o->dega=1.0;
   return o;
 }
 
@@ -25,9 +25,9 @@ void obus_avance(Obus o){
   translation_poly_vecteur(o->p,o->direction,o->vitesse);
 }
 
-int obus_touche_cible(Obus o,liste l_char){
-   char3p c2;
-   polygone p_future;
+int obus_touche_cible(Obus o,liste l_char,int id_fm){
+  char3p c2;
+  polygone p_future;
   if(!est_list_vide(l_char)){
     c2=renvoie_sommet_liste(l_char);
     if(c2!=o->tireur){
@@ -35,35 +35,70 @@ int obus_touche_cible(Obus o,liste l_char){
 
 	
 	//inflige des dmg
+	retirer_pv(c2,o->dega,id_fm);
+	//envoie msg au serveur
+	
 
-	 //test pour les auters
-	 obus_touche_cible(o,liste_sans_premier(l_char));
-	 return 1;
-       }
+	//test pour les auters
+	obus_touche_cible(o,liste_sans_premier(l_char),id_fm);
+	return 1;
+      }
     }
-    return obus_touche_cible(o,liste_sans_premier(l_char));
+    return obus_touche_cible(o,liste_sans_premier(l_char),id_fm);
   }
   return 0;
 }
 
+int en_collision_avec_obstacle(Obus o,Obstacle ob){
+  return polygone_dans_polygone(ob->p,o->p);
+}
+
+int obus_touche_un_obstacle(liste l_obstacle,Obus o){
+  Obstacle ob;
+  if(!(est_list_vide(l_obstacle))){
+    ob=renvoie_sommet_liste(l_obstacle);
+    if(en_collision_avec_obstacle(o,ob)){
+      printf("touche obsacle %d \n",ob->type);
+      afficher_polygone(ob->p);
+      return 1;
+    }  
+    return obus_touche_un_obstacle(liste_sans_premier(l_obstacle),o);
+  } 
+  return 0;
+}
+
+int obus_touche_map(liste l_zone,Obus o){
+  Zone z;
+  if(!(est_list_vide(l_zone))){
+    z=renvoie_sommet_liste(l_zone);
+    if(polygone_dans_polygone(z->p_zone,o->p)){
+      if(obus_touche_un_obstacle(z->l_obstacle,o)){
+	return 1;
+      }
+    }
+    return obus_touche_map(liste_sans_premier(l_zone),o);
+  } 
+  return 0;
+}
 void libere_obus(Obus o){
   libere(o->direction);
   libere(o->centre);
   libere(o);
 }
 
-liste traitement_tous_obus(liste l_obus,liste l_char){
+liste traitement_tous_obus(liste l_obus,liste l_char,liste l_zone,int id_fm){
   Obus o;
   if(!est_list_vide(l_obus)){
     o=renvoie_sommet_liste(l_obus);
     l_obus=supprime_elem(l_obus,o);
-    l_obus=traitement_tous_obus(l_obus,l_char);
-    if(!obus_touche_cible(o,l_char)){
+    l_obus=traitement_tous_obus(l_obus,l_char,l_zone,id_fm);
+    if(!obus_touche_cible(o,l_char,id_fm)&&!obus_touche_map(l_zone,o)){
       obus_avance(o);
       affiche_poly(o->p,255,0,0);
       return insere_elem_liste(l_obus,o);
     }
     else{
+      printf("toucher\n");
       libere_obus(o);
       return l_obus;
     }

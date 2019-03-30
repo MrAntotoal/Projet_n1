@@ -3,8 +3,8 @@ option=-Wall
 o_sdl=`sdl-config --cflags --libs`
 o_opengl=-lGL -lGLU
 
-run: run.c obus.o affichage.o char.o traitement_fm.o collisions.o liste.o point_vecteur.o allocation_memoire.o polygones.o
-	$(cc) $(option) run.c obus.o affichage.o char.o traitement_fm.o collisions.o liste.o point_vecteur.o allocation_memoire.o polygones.o -o run -lm $(o_sdl) $(o_opengl)
+run: run.c obus.o affichage.o char.o map.o traitement_fm.o collisions.o file_msg.o liste.o point_vecteur.o allocation_memoire.o polygones.o
+	$(cc) $(option) run.c obus.o affichage.o char.o map.o traitement_fm.o collisions.o file_msg.o liste.o point_vecteur.o allocation_memoire.o polygones.o -o run -lm $(o_sdl) $(o_opengl)
 
 affichage.o:affichage.c affichage.h
 	$(cc) $(option) affichage.c -c
@@ -14,6 +14,9 @@ obus.o:obus.c obus.h
 
 char.o: char.c char.h
 	$(cc) $(option) char.c -c
+
+map.o: map.c map.h
+	$(cc) $(option) map.c -c
 
 traitement_fm.o:traitement_fm.c traitement_fm.h
 	$(cc) $(option) traitement_fm.c -c
@@ -29,6 +32,9 @@ point_vecteur.o: point_vecteur.c point_vecteur.h
 
 allocation_memoire.o: allocation_memoire.c allocation_memoire.h
 	$(cc) $(option) allocation_memoire.c -c
+
+file_msg.o: file_msg.c file_msg.h
+	$(cc) $(option) file_msg.c -c
 
 liste.o: liste.c liste.h
 	$(cc) $(option) liste.c -c

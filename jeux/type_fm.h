@@ -1,4 +1,4 @@
-#define FICHIER_CLE "Makefile"
+#define FICHIER_CLE "../README"
 #include <sys/msg.h>
 #include <sys/ipc.h>
 #include <sys/types.h>
