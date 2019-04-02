@@ -27,7 +27,7 @@ char3p init_char(Points centre,double largeur,double longueur,char numero,char n
   c3p->t=cree_polygone_d(4,
 			 centre->x+(0.5/3)*largeur,centre->y+(1/4.5)*longueur,
 			 centre->x+(0.5/3)*largeur,centre->y+1.5*longueur,
-			 centre->x-(0.5/3)*largeur,centre->y+1.5*longueur,
+ 			 centre->x-(0.5/3)*largeur,centre->y+1.5*longueur,
 			 centre->x-(0.5/3)*largeur,centre->y+(1/4.5)*longueur);
 
   c3p->degre_c=0.0;
@@ -116,7 +116,8 @@ void afficher_char(char3p c){
   polygone poly =c->c;
   Points p;
   glBegin(GL_QUADS);
-  glColor3ub(255,255,255);
+  //glColor3ub(255,255,255);
+  glColor3ub(((1000.0-c->pv)/1000.0)*255,(c->pv/1000.0)*255,0);
   while(!est_list_vide(poly)){
     p=renvoie_sommet_liste(poly);
     glVertex2d(p->x,p->y);

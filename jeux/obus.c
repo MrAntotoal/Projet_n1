@@ -14,7 +14,7 @@ Obus cree_obus(char3p c){
 		       o->centre->x+TAILLE_X_O,o->centre->y+TAILLE_Y_O,
 		       o->centre->x-TAILLE_X_O,o->centre->y+TAILLE_Y_O,
 		       o->centre->x-TAILLE_X_O,o->centre->y-TAILLE_Y_O);
-  o->dega=1.0;
+  o->dega=100.0;
   return o;
 }
 

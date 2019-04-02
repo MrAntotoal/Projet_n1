@@ -24,6 +24,9 @@ traitement_fm.o:traitement_fm.c traitement_fm.h
 collisions.o: collisions.c collisions.h
 	$(cc) $(option) collisions.c -c
 
+texture.o: texture.c texture.h
+	$(cc) $(option) texture.c -c
+
 polygones.o: polygones.c polygones.h
 	$(cc) $(option) polygones.c -c
 
