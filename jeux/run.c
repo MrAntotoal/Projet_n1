@@ -15,8 +15,49 @@ int main(int argc, char * argv[]){
   liste liste_action;
   liste liste_chars;
   liste liste_obus;
+  liste map;
   t_liste t_listes;
   SDL_Event event;
+
+  Obstacle o1,o2,o3;
+  Zone z1,z2;
+  
+  o1=cree_obstacle(1,cree_polygone_d(4,
+				     0.0,0.0,
+				     10.0,0.0,
+				     10.0,10.0,
+				     0.0,10.0));
+
+  
+  o2=cree_obstacle(2,cree_polygone_d(4,
+				     500.0,800.0,
+				     700.0,800.0,
+				     700.0,900.0,
+				     500.0,900.0));
+  
+  o3=cree_obstacle(3,cree_polygone_d(4,
+				     1200.0,300.0,
+				     1500.0,300.0,
+				     1500.0,500.0,
+				     1200.0,500.0));
+  
+  z1=cree_zone(cree_polygone_d(4,
+			       0.0,0.0,
+			       1024.0,0.0,
+			       1024.0,1080.0,
+			       0.0,1080.0),
+	       insere_elem_liste(insere_elem_liste(list_vide(),o1),o2));
+  
+  z2=cree_zone(cree_polygone_d(4,
+			       1024.0,0.0,
+			       2048.0,0.0,
+			       2048.0,1080.0,
+			       1024.0,1080.0),
+	       insere_elem_liste(list_vide(),o3));
+
+  
+  map=insere_elem_liste(insere_elem_liste(list_vide(),z1),z2);
+  
   id_fm=recuperer_id_fm();
   liste_action=list_vide();
   liste_chars=list_vide();
@@ -27,17 +68,20 @@ int main(int argc, char * argv[]){
 
   //tmp
   char3p c;
-  c=init_char(cree_point(1000.0,500.0),30.0,40.0);
+  c=init_char(cree_point(1000.0,500.0),30.0,40.0,1,1);
   liste_chars=insere_elem_liste(liste_chars,c);
-  c=init_char(cree_point(1080.0,500.0),30.0,40.0);
+  c=init_char(cree_point(1080.0,500.0),30.0,40.0,2,2);
+  liste_chars=insere_elem_liste(liste_chars,c);
+  c=init_char(cree_point(1010.0,700.0),30.0,40.0,3,3);
   liste_chars=insere_elem_liste(liste_chars,c);
   //
 
   t_listes->l_requette=liste_action;
   t_listes->l_char=liste_chars;
   t_listes->l_obus=liste_obus;
+  t_listes->l_map=map;
 
-  cree_fen(1600/2,900/2,"run");
+  cree_fen(1200,720,"run");
   
   start = clock(); 
 
@@ -61,11 +105,15 @@ int main(int argc, char * argv[]){
       //printf("fin lire fm et boucle t\n");
       boucle_de_traitement_liste_requete(t_listes);
       //printf("fin boucle t debut obus\n");
-      t_listes->l_obus=traitement_tous_obus(t_listes->l_obus,t_listes->l_char);
+      t_listes->l_obus=traitement_tous_obus(t_listes->l_obus,t_listes->l_char,map,id_fm);
       //printf("fin obus\n");
       
       afficher_liste_chars(t_listes->l_char);
       //printf("aff \n");
+      
+      //printf("%d \n",est_collision_avec_map(c,map));
+
+      afficher_map(map);
       
       go_ecran();
     }

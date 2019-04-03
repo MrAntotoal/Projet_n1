@@ -1,11 +1,14 @@
 #include "char.h"
 
-char3p init_char(Points centre,double largeur,double longueur){
+char3p init_char(Points centre,double largeur,double longueur,char numero,char num_equipe){
   char3p c3p;
   
   c3p=alloc_mem(1,sizeof(char_3_places));
 
   //test ?
+
+  c3p->numero_char=numero;
+  c3p->num_equipe=num_equipe;
 
   c3p->centre=centre;
   
@@ -24,15 +27,15 @@ char3p init_char(Points centre,double largeur,double longueur){
   c3p->t=cree_polygone_d(4,
 			 centre->x+(0.5/3)*largeur,centre->y+(1/4.5)*longueur,
 			 centre->x+(0.5/3)*largeur,centre->y+1.5*longueur,
-			 centre->x-(0.5/3)*largeur,centre->y+1.5*longueur,
+ 			 centre->x-(0.5/3)*largeur,centre->y+1.5*longueur,
 			 centre->x-(0.5/3)*largeur,centre->y+(1/4.5)*longueur);
 
   c3p->degre_c=0.0;
   c3p->degre_t=0.0;
-  c3p->vitesse_c=0.2;
-  c3p->vitesse_rotation_c=0.2;
-  c3p->vitesse_rotation_t=0.2;
-  
+  c3p->vitesse_c=0.4;
+  c3p->vitesse_rotation_c=0.3;
+  c3p->vitesse_rotation_t=0.3;
+  c3p->pv=1000.0;
   
   return c3p;
 }
@@ -113,7 +116,8 @@ void afficher_char(char3p c){
   polygone poly =c->c;
   Points p;
   glBegin(GL_QUADS);
-  glColor3ub(255,255,255);
+  //glColor3ub(255,255,255);
+  glColor3ub(((1000.0-c->pv)/1000.0)*255,(c->pv/1000.0)*255,0);
   while(!est_list_vide(poly)){
     p=renvoie_sommet_liste(poly);
     glVertex2d(p->x,p->y);
@@ -159,5 +163,51 @@ int est_en_collisions_avec_un_autre(char3p c,liste l_char){
   return 0;
 }
 
+int est_en_collision_avec_obstacle(char3p c, Obstacle o){
+  return polygone_dans_polygone(c->c,o->p)||polygone_dans_polygone(c->t,o->p);
+}
+
+int est_en_collision_dans_zone(char3p c, liste l_zone){
+  Obstacle o;
+  if(!(est_list_vide(l_zone))){
+    o=renvoie_sommet_liste(l_zone);
+    if(est_en_collision_avec_obstacle(c,o)){
+      return 1;
+    }
+    return est_en_collision_dans_zone(c,liste_sans_premier(l_zone));
+  }
+  return 0;
+}
+
+int est_collision_avec_map(char3p c,liste map){
+  Zone z;
+  if(!(est_list_vide(map))){
+    z=renvoie_sommet_liste(map);
+    if(polygone_dans_polygone(z->p_zone,c->c)||polygone_dans_polygone(z->p_zone,c->t)){
+      if(est_en_collision_dans_zone(c,z->l_obstacle)){
+	return 1;
+      }
+    }
+    return est_collision_avec_map(c,liste_sans_premier(map));
+  } 
+  return 0;
+}
+
+
+void retirer_pv(char3p c,double pv,int id_fm){
+  reponse_t rep;
+  c->pv-=pv;
+  rep.mtype=1;
+  rep.numero_char=c->numero_char;
+  if(c->pv>0){
+    //mort
+    rep.type=-100;
+  }
+  else{
+    //toucher mais toujours debut rassure toi
+    rep.type=100;
+  }
+  envoyer_au_serveur(id_fm,rep);
+}
 
 

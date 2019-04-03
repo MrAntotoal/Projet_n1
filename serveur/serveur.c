@@ -109,11 +109,16 @@ void app(void)
       /***************************************/
       /* Reception depuis la file de message */
       /***************************************/
-
-      while (prendre_reponse() != -1) {
-        // rcv
-        /* traiter les différents cas */
-
+      int numero_char;
+      while (prendre_reponse() != -1)
+      {
+        switch (rcv.m_type)
+        {
+          case 100:
+          numero_char = rcv.numero_char;
+          printf("Char %d changement de boutton\n",numero_char);
+          break;
+        }
       }
 
       int i = 0;
@@ -204,16 +209,6 @@ void app(void)
                     int numero_char = 0;
                     int type = 0;
                     int repeter = 0;
-
-                    /*
-                    1 	avance
-                    2 	recule
-                    3 	droite
-                    4 	gauche
-                    5   DROITE_TOURELLE
-                    6   GAUCHE_TOURELLE
-                    10  TIRER
-                    */
 
                     sscanf(buffer,"%s %d %d %d\n",truc,&numero_char,&type,&repeter);
                     #ifdef AFFICHAGE
