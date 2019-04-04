@@ -18,9 +18,10 @@ int main(int argc, char * argv[]){
   liste map;
   t_liste t_listes;
   SDL_Event event;
-
   Obstacle o1,o2,o3;
   Zone z1,z2;
+  GLuint texture_chasi;
+
   
   o1=cree_obstacle(1,cree_polygone_d(4,
 				     0.0,0.0,
@@ -79,11 +80,15 @@ int main(int argc, char * argv[]){
   t_listes->l_obus=liste_obus;
   t_listes->l_map=map;
 
-  cree_fen(1600,900,"run");
+  cree_fen(1706,900,"run");
+
+  texture_chasi=charger_texture("assets/sprite.png");
+  
   
   start = clock(); 
 
   while(run){
+    
     end = clock(); 
     diff = (double)(end - start) / CLOCKS_PER_SEC; 
     if(somme2>fps_d){
@@ -105,14 +110,16 @@ int main(int argc, char * argv[]){
       //printf("fin boucle t debut obus\n");
       t_listes->l_obus=traitement_tous_obus(t_listes->l_obus,t_listes->l_char,map,id_fm);
       //printf("fin obus\n");
+
       
-      afficher_liste_chars(t_listes->l_char);
+      afficher_liste_chars(t_listes->l_char,texture_chasi);
+
       //printf("aff \n");
-      
-      //printf("%d \n",est_collision_avec_map(c,map));
 
       afficher_map(map);
-      
+
+      //printf("%d \n",est_collision_avec_map(c,map));
+
       go_ecran();
     }
     start=end;

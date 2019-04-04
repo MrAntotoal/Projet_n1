@@ -14,6 +14,7 @@ typedef struct{
   //directiont et directionb
   polygone c;//c pour chassi
   polygone t;//t pour tourelle
+  polygone t_pour_afficher;
   //bouclier mais apres
   double degre_c;
   double degre_t;
@@ -37,8 +38,9 @@ void char_avance(char3p c);
 void char_recule(char3p c);
 void char_droite(char3p c);
 void char_gauche(char3p c);
-void afficher_char(char3p c);
-void afficher_liste_chars(liste chars);
+void afficher_char(char3p c,GLuint t_c);
+void afficher_tourelle(char3p c,GLuint t_c);
+void afficher_liste_chars(liste chars,GLuint t_c);
 int est_en_collisions_avec_un_autre(char3p c,liste l_char);
 void tourelle_droite(char3p c);
 void tourelle_gauche(char3p c);
