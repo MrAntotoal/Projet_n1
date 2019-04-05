@@ -7,13 +7,14 @@ Obus cree_obus(char3p c){
   o->tireur=c;
   o->dmg=1;
   o->direction=cree_vecteur_2p(c->centre,c->devant_t);
-  o->vitesse=10;
+  o->vitesse=7;
   o->centre=cree_point(c->centre->x,c->centre->y);
   o->p=cree_polygone_d(4,
 		       o->centre->x+TAILLE_X_O,o->centre->y-TAILLE_Y_O,
 		       o->centre->x+TAILLE_X_O,o->centre->y+TAILLE_Y_O,
 		       o->centre->x-TAILLE_X_O,o->centre->y+TAILLE_Y_O,
 		       o->centre->x-TAILLE_X_O,o->centre->y-TAILLE_Y_O);
+  rotation_poly(o->p,c->centre,c->degre_t);
   o->dega=100.0;
   return o;
 }
@@ -86,15 +87,15 @@ void libere_obus(Obus o){
   libere(o);
 }
 
-liste traitement_tous_obus(liste l_obus,liste l_char,liste l_zone,int id_fm){
+liste traitement_tous_obus(liste l_obus,liste l_char,liste l_zone,int id_fm,GLuint t_o){
   Obus o;
   if(!est_list_vide(l_obus)){
     o=renvoie_sommet_liste(l_obus);
     l_obus=supprime_elem(l_obus,o);
-    l_obus=traitement_tous_obus(l_obus,l_char,l_zone,id_fm);
+    l_obus=traitement_tous_obus(l_obus,l_char,l_zone,id_fm,t_o);
     if(!obus_touche_cible(o,l_char,id_fm)&&!obus_touche_map(l_zone,o)){
       obus_avance(o);
-      affiche_poly(o->p,255,0,0);
+      afficher_obus(o,t_o);
       return insere_elem_liste(l_obus,o);
     }
     else{
@@ -104,6 +105,27 @@ liste traitement_tous_obus(liste l_obus,liste l_char,liste l_zone,int id_fm){
     }
   }
   return list_vide();
+}
+
+
+void afficher_obus(Obus o,GLuint t_o){
+  polygone poly =o->p;
+  Points p1,p2,p3,p4;
+  activer_texturing();
+  bind_texture(t_o);
+  glBegin(GL_QUADS);
+  glColor3ub(255,255,255);
+  //glColor3ub(((1000.0-c->pv)/1000.0)*255,(c->pv/1000.0)*255,0);
+  p1=get_index(0,poly);
+  p2=get_index(1,poly);
+  p3=get_index(2,poly);
+  p4=get_index(3,poly);
+  glTexCoord2d(0.1385,0.93); glVertex2d(p1->x,p1->y);
+  glTexCoord2d(0.1385,0.874); glVertex2d(p2->x,p2->y);
+  glTexCoord2d(0.1215,0.874); glVertex2d(p3->x,p3->y);
+  glTexCoord2d(0.1215,0.93); glVertex2d(p4->x,p4->y); 
+  glEnd();
+  desactiver_texturing();
 }
 
 

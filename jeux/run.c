@@ -20,7 +20,7 @@ int main(int argc, char * argv[]){
   SDL_Event event;
   Obstacle o1,o2,o3;
   Zone z1,z2;
-  GLuint texture_chasi;
+  GLuint texture_char;
 
   
   o1=cree_obstacle(1,cree_polygone_d(4,
@@ -69,9 +69,9 @@ int main(int argc, char * argv[]){
 
   //tmp
   char3p c;
-  c=init_char(cree_point(1000.0,500.0),30.0,40.0,1,1);
+  c=init_char(cree_point(1000.0,500.0),30.0,45.0,1,1);
   liste_chars=insere_elem_liste(liste_chars,c);
-  c=init_char(cree_point(1080.0,500.0),30.0,40.0,2,2);
+  c=init_char(cree_point(1080.0,500.0),30.0,45.0,2,2);
   liste_chars=insere_elem_liste(liste_chars,c);
   //
 
@@ -82,7 +82,7 @@ int main(int argc, char * argv[]){
 
   cree_fen(1706,900,"run");
 
-  texture_chasi=charger_texture("assets/sprite.png");
+  texture_char=charger_texture("assets/sprite.png");
   
   
   start = clock(); 
@@ -108,11 +108,11 @@ int main(int argc, char * argv[]){
       //printf("fin lire fm et boucle t\n");
       boucle_de_traitement_liste_requete(t_listes);
       //printf("fin boucle t debut obus\n");
-      t_listes->l_obus=traitement_tous_obus(t_listes->l_obus,t_listes->l_char,map,id_fm);
+      t_listes->l_obus=traitement_tous_obus(t_listes->l_obus,t_listes->l_char,map,id_fm,texture_char);
       //printf("fin obus\n");
 
       
-      afficher_liste_chars(t_listes->l_char,texture_chasi);
+      afficher_liste_chars(t_listes->l_char,texture_char);
 
       //printf("aff \n");
 

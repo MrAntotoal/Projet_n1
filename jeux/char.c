@@ -26,8 +26,8 @@ char3p init_char(Points centre,double largeur,double longueur,char numero,char n
 
   c3p->t=cree_polygone_d(4,
 			 centre->x+(0.5/3)*largeur,centre->y+(1/4.5)*longueur,
-			 centre->x+(0.5/3)*largeur,centre->y+1.5*longueur,
- 			 centre->x-(0.5/3)*largeur,centre->y+1.5*longueur,
+			 centre->x+(0.5/3)*largeur,centre->y+1.8*longueur,
+ 			 centre->x-(0.5/3)*largeur,centre->y+1.8*longueur,
 			 centre->x-(0.5/3)*largeur,centre->y+(1/4.5)*longueur);
 
   c3p->t_pour_afficher=cree_polygone_d(4,
