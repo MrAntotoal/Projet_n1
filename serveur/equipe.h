@@ -5,6 +5,7 @@
 #include "serveur.h"
 #include "analyse_lexicographique.h"
 #include "affich.h"
+#include "lobby_afficheur.h"
 
 int index_equipe;
 

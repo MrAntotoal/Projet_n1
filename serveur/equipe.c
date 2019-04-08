@@ -15,6 +15,7 @@ void creer_equipe(Client * c){
   c->numEquipe = index_equipe;
   GL_equipe[index_equipe].membre[0] = *c;
   index_equipe++;
+  ajouterChamps(*c);
   #ifdef AFFICHAGE
   printf("Création OK %d\n",index_equipe);
   #endif
@@ -26,6 +27,7 @@ void rejoindre_equipe(Client * c, int num){
   GL_equipe[num].membre[GL_equipe[num].numj] = *c;
   GL_equipe[num].numj++;
   c->numEquipe = num;
+  ajouterChamps(*c);
   #ifdef AFFICHAGE
   printf("equipe rejointe %d\n",num);
   #endif

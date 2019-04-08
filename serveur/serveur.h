@@ -37,6 +37,7 @@ typedef struct in_addr IN_ADDR;
 #include "strcmp_rapide.h"
 #include "equipe.h"
 #include "fdm.h"
+#include "lobby_afficheur.h"
 void app(void);
 int init_connection(void);
 void end_connection(int sock);

@@ -16,7 +16,7 @@ static void app(const char *address, const char *name)
    /* send our name */
    write_server(sock, name);
    sleep(1);
-   char test[BUF_SIZE] = {'D','E','P','L','A','C','E','M','E','N','T',' ','2',' ','-','2',' ','0','\n'};
+   char test[BUF_SIZE] = {'C','R','E','E','R','_','E','Q','U','I','P','E','\0','\n'};
    //char test[BUF_SIZE] = {'D','E','P','L','A','C','E','M','E','N','T',' ','2',' ','2',' ','1','\n'};
 
    write_server(sock,test);

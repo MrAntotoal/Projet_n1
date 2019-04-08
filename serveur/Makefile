@@ -4,8 +4,8 @@ All = serveur clients
 
 all : $(All)
 
-serveur : serveur.c serveur.h analyse_lexicographique.o fdm.o strcmp_rapide.o equipe.o message.o
-	$(CC) $(Option) strcmp_rapide.o analyse_lexicographique.o fdm.o serveur.c equipe.o message.o -o serveur
+serveur : serveur.c serveur.h analyse_lexicographique.o lobby_afficheur.o fdm.o strcmp_rapide.o equipe.o message.o
+	$(CC) $(Option) strcmp_rapide.o analyse_lexicographique.o lobby_afficheur.o fdm.o serveur.c equipe.o message.o -o serveur
 
 clients : client/client.c client/client.h
 	$(CC) $(Option) client/client.c -o clients
@@ -24,6 +24,10 @@ message.o : message.c message.h
 
 fdm.o : fdm.c fdm.h
 	$(CC) $(Option) -c fdm.c
+
+lobby_afficheur.o : lobby_afficheur.c lobby_afficheur.h
+	$(CC) $(Option) -c lobby_afficheur.c
+
 
 clean:
 	rm -f $(All)
