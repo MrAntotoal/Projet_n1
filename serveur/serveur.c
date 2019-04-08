@@ -170,7 +170,7 @@ void app(void)
               write_client(clients[i].sock,buffer);
               Clean_Buf;
               //write_client(clients[i].sock,"OK\n");
-
+              affiche_tt_e();
             } else
             {
               strncpy(a_comparer,REJOINDRE_EQUIPE,BUF_SIZE - 1);
@@ -181,10 +181,10 @@ void app(void)
                 #endif
                 int rej = 0;
                 sscanf(buffer,"%s %d\n",truc,&rej);
-                rejoindre_equipe(&clients[i],rej); // ' ' puis num
+                rejoindre_equipe(&clients[i],rej - 1); 
                 Clean_Buf;
                 write_client(clients[i].sock,"OK\n");
-
+                affiche_tt_e();
               }
               else
               {

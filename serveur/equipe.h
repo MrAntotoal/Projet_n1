@@ -21,3 +21,5 @@ void quitter_equipe(Client *c);
 void supprimer_equipe(int place);
 
 void affiche_equipe(int n);
+
+void affiche_tt_e();

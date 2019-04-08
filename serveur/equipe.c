@@ -78,3 +78,9 @@ void affiche_equipe(int n){
   }
   #endif
 }
+
+void affiche_tt_e(){
+  for (int i = 0; i < index_equipe; i++) {
+    affiche_equipe(i);
+  }
+}
