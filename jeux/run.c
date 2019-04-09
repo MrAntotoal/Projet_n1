@@ -18,8 +18,6 @@ int main(int argc, char * argv[]){
   liste map;
   t_liste t_listes;
   SDL_Event event;
-  Obstacle o1,o2,o3;
-  Zone z1,z2;
   GLuint texture_char;
   GLuint texture_fond;
 

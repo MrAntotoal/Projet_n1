@@ -28,7 +28,6 @@ void obus_avance(Obus o){
 
 int obus_touche_cible(Obus o,liste l_char,int id_fm){
   char3p c2;
-  polygone p_future;
   if(!est_list_vide(l_char)){
     c2=renvoie_sommet_liste(l_char);
     if(c2!=o->tireur){

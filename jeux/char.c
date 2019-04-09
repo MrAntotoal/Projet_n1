@@ -191,11 +191,6 @@ int est_en_collisions_avec_un_autre(char3p c,liste l_char){
 }
 
 int est_en_collision_avec_obstacle(char3p c, Obstacle o){
-  printf("TOURELLE \n\n");
-  afficher_poly_consol(c->t);
-
-  printf("OBSTACLE \n\n");
-  afficher_poly_consol(o->p);
   
   return polygone_dans_polygone(o->p,c->c)||polygone_dans_polygone(o->p,c->t);
 }
