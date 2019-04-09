@@ -133,7 +133,7 @@ void app(void)
       if(flag_start == 1){
         flag_start = 0;
         for (int o = 0; o < actual; o++) {
-          write_client(clients[i].sock,"START\n");
+          write_client(clients[o].sock,"START\n");
         }
       }
 
@@ -195,17 +195,17 @@ void app(void)
             /*******************/
 
             if(flag_lobby == 0){
-            flag_lobby = 1;
-            fork();
-            if (pid == -1) {
-            printf("******* FORK LOBBY********\n");
-            }
-            if (pid == 0) {
-            args[0] = "fork_html";
-            args[1] = NULL;
-            execve("fork_html",args,myenvp);
-            printf("******* EXECVE LOBBY********\n");
-            }
+              flag_lobby = 1;
+              fork();
+              if (pid == -1) {
+                printf("******* FORK LOBBY********\n");
+              }
+              if (pid == 0) {
+                args[0] = "fork_html";
+                args[1] = NULL;
+                execve("fork_html",args,myenvp);
+                printf("******* EXECVE LOBBY********\n");
+              }
             }
 
             write_client(clients[i].sock,"START\n");
