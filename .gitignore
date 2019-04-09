@@ -3,6 +3,7 @@ serveur/clients
 serveur/serveur
 serveur/traitement_client
 serveur/gg
+serveur/fork_html
 serveur/test0
 serveur/.*
 jeux/run

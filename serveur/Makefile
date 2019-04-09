@@ -1,6 +1,6 @@
 CC = gcc
 Option = -Wall
-All = serveur clients
+All = serveur clients fork_html
 
 all : $(All)
 
@@ -28,6 +28,8 @@ fdm.o : fdm.c fdm.h
 lobby_afficheur.o : lobby_afficheur.c lobby_afficheur.h
 	$(CC) $(Option) -c lobby_afficheur.c
 
+fork_html : fork_html.c
+	$(CC) $(Option) fork_html.c -o fork_html
 
 clean:
 	rm -f $(All)

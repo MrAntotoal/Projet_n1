@@ -3,6 +3,9 @@
 #define Clean_Buf memset(buffer,'\0',BUF_SIZE)
 
 int GL_SOCK;
+int flag_lobby;
+int flag_start;
+char **myenvp;
 void app(void)
 {
   SOCKET sock = init_connection();
@@ -13,6 +16,7 @@ void app(void)
   /* the index for the array */
   int actual = 0;
   int max = sock;
+  int pid = 0;
   /* an array for all clients */
   Client clients[MAX_CLIENTS];
 
@@ -22,6 +26,7 @@ void app(void)
   {
     int i = 0;
     FD_ZERO(&rdfs);
+    FD_SET(STDIN_FILENO, &rdfs);
 
     /* add the connection socket */
     FD_SET(sock, &rdfs);
@@ -34,9 +39,12 @@ void app(void)
 
     if(select(max + 1, &rdfs, NULL, NULL, NULL) == -1)
     {
-      perror("select()");
-      exit(errno);
+      if(errno != EINTR){
+        perror("select()");
+        exit(errno);
+      }
     }
+
 
     if(FD_ISSET(sock, &rdfs))
     {
@@ -122,6 +130,13 @@ void app(void)
         }
       }
 
+      if(flag_start == 1){
+        flag_start = 0;
+        for (int o = 0; o < actual; o++) {
+          write_client(clients[i].sock,"START\n");
+        }
+      }
+
       int i = 0;
       for(i = 0; i < actual; i++)
       {
@@ -145,12 +160,17 @@ void app(void)
           /***********************************************/
 
           char a_comparer[BUF_SIZE];
-          strncpy(a_comparer,MODE_JEUX,BUF_SIZE - 1);
+          strncpy(a_comparer,ROLE,BUF_SIZE - 1);
           if(fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
           {
             #ifdef AFFICHAGE
             printf("%s\n",a_comparer);
             #endif
+            sprintf(buffer,ROLE" %d\n",position_equipe(clients[i]));
+            #ifdef AFFICHAGE
+            printf("role : %s\n",buffer);
+            #endif
+            write_client(clients[i].sock,buffer);
             Clean_Buf;
           }
           else
@@ -162,103 +182,116 @@ void app(void)
               printf("%s\n",a_comparer);
               #endif
               /*if(clients[i].numEquipe > 0) {
-                quitter_equipe(&clients[i]);
-              }*/
-              creer_equipe(&clients[i]);
-              sprintf(buffer, "%d\n",index_equipe);
-              printf("%s\n",buffer);
-              write_client(clients[i].sock,buffer);
-              Clean_Buf;
-              affiche_tt_e();
-            } else
+              quitter_equipe(&clients[i]);
+            }*/
+            creer_equipe(&clients[i]);
+            write_client(clients[i].sock,"OK\n");
+            affiche_tt_e();
+            char *args[3];
+            //sleep(100);
+
+            /*******************/
+            /* fork pour lobby */
+            /*******************/
+
+            if(flag_lobby == 0){
+            flag_lobby = 1;
+            fork();
+            if (pid == -1) {
+            printf("******* FORK LOBBY********\n");
+            }
+            if (pid == 0) {
+            args[0] = "fork_html";
+            args[1] = NULL;
+            execve("fork_html",args,myenvp);
+            printf("******* EXECVE LOBBY********\n");
+            }
+            }
+
+            write_client(clients[i].sock,"START\n");
+            Clean_Buf;
+          } else
+          {
+            strncpy(a_comparer,REJOINDRE_EQUIPE,BUF_SIZE - 1);
+            if (fast_compare(a_comparer,buffer,TAILLE_REJ) == 0)
             {
-              strncpy(a_comparer,REJOINDRE_EQUIPE,BUF_SIZE - 1);
-              if (fast_compare(a_comparer,buffer,TAILLE_REJ) == 0)
+              #ifdef AFFICHAGE
+              printf("%s\n",a_comparer);
+              #endif
+              int rej = 0;
+              sscanf(buffer,"%s %d\n",truc,&rej);
+              /*if(clients[i].numEquipe > 0) {
+              quitter_equipe(&clients[i]);
+            }*/
+            rejoindre_equipe(&clients[i],rej - 1);
+            Clean_Buf;
+            affiche_tt_e();
+          }
+          else
+          {
+            strncpy(a_comparer,QUITTER_EQUIPE,BUF_SIZE - 1);
+            if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
+            {
+              #ifdef AFFICHAGE
+              printf("%s\n",a_comparer);
+              #endif
+              quitter_equipe(&clients[i]);
+              Clean_Buf;
+              write_client(clients[i].sock,"OK\n");
+
+            }
+            else
+            {
+              //strncpy(a_comparer,DEPLACEMENT,BUF_SIZE - 1);
+              strncpy(a_comparer,DEPLACEMENT,BUF_SIZE - 1);
+              if (fast_compare(a_comparer,buffer,TAILLE_DEP) == 0)
               {
+                // numéro char
+                int numero_char = 0;
+                int type = 0;
+                int repeter = 0;
+
+                sscanf(buffer,"%s %d %d %d\n",truc,&numero_char,&type,&repeter);
                 #ifdef AFFICHAGE
-                printf("%s\n",a_comparer);
+                printf("** D char %d Type %d A repeter %d**\n",numero_char,type,repeter);
                 #endif
-                int rej = 0;
-                sscanf(buffer,"%s %d\n",truc,&rej);
-                /*if(clients[i].numEquipe > 0) {
-                  quitter_equipe(&clients[i]);
-                }*/
-                rejoindre_equipe(&clients[i],rej - 1);
+
+                envoyer_requete(numero_char,type,repeter);
                 Clean_Buf;
-                sprintf(buffer,ROLE" %d\n",position_equipe(clients[i]));
-                #ifdef AFFICHAGE
-                printf("role : %s\n",buffer);
-                #endif
-                write_client(clients[i].sock,buffer);
-                affiche_tt_e();
+                write_client(clients[i].sock,"OK\n");
               }
               else
               {
-                strncpy(a_comparer,QUITTER_EQUIPE,BUF_SIZE - 1);
-                if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
+                strncpy(a_comparer, TIR,BUF_SIZE - 1);
+                if (fast_compare(a_comparer,buffer,TAILLE_TIR) == 0)
                 {
+                  /* alors recuperer selon codage */
+                  int numero_char = 0;
+                  sscanf(buffer,"%s %d",truc,&numero_char);
+                  envoyer_requete(numero_char,TIRER,0);
                   #ifdef AFFICHAGE
-                  printf("%s\n",a_comparer);
+                  printf("TIR\n");
                   #endif
-                  quitter_equipe(&clients[i]);
                   Clean_Buf;
                   write_client(clients[i].sock,"OK\n");
-
                 }
                 else
                 {
-                  //strncpy(a_comparer,DEPLACEMENT,BUF_SIZE - 1);
-                  strncpy(a_comparer,DEPLACEMENT,BUF_SIZE - 1);
-                  if (fast_compare(a_comparer,buffer,TAILLE_DEP) == 0)
+                  strncpy(a_comparer, RECHARGEMENT,BUF_SIZE - 1);
+                  if(fast_compare(a_comparer,buffer,TAILLE_RECH) == 0)
                   {
-                    // numéro char
-                    int numero_char = 0;
-                    int type = 0;
-                    int repeter = 0;
-
-                    sscanf(buffer,"%s %d %d %d\n",truc,&numero_char,&type,&repeter);
+                    //envoyer_requete(buffer[TAILLE_RECH + 2],RECH,0);
                     #ifdef AFFICHAGE
-                    printf("** D char %d Type %d A repeter %d**\n",numero_char,type,repeter);
+                    printf("RECHARGEMENT TX\n");
                     #endif
-
-                    envoyer_requete(numero_char,type,repeter);
                     Clean_Buf;
-                    write_client(clients[i].sock,"OK\n");
                   }
                   else
                   {
-                    strncpy(a_comparer, TIR,BUF_SIZE - 1);
-                    if (fast_compare(a_comparer,buffer,TAILLE_TIR) == 0)
-                    {
-                      /* alors recuperer selon codage */
-                      int numero_char = 0;
-                      sscanf(buffer,"%s %d",truc,&numero_char);
-                      envoyer_requete(numero_char,TIRER,0);
-                      #ifdef AFFICHAGE
-                      printf("TIR\n");
-                      #endif
-                      Clean_Buf;
-                      write_client(clients[i].sock,"OK\n");
-                    }
-                    else
-                    {
-                      strncpy(a_comparer, RECHARGEMENT,BUF_SIZE - 1);
-                      if(fast_compare(a_comparer,buffer,TAILLE_RECH) == 0)
-                      {
-                        //envoyer_requete(buffer[TAILLE_RECH + 2],RECH,0);
-                        #ifdef AFFICHAGE
-                        printf("RECHARGEMENT TX\n");
-                        #endif
-                        Clean_Buf;
-                      }
-                      else
-                      {
-                        #ifdef AFFICHAGE
-                        printf("******* %s non reconnu *******\n", buffer);
-                        #endif
-                        Clean_Buf;
-                      }
-                    }
+                    #ifdef AFFICHAGE
+                    printf("******* %s non reconnu *******\n", buffer);
+                    #endif
+                    Clean_Buf;
                   }
                 }
               }
@@ -268,8 +301,10 @@ void app(void)
       }
     }
   }
-  clear_clients(clients, actual);
-  end_connection(sock);
+}
+}
+clear_clients(clients, actual);
+end_connection(sock);
 }
 
 
@@ -372,9 +407,15 @@ void my_handler(int s){
   fermer_fdm();
   exit(-1);
 }
+void handler_usr1(int s){
+  printf("usr1\n");
+  flag_start = 1;
+}
+void handler_usr2(int s){
+  printf("usr2\n");
+}
 
-
-int main(int argc, char **argv)
+int main(int argc, char **argv,char **envp)
 {
   /***********************************/
   /*         CAPTURE DE CTRL C       */
@@ -385,14 +426,32 @@ int main(int argc, char **argv)
   sigemptyset(&sigIntHandler.sa_mask);
   sigIntHandler.sa_flags = 0;
 
-  sigaction(SIGINT, &sigIntHandler, NULL);
-  // sigaction(SIGSEGV, &sigIntHandler, NULL);
+  struct sigaction sigUSR1Handler;
 
+  sigUSR1Handler.sa_handler = handler_usr1;
+  sigemptyset(&sigUSR1Handler.sa_mask);
+  sigUSR1Handler.sa_flags = 0;
+
+
+  struct sigaction sigUSR2Handler;
+
+  sigUSR2Handler.sa_handler = handler_usr1;
+  sigemptyset(&sigUSR2Handler.sa_mask);
+  sigUSR2Handler.sa_flags = 0;
+
+  sigaction(SIGINT, &sigIntHandler, NULL);
+  sigaction(SIGUSR1, &sigUSR1Handler, NULL);
+  sigaction(SIGUSR1, &sigUSR2Handler, NULL);
   /***********************************/
   /*          Initialisation         */
   /***********************************/
   init_lexico(); // on initialise table hash pour pseudo
   init_equipe();
+  flag_lobby = 1;
+  flag_start = 0;
+  myenvp = envp;
+
+  printf("********** PID %d\n",getpid());
 
   /***********************************/
   /*         File de message         */
