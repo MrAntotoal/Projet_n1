@@ -65,7 +65,15 @@ void supprimer_equipe(int place){
   for (int i = place; i <= index_equipe; i++) {
     GL_equipe[i] = GL_equipe[i+1];
   }
-    //index_equipe--;
+  //index_equipe--;
+}
+
+int position_equipe(Client c){
+  for (int i = 0; i < GL_equipe[c.numEquipe].nb_joueur; i++) {
+    if(c.pseudo == GL_equipe[c.numEquipe].membre[i].pseudo)
+    return i;
+  }
+  return -1;
 }
 
 

@@ -112,6 +112,7 @@ void app(void)
       int numero_char;
       while (prendre_reponse() != -1)
       {
+        printf("message recuperer %ld\n",rcv.m_type);
         switch (rcv.m_type)
         {
           case 100:
@@ -136,10 +137,6 @@ void app(void)
             printf("connection perdu %s\n",get_lexeme(clients[i].pseudo));
             #endif
             remove_client(clients, i, &actual); // on enlève le client
-
-            // strncpy(buffer, client.name, BUF_SIZE - 1);
-            // strncat(buffer, " disconnected !", BUF_SIZE - strlen(buffer) - 1);
-
             break; // on arrete pour relancer la boucle proprement
           }
 
@@ -164,12 +161,14 @@ void app(void)
               #ifdef AFFICHAGE
               printf("%s\n",a_comparer);
               #endif
+              /*if(clients[i].numEquipe > 0) {
+                quitter_equipe(&clients[i]);
+              }*/
               creer_equipe(&clients[i]);
               sprintf(buffer, "%d\n",index_equipe);
               printf("%s\n",buffer);
               write_client(clients[i].sock,buffer);
               Clean_Buf;
-              //write_client(clients[i].sock,"OK\n");
               affiche_tt_e();
             } else
             {
@@ -181,9 +180,16 @@ void app(void)
                 #endif
                 int rej = 0;
                 sscanf(buffer,"%s %d\n",truc,&rej);
-                rejoindre_equipe(&clients[i],rej - 1); 
+                /*if(clients[i].numEquipe > 0) {
+                  quitter_equipe(&clients[i]);
+                }*/
+                rejoindre_equipe(&clients[i],rej - 1);
                 Clean_Buf;
-                write_client(clients[i].sock,"OK\n");
+                sprintf(buffer,ROLE" %d\n",position_equipe(clients[i]));
+                #ifdef AFFICHAGE
+                printf("role : %s\n",buffer);
+                #endif
+                write_client(clients[i].sock,buffer);
                 affiche_tt_e();
               }
               else

@@ -27,6 +27,8 @@ void debut_html(){
   }
 
   fprintf(fichier, "<link rel=\"stylesheet\" type=\"text/css\" href=\"lobby.css\">");
+  fprintf(fichier, "<META HTTP-EQUIV=\"refresh\" CONTENT=\"2\">" );
+  //fprintf(fichier, "<img src=\"Inscription.png\"/>");
   // fin
   fclose(fichier);
 }
