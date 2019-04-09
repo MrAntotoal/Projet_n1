@@ -1,0 +1,16 @@
+ debut_z
+  debut_poly 
+ debut_point 322.399994 1031.500000 fin_point  debut_point 327.519989 162.100006 fin_point  debut_point 1612.640015 187.750000 fin_point  debut_point 1506.400024 1055.800049 fin_point  fin_poly 
+ debut_poly 
+ debut_point 888.159973 992.350037 fin_point  debut_point 1178.719971 997.750000 fin_point  debut_point 1177.439941 846.549988 fin_point  debut_point 889.440002 853.299988 fin_point  fin_poly 
+ debut_poly 
+ debut_point 450.399963 735.850037 fin_point  debut_point 666.719971 865.450012 fin_point  debut_point 592.479980 673.750000 fin_point  debut_point 670.559998 440.200012 fin_point  debut_point 418.399963 444.250000 fin_point  fin_poly 
+ fin_z 
+
+ debut_z
+  debut_poly 
+ debut_point 1656.159912 993.700012 fin_point  debut_point 1665.119995 429.399994 fin_point  debut_point 1974.879883 444.250000 fin_point  debut_point 1967.199951 1013.950012 fin_point  fin_poly 
+ debut_poly 
+ debut_point 1724.000000 865.450012 fin_point  debut_point 1727.839966 592.750000 fin_point  debut_point 1890.399902 596.800049 fin_point  debut_point 1891.679932 904.600037 fin_point  fin_poly 
+ fin_z 
+

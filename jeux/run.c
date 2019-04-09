@@ -21,8 +21,9 @@ int main(int argc, char * argv[]){
   Obstacle o1,o2,o3;
   Zone z1,z2;
   GLuint texture_char;
+  GLuint texture_fond;
 
-  
+  /*
   o1=cree_obstacle(1,cree_polygone_d(4,
 				     0.0,0.0,
 				     10.0,0.0,
@@ -57,7 +58,9 @@ int main(int argc, char * argv[]){
 	       insere_elem_liste(list_vide(),o3));
 
   
-  map=insere_elem_liste(insere_elem_liste(list_vide(),z1),z2);
+  map=insere_elem_liste(insere_elem_liste(list_vide(),z1),z2);*/
+
+  
   
   id_fm=recuperer_id_fm();
   liste_action=list_vide();
@@ -75,14 +78,15 @@ int main(int argc, char * argv[]){
   liste_chars=insere_elem_liste(liste_chars,c);
   //
 
+  cree_fen(1706,900,"run");
+
+  map=charger_map("assets/test.map");
+  texture_fond=charger_texture("assets/test.jpg");
+  texture_char=charger_texture("assets/sprite.png");
   t_listes->l_requette=liste_action;
   t_listes->l_char=liste_chars;
   t_listes->l_obus=liste_obus;
   t_listes->l_map=map;
-
-  cree_fen(1706,900,"run");
-
-  texture_char=charger_texture("assets/sprite.png");
   
   
   start = clock(); 
@@ -103,6 +107,9 @@ int main(int argc, char * argv[]){
       buffer_image_0();
       nbr_fps++;
       somme2=0.0;
+
+      afficher_fond(texture_fond);
+      
       //printf("lire fm\n");
       t_listes->l_requette=lire_fm(id_fm,t_listes->l_requette);
       //printf("fin lire fm et boucle t\n");
