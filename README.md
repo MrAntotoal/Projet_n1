@@ -8,9 +8,12 @@ en sortie le script va cree un dossier avec comme nom le nom de l'image avec l'e
 
 donc komen kon utilize ?
 
-bleu -> placer des points
-rouge -> modification mode
-vert -> ajoute points dans un poly
+|couleur |           mode            |
+|:------:|:-------------------------:|
+|bleu    | placer des points         |
+|rouge   | modification mode         |
+|vert    | ajoute points dans un poly|
+
 
 
 de base mode bleu
