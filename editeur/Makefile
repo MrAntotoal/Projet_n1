@@ -36,3 +36,4 @@ liste.o: liste.c liste.h
 
 clean:
 	rm *.o
+	rm run

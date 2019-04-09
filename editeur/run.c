@@ -1,22 +1,23 @@
 #include "sauvegarde.h"
 
 int main(int argc,char * argv[]){
-  char *nom_fichier_image;
-  liste liste_des_obsacles;
-  liste liste_de_zone;
+  //char *nom_fichier_image;
+  //liste liste_des_obsacles;
+  //liste liste_de_zone;
   int resolution_max_x;
   int resolution_max_y;
   int resolution_actu_x;
   int resolution_actu_y;
-  liste l_points=list_vide();
+  //liste l_points=list_vide();
   liste liste_poly=list_vide();
   liste liste_poly_zone=list_vide();
-  liste l_inter_z;
+  //liste l_inter_z;
   int numero_poly_actu=-1;
   int poly_actu=-1;
   int nouveau=1;
   int i;
   int ajoute=0;
+  
   
   int run =1;
 
@@ -32,17 +33,17 @@ int main(int argc,char * argv[]){
   Points p_derniere_pos=NULL;
   liste l_inter;
   GLuint fond;
-  int zone=0;
+  //int zone=0;
   int num;
-  if(argc!=2){
-    fprintf(stderr,"editeur <nom_de_l'image> \n ->sortie map map.map \n");
+  if(argc!=4){
+    fprintf(stderr,"editeur <nom_de_l'image> <resolution x> <resolution y>\n ->sortie map map.map \n");
     exit(-1);
   }
   resolution_max_x=2048;
   resolution_max_y=1080;
 
-  resolution_actu_x=800;
-  resolution_actu_y=600;
+  resolution_actu_x=atoi(argv[2]);
+  resolution_actu_y=atoi(argv[3]);
 
   rap_x=(float)resolution_max_x/resolution_actu_x;
   rap_y=(float)resolution_max_y/resolution_actu_y;
