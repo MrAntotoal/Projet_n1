@@ -131,7 +131,7 @@ void app(void)
       int numero_char;
       while (prendre_reponse() != -1)
       {
-        printf("message recuperer %ld\n",rcv.m_type);
+        printf("*******************message recuperer %ld\n",rcv.m_type);
         switch (rcv.m_type)
         {
           case 100:
@@ -171,6 +171,7 @@ void app(void)
             #ifdef AFFICHAGE
             printf("%s\n",a_comparer);
             #endif
+            Clean_Buf;
             sprintf(buffer,ROLE" %d\n",position_equipe(clients[i]));
             #ifdef AFFICHAGE
             printf("role : %s\n",buffer);
@@ -190,7 +191,9 @@ void app(void)
               quitter_equipe(&clients[i]);
             }*/
             creer_equipe(&clients[i]);
-            write_client(clients[i].sock,"OK\n");
+
+            sprintf(buffer, "%d\n",index_equipe);
+            write_client(clients[i].sock,buffer);
             affiche_tt_e();
             /*******************/
             /* fork pour lobby */
@@ -218,6 +221,7 @@ void app(void)
             rejoindre_equipe(&clients[i],rej - 1);
             Clean_Buf;
             affiche_tt_e();
+            write_client(clients[i].sock,"OK\n");
           }
           else
           {
@@ -440,7 +444,7 @@ int main(int argc, char **argv,char **envp)
   /***********************************/
   init_lexico(); // on initialise table hash pour pseudo
   init_equipe();
-  flag_lobby = 0;
+  flag_lobby = 1;
   flag_start = 0;
   myenvp = envp;
 
