@@ -2,9 +2,12 @@ package com.premier.battlecoor;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -27,6 +30,7 @@ public class Pseudo extends Activity {
 
 
         Go.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 CreationJoueur P = new CreationJoueur();
@@ -37,6 +41,7 @@ public class Pseudo extends Activity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
                 Joueur.setMessage(nickname.getText().toString());
                 EnvoieMessage message = new EnvoieMessage();
                 Thread t = new Thread(message);
@@ -51,14 +56,15 @@ public class Pseudo extends Activity {
                         Intent i;
                         i = new Intent(Pseudo.this, Formation.class);
                         startActivity(i);
+                        finish();
                         break;
                     case "PSEUDO_POK":
+                        nickname.setText("");
+                        nickname.setHintTextColor(getResources().getColor(R.color.rouge));
                         nickname.setHint("Pseudo déjà existant");
                         break;
                 }
             }
         });
     }
-
-
 }

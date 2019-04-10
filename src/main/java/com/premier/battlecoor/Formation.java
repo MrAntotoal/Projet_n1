@@ -4,36 +4,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-
 import static com.premier.battlecoor.R.id;
 import static com.premier.battlecoor.R.layout;
 
 public class Formation extends Activity {
-    //TODO faire le timer qui s'affiche
-    //TODO dans les classes lobby lorsque timer terminé lancer les manettes
 
-    // TODO Pas dans la bonne classe: A deplacer dans lobby
-    private void chargerManette(String role){
-        Intent manette_conducteur=null;
-        switch(role){
-            case "Tireur":
-                manette_conducteur = new Intent(Formation.this, ManetteT.class);
-                break;
-            case "Conducteur":
-                manette_conducteur = new Intent(Formation.this, ManetteC.class);
-                break;
-            case "Protecteur":
-                manette_conducteur = new Intent(Formation.this, ManetteP.class);
-                break;
-        }
-        startActivity(manette_conducteur);
-    }
-
-
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -43,23 +24,28 @@ public class Formation extends Activity {
         Button R = findViewById(id.rejoindre);
         final EditText Num = findViewById(id.numchar);
 
-
-
         M.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Joueur.setMessage("CREER_EQUIPE");
-                EnvoieMessage N = new EnvoieMessage();
-                Thread t = new Thread(N);
-                t.start();
+                Thread t = new Thread(new EnvoieMessage());
                 try {
+                    t.start();
                     t.join();
+                    Joueur.setNumChar(Joueur.getReponse());
+                    Joueur.setMessage("ROLE");
+                    Log.d("affichage", "demande de role");
+                    Thread u = new Thread(new EnvoieMessage());
+                    u.start();
+                    u.join();
+                    Log.d("affichage", "role--> "+Joueur.getReponse());
+                    Joueur.setRole(Joueur.getReponse());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Joueur.setNumChar(Joueur.getReponse());
-                chargerManette("Conducteur"); //TODO A deplacer chargerManette(Joueur.getReponse());
-                //TODO CHANGEMENT DACTIVITE
+                //Changement d'activité
+                startActivity(new Intent(Formation.this, lobbyChef.class));
+
             }
         });
 
@@ -72,19 +58,24 @@ public class Formation extends Activity {
                 Joueur.setMessage("REJOINDRE_EQUIPE "+num_char); //le joueur souhaite rejoindre le char numéro num_char
                 EnvoieMessage N = new EnvoieMessage();
                 Thread t = new Thread(N);
-                t.start();                                      //en réponse le joueur dispose de son rôle
+                //en réponse le joueur dispose de son rôle
                 try {
+                    t.start();
                     t.join();
+                    //TODO si il est impossible de rejoindre l'equipe
+                    Joueur.setMessage("ROLE");
+                    //Demande du role au serveur
+                    Thread u = new Thread(new EnvoieMessage());
+                    u.start();
+                    u.join();
+                    Joueur.setRole(Joueur.getReponse());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
-                // chargerManette(Joueur.getReponse());//TODO A deplacer
-                chargerManette("Tireur");
+                //Changement d'activité
+                startActivity(new Intent(Formation.this, lobbySoldat.class));
             }
         });
-
     }
-
 }
 

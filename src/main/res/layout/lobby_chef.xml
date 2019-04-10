@@ -5,19 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="280dp"
-        android:layout_marginLeft="280dp"
-        android:layout_marginTop="88dp"
-        android:text="1:50"
-        android:textSize="50sp" />
-
     <Button
         android:id="@+id/quitter"
         android:layout_width="wrap_content"
@@ -28,7 +15,7 @@
         android:layout_marginStart="257dp"
         android:layout_marginLeft="257dp"
         android:layout_marginBottom="126dp"
-        android:text="Quitter le véhicule" />
+        android:text="@string/quitter_le_v_hicule" />
 
     <Button
         android:id="@+id/exclure2"
@@ -40,7 +27,7 @@
         android:layout_marginStart="413dp"
         android:layout_marginLeft="413dp"
         android:layout_marginBottom="38dp"
-        android:text="Exclure Membre 2" />
+        android:text="@string/exclure_membre_2" />
 
     <Button
         android:id="@+id/exclure1"
@@ -52,7 +39,7 @@
         android:layout_marginEnd="425dp"
         android:layout_marginRight="425dp"
         android:layout_marginBottom="38dp"
-        android:text="Exclure Membre 1" />
+        android:text="@string/exclure_membre_1" />
 
     <TextView
         android:id="@+id/textView"
@@ -64,7 +51,7 @@
         android:layout_marginTop="22dp"
         android:layout_marginEnd="154dp"
         android:layout_marginRight="154dp"
-        android:text="En attente des autres joueurs"
+        android:text="@string/en_attente_des_autres_joueurs"
         android:textSize="30sp" />
 
 </RelativeLayout>

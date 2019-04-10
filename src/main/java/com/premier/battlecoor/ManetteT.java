@@ -40,19 +40,22 @@ public class ManetteT extends Activity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
-                    case MotionEvent.ACTION_DOWN: //
-                        Joueur.setMessage("DEPLACEMENT "+Joueur.getNumChar()+" 6 1"); //TODO recupérer le numéro du char
-                        EnvoieMessage G = new EnvoieMessage();
-                        Thread tg = new Thread(G);
-                        tg.start();
-                        try {
-                            tg.join();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                    case MotionEvent.ACTION_DOWN:
+                        if(!Joueur.GT) {
+                            Joueur.GT = true;
+                            Joueur.setMessage("DEPLACEMENT " + Joueur.getNumChar() + " 6 1");
+                            EnvoieMessage G = new EnvoieMessage();
+                            Thread tg = new Thread(G);
+                            tg.start();
+                            try {
+                                tg.join();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }
                         return true;
                         case MotionEvent.ACTION_UP:
-                            Joueur.setMessage("DEPLACEMENT "+Joueur.getNumChar()+" -6 0"); //TODO recupérer le numéro du char
+                            Joueur.setMessage("DEPLACEMENT "+Joueur.getNumChar()+" -6 0");
                             EnvoieMessage SG = new EnvoieMessage();
                             Thread tsg = new Thread(SG);
                             tsg.start();
@@ -71,17 +74,20 @@ public class ManetteT extends Activity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
-                    case MotionEvent.ACTION_DOWN: //
-                        Joueur.setMessage("DEPLACEMENT "+Joueur.getNumChar()+" 5 1"); //TODO recupérer le numéro du char
-                        EnvoieMessage G = new EnvoieMessage();
-                        Thread tg = new Thread(G);
-                        tg.start();
-                        try {
-                            tg.join();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                    case MotionEvent.ACTION_DOWN:
+                        if(!Joueur.DT) {
+                            Joueur.DT = true;
+                            Joueur.setMessage("DEPLACEMENT " + Joueur.getNumChar() + " 5 1"); //TODO recupérer le numéro du char
+                            EnvoieMessage G = new EnvoieMessage();
+                            Thread tg = new Thread(G);
+                            tg.start();
+                            try {
+                                tg.join();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            return true;
                         }
-                        return true;
                     case MotionEvent.ACTION_UP:
                         Joueur.setMessage("DEPLACEMENT "+Joueur.getNumChar()+" -5 0"); //TODO recupérer le numéro du char
                         EnvoieMessage SG = new EnvoieMessage();

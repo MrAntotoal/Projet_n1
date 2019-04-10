@@ -4,17 +4,17 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/timer"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="289dp"
-        android:layout_marginLeft="289dp"
-        android:layout_marginTop="88dp"
-        android:text="1:50"
-        android:textSize="50sp" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginRight="144dp"
+        android:text="En attente des autres joueurs"
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/quitter"

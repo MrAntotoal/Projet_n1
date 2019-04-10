@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <Button
@@ -15,7 +15,7 @@
         android:layout_marginTop="137dp"
         android:background="@color/design_default_color_primary"
         android:text="PROTECTION"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/FEU"
@@ -113,7 +113,7 @@
         android:layout_marginBottom="6dp"
         android:background="@color/design_default_color_primary"
         android:text="GAUCHE"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/PD"
@@ -127,7 +127,7 @@
         android:layout_marginBottom="6dp"
         android:background="@color/design_default_color_primary"
         android:text="DROITE"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/Bas"

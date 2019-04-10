@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">Dhurbaghar</string>
+    <string name="app_name">Tuntorak</string>
     <string name="acceuil">Touchez pour commencer</string>
+    <string name="quitter_le_v_hicule">Quitter le véhicule</string>
+    <string name="exclure_membre_2">Exclure Membre 2</string>
+    <string name="en_attente_des_autres_joueurs">En attente des autres joueurs</string>
+    <string name="exclure_membre_1">Exclure Membre 1</string>
 </resources>

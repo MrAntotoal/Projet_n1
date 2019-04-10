@@ -29,15 +29,14 @@ public class EnvoieMessage  implements Runnable{
             PrintWriter writer = new PrintWriter(out);
             writer.print(Joueur.getMessage());
             writer.flush();
-
+            Log.d("affichage", "envoie de "+Joueur.getMessage());
 
             //attente bloquante de la reponse su serveur
             Joueur.setReponse(reader.readLine());
 
-            //verification si modification des bourons
+            //verification si modification des boutons
             if(Joueur.getReponse().equals("NEW_BUTT")){
-
-
+                Joueur.changerButtons = true;
             }
 
 
