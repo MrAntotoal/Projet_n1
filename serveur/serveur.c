@@ -126,6 +126,8 @@ void app(void)
       /***************************************/
       /* Reception depuis la file de message */
       /***************************************/
+      // NOTE : atteint seulement lorsqu'un client parle (devrait etre
+      //transparent quand il y aura du monde)
       int numero_char;
       while (prendre_reponse() != -1)
       {
@@ -190,28 +192,15 @@ void app(void)
             creer_equipe(&clients[i]);
             write_client(clients[i].sock,"OK\n");
             affiche_tt_e();
-            char *args[3];
-            //sleep(100);
-
             /*******************/
             /* fork pour lobby */
             /*******************/
 
-            if(flag_lobby == 0){
+            if(flag_lobby == 0){ // on ouvre le lobby une fois !
+              printf("LOBBY DEMANDEE !\n");
               flag_lobby = 1;
-              fork();
-              if (pid == -1) {
-                printf("******* FORK LOBBY********\n");
-              }
-              if (pid == 0) {
-                args[0] = "fork_html";
-                args[1] = NULL;
-                execve("fork_html",args,myenvp);
-                printf("******* EXECVE LOBBY********\n");
-              }
+              system("firefox lobby.html &");
             }
-
-            write_client(clients[i].sock,"START\n");
             Clean_Buf;
           } else
           {
@@ -451,7 +440,7 @@ int main(int argc, char **argv,char **envp)
   /***********************************/
   init_lexico(); // on initialise table hash pour pseudo
   init_equipe();
-  flag_lobby = 1;
+  flag_lobby = 0;
   flag_start = 0;
   myenvp = envp;
 
