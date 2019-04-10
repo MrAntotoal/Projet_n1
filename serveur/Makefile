@@ -1,6 +1,6 @@
 CC = gcc
 Option = -Wall
-All = serveur clients fork_html
+All = serveur clients fork_html clients_lis
 
 all : $(All)
 
@@ -9,6 +9,9 @@ serveur : serveur.c serveur.h analyse_lexicographique.o lobby_afficheur.o fdm.o 
 
 clients : client/client.c client/client.h
 	$(CC) $(Option) client/client.c -o clients
+
+clients_lis : client/client_lis.c client/client.h
+	$(CC) $(Option) client/client_lis.c -o clients_lis
 
 analyse_lexicographique.o : analyse_lexicographique.c analyse_lexicographique.h
 	$(CC) $(Option) -c analyse_lexicographique.c

@@ -1,5 +1,6 @@
 *.o
 serveur/clients
+serveur/clients_lis
 serveur/serveur
 serveur/traitement_client
 serveur/gg

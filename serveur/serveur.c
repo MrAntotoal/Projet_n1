@@ -4,7 +4,7 @@
 
 int GL_SOCK;
 int flag_lobby;
-int flag_start;
+volatile int flag_start;
 char **myenvp;
 void app(void)
 {
@@ -42,6 +42,15 @@ void app(void)
       if(errno != EINTR){
         perror("select()");
         exit(errno);
+      }
+    }
+
+    printf("FLAG START %d\n",flag_start );
+    if(flag_start == 2){
+      flag_start = 0;
+      printf("envoie start\n");
+      for (int o = 0; o < actual; o++) {
+        write_client(clients[o].sock,"START\n");
       }
     }
 
@@ -130,12 +139,6 @@ void app(void)
         }
       }
 
-      if(flag_start == 1){
-        flag_start = 0;
-        for (int o = 0; o < actual; o++) {
-          write_client(clients[o].sock,"START\n");
-        }
-      }
 
       int i = 0;
       for(i = 0; i < actual; i++)
@@ -409,7 +412,8 @@ void my_handler(int s){
 }
 void handler_usr1(int s){
   printf("usr1\n");
-  flag_start = 1;
+  flag_start = 2;
+  printf("FLAG %d\n",flag_start);
 }
 void handler_usr2(int s){
   printf("usr2\n");
@@ -441,7 +445,7 @@ int main(int argc, char **argv,char **envp)
 
   sigaction(SIGINT, &sigIntHandler, NULL);
   sigaction(SIGUSR1, &sigUSR1Handler, NULL);
-  sigaction(SIGUSR1, &sigUSR2Handler, NULL);
+  sigaction(SIGUSR2, &sigUSR2Handler, NULL);
   /***********************************/
   /*          Initialisation         */
   /***********************************/
