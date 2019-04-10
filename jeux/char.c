@@ -26,15 +26,21 @@ char3p init_char(Points centre,double largeur,double longueur,char numero,char n
 
   c3p->t=cree_polygone_d(4,
 			 centre->x+(0.5/3)*largeur,centre->y+(1/4.5)*longueur,
-			 centre->x+(0.5/3)*largeur,centre->y+1.5*longueur,
- 			 centre->x-(0.5/3)*largeur,centre->y+1.5*longueur,
+			 centre->x+(0.5/3)*largeur,centre->y+1.8*longueur,
+ 			 centre->x-(0.5/3)*largeur,centre->y+1.8*longueur,
 			 centre->x-(0.5/3)*largeur,centre->y+(1/4.5)*longueur);
+
+  c3p->t_pour_afficher=cree_polygone_d(4,
+				       centre->x-(2.5/3)*largeur,centre->y-((1.8/4.0)*longueur),
+				       centre->x+(2.5/3)*largeur,centre->y-((1.8/4.0)*longueur),
+				       centre->x+(2.5/3)*largeur,centre->y+1.8*longueur,
+				       centre->x-(2.5/3)*largeur,centre->y+1.8*longueur);
 
   c3p->degre_c=0.0;
   c3p->degre_t=0.0;
-  c3p->vitesse_c=0.4;
-  c3p->vitesse_rotation_c=0.3;
-  c3p->vitesse_rotation_t=0.3;
+  c3p->vitesse_c=0.2;
+  c3p->vitesse_rotation_c=0.2;
+  c3p->vitesse_rotation_t=0.2;
   c3p->pv=1000.0;
   
   return c3p;
@@ -48,6 +54,7 @@ void char_avance(char3p c){
 
   translation_poly_vecteur(c->c,c->directionc,c->vitesse_c);
   translation_poly_vecteur(c->t,c->directionc,c->vitesse_c);
+  translation_poly_vecteur(c->t_pour_afficher,c->directionc,c->vitesse_c);
   
 }
 
@@ -59,7 +66,7 @@ void char_recule(char3p c){
   
   translation_poly_vecteur(c->c,c->directionc,-c->vitesse_c);
   translation_poly_vecteur(c->t,c->directionc,-c->vitesse_c);
-  
+  translation_poly_vecteur(c->t_pour_afficher,c->directionc,-c->vitesse_c);
 }
 
 
@@ -74,6 +81,7 @@ void char_droite(char3p c){
 
   rotation_poly(c->c,c->centre,-c->vitesse_rotation_c);
   rotation_poly(c->t,c->centre,-c->vitesse_rotation_c);
+  rotation_poly(c->t_pour_afficher,c->centre,-c->vitesse_rotation_c);
 }
 
 void char_gauche(char3p c){
@@ -87,6 +95,7 @@ void char_gauche(char3p c){
 
   rotation_poly(c->c,c->centre,+c->vitesse_rotation_c);
   rotation_poly(c->t,c->centre,+c->vitesse_rotation_c);
+  rotation_poly(c->t_pour_afficher,c->centre,+c->vitesse_rotation_c);
 }
 
 
@@ -98,6 +107,7 @@ void tourelle_droite(char3p c){
   c->degre_t-=c->vitesse_rotation_t;
 
   rotation_poly(c->t,c->centre,-c->vitesse_rotation_t);
+  rotation_poly(c->t_pour_afficher,c->centre,-c->vitesse_rotation_t);
 }
 
 void tourelle_gauche(char3p c){
@@ -108,44 +118,61 @@ void tourelle_gauche(char3p c){
   c->degre_t+=c->vitesse_rotation_t;
 
   rotation_poly(c->t,c->centre,+c->vitesse_rotation_t);
+  rotation_poly(c->t_pour_afficher,c->centre,+c->vitesse_rotation_t);
 }
 
 
 
-void afficher_char(char3p c){
+void afficher_char(char3p c,GLuint t_c){
   polygone poly =c->c;
-  Points p;
+  Points p1,p2,p3,p4;
+  activer_texturing();
+  bind_texture(t_c);
   glBegin(GL_QUADS);
-  //glColor3ub(255,255,255);
-  glColor3ub(((1000.0-c->pv)/1000.0)*255,(c->pv/1000.0)*255,0);
-  while(!est_list_vide(poly)){
-    p=renvoie_sommet_liste(poly);
-    glVertex2d(p->x,p->y);
-    poly=liste_sans_premier(poly);
-  }
+  glColor3ub(255,255,255);
+  //glColor3ub(((1000.0-c->pv)/1000.0)*255,(c->pv/1000.0)*255,0);
+  p1=get_index(0,poly);
+  p2=get_index(1,poly);
+  p3=get_index(2,poly);
+  p4=get_index(3,poly);
+  glTexCoord2d(0.0,0.3645); glVertex2d(p1->x,p1->y);
+  glTexCoord2d(0.2425,0.3645); glVertex2d(p2->x,p2->y);
+  glTexCoord2d(0.2425,0.0); glVertex2d(p3->x,p3->y);
+  glTexCoord2d(0.0,0.0); glVertex2d(p4->x,p4->y); 
   glEnd();
+  desactiver_texturing();
 }
 
-void afficher_tourelle(char3p c){
-  polygone poly =c->t;
-  Points p;
+void afficher_tourelle(char3p c,GLuint t_c){
+  polygone poly =c->t_pour_afficher;
+  Points p1,p2,p3,p4;
+  activer_texturing();
+  bind_texture(t_c);
   glBegin(GL_QUADS);
-  glColor3ub(0,255,255);
-  while(!est_list_vide(poly)){
-    p=renvoie_sommet_liste(poly);
-    glVertex2d(p->x,p->y);
-    poly=liste_sans_premier(poly);
-  }
+  glColor3ub(255,255,255);
+  //glColor3ub(((1000.0-c->pv)/1000.0)*255,(c->pv/1000.0)*255,0);
+  p1=get_index(0,poly);
+  p2=get_index(1,poly);
+  p3=get_index(2,poly);
+  p4=get_index(3,poly);
+  glTexCoord2d(0.263,0.4185); glVertex2d(p1->x,p1->y);
+  glTexCoord2d(0.4635,0.4185); glVertex2d(p2->x,p2->y);
+  glTexCoord2d(0.4635,0.0); glVertex2d(p3->x,p3->y);
+  glTexCoord2d(0.263,0.0); glVertex2d(p4->x,p4->y); 
   glEnd();
+  desactiver_texturing();
 }
 
-void afficher_liste_chars(liste chars){
+void afficher_liste_chars(liste chars,GLuint t_c){
   char3p c;
   if(!est_list_vide(chars)){
     c=renvoie_sommet_liste(chars);
-    afficher_char(c);
-    afficher_tourelle(c);
-    afficher_liste_chars(liste_sans_premier(chars));
+    
+    afficher_char(c,t_c);
+    afficher_tourelle(c,t_c);
+    
+    afficher_liste_chars(liste_sans_premier(chars),t_c);
+    
   }
 }
 
@@ -164,7 +191,8 @@ int est_en_collisions_avec_un_autre(char3p c,liste l_char){
 }
 
 int est_en_collision_avec_obstacle(char3p c, Obstacle o){
-  return polygone_dans_polygone(c->c,o->p)||polygone_dans_polygone(c->t,o->p);
+  
+  return polygone_dans_polygone(o->p,c->c)||polygone_dans_polygone(o->p,c->t);
 }
 
 int est_en_collision_dans_zone(char3p c, liste l_zone){

@@ -18,10 +18,10 @@ int main(int argc, char * argv[]){
   liste map;
   t_liste t_listes;
   SDL_Event event;
+  GLuint texture_char;
+  GLuint texture_fond;
 
-  Obstacle o1,o2,o3;
-  Zone z1,z2;
-  
+  /*
   o1=cree_obstacle(1,cree_polygone_d(4,
 				     0.0,0.0,
 				     10.0,0.0,
@@ -56,7 +56,9 @@ int main(int argc, char * argv[]){
 	       insere_elem_liste(list_vide(),o3));
 
   
-  map=insere_elem_liste(insere_elem_liste(list_vide(),z1),z2);
+  map=insere_elem_liste(insere_elem_liste(list_vide(),z1),z2);*/
+
+  
   
   id_fm=recuperer_id_fm();
   liste_action=list_vide();
@@ -68,24 +70,27 @@ int main(int argc, char * argv[]){
 
   //tmp
   char3p c;
-  c=init_char(cree_point(1000.0,500.0),30.0,40.0,1,1);
+  c=init_char(cree_point(1000.0,500.0),30.0,45.0,1,1);
   liste_chars=insere_elem_liste(liste_chars,c);
-  c=init_char(cree_point(1080.0,500.0),30.0,40.0,2,2);
-  liste_chars=insere_elem_liste(liste_chars,c);
-  c=init_char(cree_point(1010.0,700.0),30.0,40.0,3,3);
+  c=init_char(cree_point(1080.0,500.0),30.0,45.0,2,2);
   liste_chars=insere_elem_liste(liste_chars,c);
   //
 
+  cree_fen(1706,900,"run");
+
+  map=charger_map("assets/test.map");
+  texture_fond=charger_texture("assets/test.jpg");
+  texture_char=charger_texture("assets/sprite.png");
   t_listes->l_requette=liste_action;
   t_listes->l_char=liste_chars;
   t_listes->l_obus=liste_obus;
   t_listes->l_map=map;
-
-  cree_fen(1200,720,"run");
+  
   
   start = clock(); 
 
   while(run){
+    
     end = clock(); 
     diff = (double)(end - start) / CLOCKS_PER_SEC; 
     if(somme2>fps_d){
@@ -100,21 +105,26 @@ int main(int argc, char * argv[]){
       buffer_image_0();
       nbr_fps++;
       somme2=0.0;
+
+      afficher_fond(texture_fond);
+      
       //printf("lire fm\n");
       t_listes->l_requette=lire_fm(id_fm,t_listes->l_requette);
       //printf("fin lire fm et boucle t\n");
       boucle_de_traitement_liste_requete(t_listes);
       //printf("fin boucle t debut obus\n");
-      t_listes->l_obus=traitement_tous_obus(t_listes->l_obus,t_listes->l_char,map,id_fm);
+      t_listes->l_obus=traitement_tous_obus(t_listes->l_obus,t_listes->l_char,map,id_fm,texture_char);
       //printf("fin obus\n");
+
       
-      afficher_liste_chars(t_listes->l_char);
+      afficher_liste_chars(t_listes->l_char,texture_char);
+
       //printf("aff \n");
-      
-      //printf("%d \n",est_collision_avec_map(c,map));
 
       afficher_map(map);
-      
+
+      //printf("%d \n",est_collision_avec_map(c,map));
+
       go_ecran();
     }
     start=end;

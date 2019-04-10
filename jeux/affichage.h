@@ -1,4 +1,4 @@
-//#include "texture.h"
+
 #include "polygones.h"
 #include <SDL/SDL.h>
 #include <GL/gl.h>

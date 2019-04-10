@@ -80,3 +80,12 @@ void afficher_polygone(polygone p){
   }
 }
 
+void afficher_poly_consol(polygone p){
+  Points po;
+  if(!est_list_vide(p)){
+    po=renvoie_sommet_liste(p);
+    printf(" %f %f ",po->x,po->y);
+    afficher_poly_consol(liste_sans_premier(p));
+  }
+}
+

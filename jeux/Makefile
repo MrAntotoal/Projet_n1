@@ -1,10 +1,10 @@
 cc=gcc
 option=-Wall
-o_sdl=`sdl-config --cflags --libs`
+o_sdl=`sdl-config --cflags --libs` -lSDL_image
 o_opengl=-lGL -lGLU
 
-run: run.c obus.o affichage.o char.o map.o traitement_fm.o collisions.o file_msg.o liste.o point_vecteur.o allocation_memoire.o polygones.o
-	$(cc) $(option) run.c obus.o affichage.o char.o map.o traitement_fm.o collisions.o file_msg.o liste.o point_vecteur.o allocation_memoire.o polygones.o -o run -lm $(o_sdl) $(o_opengl)
+run: run.c obus.o texture.o affichage.o char.o sauvegarde.o map.o traitement_fm.o collisions.o file_msg.o liste.o point_vecteur.o allocation_memoire.o polygones.o
+	$(cc) $(option) run.c obus.o texture.o affichage.o char.o sauvegarde.o map.o traitement_fm.o collisions.o file_msg.o liste.o point_vecteur.o allocation_memoire.o polygones.o -o run -lm $(o_sdl) $(o_opengl)
 
 affichage.o:affichage.c affichage.h
 	$(cc) $(option) affichage.c -c
@@ -14,6 +14,9 @@ obus.o:obus.c obus.h
 
 char.o: char.c char.h
 	$(cc) $(option) char.c -c
+
+sauvegarde.o: sauvegarde.h sauvegarde.c
+	$(cc) $(option) sauvegarde.c -c
 
 map.o: map.c map.h
 	$(cc) $(option) map.c -c
@@ -48,7 +51,8 @@ test_fm: test_fm.c type_fm.h
 
 
 
-
+test_texture: test_texture.c texture.o allocation_memoire.o
+	$(cc) $(option) test_texture.c texture.o allocation_memoire.o -o test_texture -lm $(o_sdl) $(o_opengl)
 
 
 test_sdl_opengl:test_sdl_opengl.c

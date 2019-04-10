@@ -20,7 +20,7 @@ Zone cree_zone(polygone zone,liste l_obstacle){
 void afficher_obstacle(Obstacle o){
   polygone poly=o->p;
   Points p;
-  glBegin(GL_QUADS);
+  glBegin(GL_LINE_LOOP);
   glColor3ub(255,0,0);
   while(!est_list_vide(poly)){
     p=renvoie_sommet_liste(poly);
@@ -48,4 +48,17 @@ void afficher_map(liste all_zone){
     afficher_zone(z->l_obstacle);
     l=liste_sans_premier(l);
   }
+}
+
+void afficher_fond(GLuint t){
+  activer_texturing();
+  bind_texture(t);
+  glColor3ub(255,255,255);
+  glBegin(GL_QUADS);
+  glTexCoord2d(0.0,0.0); glVertex2d(0.0,0.0);
+  glTexCoord2d(0.0,1.0); glVertex2d(0.0,1080);
+  glTexCoord2d(1.0,1.0); glVertex2d(2048,1080);
+  glTexCoord2d(1.0,0.0); glVertex2d(2048,0.0);
+  glEnd();
+  desactiver_texturing();
 }

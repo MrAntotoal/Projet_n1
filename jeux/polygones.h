@@ -13,3 +13,4 @@ void translation_poly_d(polygone p, double x, double y,double coef);
 void rotation_poly(polygone p,Points O,double deg);
 polygone union_polygones(polygone p1,polygone p2);
 void afficher_polygone(polygone p);
+void afficher_poly_consol(polygone p);
