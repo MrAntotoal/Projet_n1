@@ -31,6 +31,10 @@ int obus_touche_cible(Obus o,liste l_char,int id_fm){
   if(!est_list_vide(l_char)){
     c2=renvoie_sommet_liste(l_char);
     if(c2!=o->tireur){
+      if(est_en_collision_avec_bouclier(c2,o->p)){
+	printf("shield !! \n");
+	return 1;
+      }
       if(polygone_dans_polygone(o->p,c2->c)||polygone_dans_polygone(o->p,c2->t)){// ici il faudrais faire les tests sur un autre poly (pour eviter les bug tmtc)
 
 	

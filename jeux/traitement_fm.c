@@ -196,6 +196,14 @@ void boucle_de_traitement_liste_requete(t_liste tl){
 	}
 	break;
 	
+      
+      case 7://go droite bouclier
+	bouclier_droite(get_index(r->numero_char-1,tl->l_char));
+	break;
+
+      case 8://go gauche bouclier
+	bouclier_gauche(get_index(r->numero_char-1,tl->l_char));
+	break;
       }
       tl->l_requette=insere_elem_liste(tl->l_requette,r);
     } 

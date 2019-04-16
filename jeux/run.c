@@ -79,7 +79,7 @@ int main(int argc, char * argv[]){
   cree_fen(1706,900,"run");
 
   map=charger_map("assets/test.map");
-  texture_fond=charger_texture("assets/test.jpg");
+  texture_fond=charger_texture("assets/test.png");
   texture_char=charger_texture("assets/sprite.png");
   t_listes->l_requette=liste_action;
   t_listes->l_char=liste_chars;
@@ -116,6 +116,7 @@ int main(int argc, char * argv[]){
       t_listes->l_obus=traitement_tous_obus(t_listes->l_obus,t_listes->l_char,map,id_fm,texture_char);
       //printf("fin obus\n");
 
+
       
       afficher_liste_chars(t_listes->l_char,texture_char);
 
@@ -124,6 +125,7 @@ int main(int argc, char * argv[]){
       afficher_map(map);
 
       //printf("%d \n",est_collision_avec_map(c,map));
+      
 
       go_ecran();
     }

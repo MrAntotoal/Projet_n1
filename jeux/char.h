@@ -9,8 +9,10 @@ typedef struct{
   Points centre;
   Points devant;
   Points devant_t;
+  Points devant_b;
   Vecteurs directionc;
   Vecteurs directiont;
+  Vecteurs directionb;
   //directiont et directionb
   polygone c;//c pour chassi
   polygone t;//t pour tourelle
@@ -18,12 +20,16 @@ typedef struct{
   //bouclier mais apres
   double degre_c;
   double degre_t;
+  double degre_b;
   //idem tourelle;
   //idem shield
   double vitesse_c;
   double vitesse_rotation_c;
   double vitesse_rotation_t;
-
+  double vitesse_rotation_b;
+  double rayon_min_b;
+  double rayon_max_b;
+  double largeur_b;
   //vie
   double pv;
   //idem pour tourelle et shield
@@ -47,3 +53,9 @@ void tourelle_gauche(char3p c);
 
 int est_collision_avec_map(char3p c,liste map);
 void retirer_pv(char3p c,double pv,int id_fm);
+
+void afficher_bouclier(char3p c);
+int est_en_collision_avec_bouclier(char3p c,polygone p);
+
+void bouclier_gauche(char3p c);
+void bouclier_droite(char3p c);
