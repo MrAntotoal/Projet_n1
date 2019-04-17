@@ -319,12 +319,12 @@ void retirer_pv(char3p c,double pv,int id_fm){
   c->pv-=pv;
   rep.mtype=1;
   rep.numero_char=c->numero_char;
-  if(c->pv>0){
+  if(c->pv<0){
     //mort
     rep.type=-100;
   }
   else{
-    //toucher mais toujours debut rassure toi
+    //toucher mais toujours debout rassure toi
     rep.type=100;
   }
   envoyer_au_serveur(id_fm,rep);

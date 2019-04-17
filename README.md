@@ -30,7 +30,7 @@ typedef struct{
 * numero char -> ba le num du char (debut a 1)
 * type_action a_repeter
 
-|type_action|action|a_repeter|
+|type_action|     action     |a_repeter|
 |:---------:|:--------------:|:-------:|
 |1          |avance          |1        |
 |2          |recule          |1        |
@@ -38,6 +38,8 @@ typedef struct{
 |4          |gauche          |1        |
 |5          |droite_tourelle |1        |
 |6          |gauche_tourelle |1        |
+|7          |droite_shield   |1        |
+|8          |gauche_shield   |1        |
 |10         |tire            |0        |
 pour le reste on verra plus tard
 
@@ -46,3 +48,11 @@ pour le reste on verra plus tard
 * signe d'interuption
 -le numero -> stop a_repeter
 exemple -1 = stop avance
+
+## info pour reponse_t
+
+
+|type| info  |
+|:--:|:-----:|
+|100 |toucher|
+|-100|mort   |
