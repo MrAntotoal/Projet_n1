@@ -170,9 +170,14 @@ void afficher_char(char3p c,GLuint t_c){
   desactiver_texturing();
 }
 
-void afficher_tourelle(char3p c,GLuint t_c){
+void afficher_tourelle(char3p c,GLuint t_c,TTF_Font * font){
   polygone poly =c->t_pour_afficher;
   Points p1,p2,p3,p4;
+  Points p5,p6,p7,p8;
+  Vecteurs v,v2;
+  
+  int num;
+  char s[10];
   activer_texturing();
   bind_texture(t_c);
   glBegin(GL_QUADS);
@@ -187,7 +192,41 @@ void afficher_tourelle(char3p c,GLuint t_c){
   glTexCoord2d(0.4635,0.0); glVertex2d(p3->x,p3->y);
   glTexCoord2d(0.263,0.0); glVertex2d(p4->x,p4->y); 
   glEnd();
+
+  num=c->numero_char;
+  sprintf(s,"%d",num);
+
+
+  v2=cree_vecteur_2p(p1,p2);
+
+  p7=cree_point(p1->x,p1->y);
+  p8=cree_point(p2->x,p2->y);
+  
+  if(num<10){
+    appliquer_vecteur_a_point(p8,v2,-0.3);
+    appliquer_vecteur_a_point(p7,v2,0.3);
+  }
+  else{
+    appliquer_vecteur_a_point(p8,v2,-0.2);
+    appliquer_vecteur_a_point(p7,v2,0.2);
+  }
+  v=cree_vecteur_2p(p2,p3);
+
+  p6=cree_point(p7->x,p7->y);
+  p5=cree_point(p8->x,p8->y);
+
+  appliquer_vecteur_a_point(p5,v,0.4);
+  appliquer_vecteur_a_point(p6,v,0.4);
+  
+  ecrire_texte_taille(font,
+		      ((1000.0-c->pv)/1000.0)*255,(c->pv/1000.0)*255,0,
+		      p7,p8,p5,p6,s);
+  
   desactiver_texturing();
+  libere_points(p5);
+  libere_points(p6);
+  libere_points(v);
+  libere_points(v2);
 }
 
 void afficher_bouclier(char3p c){
@@ -213,16 +252,18 @@ void afficher_bouclier(char3p c){
   
 }
 
-void afficher_liste_chars(liste chars,GLuint t_c){
+void afficher_liste_chars(liste chars,GLuint t_c,TTF_Font *font){
   char3p c;
   if(!est_list_vide(chars)){
     c=renvoie_sommet_liste(chars);
+
+    if(c->pv>0){
     
-    afficher_char(c,t_c);
-    afficher_tourelle(c,t_c);
-    afficher_bouclier(c);
-    
-    afficher_liste_chars(liste_sans_premier(chars),t_c);
+      afficher_char(c,t_c);
+      afficher_tourelle(c,t_c,font);
+      afficher_bouclier(c);
+    }
+    afficher_liste_chars(liste_sans_premier(chars),t_c,font);
     
   }
 }
@@ -231,7 +272,7 @@ int est_en_collisions_avec_un_autre(char3p c,liste l_char){
   char3p c2;
   if(!est_list_vide(l_char)){
     c2=renvoie_sommet_liste(l_char);
-    if(c!=c2){
+    if(c!=c2 && c2->pv >0){
       if(polygone_dans_polygone(c->c,c2->c)||polygone_dans_polygone(c->t,c2->c)||polygone_dans_polygone(c->c,c2->t)||polygone_dans_polygone(c->t,c2->t)){
 	return 1;
       }

@@ -107,6 +107,7 @@ void boucle_de_traitement_liste_requete(t_liste tl){
   int nbr;
   int i;
   requete_t* r;
+  char3p c;
   //printf("liste r %p liste c %p liste o %p !!!\n ",tl->l_requette,tl->l_char,tl->l_obus);
   nbr=longueur_liste(tl->l_requette);
   //fprintf(stderr,"long %d \n",nbr);
@@ -127,8 +128,11 @@ void boucle_de_traitement_liste_requete(t_liste tl){
 	else{//actions unique
 	  switch (r->type_action){
 	  case 10://tire
-	    printf("tire!!\n");
-	    tl->l_obus=insere_elem_liste(tl->l_obus,cree_obus(get_index(r->numero_char-1,tl->l_char)));
+	    c=get_index(r->numero_char-1,tl->l_char);
+	    if(c->pv >0){
+	      printf("tire!!\n");
+	      tl->l_obus=insere_elem_liste(tl->l_obus,cree_obus(c));
+	    }
 	    break;
 	  }
 	  
@@ -141,68 +145,91 @@ void boucle_de_traitement_liste_requete(t_liste tl){
       //faire l'action
       switch(r->type_action){
       case 1://avance char
-	char_avance(get_index(r->numero_char-1,tl->l_char));
-	//verif si pas collisions
+	c=get_index(r->numero_char-1,tl->l_char);
+	if(c->pv >0){
+	  char_avance(c);
+	  //verif si pas collisions
 
-	if(est_en_collisions_avec_un_autre(get_index(r->numero_char-1,tl->l_char),tl->l_char)||est_collision_avec_map(get_index(r->numero_char-1,tl->l_char),tl->l_map)){
-	  char_recule(get_index(r->numero_char-1,tl->l_char));
+	  if(est_en_collisions_avec_un_autre(c,tl->l_char)||est_collision_avec_map(c,tl->l_map)){
+	    char_recule(c);
+	  }
 	}
 	
 	break;
 
 	
       case 2://recule char
-	char_recule(get_index(r->numero_char-1,tl->l_char));
+
+	c=get_index(r->numero_char-1,tl->l_char);
+	if(c->pv >0){
+	  char_recule(c);
 
 	
-	if(est_en_collisions_avec_un_autre(get_index(r->numero_char-1,tl->l_char),tl->l_char)||est_collision_avec_map(get_index(r->numero_char-1,tl->l_char),tl->l_map)){
-	  char_avance(get_index(r->numero_char-1,tl->l_char));
+	  if(est_en_collisions_avec_un_autre(c,tl->l_char)||est_collision_avec_map(c,tl->l_map)){
+	    char_avance(c);
+	  }
 	}
 	
 	break;
 	
       case 3://go droite char
-	char_droite(get_index(r->numero_char-1,tl->l_char));
+	c=get_index(r->numero_char-1,tl->l_char);
+	if(c->pv >0){
+	  char_droite(c);
 
-	if(est_en_collisions_avec_un_autre(get_index(r->numero_char-1,tl->l_char),tl->l_char)||est_collision_avec_map(get_index(r->numero_char-1,tl->l_char),tl->l_map)){
-	  char_gauche(get_index(r->numero_char-1,tl->l_char));
+	  if(est_en_collisions_avec_un_autre(c,tl->l_char)||est_collision_avec_map(c,tl->l_map)){
+	    char_gauche(c);
+	  }
 	}
 	
 	break;
 	
       case 4://go gauche char
-	char_gauche(get_index(r->numero_char-1,tl->l_char));
+	c=get_index(r->numero_char-1,tl->l_char);
+	if(c->pv >0){
+	  char_gauche(c);
 
-	if(est_en_collisions_avec_un_autre(get_index(r->numero_char-1,tl->l_char),tl->l_char)||est_collision_avec_map(get_index(r->numero_char-1,tl->l_char),tl->l_map)){
-	  char_droite(get_index(r->numero_char-1,tl->l_char));
+	  if(est_en_collisions_avec_un_autre(c,tl->l_char)||est_collision_avec_map(c,tl->l_map)){
+	    char_droite(c);
+	  }
 	}
-	
 	break;
 	
       case 5://go droite tourelle
-	tourelle_droite(get_index(r->numero_char-1,tl->l_char));
+	c=get_index(r->numero_char-1,tl->l_char);
+	if(c->pv >0){
+	  tourelle_droite(c);
 
-	if(est_en_collisions_avec_un_autre(get_index(r->numero_char-1,tl->l_char),tl->l_char)||est_collision_avec_map(get_index(r->numero_char-1,tl->l_char),tl->l_map)){
-	  tourelle_gauche(get_index(r->numero_char-1,tl->l_char));
+	  if(est_en_collisions_avec_un_autre(c,tl->l_char)||est_collision_avec_map(c,tl->l_map)){
+	    tourelle_gauche(c);
+	  }
 	}
-	
 	break;
 	
       case 6://go gauche tourelle
-	tourelle_gauche(get_index(r->numero_char-1,tl->l_char));
+	c=get_index(r->numero_char-1,tl->l_char);
+	if(c->pv >0){
+	  tourelle_gauche(c);
 
-	if(est_en_collisions_avec_un_autre(get_index(r->numero_char-1,tl->l_char),tl->l_char)||est_collision_avec_map(get_index(r->numero_char-1,tl->l_char),tl->l_map)){
-	  tourelle_droite(get_index(r->numero_char-1,tl->l_char));
+	  if(est_en_collisions_avec_un_autre(c,tl->l_char)||est_collision_avec_map(c,tl->l_map)){
+	    tourelle_droite(c);
+	  }
 	}
 	break;
 	
       
       case 7://go droite bouclier
-	bouclier_droite(get_index(r->numero_char-1,tl->l_char));
+	c=get_index(r->numero_char-1,tl->l_char);
+	if(c->pv >0){
+	  bouclier_droite(c);
+	}
 	break;
 
       case 8://go gauche bouclier
-	bouclier_gauche(get_index(r->numero_char-1,tl->l_char));
+	c=get_index(r->numero_char-1,tl->l_char);
+	if(c->pv >0){
+	  bouclier_gauche(c);
+	}
 	break;
       }
       tl->l_requette=insere_elem_liste(tl->l_requette,r);
