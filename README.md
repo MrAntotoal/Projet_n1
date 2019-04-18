@@ -1,7 +1,7 @@
 # Projet_n+1
 Projet Tuteuré L3 Info
 
-#doc pour communication avec la file de message
+#doc pour communication avec la file de message + lancement jeux a la fin 
 
 rapelle des struct :
 
@@ -56,3 +56,27 @@ exemple -1 = stop avance
 |:--:|:-----:|
 |100 |toucher|
 |-100|mort   |
+
+
+## lancement du jeux
+
+```
+./run <mode de jeux> <nbr de chars> <equipe char 0> ... <nom dossier map> <extention image fond>
+
+```
+
+### exemple
+
+```
+./run 0 4 1 2 3 4 test png
+```
+pour l'instant il faut ``` test png ```
+
+### petit tableau
+
+|num mode de jeux| mode|
+|:--------------:|:---:|
+|0               | ffa |
+
+
+
