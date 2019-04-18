@@ -62,7 +62,6 @@ exemple -1 = stop avance
 
 ```
 ./run <mode de jeux> <nbr de chars> <equipe char 0> ... <nom dossier map> <extention image fond>
-
 ```
 
 ### exemple
