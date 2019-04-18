@@ -54,7 +54,7 @@ int main(int argc, char * argv[]){
   }
 
   for(i=1;i<=nbr_chars;i++){
-    c=init_char(cree_point(-100.0,-100),30.0,45.0,i,atoi(argv[2+i]));
+    c=init_char(cree_point(-100.0,-100),24.0,36.0,i,atoi(argv[2+i]));
     liste_chars=insere_elem_liste(liste_chars,c);
   }
 
