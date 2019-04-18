@@ -316,12 +316,19 @@ int est_collision_avec_map(char3p c,liste map){
 
 void retirer_pv(char3p c,double pv,int id_fm){
   reponse_t rep;
+  Points p;
+  Vecteurs v;
   c->pv-=pv;
   rep.mtype=1;
   rep.numero_char=c->numero_char;
   if(c->pv<0){
     //mort
+    p=cree_point(-100.0,-100.0);
+    v=cree_vecteur_2p(c->centre,p);
+    translation_char_vec(c,v,1.0);
     rep.type=-100;
+    libere_points(p);
+    libere_points(v);
   }
   else{
     //toucher mais toujours debout rassure toi
@@ -355,4 +362,17 @@ int est_en_collision_avec_bouclier(char3p c,polygone p){
     return est_en_collision_avec_bouclier(c,liste_sans_premier(p));
   }
   return 0;
+}
+
+
+void translation_char_vec(char3p c,Vecteurs v,double coef){
+
+  appliquer_vecteur_a_point(c->centre,v,coef);
+  appliquer_vecteur_a_point(c->devant,v,coef);
+  appliquer_vecteur_a_point(c->devant_t,v,coef);
+  appliquer_vecteur_a_point(c->devant_b,v,coef);
+  
+  translation_poly_vecteur(c->c,v,coef);
+  translation_poly_vecteur(c->t,v,coef);
+  translation_poly_vecteur(c->t_pour_afficher,v,coef);
 }

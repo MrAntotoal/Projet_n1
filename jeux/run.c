@@ -1,6 +1,12 @@
-#include "traitement_fm.h"
+#include "reap.h"
 #include "time.h"
+#include <sys/types.h>
+#include <unistd.h>
 
+int usage(){
+  fprintf(stderr,"./run <mode de jeux> <nbr chars> <numero equipe char 0> <numero equipe char 1> ... <dossier map> <extention image fond>\n");
+  exit(-1);
+}
 
 int main(int argc, char * argv[]){
   int run=1;
@@ -18,34 +24,65 @@ int main(int argc, char * argv[]){
   liste liste_chars;
   liste liste_obus;
   liste map;
+  liste sauv;
+  liste reap;
   t_liste t_listes;
   SDL_Event event;
   GLuint texture_char;
   GLuint texture_fond;
+  int nbr_chars;
+  int mode_de_jeux;
+  int i;
+  char3p c;
+  char nom_map[500];
+  char nom_fond[500];
 
 
   TTF_Font *font;
-  
-  id_fm=recuperer_id_fm();
+
   liste_action=list_vide();
   liste_chars=list_vide();
   liste_obus=list_vide();
 
+  if(argc<5){
+    usage();
+  }
+  mode_de_jeux=atoi(argv[1]);
+  nbr_chars=atoi(argv[2]);
+  if(argc<2+nbr_chars+1){
+    usage();
+  }
+
+  for(i=1;i<=nbr_chars;i++){
+    c=init_char(cree_point(-100.0,-100),30.0,45.0,i,atoi(argv[2+i]));
+    liste_chars=insere_elem_liste(liste_chars,c);
+  }
+
+  sprintf(nom_map,"assets/%s/%s.map",argv[2+i],argv[2+i]);
+  sprintf(nom_fond,"assets/%s/%s.%s",argv[2+i],argv[2+i],argv[3+i]);
+
+  srand( getpid());
+  
+  id_fm=recuperer_id_fm();
+
   t_listes=alloc_mem(1,sizeof(toutes_listes));
 
+  
 
-  //tmp
-  char3p c;
-  c=init_char(cree_point(1000.0,500.0),30.0,45.0,1,1);
+
+  /*//tmp
+  c=init_char(cree_point(-100.0,-100),30.0,45.0,1,1);
   liste_chars=insere_elem_liste(liste_chars,c);
-  c=init_char(cree_point(1080.0,500.0),30.0,45.0,20,20);
+  c=init_char(cree_point(-100.0,-100.0),30.0,45.0,20,20);
   liste_chars=insere_elem_liste(liste_chars,c);
-  //
+  //*/
 
   cree_fen(1706,900,"run");
   TTF_Init();
-  map=charger_map("assets/test.map");
-  texture_fond=charger_texture("assets/test.png");
+  sauv=charger_map(nom_map);
+  map=renvoie_sommet_liste(sauv);
+  reap=renvoie_sommet_liste(liste_sans_premier(sauv));
+  texture_fond=charger_texture(nom_fond);
   texture_char=charger_texture("assets/sprite.png");
   font=TTF_OpenFont("assets/font.ttf",64);
   
@@ -54,6 +91,8 @@ int main(int argc, char * argv[]){
   t_listes->l_obus=liste_obus;
   t_listes->l_map=map;
   
+
+  spawn_all_tank(reap,liste_chars);
   
   start = clock(); 
 
