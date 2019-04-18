@@ -15,6 +15,7 @@ void creer_equipe(Client * c){
   c->numEquipe = index_equipe;
   GL_equipe[index_equipe].membre[0] = *c;
   index_equipe++;
+  ajouterChamps(*c);
   #ifdef AFFICHAGE
   printf("Création OK %d\n",index_equipe);
   #endif
@@ -26,6 +27,7 @@ void rejoindre_equipe(Client * c, int num){
   GL_equipe[num].membre[GL_equipe[num].numj] = *c;
   GL_equipe[num].numj++;
   c->numEquipe = num;
+  ajouterChamps(*c);
   #ifdef AFFICHAGE
   printf("equipe rejointe %d\n",num);
   #endif
@@ -63,7 +65,15 @@ void supprimer_equipe(int place){
   for (int i = place; i <= index_equipe; i++) {
     GL_equipe[i] = GL_equipe[i+1];
   }
-    //index_equipe--;
+  //index_equipe--;
+}
+
+int position_equipe(Client c){
+  for (int i = 0; i < GL_equipe[c.numEquipe].nb_joueur; i++) {
+    if(c.pseudo == GL_equipe[c.numEquipe].membre[i].pseudo)
+    return i;
+  }
+  return -1;
 }
 
 
@@ -75,4 +85,10 @@ void affiche_equipe(int n){
     printf("%d : %s\n",i,get_lexeme(GL_equipe[n].membre[i].pseudo));
   }
   #endif
+}
+
+void affiche_tt_e(){
+  for (int i = 0; i < index_equipe; i++) {
+    affiche_equipe(i);
+  }
 }

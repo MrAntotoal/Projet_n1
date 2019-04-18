@@ -1,14 +1,17 @@
 CC = gcc
 Option = -Wall
-All = serveur clients
+All = serveur clients clients_lis
 
 all : $(All)
 
-serveur : serveur.c serveur.h analyse_lexicographique.o fdm.o strcmp_rapide.o equipe.o message.o
-	$(CC) $(Option) strcmp_rapide.o analyse_lexicographique.o fdm.o serveur.c equipe.o message.o -o serveur
+serveur : serveur.c serveur.h analyse_lexicographique.o lobby_afficheur.o fdm.o strcmp_rapide.o equipe.o message.o
+	$(CC) $(Option) strcmp_rapide.o analyse_lexicographique.o lobby_afficheur.o fdm.o serveur.c equipe.o message.o -o serveur
 
 clients : client/client.c client/client.h
 	$(CC) $(Option) client/client.c -o clients
+
+clients_lis : client/client_lis.c client/client.h
+	$(CC) $(Option) client/client_lis.c -o clients_lis
 
 analyse_lexicographique.o : analyse_lexicographique.c analyse_lexicographique.h
 	$(CC) $(Option) -c analyse_lexicographique.c
@@ -24,6 +27,12 @@ message.o : message.c message.h
 
 fdm.o : fdm.c fdm.h
 	$(CC) $(Option) -c fdm.c
+
+lobby_afficheur.o : lobby_afficheur.c lobby_afficheur.h
+	$(CC) $(Option) -c lobby_afficheur.c
+
+fork_html : fork_html.c
+	$(CC) $(Option) fork_html.c -o fork_html
 
 clean:
 	rm -f $(All)

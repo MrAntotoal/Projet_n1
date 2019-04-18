@@ -114,13 +114,45 @@ double produit_scalaire(Vecteurs v1,Vecteurs v2){
 double degre_de_2_points(Points O ,Points A,Points B){
   Vecteurs v1,v2;
   double res;
+  double det;
   v1=cree_vecteur_2p(O,A);
   v2=cree_vecteur_2p(O,B);
+  det=((A->x-O->x)*(B->y-O->y)-(A->y-O->y)*(B->x-O->x));
   res=acos(produit_scalaire(v1,v2)/(norme_vecteur(v1)*norme_vecteur(v2)));
   libere_points(v1);
   libere_points(v2);
-  return res*180/M_PI;
+  res=res*180/M_PI;
+  if(det<0){
+    res=-res;
+  }
+  return res;
 }
+/*
+double degre_de_2_points(Points O ,Points A,Points B){
+  Vecteurs v1,v2;
+  double res;
+  double det;
+  v1=cree_vecteur_2p(B,O);
+  v2=cree_vecteur_2p(B,A);
+  det=((A->x-O->y)*(B->y-O->y)-(B->x-O->x)*(A->y-O->x));
+  printf(" det %f \n",det);
+  printf("produit scalaire %f \n",produit_scalaire(v1,v2));
+  res=acos(produit_scalaire(v1,v2)/(norme_vecteur(v1)*norme_vecteur(v2)));
+  printf("res %f\n",res);
+  libere_points(v1);
+  libere_points(v2);
+  return res*180/M_PI;
+  }*/
+/*
+double degre_de_2_points(Points O ,Points A,Points B){
+  Vecteurs v1,v2;
+  double res;
+  res=(((O->x-B->x)*(A->x-B->x))+((O->y-B->y)*(A->y-B->y)))/
+    (sqrt(pow((O->x-B->x),2.0)+pow((O->y-B->y),2.0))*
+     sqrt(pow((A->x-B->x),2.0)+pow((A->y-B->y),2.0)));
+  printf(" res angle %f \n",(res*M_PI)/180);
+  return res*180/M_PI;
+  }*/
 
 
 void afficher_point(Points p){
