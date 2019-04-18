@@ -9,6 +9,8 @@ int main(int argc, char * argv[]){
   clock_t start, end; 
   double diff;
   int nbr_fps=0;
+  int nbr_fps_lf=0;
+  char fps_aff[10];
   double somme=0.0;;
   double somme2=0.0;
   int id_fm;
@@ -21,44 +23,8 @@ int main(int argc, char * argv[]){
   GLuint texture_char;
   GLuint texture_fond;
 
-  /*
-  o1=cree_obstacle(1,cree_polygone_d(4,
-				     0.0,0.0,
-				     10.0,0.0,
-				     10.0,10.0,
-				     0.0,10.0));
 
-  
-  o2=cree_obstacle(2,cree_polygone_d(4,
-				     500.0,800.0,
-				     700.0,800.0,
-				     700.0,900.0,
-				     500.0,900.0));
-  
-  o3=cree_obstacle(3,cree_polygone_d(4,
-				     1200.0,300.0,
-				     1500.0,300.0,
-				     1500.0,500.0,
-				     1200.0,500.0));
-  
-  z1=cree_zone(cree_polygone_d(4,
-			       0.0,0.0,
-			       1024.0,0.0,
-			       1024.0,1080.0,
-			       0.0,1080.0),
-	       insere_elem_liste(insere_elem_liste(list_vide(),o1),o2));
-  
-  z2=cree_zone(cree_polygone_d(4,
-			       1024.0,0.0,
-			       2048.0,0.0,
-			       2048.0,1080.0,
-			       1024.0,1080.0),
-	       insere_elem_liste(list_vide(),o3));
-
-  
-  map=insere_elem_liste(insere_elem_liste(list_vide(),z1),z2);*/
-
-  
+  TTF_Font *font;
   
   id_fm=recuperer_id_fm();
   liste_action=list_vide();
@@ -72,15 +38,17 @@ int main(int argc, char * argv[]){
   char3p c;
   c=init_char(cree_point(1000.0,500.0),30.0,45.0,1,1);
   liste_chars=insere_elem_liste(liste_chars,c);
-  c=init_char(cree_point(1080.0,500.0),30.0,45.0,2,2);
+  c=init_char(cree_point(1080.0,500.0),30.0,45.0,20,20);
   liste_chars=insere_elem_liste(liste_chars,c);
   //
 
   cree_fen(1706,900,"run");
-
+  TTF_Init();
   map=charger_map("assets/test.map");
-  texture_fond=charger_texture("assets/test.jpg");
+  texture_fond=charger_texture("assets/test.png");
   texture_char=charger_texture("assets/sprite.png");
+  font=TTF_OpenFont("assets/font.ttf",64);
+  
   t_listes->l_requette=liste_action;
   t_listes->l_char=liste_chars;
   t_listes->l_obus=liste_obus;
@@ -116,24 +84,30 @@ int main(int argc, char * argv[]){
       t_listes->l_obus=traitement_tous_obus(t_listes->l_obus,t_listes->l_char,map,id_fm,texture_char);
       //printf("fin obus\n");
 
+
       
-      afficher_liste_chars(t_listes->l_char,texture_char);
+      afficher_liste_chars(t_listes->l_char,texture_char,font);
 
       //printf("aff \n");
 
       afficher_map(map);
 
-      //printf("%d \n",est_collision_avec_map(c,map));
+      sprintf(fps_aff,"%d",nbr_fps_lf);
+      ecrire_text(font,255,255,255,1960,1000,fps_aff);
 
+      //printf("%d \n",est_collision_avec_map(c,map));
       go_ecran();
+      
     }
     start=end;
     somme+=diff;
     somme2+=diff;
     if(somme>1.0){
-      fprintf(stderr,"fps %d  somme %f\n",nbr_fps,somme);
+      //fprintf(stderr,"fps %d  somme %f\n",nbr_fps,somme);
+      nbr_fps_lf=nbr_fps;
       somme=0.0;
       nbr_fps=0;
+      
     }
   }
 

@@ -134,8 +134,18 @@ void app(void)
         switch (rcv.m_type)
         {
           case 100:
+          // toucher
           numero_char = rcv.numero_char;
           printf("Char %d changement de boutton\n",numero_char);
+          break;
+
+          case -100:
+          //mort
+          numero_char = rcv.numero_char;
+          printf("Char %d Mort\n",numero_char);
+          for (int k = 0; k < GL_equipe[numero_char].nb_joueur; k++) {
+            write_client(GL_equipe[numero_char].membre[i].sock,MORT);
+          }
           break;
         }
       }

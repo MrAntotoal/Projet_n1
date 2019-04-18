@@ -1,6 +1,6 @@
 cc=gcc
 option=-Wall
-o_sdl=`sdl-config --cflags --libs` -lSDL_image
+o_sdl=`sdl-config --cflags --libs` -lSDL_image -lSDL_ttf
 o_opengl=-lGL -lGLU
 
 run: run.c obus.o texture.o affichage.o char.o sauvegarde.o map.o traitement_fm.o collisions.o file_msg.o liste.o point_vecteur.o allocation_memoire.o polygones.o

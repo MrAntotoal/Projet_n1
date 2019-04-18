@@ -1,6 +1,6 @@
 CC = gcc
 Option = -Wall
-All = serveur clients fork_html clients_lis
+All = serveur clients clients_lis
 
 all : $(All)
 
