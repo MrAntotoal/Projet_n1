@@ -17,7 +17,7 @@
 #define KICK_AMI "KICK_AMI"
 #define NUM_CHAR "NUM_CHAR"
 #define ROLE "ROLE"
-
+#define MORT "MORT"
 /* pour comparer sur ce nombre et pas les paramètres suivant */
 #define TAILLE_REJ 16
 #define TAILLE_DEP 11

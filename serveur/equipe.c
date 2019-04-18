@@ -1,6 +1,5 @@
 #include "equipe.h"
 
-Equipe GL_equipe[MAX_CLIENTS];
 
 
 void init_equipe(){

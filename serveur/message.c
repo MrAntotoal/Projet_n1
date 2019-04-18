@@ -1,10 +1,12 @@
 #include "message.h"
 
-void get_msg_next(char *buffer, char *res){
-  int i = 0;
-  while (buffer[i] != '\0') {
-    i++;
+void changerBoutton(int nb_joueur){
+  srand(time(0));
+  for (int i = 0; i < nb_joueur; i++) {
+    p1[0] = rand()%3 * 3;
+    p1[1] = rand()%3 * 3;
+    p1[2] = rand()%3 * 3;
   }
-  i++;
-  strcpy(res,buffer + i);
+
+
 }

@@ -7,6 +7,7 @@
 #include "affich.h"
 #include "lobby_afficheur.h"
 
+Equipe GL_equipe[MAX_CLIENTS];
 int index_equipe;
 
 void init_equipe();
