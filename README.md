@@ -1,7 +1,7 @@
 # Projet_n+1
 Projet Tuteuré L3 Info
 
-#doc pour communication avec la file de message + lancement jeux a la fin 
+# doc pour communication avec la file de message + lancement jeux a la fin 
 
 rapelle des struct :
 
