@@ -16,7 +16,6 @@ void app(void)
   /* the index for the array */
   int actual = 0;
   int max = sock;
-  int pid = 0;
   /* an array for all clients */
   Client clients[MAX_CLIENTS];
 

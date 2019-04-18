@@ -31,7 +31,9 @@
 |2          |recule|1        |
 |3          |droite|1        |
 |4          |gauche|1        |
-|5          |droite_tourelle | 0|
-|6          |gauche_tourelle | 0|
+|5          |droite_tourelle | 1|
+|6          |gauche_tourelle | 1|
+|7 	|droite_shield 	|1
+|8 	|gauche_shield 	|1
 |10 	      |tire            | 0|
 |100|changement boutton | 0|

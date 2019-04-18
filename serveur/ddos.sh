@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 d=0
-n=10
+n=100
 
 for ((i=$d;$i<$n;i++))
 do
