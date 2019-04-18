@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #define FICHIER_CLE "../README.md"
+=======
+#define FICHIER_CLE "../README"
+>>>>>>> origin/jeux
 #include <sys/msg.h>
 #include <sys/ipc.h>
 #include <sys/types.h>
