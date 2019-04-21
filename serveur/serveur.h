@@ -19,6 +19,7 @@
 #include "structure.h"
 #include "message_serveur.h"
 #include "affich.h"
+#include "message.h"
 
 #define INVALID_SOCKET -1
 #define SOCKET_ERROR -1

@@ -44,7 +44,7 @@ void app(void)
       }
     }
 
-    printf("FLAG START %d\n",flag_start );
+    //printf("FLAG START %d\n",flag_start );
     if(flag_start == 2){
       flag_start = 0;
       printf("envoie start\n");
@@ -133,10 +133,56 @@ void app(void)
         printf("*******************message recuperer %ld\n",rcv.m_type);
         switch (rcv.m_type)
         {
-          case 100:
+          case 1:
           // toucher
           numero_char = rcv.numero_char;
+          numero_char = 0;
           printf("Char %d changement de boutton\n",numero_char);
+          changerBoutton();
+          for (int i = 0; i < GL_equipe[numero_char].nb_joueur; i++) {
+            Clean_Buf;
+            sprintf(buffer,NEW_BUTT);
+            printf("%d \n",p1[0]);
+            if(i == 0){
+              switch (p1[0]) {
+                case 0:
+                sprintf(buffer,"%s CG",buffer);
+                break;
+                case 1:
+                sprintf(buffer,"%s PG",buffer);
+                break;
+                case 2:
+                sprintf(buffer,"%s TG",buffer);
+                break;
+              }
+              switch (p1[1]) {
+                case 0:
+                sprintf(buffer,"%s CD",buffer);
+                break;
+                case 1:
+                sprintf(buffer,"%s PD",buffer);
+                break;
+                case 2:
+                sprintf(buffer,"%s TD",buffer);
+                break;
+              }
+              switch (p1[2]) {
+                case 0:
+                sprintf(buffer,"%s F",buffer);
+                break;
+                case 1:
+                sprintf(buffer,"%s P",buffer);
+                break;
+                case 2:
+                sprintf(buffer,"%s AR",buffer);
+                break;
+              }
+              sprintf(buffer,"%s \n",buffer);
+            }
+            printf("NOVEAU_BOUTTON %s\n",buffer);
+            write_client(GL_equipe[numero_char].membre[i].sock,buffer);
+          }
+
           break;
 
           case -100:

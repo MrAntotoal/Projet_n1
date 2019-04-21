@@ -17,7 +17,7 @@
 |PSEUDO_POK |(le programme client recoit server disconnected mais doit relancer init_connection) le serveur déconnecte le client, le client doit donc se reconnecter avant de retenter| pseudo déjà utilisé ||Connection|serveur|
 |DISABLE_BUTT | désactive les boutons | ||Durant partie|serveur|
 |MODE_JEUX|+1 pour décision mode | numéro |Buff +' ' + (0-256)|Décision mode de jeux|client|
-|NEW_BUTT| change les boutons du joueur | code des boutons Tireur : F,TG,TD,TS Protecteur :P,PG,PD,PS Conducteur : AR,CG,CD,CS| Buff + ' ' + code bouton x4 | 1 minute ou toucher |serveur|
+|NEW_BUTT| change les boutons du joueur | code des boutons Tireur : F,TG,TD,TS Protecteur :P,PG,PD,PS Conducteur : AR,CG,CD,CS| Buff + ' ' + code bouton + ' ' x4 | 1 minute ou toucher |serveur|
 |NUM_CHAR|Le client enregistre le numéro du char|numéro du char (0-256)|Buff + ' ' + numéro|Début partie|serveur|
 
 
