@@ -21,6 +21,9 @@ void app(void)
 
   fd_set rdfs;
 
+  struct sigaction sig;
+  sigemptyset(&sig.sa_mask);
+  sigaddset(&sig.sa_mask, SIGUSR1);
   while(1)
   {
     int i = 0;
@@ -36,7 +39,7 @@ void app(void)
       FD_SET(clients[i].sock, &rdfs);
     }
 
-    if(select(max + 1, &rdfs, NULL, NULL, NULL) == -1)
+    if(pselect(max + 1, &rdfs, NULL, NULL, NULL,&sig.sa_mask) == -1)
     {
       if(errno != EINTR){
         perror("select()");
@@ -44,16 +47,54 @@ void app(void)
       }
     }
 
-    //printf("FLAG START %d\n",flag_start );
-    if(flag_start == 2){
-      flag_start = 0;
-      printf("envoie start\n");
-      for (int o = 0; o < actual; o++) {
-        write_client(clients[o].sock,"START\n");
+    /***************************************/
+    /* Reception depuis la file de message */
+    /***************************************/
+    int numero_char;
+    while (prendre_reponse() != -1)
+    {
+      printf("*******************message recuperer %ld\n",rcv.m_type);
+      switch (rcv.type)
+      {
+        case 100:
+        // toucher
+        numero_char = rcv.numero_char;
+        printf("Char %d changement de boutton\n",numero_char);
+        changerBoutton();
+        for (int l = 0; l < GL_equipe[numero_char].nb_joueur; l++) {
+          Clean_Buf;
+          sprintf(truc,NEW_BUTT);
+          ecrireNouveauBouton(truc,l);
+          printf("NOVEAU_BOUTTON %s\n",truc);
+          write_client(GL_equipe[numero_char].membre[l].sock,truc);
+        }
+
+        break;
+
+        case 110:
+        //mort
+        numero_char = rcv.numero_char;
+        printf("Char %d Mort\n",numero_char);
+        for (int k = 0; k < GL_equipe[numero_char].nb_joueur; k++) {
+          write_client(GL_equipe[numero_char].membre[k].sock,MORT);
+        }
+        break;
       }
+      Clean_Buf;
     }
 
 
+          //printf("FLAG START %d\n",flag_start );
+          if(flag_start == 2){
+            flag_start = 0;
+            printf("envoie start\n");
+            for (int o = 0; o < actual; o++) {
+              write_client(clients[o].sock,"START \n");
+            }
+          }
+
+          printf(".\n");
+    printf("otot\n");
     if(FD_ISSET(sock, &rdfs))
     {
       /* new client */
@@ -119,83 +160,22 @@ void app(void)
         write_client(csock,buffer);
         Clean_Buf;
       }
+      printf("$$$$$$$ APRES NEW C\n");
     }
     else
     {
-      /***************************************/
-      /* Reception depuis la file de message */
-      /***************************************/
-      // NOTE : atteint seulement lorsqu'un client parle (devrait etre
-      //transparent quand il y aura du monde)
-      int numero_char;
-      while (prendre_reponse() != -1)
-      {
-        printf("*******************message recuperer %ld\n",rcv.m_type);
-        switch (rcv.m_type)
-        {
-          case 1:
-          // toucher
-          numero_char = rcv.numero_char;
-          numero_char = 0;
-          printf("Char %d changement de boutton\n",numero_char);
-          changerBoutton();
-          for (int i = 0; i < GL_equipe[numero_char].nb_joueur; i++) {
-            Clean_Buf;
-            sprintf(buffer,NEW_BUTT);
-            printf("%d \n",p1[0]);
-            if(i == 0){
-              switch (p1[0]) {
-                case 0:
-                sprintf(buffer,"%s CG",buffer);
-                break;
-                case 1:
-                sprintf(buffer,"%s PG",buffer);
-                break;
-                case 2:
-                sprintf(buffer,"%s TG",buffer);
-                break;
+
+
+            //printf("FLAG START %d\n",flag_start );
+            if(flag_start == 2){
+              flag_start = 0;
+              printf("envoie start\n");
+              for (int o = 0; o < actual; o++) {
+                write_client(clients[o].sock,"START \n");
               }
-              switch (p1[1]) {
-                case 0:
-                sprintf(buffer,"%s CD",buffer);
-                break;
-                case 1:
-                sprintf(buffer,"%s PD",buffer);
-                break;
-                case 2:
-                sprintf(buffer,"%s TD",buffer);
-                break;
-              }
-              switch (p1[2]) {
-                case 0:
-                sprintf(buffer,"%s F",buffer);
-                break;
-                case 1:
-                sprintf(buffer,"%s P",buffer);
-                break;
-                case 2:
-                sprintf(buffer,"%s AR",buffer);
-                break;
-              }
-              sprintf(buffer,"%s \n",buffer);
             }
-            printf("NOVEAU_BOUTTON %s\n",buffer);
-            write_client(GL_equipe[numero_char].membre[i].sock,buffer);
-          }
 
-          break;
-
-          case -100:
-          //mort
-          numero_char = rcv.numero_char;
-          printf("Char %d Mort\n",numero_char);
-          for (int k = 0; k < GL_equipe[numero_char].nb_joueur; k++) {
-            write_client(GL_equipe[numero_char].membre[i].sock,MORT);
-          }
-          break;
-        }
-      }
-
+            printf(".\n");
 
       int i = 0;
       for(i = 0; i < actual; i++)
@@ -352,6 +332,20 @@ void app(void)
       }
     }
   }
+  printf("$$$$$$$$$ APRES LECTURE \n");
+
+      //printf("FLAG START %d\n",flag_start );
+      if(flag_start == 2){
+        flag_start = 0;
+        printf("envoie start\n");
+        for (int o = 0; o < actual; o++) {
+          write_client(clients[o].sock,"START \n");
+        }
+      }
+
+      printf(".\n");
+
+
 }
 }
 clear_clients(clients, actual);

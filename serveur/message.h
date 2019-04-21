@@ -8,3 +8,4 @@ char p2[3];
 char p3[3];
 
 void changerBoutton();
+void ecrireNouveauBouton(char *truc, int n);
