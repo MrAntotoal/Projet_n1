@@ -366,7 +366,8 @@ void clear_clients(Client *clients, int actual)
 void remove_client(Client *clients, int to_remove, int *actual)
 {
   /* we remove the client in the array */
-  memmove(clients + to_remove, clients + to_remove + 1, (*actual - to_remove - 1) * sizeof(Client));
+  memmove(clients + to_remove, clients + to_remove + 1,
+    (*actual - to_remove - 1) * sizeof(Client));
   /* number client - 1 */
   (*actual)--;
 }
@@ -497,7 +498,23 @@ int main(int argc, char **argv,char **envp)
   flag_start = 0;
   myenvp = envp;
 
-  printf("********** PID %d\n",getpid());
+  FILE *fichier;
+  char *nom_fichier = "./tmp.txt";
+
+  fichier = fopen(nom_fichier, "w");
+
+  if (fichier == (FILE *)NULL)
+  {
+    printf("Erreur ouverture fichier\n");
+    exit(1);
+  }
+
+  // Ecriture du fichier
+  fprintf(fichier,"%d ", getpid());
+
+  // fin
+  fclose(fichier);
+
 
   /***********************************/
   /*         File de message         */

@@ -1,8 +1,11 @@
 CC = gcc
 Option = -Wall
-All = serveur clients clients_lis
+All = serveur clients clients_lis start
 
 all : $(All)
+
+start: start.c
+	$(CC) $(Option) start.c -o start
 
 serveur : serveur.c serveur.h analyse_lexicographique.o lobby_afficheur.o fdm.o strcmp_rapide.o equipe.o message.o
 	$(CC) $(Option) strcmp_rapide.o analyse_lexicographique.o lobby_afficheur.o fdm.o serveur.c equipe.o message.o -o serveur

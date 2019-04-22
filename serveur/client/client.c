@@ -10,25 +10,10 @@ int version;
 static void app(const char *address, const char *name)
 {
    SOCKET sock = init_connection(address);
-   char buffer[BUF_SIZE];
-
 
    /* send our name */
    write_server(sock, name);
    sleep(1);
-   char test[BUF_SIZE] = {'C','R','E','E','R','_','E','Q','U','I','P','E','\0','\n'};
-   //char test[BUF_SIZE] = {'D','E','P','L','A','C','E','M','E','N','T',' ','2',' ','2',' ','1','\n'};
-
-   write_server(sock,test);
-
-
-   int numero_char;
-   int type;
-   int repeter;
-   sscanf(test,"%s %d %d %d\n",buffer,&numero_char,&type,&repeter);
-   printf("** D char %d Type %d A repeter %d**\n",numero_char,type,repeter);
-   sleep(5);
-
    end_connection(sock);
 }
 
