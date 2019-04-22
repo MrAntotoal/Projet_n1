@@ -2,9 +2,10 @@
 serveur/clients
 serveur/clients_lis
 serveur/serveur
+serveur/start
 serveur/traitement_client
 serveur/gg
 serveur/fork_html
 serveur/test0
 serveur/.*
-jeux/run
+jeux/*
