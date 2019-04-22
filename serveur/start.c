@@ -10,6 +10,6 @@ int main(int argc, char const *argv[]) {
   fscanf(fichier,"%d\n",&pid);
   kill(pid,SIGUSR1);
   remove("tmp.txt");
-  system("clients localhost start");
+  system("./clients localhost start");
   return 0;
 }
