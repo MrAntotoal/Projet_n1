@@ -232,6 +232,7 @@ void app(void)
           if(fast_compare(a_comparer,buffer,TAILLE_KICK) == 0){
             int role;
             sscanf(buffer,"%s %d\n",truc,&role);
+            write_client(GL_equipe[clients[i].numEquipe].membre[role].sock,KICK_EQUIPE"\n");
             quitter_equipe(&GL_equipe[clients[i].numEquipe].membre[role]);
             Clean_Buf;
           }
@@ -291,7 +292,6 @@ void app(void)
                     else{
                       rejoindre_equipe(&clients[i],rej - 1);
                       Clean_Buf;
-                      affiche_tt_e();
                       write_client(clients[i].sock,"OK\n");
                     }
                   }
