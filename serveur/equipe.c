@@ -58,13 +58,21 @@ void quitter_equipe(Client *c){
     #endif
   }
   index_equipe--;
+  int tmp = 0;
+  while (list[tmp].pseudo != c->pseudo) {
+    tmp++;
+  }
+  for (int i = tmp; i <= nb; i++) {
+    list[i] = list[i+1];
+  }
+  nb--;
 }
 
 void supprimer_equipe(int place){
   for (int i = place; i <= index_equipe; i++) {
     GL_equipe[i] = GL_equipe[i+1];
   }
-  //index_equipe--;
+  refresh_html();
 }
 
 int position_equipe(Client c){

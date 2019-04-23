@@ -427,7 +427,8 @@ void remove_client(int to_remove)
     sin.sin_addr.s_addr = htonl(INADDR_ANY);
     sin.sin_port = htons(PORT);
     sin.sin_family = AF_INET;
-
+    int true = 1;
+    setsockopt(sock,SOL_SOCKET,SO_REUSEADDR,&true,sizeof(int));
     if(bind(sock,(SOCKADDR *) &sin, sizeof sin) == SOCKET_ERROR)
     {
       #ifdef AFFICHAGE
@@ -534,6 +535,7 @@ void remove_client(int to_remove)
     /***********************************/
     init_lexico(); // on initialise table hash pour pseudo
     init_equipe();
+    init_html();
     flag_lobby = 0;
     flag_start = 0;
     myenvp = envp;
