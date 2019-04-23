@@ -292,7 +292,7 @@ void app(void)
               #endif
               int rej = 0;
               sscanf(buffer,"%s %d\n",truc,&rej);
-              if(rej > index_equipe){
+              if(rej > index_equipe || rej < 0){
                 write_client(clients[i].sock,ERREUR_REJOINDRE"\n");
               }
               else{
