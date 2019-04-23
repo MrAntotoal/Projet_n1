@@ -44,8 +44,8 @@ int init_connection(void);
 void end_connection(int sock);
 int read_client(SOCKET sock, char *buffer);
 void write_client(SOCKET sock, const char *buffer);
-void remove_client(Client *clients, int to_remove, int *actual);
-void clear_clients(Client *clients, int actual);
+void remove_client(int to_remove);
+void clear_clients();
 
 void get_msg_next(char *buffer, char *res);
 

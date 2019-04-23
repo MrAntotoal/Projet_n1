@@ -8,6 +8,11 @@ volatile int flag_start;
 char **myenvp;
 char **args;
 
+/* an array for all clients */
+Client clients[MAX_CLIENTS];
+/* the index for the array */
+int actual = 0;
+
 void lancer_jeux(){
   printf("$$$$$$$$$$$YOYO\n");
   args = malloc(sizeof(char *) * 101);
@@ -33,12 +38,7 @@ void app(void)
   char buffer[BUF_SIZE];
   char truc[BUF_SIZE];
   Clean_Buf;
-  /* the index for the array */
-  int actual = 0;
   int max = sock;
-  /* an array for all clients */
-  Client clients[MAX_CLIENTS];
-
   fd_set rdfs;
 
   struct sigaction sig;
@@ -230,7 +230,7 @@ void app(void)
             #ifdef AFFICHAGE
             printf("connection perdu %s\n",get_lexeme(clients[i].pseudo));
             #endif
-            remove_client(clients, i, &actual); // on enlève le client
+            remove_client(i); // on enlève le client
             break; // on arrete pour relancer la boucle proprement
           }
 
@@ -379,13 +379,13 @@ void app(void)
 
 }
 }
-clear_clients(clients, actual);
+clear_clients();
 end_connection(sock);
 }
 
 
 
-void clear_clients(Client *clients, int actual)
+void clear_clients()
 {
   int i = 0;
   for(i = 0; i < actual; i++)
@@ -394,13 +394,13 @@ void clear_clients(Client *clients, int actual)
   }
 }
 
-void remove_client(Client *clients, int to_remove, int *actual)
+void remove_client(int to_remove)
 {
   /* we remove the client in the array */
   memmove(clients + to_remove, clients + to_remove + 1,
-    (*actual - to_remove - 1) * sizeof(Client));
+    (actual - to_remove - 1) * sizeof(Client));
     /* number client - 1 */
-    (*actual)--;
+    actual--;
   }
 
 
@@ -480,6 +480,10 @@ void remove_client(Client *clients, int to_remove, int *actual)
   }
 
   void my_handler(int s){
+    for(int i = 0; i < actual; i++)
+    {
+      write_client(clients[i].sock,"ARRETE");
+    }
     end_connection(GL_SOCK);
     fermer_fdm();
     exit(-1);
