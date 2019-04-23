@@ -11,7 +11,6 @@ char **args;
 void lancer_jeux(){
   printf("$$$$$$$$$$$YOYO\n");
   args = malloc(sizeof(char *) * 101);
-  char tmp[50];
   for (int i = 0; i < 100; i++) {
     args[i] = malloc(sizeof(char) * 15);
   }
@@ -24,12 +23,6 @@ void lancer_jeux(){
   args[3+index_equipe] = "test";
   args[3+index_equipe+1] = "png";
   args[5 + index_equipe] = NULL;
-  int l = 0;
-  while (!fast_compare(myenvp[l],"PATH",3)) {
-    l++;
-  }
-  //myenvp[l] = myconcat(myenvp[l],"../jeux");
-
 }
 
 
