@@ -6,6 +6,33 @@ int GL_SOCK;
 int flag_lobby;
 volatile int flag_start;
 char **myenvp;
+char **args;
+
+void lancer_jeux(){
+  printf("$$$$$$$$$$$YOYO\n");
+  args = malloc(sizeof(char *) * 101);
+  char tmp[50];
+  for (int i = 0; i < 100; i++) {
+    args[i] = malloc(sizeof(char) * 15);
+  }
+  args[0] = "../jeux/run";
+  args[1] = "0";
+  sprintf(args[2],"%d",index_equipe);
+  for (int p = 0; p < index_equipe; p++) {
+    sprintf(args[p+3],"%d",p);
+  }
+  args[3+index_equipe] = "test";
+  args[3+index_equipe+1] = "png";
+  args[5 + index_equipe] = NULL;
+  int l = 0;
+  while (!fast_compare(myenvp[l],"PATH",3)) {
+    l++;
+  }
+  //myenvp[l] = myconcat(myenvp[l],"../jeux");
+
+}
+
+
 void app(void)
 {
   SOCKET sock = init_connection();
@@ -53,19 +80,25 @@ void app(void)
     int numero_char;
     while (prendre_reponse() != -1)
     {
+      #ifdef AFFICHAGE
       printf("*******************message recuperer %ld\n",rcv.m_type);
+      #endif
       switch (rcv.type)
       {
         case 100:
         // toucher
         numero_char = rcv.numero_char;
+        #ifdef AFFICHAGE
         printf("Char %d changement de boutton\n",numero_char);
+        #endif
         changerBoutton();
         for (int l = 0; l < GL_equipe[numero_char].nb_joueur; l++) {
           Clean_Buf;
           sprintf(truc,NEW_BUTT);
           ecrireNouveauBouton(truc,l);
-          printf("NOVEAU_BOUTTON %s\n",truc);
+          #ifdef AFFICHAGE
+          printf("NOUVEAU_BOUTTON %s\n",truc);
+          #endif
           write_client(GL_equipe[numero_char].membre[l].sock,truc);
         }
 
@@ -74,7 +107,9 @@ void app(void)
         case 110:
         //mort
         numero_char = rcv.numero_char;
+        #ifdef AFFICHAGE
         printf("Char %d Mort\n",numero_char);
+        #endif
         for (int k = 0; k < GL_equipe[numero_char].nb_joueur; k++) {
           write_client(GL_equipe[numero_char].membre[k].sock,MORT);
         }
@@ -84,17 +119,31 @@ void app(void)
     }
 
 
-          //printf("FLAG START %d\n",flag_start );
-          if(flag_start == 2){
-            flag_start = 0;
-            printf("envoie start\n");
-            for (int o = 0; o < actual; o++) {
-              write_client(clients[o].sock,"START \n");
-            }
-          }
+    if(flag_start == 2){
+      flag_start = 0;
+      #ifdef AFFICHAGE
+      printf("envoie start\n");
+      #endif
+      for (int o = 0; o < actual; o++) {
+        write_client(clients[o].sock,"START \n");
+      }
+      int pid;
+      /*************/
+      /* fork jeu  */
+      /*************/
+      lancer_jeux();
+      pid = fork();
+      if(pid == -1){
+        printf("******** FORK JEU ECHOUE\n");
+      }
+      if(pid == 0){
+        execve("../jeux/run",args,myenvp);
+        fprintf(stderr,"$$$$$$$$$$$ EXECVE JEU\n");
+        kill(getpid(),SIGINT);
+      }
+      printf("je sors\n");
+    }
 
-          printf(".\n");
-    printf("otot\n");
     if(FD_ISSET(sock, &rdfs))
     {
       /* new client */
@@ -160,22 +209,19 @@ void app(void)
         write_client(csock,buffer);
         Clean_Buf;
       }
-      printf("$$$$$$$ APRES NEW C\n");
     }
     else
     {
+      if(flag_start == 2){
+        flag_start = 0;
+        #ifdef AFFICHAGE
+        printf("envoie start\n");
+        #endif
+        for (int o = 0; o < actual; o++) {
+          write_client(clients[o].sock,"START \n");
+        }
+      }
 
-
-            //printf("FLAG START %d\n",flag_start );
-            if(flag_start == 2){
-              flag_start = 0;
-              printf("envoie start\n");
-              for (int o = 0; o < actual; o++) {
-                write_client(clients[o].sock,"START \n");
-              }
-            }
-
-            printf(".\n");
 
       int i = 0;
       for(i = 0; i < actual; i++)
@@ -230,12 +276,15 @@ void app(void)
             sprintf(buffer, "%d\n",index_equipe);
             write_client(clients[i].sock,buffer);
             affiche_tt_e();
+
             /*******************/
             /* fork pour lobby */
             /*******************/
 
             if(flag_lobby == 0){ // on ouvre le lobby une fois !
+              #ifdef AFFICHAGE
               printf("LOBBY DEMANDEE !\n");
+              #endif
               flag_lobby = 1;
               system("firefox lobby.html &");
             }
@@ -332,18 +381,7 @@ void app(void)
       }
     }
   }
-  printf("$$$$$$$$$ APRES LECTURE \n");
 
-      //printf("FLAG START %d\n",flag_start );
-      if(flag_start == 2){
-        flag_start = 0;
-        printf("envoie start\n");
-        for (int o = 0; o < actual; o++) {
-          write_client(clients[o].sock,"START \n");
-        }
-      }
-
-      printf(".\n");
 
 
 }
@@ -368,164 +406,162 @@ void remove_client(Client *clients, int to_remove, int *actual)
   /* we remove the client in the array */
   memmove(clients + to_remove, clients + to_remove + 1,
     (*actual - to_remove - 1) * sizeof(Client));
-  /* number client - 1 */
-  (*actual)--;
-}
-
-
-int init_connection(void)
-{
-  SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
-  SOCKADDR_IN sin = { 0 };
-
-  if(sock == INVALID_SOCKET)
-  {
-    #ifdef AFFICHAGE
-    perror("socket()");
-    #endif
-    exit(errno);
+    /* number client - 1 */
+    (*actual)--;
   }
 
-  sin.sin_addr.s_addr = htonl(INADDR_ANY);
-  sin.sin_port = htons(PORT);
-  sin.sin_family = AF_INET;
 
-  if(bind(sock,(SOCKADDR *) &sin, sizeof sin) == SOCKET_ERROR)
+  int init_connection(void)
   {
+    SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
+    SOCKADDR_IN sin = { 0 };
+
+    if(sock == INVALID_SOCKET)
+    {
+      #ifdef AFFICHAGE
+      perror("socket()");
+      #endif
+      exit(errno);
+    }
+
+    sin.sin_addr.s_addr = htonl(INADDR_ANY);
+    sin.sin_port = htons(PORT);
+    sin.sin_family = AF_INET;
+
+    if(bind(sock,(SOCKADDR *) &sin, sizeof sin) == SOCKET_ERROR)
+    {
+      #ifdef AFFICHAGE
+      perror("bind()");
+      #endif
+      fermer_fdm();
+      exit(errno);
+    }
+
+    if(listen(sock, MAX_CLIENTS) == SOCKET_ERROR)
+    {
+      #ifdef AFFICHAGE
+      perror("listen()");
+      #endif
+      fermer_fdm();
+      exit(errno);
+    }
+
+    return sock;
+  }
+
+  void end_connection(int sock)
+  {
+    closesocket(sock);
+  }
+
+  int read_client(SOCKET sock, char *buffer)
+  {
+    int n = 0;
+
+    if((n = recv(sock, buffer, BUF_SIZE - 1, 0)) < 0)
+    {
+      #ifdef AFFICHAGE
+      perror("recv()");
+      #endif
+      /* if recv error we disonnect the client */
+      n = 0;
+    }
     #ifdef AFFICHAGE
-    perror("bind()");
+    printf("Reçue ~> %s\n",buffer);
     #endif
+    buffer[n] = 0;
+
+    return n;
+  }
+
+  void write_client(SOCKET sock, const char *buffer)
+  {
+    // https://linux.die.net/man/2/send
+    if(send(sock, buffer, strlen(buffer), 0) < 0)
+    {
+      #ifdef AFFICHAGE
+      perror("send()");
+      #endif
+      exit(errno);
+    }
+  }
+
+  void my_handler(int s){
+    end_connection(GL_SOCK);
     fermer_fdm();
-    exit(errno);
+    exit(-1);
+  }
+  void handler_usr1(int s){
+    flag_start = 2;
+  }
+  void handler_usr2(int s){
+    printf("usr2\n");
   }
 
-  if(listen(sock, MAX_CLIENTS) == SOCKET_ERROR)
+  int main(int argc, char **argv,char **envp)
   {
-    #ifdef AFFICHAGE
-    perror("listen()");
-    #endif
-    fermer_fdm();
-    exit(errno);
+    /***********************************/
+    /*         CAPTURE DE CTRL C       */
+    /***********************************/
+    struct sigaction sigIntHandler;
+
+    sigIntHandler.sa_handler = my_handler;
+    sigemptyset(&sigIntHandler.sa_mask);
+    sigIntHandler.sa_flags = 0;
+
+    struct sigaction sigUSR1Handler;
+
+    sigUSR1Handler.sa_handler = handler_usr1;
+    sigemptyset(&sigUSR1Handler.sa_mask);
+    sigUSR1Handler.sa_flags = 0;
+
+
+    struct sigaction sigUSR2Handler;
+
+    sigUSR2Handler.sa_handler = handler_usr1;
+    sigemptyset(&sigUSR2Handler.sa_mask);
+    sigUSR2Handler.sa_flags = 0;
+
+    sigaction(SIGINT, &sigIntHandler, NULL);
+    sigaction(SIGUSR1, &sigUSR1Handler, NULL);
+    sigaction(SIGUSR2, &sigUSR2Handler, NULL);
+    /***********************************/
+    /*          Initialisation         */
+    /***********************************/
+    init_lexico(); // on initialise table hash pour pseudo
+    init_equipe();
+    flag_lobby = 0;
+    flag_start = 0;
+    myenvp = envp;
+
+    FILE *fichier;
+    char *nom_fichier = "./tmp.txt";
+
+    fichier = fopen(nom_fichier, "w");
+
+    if (fichier == (FILE *)NULL)
+    {
+      printf("Erreur ouverture fichier\n");
+      exit(1);
+    }
+
+    // Ecriture du fichier
+    fprintf(fichier,"%d ", getpid());
+
+    // fin
+    fclose(fichier);
+
+
+    /***********************************/
+    /*         File de message         */
+    /***********************************/
+    if(creer_fdm() == 0)
+    {
+      #ifdef AFFICHAGE
+      printf("File De Message Créer \n");
+      #endif
+      ;
+    }
+    app();
+    return EXIT_SUCCESS;
   }
-
-  return sock;
-}
-
-void end_connection(int sock)
-{
-  closesocket(sock);
-}
-
-int read_client(SOCKET sock, char *buffer)
-{
-  int n = 0;
-
-  if((n = recv(sock, buffer, BUF_SIZE - 1, 0)) < 0)
-  {
-    #ifdef AFFICHAGE
-    perror("recv()");
-    #endif
-    /* if recv error we disonnect the client */
-    n = 0;
-  }
-  #ifdef AFFICHAGE
-  printf("Reçue ~> %s\n",buffer);
-  #endif
-  buffer[n] = 0;
-
-  return n;
-}
-
-void write_client(SOCKET sock, const char *buffer)
-{
-  // https://linux.die.net/man/2/send
-  if(send(sock, buffer, strlen(buffer), 0) < 0)
-  {
-    #ifdef AFFICHAGE
-    perror("send()");
-    #endif
-    exit(errno);
-  }
-}
-
-void my_handler(int s){
-  end_connection(GL_SOCK);
-  fermer_fdm();
-  exit(-1);
-}
-void handler_usr1(int s){
-  printf("usr1\n");
-  flag_start = 2;
-  printf("FLAG %d\n",flag_start);
-}
-void handler_usr2(int s){
-  printf("usr2\n");
-}
-
-int main(int argc, char **argv,char **envp)
-{
-  /***********************************/
-  /*         CAPTURE DE CTRL C       */
-  /***********************************/
-  struct sigaction sigIntHandler;
-
-  sigIntHandler.sa_handler = my_handler;
-  sigemptyset(&sigIntHandler.sa_mask);
-  sigIntHandler.sa_flags = 0;
-
-  struct sigaction sigUSR1Handler;
-
-  sigUSR1Handler.sa_handler = handler_usr1;
-  sigemptyset(&sigUSR1Handler.sa_mask);
-  sigUSR1Handler.sa_flags = 0;
-
-
-  struct sigaction sigUSR2Handler;
-
-  sigUSR2Handler.sa_handler = handler_usr1;
-  sigemptyset(&sigUSR2Handler.sa_mask);
-  sigUSR2Handler.sa_flags = 0;
-
-  sigaction(SIGINT, &sigIntHandler, NULL);
-  sigaction(SIGUSR1, &sigUSR1Handler, NULL);
-  sigaction(SIGUSR2, &sigUSR2Handler, NULL);
-  /***********************************/
-  /*          Initialisation         */
-  /***********************************/
-  init_lexico(); // on initialise table hash pour pseudo
-  init_equipe();
-  flag_lobby = 1;
-  flag_start = 0;
-  myenvp = envp;
-
-  FILE *fichier;
-  char *nom_fichier = "./tmp.txt";
-
-  fichier = fopen(nom_fichier, "w");
-
-  if (fichier == (FILE *)NULL)
-  {
-    printf("Erreur ouverture fichier\n");
-    exit(1);
-  }
-
-  // Ecriture du fichier
-  fprintf(fichier,"%d ", getpid());
-
-  // fin
-  fclose(fichier);
-
-
-  /***********************************/
-  /*         File de message         */
-  /***********************************/
-  if(creer_fdm() == 0)
-  {
-    #ifdef AFFICHAGE
-    printf("File De Message Créer \n");
-    #endif
-    ;
-  }
-  app();
-  return EXIT_SUCCESS;
-}

@@ -59,3 +59,4 @@ int est_en_collision_avec_bouclier(char3p c,polygone p);
 
 void bouclier_gauche(char3p c);
 void bouclier_droite(char3p c);
+void translation_char_vec(char3p c,Vecteurs v,double coef);

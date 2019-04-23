@@ -44,5 +44,5 @@ clean:
 	rm -f test0
 
 
-test : test.c equipe.o analyse_lexicographique.o message.o
-	$(CC) $(Option) equipe.o analyse_lexicographique.o message.o test.c -o gg
+test : test.c
+	$(CC) $(Option) test.c -o gg

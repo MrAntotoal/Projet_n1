@@ -9,3 +9,4 @@ char p3[3];
 
 void changerBoutton();
 void ecrireNouveauBouton(char *truc, int n);
+char* myconcat(const char *s1, const char *s2);
