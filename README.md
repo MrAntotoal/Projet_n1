@@ -1,6 +1,15 @@
 # Projet_n+1
 Projet Tuteuré L3 Info
 
+### lib a install :
+``` sudo apt-get install libsdl1.2-dev```
+
+``` sudo apt-get install freeglut3-dev```
+
+``` sudo apt-get install libsdl-image1.2-dev```
+
+``` sudo apt-get install libsdl-ttf2.0-dev```
+
 # doc pour communication avec la file de message + lancement jeux a la fin 
 
 rapelle des struct :
