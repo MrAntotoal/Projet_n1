@@ -28,7 +28,6 @@ typedef struct sockaddr_in SOCKADDR_IN;
 typedef struct sockaddr SOCKADDR;
 typedef struct in_addr IN_ADDR;
 
-#define CRLF		"\r\n"
 #define PORT	 	1977
 #define MAX_CLIENTS 	1000
 

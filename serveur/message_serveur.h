@@ -7,21 +7,17 @@
 #define END "END"
 #define DEPLACEMENT "DEPLACEMENT"
 #define TIR "TIR"
-#define RECHARGEMENT "RECHARGEMENT"
-#define TIMEOUT "TIMEOUT"
 #define PSEUDO_POK "PSEUDO_POK"
-#define DISABLE_BUTT "DISABLE_BUTT"
 #define MODE_JEUX "MODE_JEUX"
-#define INVITER_AMI "INVITER_AMI"
 #define NEW_BUTT "NEW_BUTT"
-#define KICK_AMI "KICK_AMI"
+#define KICK_EQUIPE "KICK_EQUIPE"
 #define NUM_CHAR "NUM_CHAR"
 #define ROLE "ROLE"
-#define MORT "MORT"
 #define ERREUR_REJOINDRE "ERREUR_REJOINDRE"
+#define MORT "MORT"
 
 /* pour comparer sur ce nombre et pas les paramètres suivant */
 #define TAILLE_REJ 16
 #define TAILLE_DEP 11
 #define TAILLE_TIR 3
-#define TAILLE_RECH 12
+#define TAILLE_KICK 11

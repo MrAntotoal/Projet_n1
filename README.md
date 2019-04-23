@@ -7,7 +7,7 @@
 |REJOINDRE_EQUIPE	|rejoint l’équipe ?|	numéro de l’équipe a rejoindre|	Buff + ' ' + numéro 	|equipe|client|
 |ERREUR_REJOINDRE|équipe pleine pas ok ||||serveur|
 |ROLE|donne le role (conducteur,tireur,protecteur,...)|0 conducteur, 1 tireur,2 protecteur|Buff + ' ' + int|equipe|serveur|
-|QUICK_EQUIPE|vire le gars de l'équipe||Buff + ' ' + pseudo + ' '|equipe|client|
+|QUICK_EQUIPE|vire le gars de l'équipe||Buff + ' ' + role|equipe|client|
 |QUITTER_EQUIPE	|quitte et si plus de membre supprime	|	||equipe|client|
 |MENU_JOUEUR	|envoie le code du menu au joueur|	 (plusieurs menu. )	| si plusieurs Buff + ' ' + numéro sinon buff|	Après connexion + pseudo ok |serveur|
 |START	|envoie ordre début partie	| 	|  | 	X|serveur|
@@ -21,7 +21,7 @@
 |MODE_JEUX|+1 pour décision mode | numéro |Buff +' ' + (0-256)|Décision mode de jeux|client|
 |NEW_BUTT| change les boutons du joueur | code des boutons Tireur : F,TG,TD,TS Protecteur :P,PG,PD,PS Conducteur : AR,CG,CD,CS| Buff + ' ' + code bouton + ' ' x4 | 1 minute ou toucher |serveur|
 |NUM_CHAR|Le client enregistre le numéro du char|numéro du char (0-256)|Buff + ' ' + numéro|Début partie|serveur|
-
+|MORT|arrete envoyer requete||||serveur (via jeu)|
 
 ## info valeurs requete_t
 * numero char -> ba le num du char (debut a 1)

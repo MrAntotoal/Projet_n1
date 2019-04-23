@@ -3,7 +3,7 @@
 
 //#include "serveur.h"
 
-#define NB_J_EQUIPE_MAX 3
+#define NB_J_EQUIPE_MAX 2
 #define NB_EQUIPE_MAX 50
 
 

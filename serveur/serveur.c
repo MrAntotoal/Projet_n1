@@ -14,13 +14,12 @@ Client clients[MAX_CLIENTS];
 int actual = 0;
 
 void lancer_jeux(){
-  printf("$$$$$$$$$$$YOYO\n");
   args = malloc(sizeof(char *) * 101);
   for (int i = 0; i < 100; i++) {
     args[i] = malloc(sizeof(char) * 15);
   }
   args[0] = "../jeux/run";
-  args[1] = "0";
+  args[1] = "0"; // mode de jeux
   sprintf(args[2],"%d",index_equipe);
   for (int p = 0; p < index_equipe; p++) {
     sprintf(args[p+3],"%d",p);
@@ -73,9 +72,6 @@ void app(void)
     int numero_char;
     while (prendre_reponse() != -1)
     {
-      #ifdef AFFICHAGE
-      printf("*******************message recuperer %ld\n",rcv.m_type);
-      #endif
       switch (rcv.type)
       {
         case 100:
@@ -134,7 +130,6 @@ void app(void)
         fprintf(stderr,"$$$$$$$$$$$ EXECVE JEU\n");
         kill(getpid(),SIGINT);
       }
-      printf("je sors\n");
     }
 
     if(FD_ISSET(sock, &rdfs))
@@ -163,10 +158,10 @@ void app(void)
 
       FD_SET(csock, &rdfs);
       strncpy(truc,buffer,BUF_SIZE - 1);
+
       /*****************************/
       /*    on vérifie le pseudo   */
       /*****************************/
-
       if(est_dans_table(truc) == -1)
       {
         #ifdef AFFICHAGE
@@ -175,11 +170,10 @@ void app(void)
         strncpy(buffer, PSEUDO_POK, BUF_SIZE - 1);
         write_client(csock,buffer);
         Clean_Buf;
-        closesocket(csock); // on déco le client
+        closesocket(csock);
       }
       else
       {
-        // PSEUDO_OK
         #ifdef AFFICHAGE
         printf("PSEUDO_OK\n");
         #endif
@@ -193,11 +187,6 @@ void app(void)
         Clean_Buf;
         clients[actual] = c;
         actual++;
-
-        /*****************************/
-        /*          on répond        */
-        /*****************************/
-
         strncpy(buffer, MENU_JOUEUR"\n", BUF_SIZE - 1);
         write_client(csock,buffer);
         Clean_Buf;
@@ -239,139 +228,127 @@ void app(void)
           /***********************************************/
 
           char a_comparer[BUF_SIZE];
-          strncpy(a_comparer,ROLE,BUF_SIZE - 1);
-          if(fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
-          {
-            #ifdef AFFICHAGE
-            printf("%s\n",a_comparer);
-            #endif
-            Clean_Buf;
-            sprintf(buffer,ROLE" %d\n",position_equipe(clients[i]));
-            #ifdef AFFICHAGE
-            printf("role : %s\n",buffer);
-            #endif
-            write_client(clients[i].sock,buffer);
+          strncpy(a_comparer,KICK_EQUIPE,BUF_SIZE - 1);
+          if(fast_compare(a_comparer,buffer,TAILLE_KICK) == 0){
+            int role;
+            sscanf(buffer,"%s %d\n",truc,&role);
+            quitter_equipe(&GL_equipe[clients[i].numEquipe].membre[role]);
             Clean_Buf;
           }
-          else
-          {
-            strncpy(a_comparer,CREER_EQUIPE,BUF_SIZE - 1);
-            if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
+          else{
+            strncpy(a_comparer,ROLE,BUF_SIZE - 1);
+            if(fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
             {
+              Clean_Buf;
+              sprintf(buffer,ROLE" %d\n",position_equipe(clients[i]));
               #ifdef AFFICHAGE
-              printf("%s\n",a_comparer);
+              printf("role : %s\n",buffer);
               #endif
-              /*if(clients[i].numEquipe > 0) {
-              quitter_equipe(&clients[i]);
-            }*/
-            creer_equipe(&clients[i]);
-
-            sprintf(buffer, "%d\n",index_equipe);
-            write_client(clients[i].sock,buffer);
-            affiche_tt_e();
-
-            /*******************/
-            /* fork pour lobby */
-            /*******************/
-
-            if(flag_lobby == 0){ // on ouvre le lobby une fois !
-              #ifdef AFFICHAGE
-              printf("LOBBY DEMANDEE !\n");
-              #endif
-              flag_lobby = 1;
-              system("firefox lobby.html &");
-            }
-            Clean_Buf;
-          } else
-          {
-            strncpy(a_comparer,REJOINDRE_EQUIPE,BUF_SIZE - 1);
-            if (fast_compare(a_comparer,buffer,TAILLE_REJ) == 0)
-            {
-              #ifdef AFFICHAGE
-              printf("%s\n",a_comparer);
-              #endif
-              int rej = 0;
-              sscanf(buffer,"%s %d\n",truc,&rej);
-              if(rej > index_equipe || rej <= 0){
-                write_client(clients[i].sock,ERREUR_REJOINDRE"\n");
-              }
-              else{
-                if(GL_equipe[i].nb_joueur == 3){
-                  write_client(clients[i].sock,ERREUR_REJOINDRE"\n");
-                }
-                else{
-                  rejoindre_equipe(&clients[i],rej - 1);
-                  Clean_Buf;
-                  affiche_tt_e();
-                  write_client(clients[i].sock,"OK\n");
-                }
-              }
+              write_client(clients[i].sock,buffer);
+              Clean_Buf;
             }
             else
             {
-              strncpy(a_comparer,QUITTER_EQUIPE,BUF_SIZE - 1);
+              strncpy(a_comparer,CREER_EQUIPE,BUF_SIZE - 1);
               if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
               {
                 #ifdef AFFICHAGE
                 printf("%s\n",a_comparer);
                 #endif
-                quitter_equipe(&clients[i]);
-                Clean_Buf;
-                write_client(clients[i].sock,"OK\n");
+                creer_equipe(&clients[i]);
 
-              }
-              else
-              {
-                //strncpy(a_comparer,DEPLACEMENT,BUF_SIZE - 1);
-                strncpy(a_comparer,DEPLACEMENT,BUF_SIZE - 1);
-                if (fast_compare(a_comparer,buffer,TAILLE_DEP) == 0)
-                {
-                  // numéro char
-                  int numero_char = 0;
-                  int type = 0;
-                  int repeter = 0;
+                sprintf(buffer, "%d\n",index_equipe);
+                write_client(clients[i].sock,buffer);
 
-                  sscanf(buffer,"%s %d %d %d\n",truc,&numero_char,&type,&repeter);
+                /*******************/
+                /* fork pour lobby */
+                /*******************/
+                if(flag_lobby == 0){ // on ouvre le lobby une fois !
                   #ifdef AFFICHAGE
-                  printf("** D char %d Type %d A repeter %d**\n",numero_char,type,repeter);
+                  printf("LOBBY DEMANDEE !\n");
                   #endif
-
-                  envoyer_requete(numero_char,type,repeter);
-                  Clean_Buf;
-                  write_client(clients[i].sock,"OK\n");
+                  flag_lobby = 1;
+                  system("firefox lobby.html &");
+                }
+                Clean_Buf;
+              } else
+              {
+                strncpy(a_comparer,REJOINDRE_EQUIPE,BUF_SIZE - 1);
+                if (fast_compare(a_comparer,buffer,TAILLE_REJ) == 0)
+                {
+                  #ifdef AFFICHAGE
+                  printf("%s\n",a_comparer);
+                  #endif
+                  int rej = 0;
+                  sscanf(buffer,"%s %d\n",truc,&rej);
+                  if(rej > index_equipe || rej <= 0){
+                    write_client(clients[i].sock,ERREUR_REJOINDRE"\n");
+                  }
+                  else{
+                    if(GL_equipe[i].nb_joueur == 3){
+                      write_client(clients[i].sock,ERREUR_REJOINDRE"\n");
+                    }
+                    else{
+                      rejoindre_equipe(&clients[i],rej - 1);
+                      Clean_Buf;
+                      affiche_tt_e();
+                      write_client(clients[i].sock,"OK\n");
+                    }
+                  }
                 }
                 else
                 {
-                  strncpy(a_comparer, TIR,BUF_SIZE - 1);
-                  if (fast_compare(a_comparer,buffer,TAILLE_TIR) == 0)
+                  strncpy(a_comparer,QUITTER_EQUIPE,BUF_SIZE - 1);
+                  if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
                   {
-                    /* alors recuperer selon codage */
-                    int numero_char = 0;
-                    sscanf(buffer,"%s %d",truc,&numero_char);
-                    envoyer_requete(numero_char,TIRER,0);
                     #ifdef AFFICHAGE
-                    printf("TIR\n");
+                    printf("%s\n",a_comparer);
                     #endif
+                    quitter_equipe(&clients[i]);
                     Clean_Buf;
                     write_client(clients[i].sock,"OK\n");
+
                   }
                   else
                   {
-                    strncpy(a_comparer, RECHARGEMENT,BUF_SIZE - 1);
-                    if(fast_compare(a_comparer,buffer,TAILLE_RECH) == 0)
+                    strncpy(a_comparer,DEPLACEMENT,BUF_SIZE - 1);
+                    if (fast_compare(a_comparer,buffer,TAILLE_DEP) == 0)
                     {
-                      //envoyer_requete(buffer[TAILLE_RECH + 2],RECH,0);
+                      int numero_char = 0;
+                      int type = 0;
+                      int repeter = 0;
+
+                      sscanf(buffer,"%s %d %d %d\n",truc,&numero_char,&type,&repeter);
                       #ifdef AFFICHAGE
-                      printf("RECHARGEMENT TX\n");
+                      printf("** D char %d Type %d A repeter %d**\n",numero_char,type,repeter);
                       #endif
+
+                      envoyer_requete(numero_char,type,repeter);
                       Clean_Buf;
+                      write_client(clients[i].sock,"OK\n");
                     }
                     else
                     {
-                      #ifdef AFFICHAGE
-                      printf("******* %s non reconnu *******\n", buffer);
-                      #endif
-                      Clean_Buf;
+                      strncpy(a_comparer, TIR,BUF_SIZE - 1);
+                      if (fast_compare(a_comparer,buffer,TAILLE_TIR) == 0)
+                      {
+                        /* alors recuperer selon codage */
+                        int numero_char = 0;
+                        sscanf(buffer,"%s %d",truc,&numero_char);
+                        envoyer_requete(numero_char,TIRER,0);
+                        #ifdef AFFICHAGE
+                        printf("TIR\n");
+                        #endif
+                        Clean_Buf;
+                        write_client(clients[i].sock,"OK\n");
+                      }
+                      else
+                      {
+                        #ifdef AFFICHAGE
+                        printf("******* %s non reconnu *******\n", buffer);
+                        #endif
+                        Clean_Buf;
+                      }
                     }
                   }
                 }
@@ -381,13 +358,9 @@ void app(void)
         }
       }
     }
-
-
-
   }
-}
-clear_clients();
-end_connection(sock);
+  clear_clients();
+  end_connection(sock);
 }
 
 
