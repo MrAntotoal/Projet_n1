@@ -292,79 +292,87 @@ void app(void)
               #endif
               int rej = 0;
               sscanf(buffer,"%s %d\n",truc,&rej);
-              /*if(clients[i].numEquipe > 0) {
-              quitter_equipe(&clients[i]);
-            }*/
-            rejoindre_equipe(&clients[i],rej - 1);
-            Clean_Buf;
-            affiche_tt_e();
-            write_client(clients[i].sock,"OK\n");
-          }
-          else
-          {
-            strncpy(a_comparer,QUITTER_EQUIPE,BUF_SIZE - 1);
-            if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
-            {
-              #ifdef AFFICHAGE
-              printf("%s\n",a_comparer);
-              #endif
-              quitter_equipe(&clients[i]);
-              Clean_Buf;
-              write_client(clients[i].sock,"OK\n");
-
+              if(rej > index_equipe){
+                write_client(clients[i].sock,ERREUR_REJOINDRE"\n");
+              }
+              else{
+                if(GL_equipe[i].nb_joueur == 3){
+                  write_client(clients[i].sock,ERREUR_REJOINDRE"\n");
+                }
+                else{
+                  rejoindre_equipe(&clients[i],rej - 1);
+                  Clean_Buf;
+                  affiche_tt_e();
+                  write_client(clients[i].sock,"OK\n");
+                }
+              }
             }
             else
             {
-              //strncpy(a_comparer,DEPLACEMENT,BUF_SIZE - 1);
-              strncpy(a_comparer,DEPLACEMENT,BUF_SIZE - 1);
-              if (fast_compare(a_comparer,buffer,TAILLE_DEP) == 0)
+              strncpy(a_comparer,QUITTER_EQUIPE,BUF_SIZE - 1);
+              if (fast_compare(a_comparer,buffer,strlen(buffer)) == 0)
               {
-                // numéro char
-                int numero_char = 0;
-                int type = 0;
-                int repeter = 0;
-
-                sscanf(buffer,"%s %d %d %d\n",truc,&numero_char,&type,&repeter);
                 #ifdef AFFICHAGE
-                printf("** D char %d Type %d A repeter %d**\n",numero_char,type,repeter);
+                printf("%s\n",a_comparer);
                 #endif
-
-                envoyer_requete(numero_char,type,repeter);
+                quitter_equipe(&clients[i]);
                 Clean_Buf;
                 write_client(clients[i].sock,"OK\n");
+
               }
               else
               {
-                strncpy(a_comparer, TIR,BUF_SIZE - 1);
-                if (fast_compare(a_comparer,buffer,TAILLE_TIR) == 0)
+                //strncpy(a_comparer,DEPLACEMENT,BUF_SIZE - 1);
+                strncpy(a_comparer,DEPLACEMENT,BUF_SIZE - 1);
+                if (fast_compare(a_comparer,buffer,TAILLE_DEP) == 0)
                 {
-                  /* alors recuperer selon codage */
+                  // numéro char
                   int numero_char = 0;
-                  sscanf(buffer,"%s %d",truc,&numero_char);
-                  envoyer_requete(numero_char,TIRER,0);
+                  int type = 0;
+                  int repeter = 0;
+
+                  sscanf(buffer,"%s %d %d %d\n",truc,&numero_char,&type,&repeter);
                   #ifdef AFFICHAGE
-                  printf("TIR\n");
+                  printf("** D char %d Type %d A repeter %d**\n",numero_char,type,repeter);
                   #endif
+
+                  envoyer_requete(numero_char,type,repeter);
                   Clean_Buf;
                   write_client(clients[i].sock,"OK\n");
                 }
                 else
                 {
-                  strncpy(a_comparer, RECHARGEMENT,BUF_SIZE - 1);
-                  if(fast_compare(a_comparer,buffer,TAILLE_RECH) == 0)
+                  strncpy(a_comparer, TIR,BUF_SIZE - 1);
+                  if (fast_compare(a_comparer,buffer,TAILLE_TIR) == 0)
                   {
-                    //envoyer_requete(buffer[TAILLE_RECH + 2],RECH,0);
+                    /* alors recuperer selon codage */
+                    int numero_char = 0;
+                    sscanf(buffer,"%s %d",truc,&numero_char);
+                    envoyer_requete(numero_char,TIRER,0);
                     #ifdef AFFICHAGE
-                    printf("RECHARGEMENT TX\n");
+                    printf("TIR\n");
                     #endif
                     Clean_Buf;
+                    write_client(clients[i].sock,"OK\n");
                   }
                   else
                   {
-                    #ifdef AFFICHAGE
-                    printf("******* %s non reconnu *******\n", buffer);
-                    #endif
-                    Clean_Buf;
+                    strncpy(a_comparer, RECHARGEMENT,BUF_SIZE - 1);
+                    if(fast_compare(a_comparer,buffer,TAILLE_RECH) == 0)
+                    {
+                      //envoyer_requete(buffer[TAILLE_RECH + 2],RECH,0);
+                      #ifdef AFFICHAGE
+                      printf("RECHARGEMENT TX\n");
+                      #endif
+                      Clean_Buf;
+                    }
+                    else
+                    {
+                      #ifdef AFFICHAGE
+                      printf("******* %s non reconnu *******\n", buffer);
+                      #endif
+                      Clean_Buf;
+                    }
                   }
                 }
               }
@@ -373,11 +381,10 @@ void app(void)
         }
       }
     }
+
+
+
   }
-
-
-
-}
 }
 clear_clients();
 end_connection(sock);
@@ -544,9 +551,8 @@ void remove_client(int to_remove)
 
     // Ecriture du fichier
     fprintf(fichier,"%d ", getpid());
-
-    // fin
     fclose(fichier);
+    // fin
 
 
     /***********************************/

@@ -5,6 +5,7 @@ serveur/serveur
 serveur/start
 serveur/traitement_client
 serveur/gg
+serveur/lobby.html
 serveur/fork_html
 serveur/test0
 serveur/.*

@@ -18,6 +18,8 @@
 #define NUM_CHAR "NUM_CHAR"
 #define ROLE "ROLE"
 #define MORT "MORT"
+#define ERREUR_REJOINDRE "ERREUR_REJOINDRE"
+
 /* pour comparer sur ce nombre et pas les paramètres suivant */
 #define TAILLE_REJ 16
 #define TAILLE_DEP 11
