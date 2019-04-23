@@ -2,6 +2,7 @@
 
 |Message dans le buffer|	Résultat|	En plus	|En pratique	|Temps|Expéditaire|
 |:---------------------|:---------|:--------|:------------|:----|:----------|
+|ARRETE|fermer appli et fermer connection||||Serveur|
 |CREER_EQUIPE	|avec le créateur comme chef d’équipe	|	||	equipe|Client|
 |REJOINDRE_EQUIPE	|rejoint l’équipe ?|	numéro de l’équipe a rejoindre|	Buff + ' ' + numéro 	|equipe|client|
 |ROLE|donne le role (conducteur,tireur,protecteur,...)|0 conducteur, 1 tireur,2 protecteur|Buff + ' ' + int|equipe|serveur|
