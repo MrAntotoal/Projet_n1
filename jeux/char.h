@@ -32,6 +32,11 @@ typedef struct{
   double largeur_b;
   //vie
   double pv;
+  double pv_bouclier;
+  int bouclier_active;
+  double regene_bouclier;
+  double temps_regene;
+  double temps_stop_active;
   //idem pour tourelle et shield
 }char_3_places;
 
@@ -60,3 +65,7 @@ int est_en_collision_avec_bouclier(char3p c,polygone p);
 void bouclier_gauche(char3p c);
 void bouclier_droite(char3p c);
 void translation_char_vec(char3p c,Vecteurs v,double coef);
+void regene_bouclier(char3p c,double temps_actu);
+void regene_bouclier_all_char(liste chars,double temps);
+void stop_bouclier(char3p c,double temps);
+void activer_bouclier(char3p c);

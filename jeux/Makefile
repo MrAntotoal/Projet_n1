@@ -53,6 +53,8 @@ test_fm: test_fm.c type_fm.h
 	$(cc) $(option) test_fm.c type_fm.h -o test_fm
 
 
+test_reception : test_reception.c type_fm.h
+	$(cc) $(option) test_reception.c type_fm.h -o test_reception
 
 test_texture: test_texture.c texture.o allocation_memoire.o
 	$(cc) $(option) test_texture.c texture.o allocation_memoire.o -o test_texture -lm $(o_sdl) $(o_opengl)

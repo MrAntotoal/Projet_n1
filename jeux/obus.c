@@ -28,12 +28,20 @@ void obus_avance(Obus o){
 
 int obus_touche_cible(Obus o,liste l_char,int id_fm){
   char3p c2;
+  float pv;
   if(!est_list_vide(l_char)){
     c2=renvoie_sommet_liste(l_char);
     if(c2!=o->tireur && c2->pv >0){
       if(est_en_collision_avec_bouclier(c2,o->p)){
-	printf("shield !! \n");
-	return 1;
+	pv=o->dega-c2->pv_bouclier;
+	if(pv<0){
+	  c2->pv_bouclier-=o->dega;
+	  return 1;
+	}
+	else{
+	  c2->pv_bouclier=0.0;
+	  o->dega=pv;
+	}
       }
       if(polygone_dans_polygone(o->p,c2->c)||polygone_dans_polygone(o->p,c2->t)){// ici il faudrais faire les tests sur un autre poly (pour eviter les bug tmtc)
 
@@ -62,8 +70,6 @@ int obus_touche_un_obstacle(liste l_obstacle,Obus o){
   if(!(est_list_vide(l_obstacle))){
     ob=renvoie_sommet_liste(l_obstacle);
     if(en_collision_avec_obstacle(o,ob)){
-      printf("touche obsacle %d \n",ob->type);
-      afficher_polygone(ob->p);
       return 1;
     }  
     return obus_touche_un_obstacle(liste_sans_premier(l_obstacle),o);
@@ -102,7 +108,6 @@ liste traitement_tous_obus(liste l_obus,liste l_char,liste l_zone,int id_fm,GLui
       return insere_elem_liste(l_obus,o);
     }
     else{
-      printf("toucher\n");
       libere_obus(o);
       return l_obus;
     }
