@@ -50,6 +50,8 @@ typedef struct{
 |7          |droite_shield   |1        |
 |8          |gauche_shield   |1        |
 |10         |tire            |0        |
+|11         |activer bouclier|0        |
+|12         |stop bouclier   |0        |
 pour le reste on verra plus tard
 
 * a_reperter -> on repete cette action jusqu'au signe d'interuption
