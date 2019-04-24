@@ -93,7 +93,7 @@ void app(void)
 
         break;
 
-        case 110:
+        case -100:
         //mort
         numero_char = rcv.numero_char;
         #ifdef AFFICHAGE
@@ -291,7 +291,7 @@ void app(void)
                     }
                     else{
 
-                      sprintf(buffer,PSEUDO_REJOINT" %d %s\n",GL_equipe[clients[i].numEquipe].numj,get_lexeme(clients[i].pseudo));
+                      sprintf(buffer,"%s\n",get_lexeme(clients[i].pseudo));
                       write_client(GL_equipe[clients[i].numEquipe].membre[0].sock,buffer);
 
                       rejoindre_equipe(&clients[i],rej - 1);

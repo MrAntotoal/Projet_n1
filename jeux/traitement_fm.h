@@ -13,4 +13,4 @@ typedef struct{
 typedef toutes_listes * t_liste;
 
 void stop_requete(char numero_char,char type_action,liste l);
-void boucle_de_traitement_liste_requete(t_liste tl);
+void boucle_de_traitement_liste_requete(t_liste tl,double time);

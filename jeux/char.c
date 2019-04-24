@@ -44,6 +44,11 @@ char3p init_char(Points centre,double largeur,double longueur,char numero,char n
   c3p->vitesse_rotation_t=0.2;
   c3p->vitesse_rotation_b=0.2;
   c3p->pv=1000.0;
+  c3p->pv_bouclier=300.0;
+  c3p->bouclier_active=0;
+  c3p->regene_bouclier=100.0;
+  c3p->temps_regene=1.0;
+  c3p->temps_stop_active=0.0;
   c3p->largeur_b=20;
   c3p->rayon_min_b=90.0;
   c3p->rayon_max_b=100.0;
@@ -146,6 +151,15 @@ void bouclier_droite(char3p c){
   c->degre_b-=c->vitesse_rotation_b;
 }
 
+void activer_bouclier(char3p c){
+  c->bouclier_active=1;
+}
+
+void stop_bouclier(char3p c,double temps){
+  c->bouclier_active=0;
+  c->temps_stop_active=temps;
+}
+
 
 
 
@@ -233,7 +247,12 @@ void afficher_bouclier(char3p c){
   double i;
   double degre_actu=c->degre_b-c->largeur_b;
   double degre_step=c->largeur_b/20.0;
-  glColor3ub(0.0,0.0,255);
+  if(c->bouclier_active){
+    glColor3ub(((300.0-c->pv_bouclier)/300.0)*255,0.0,(c->pv_bouclier/300.0)*255);
+  }
+  else{
+    glColor3ub(100.0,100.0,100.0);
+  }
   glBegin(GL_LINE_LOOP);
   for(i=degre_actu;i<=c->degre_b+c->largeur_b;i+=degre_step){
     glVertex2d(c->centre->x+c->rayon_max_b*cos(i*(M_PI/180.0)),
@@ -319,9 +338,9 @@ void retirer_pv(char3p c,double pv,int id_fm){
   Points p;
   Vecteurs v;
   c->pv-=pv;
-  rep.mtype=1;
+  rep.mtype=10;
   rep.numero_char=c->numero_char;
-  if(c->pv<0){
+  if(c->pv<=0){
     //mort
     p=cree_point(-100.0,-100.0);
     v=cree_vecteur_2p(c->centre,p);
@@ -354,12 +373,14 @@ int est_en_collision_avec_bouclier_point(char3p c,Points p){
 
 int est_en_collision_avec_bouclier(char3p c,polygone p){
   Points po;
-  if(!est_list_vide(p)){
-    po=renvoie_sommet_liste(p);
-    if(est_en_collision_avec_bouclier_point(c,po)){
-      return 1;
+  if(c->bouclier_active){
+    if(!est_list_vide(p)){
+      po=renvoie_sommet_liste(p);
+      if(est_en_collision_avec_bouclier_point(c,po)){
+	return 1;
+      }
+      return est_en_collision_avec_bouclier(c,liste_sans_premier(p));
     }
-    return est_en_collision_avec_bouclier(c,liste_sans_premier(p));
   }
   return 0;
 }
@@ -375,4 +396,19 @@ void translation_char_vec(char3p c,Vecteurs v,double coef){
   translation_poly_vecteur(c->c,v,coef);
   translation_poly_vecteur(c->t,v,coef);
   translation_poly_vecteur(c->t_pour_afficher,v,coef);
+}
+
+
+void regene_bouclier(char3p c,double temps_actu){
+  if(c->temps_stop_active+c->temps_regene<= temps_actu && !c->bouclier_active &&c->pv_bouclier!=300.0){
+    c->temps_stop_active=temps_actu;
+    c->pv_bouclier+=c->regene_bouclier;
+  }
+}
+
+void regene_bouclier_all_char(liste chars,double temps){
+  if(!est_list_vide(chars)){
+    regene_bouclier(renvoie_sommet_liste(chars),temps);
+    regene_bouclier_all_char(liste_sans_premier(chars),temps);
+  }
 }

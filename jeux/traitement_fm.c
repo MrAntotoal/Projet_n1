@@ -103,7 +103,7 @@ void boucle_de_traitement_liste_requete(toutes_listes li){//liste l,liste l_char
 }*/
 
 
-void boucle_de_traitement_liste_requete(t_liste tl){
+void boucle_de_traitement_liste_requete(t_liste tl,double time){
   int nbr;
   int i;
   requete_t* r;
@@ -133,6 +133,14 @@ void boucle_de_traitement_liste_requete(t_liste tl){
 	      printf("tire!!\n");
 	      tl->l_obus=insere_elem_liste(tl->l_obus,cree_obus(c));
 	    }
+	    break;
+	  case 11://active bouclier
+	    c=get_index(r->numero_char-1,tl->l_char);
+	    activer_bouclier(c);
+	    break;
+	  
+	  case 12://stop bouclier
+	    stop_bouclier(get_index(r->numero_char-1,tl->l_char),time);
 	    break;
 	  }
 	  
