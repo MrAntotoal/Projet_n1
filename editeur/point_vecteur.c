@@ -110,7 +110,7 @@ double distance_2_points(Points p1,Points p2){
 double produit_scalaire(Vecteurs v1,Vecteurs v2){
   return v1->x*v2->x+v1->y*v2->y;
 }
-
+/*
 double degre_de_2_points(Points O ,Points A,Points B){
   Vecteurs v1,v2;
   double res;
@@ -120,8 +120,23 @@ double degre_de_2_points(Points O ,Points A,Points B){
   libere_points(v1);
   libere_points(v2);
   return res*180/M_PI;
+}*/
+double degre_de_2_points(Points O ,Points A,Points B){
+  Vecteurs v1,v2;
+  double res;
+  double det;
+  v1=cree_vecteur_2p(O,A);
+  v2=cree_vecteur_2p(O,B);
+  det=((A->x-O->x)*(B->y-O->y)-(A->y-O->y)*(B->x-O->x));
+  res=acos(produit_scalaire(v1,v2)/(norme_vecteur(v1)*norme_vecteur(v2)));
+  libere_points(v1);
+  libere_points(v2);
+  res=res*180/M_PI;
+  if(det<0){
+    res=-res;
+  }
+  return res;
 }
-
 
 void afficher_point(Points p){
   printf("points : \nx : %f\ny: %f\n",p->x,p->y);

@@ -11,6 +11,7 @@ int main(int argc,char * argv[]){
   //liste l_points=list_vide();
   liste liste_poly=list_vide();
   liste liste_poly_zone=list_vide();
+  liste liste_points_reap=list_vide();
   //liste l_inter_z;
   int numero_poly_actu=-1;
   int poly_actu=-1;
@@ -29,6 +30,7 @@ int main(int argc,char * argv[]){
   int a_clicker=0;
   float rap_x,rap_y;
   int modification_mode=0;
+  int reap_mode=0;
   Points p_select=NULL;
   Points p_derniere_pos=NULL;
   liste l_inter;
@@ -81,7 +83,10 @@ int main(int argc,char * argv[]){
 				      100+(resolution_actu_y
 				       -event.button.y)
 				      *rap_y);
-	    if(nouveau==1){
+	    if(reap_mode){
+	      liste_points_reap=insere_elem_liste(liste_points_reap,p_derniere_pos);
+	    }
+	    else if(nouveau==1){
 	      numero_poly_actu++;
 	      poly_actu=numero_poly_actu;
 	      liste_poly=insere_elem_liste(liste_poly,
@@ -103,6 +108,9 @@ int main(int argc,char * argv[]){
 	  }
 	  else{
 	    p_select=sur_un_point(sourie,liste_poly);
+	    if(p_select==NULL){
+	      p_select=sur_un_point_poly(sourie,liste_points_reap);
+	    }
 	  }
 	}
 	
@@ -148,12 +156,13 @@ int main(int argc,char * argv[]){
 	    if(!nouveau){
 	      nouveau=1;
 	      ajoute=0;
+	      reap_mode=0;
 	      modification_mode=0;
 	      need_affichage=1;
 	    }
 	    break;
 	  case SDLK_s:
-	    enregistrer_all("map.map",liste_poly,liste_poly_zone);
+	    enregistrer_all("map.map",liste_poly,liste_poly_zone,liste_points_reap);
 	    break;
 	  case SDLK_z:
 	    l_inter=liste_poly;
@@ -183,6 +192,7 @@ int main(int argc,char * argv[]){
 	    if(!modification_mode){
 	      modification_mode=1;
 	      ajoute=0;
+	      reap_mode=0;
 	      need_affichage=1;
 	    }
 	    else{
@@ -190,7 +200,19 @@ int main(int argc,char * argv[]){
 	      need_affichage=1;
 	    }
 	    break;
-
+	  case SDLK_r:
+	    if(!reap_mode){
+	      reap_mode=1;
+	      ajoute=0;
+	      modification_mode=0;
+	      need_affichage=1;
+	    }
+	    else{
+	      reap_mode=0;
+	      modification_mode=0;
+	      need_affichage=1;
+	    }
+	    break;
 	  case SDLK_a:
 	    if(!ajoute){
 	      if(modification_mode && p_select!=NULL){
@@ -220,6 +242,7 @@ int main(int argc,char * argv[]){
 	  case SDLK_DELETE:
 	    if(modification_mode && p_select!=NULL){
 	      l_inter=liste_poly;
+	      liste_points_reap=supprime_elem(liste_points_reap,p_select);
 	      liste_poly->objet=supprime_elem(liste_poly->objet,p_select);
 	      while(!est_list_vide(l_inter)){
 		l_inter->objet=supprime_elem(l_inter->objet,p_select);
@@ -256,6 +279,9 @@ int main(int argc,char * argv[]){
       }
       else if(ajoute){
 	glColor3ub(0,255,0);
+      }
+      else if(reap_mode){
+	glColor3ub(255,255,255);
       }
       else{
 	glColor3ub(0,0,255);
@@ -307,6 +333,8 @@ int main(int argc,char * argv[]){
 	  afficher_contour_select(p_select,255,0,0);
 	}
       }
+
+      afficher_liste_point(liste_points_reap,255,255,0);
       go_ecran();
       
     }

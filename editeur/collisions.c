@@ -20,7 +20,7 @@ int point_dans_polygone(Points p,polygone poly){
 
   deg=point_dans_poly_bis(p,liste_sans_premier(poly),renvoie_sommet_liste(poly),renvoie_sommet_liste(poly),0);
   //printf("deg %f\n",deg);
-  return deg==360.0;
+  return deg==360.0 || deg==-360;
 }
 
 int polygone_dans_polygone_bis(polygone poly0,polygone poly1){
