@@ -13,7 +13,7 @@ donc komen kon utilize ?
 |bleu    | placer des points         |
 |rouge   | modification mode         |
 |vert    | ajoute points dans un poly|
-
+|gris    | respawn                   |
 
 
 de base mode bleu
@@ -25,5 +25,6 @@ de base mode bleu
 |a       | mode ajout                    | rouge      | vert      |
 |suppr   | supprimer le point selectioné | rouge      | rouge     |
 |s       | enregister                    | *          | *         |
+|r       | placer les point de respawn   | *          |gris       |
 
 j'ai presque tous dit , mais je vais faire une video tuto :DDDDD
