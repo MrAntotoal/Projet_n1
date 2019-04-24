@@ -8,6 +8,7 @@
 |ERREUR_REJOINDRE|équipe pleine pas ok ||||serveur|
 |ROLE|donne le role (conducteur,tireur,protecteur,...)|0 conducteur, 1 tireur,2 protecteur|Buff + ' ' + int|equipe|serveur|
 |KICK_EQUIPE|vire le gars de l'équipe, pour le client indique qu'il est exclu||Buff + ' ' + role|equipe|client / serveur|
+|PSEUDO_REJOINT|donne le pseudo du joueur qui vient de rejoindre|role et pseudo||Buff + ' ' + role + ' ' + pseudo|serveur|
 |QUITTER_EQUIPE	|quitte et si plus de membre supprime	|	||equipe|client|
 |MENU_JOUEUR	|envoie le code du menu au joueur|	 (plusieurs menu. )	| si plusieurs Buff + ' ' + numéro sinon buff|	Après connexion + pseudo ok |serveur|
 |START	|envoie ordre début partie	| 	|  | 	X|serveur|

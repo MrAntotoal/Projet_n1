@@ -290,6 +290,10 @@ void app(void)
                       write_client(clients[i].sock,ERREUR_REJOINDRE"\n");
                     }
                     else{
+
+                      sprintf(buffer,PSEUDO_REJOINT" %d %s\n",GL_equipe[clients[i].numEquipe].nb_joueur,get_lexeme(clients[i].pseudo));
+                      write_client(GL_equipe[clients[i].numEquipe].membre[0].sock,buffer);
+
                       rejoindre_equipe(&clients[i],rej - 1);
                       Clean_Buf;
                       write_client(clients[i].sock,"OK\n");

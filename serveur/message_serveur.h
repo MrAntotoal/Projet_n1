@@ -14,6 +14,7 @@
 #define NUM_CHAR "NUM_CHAR"
 #define ROLE "ROLE"
 #define ERREUR_REJOINDRE "ERREUR_REJOINDRE"
+#define PSEUDO_REJOINT "PSEUDO_REJOINT"
 #define MORT "MORT"
 
 /* pour comparer sur ce nombre et pas les paramètres suivant */
