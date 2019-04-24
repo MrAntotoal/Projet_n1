@@ -138,6 +138,7 @@ int main(int argc, char * argv[]){
       go_ecran();
       
     }
+    test_stop_special_all_char(t_listes->l_char,end/CLOCKS_PER_SEC);
     regene_bouclier_all_char(t_listes->l_char,end/CLOCKS_PER_SEC);
     special_recharge_all_char(t_listes->l_char,end/CLOCKS_PER_SEC,id_fm);
     start=end;

@@ -56,9 +56,12 @@ char3p init_char(Points centre,double largeur,double longueur,char numero,char n
   c3p->devant_b=cree_point(centre->x+c3p->rayon_max_b*cos(c3p->degre_b*(M_PI/180.0)),
 			   centre->y+c3p->rayon_max_b*sin(c3p->degre_b*(M_PI/180.0)));
 
+  c3p->temps_exec_spe_c=0.0;
+  c3p->temps_max_exec_spe_c=10.0;
+  c3p->spe_peux_active_c=0;
 
-  c3p->temps_co_special_c=60.0;
-  c3p->temps_co_special_t=60.0;
+  c3p->temps_co_special_c=20.0;
+  c3p->temps_co_special_t=30.0;
   c3p->temps_co_special_b=60.0;
 
   c3p->temps_zero_special_c=0.0;
@@ -173,6 +176,23 @@ void stop_bouclier(char3p c,double temps){
   c->temps_stop_active=temps;
 }
 
+void activer_spe_c(char3p c,double temps){
+  if(c->spe_peux_active_c){
+    c->spe_c=1;
+    c->temps_exec_spe_c=temps;
+    c->spe_peux_active_c=0;
+    c->vitesse_c*=2.0;
+    c->vitesse_rotation_c*=2.0;
+  }
+}
+
+void desactive_spe_c(char3p c){
+  c->spe_c=0;
+  c->spe_peux_active_c=0;
+  c->vitesse_c/=2.0;
+  c->vitesse_rotation_c/=2.0;
+  
+}
 
 
 
@@ -432,28 +452,26 @@ void special_recharge(char3p c , double temps_actu,int id_fm){
   rep.mtype=1;
   rep.numero_char=c->numero_char;
   
-  if(c->spe_c==0){
+  if(c->spe_peux_active_c==0 && c->spe_c==0){
     if(c->temps_zero_special_c+c->temps_co_special_c<=temps_actu){
-      c->spe_c=1;
+      c->spe_peux_active_c=1;
+      c->temps_exec_spe_c=0.0;
       rep.type=30;
       envoyer_au_serveur(id_fm,rep);
-      fprintf(stderr,"envoie \n");
     }
   }
-  if(c->spe_t==0){
+  if(c->spe_peux_active_t==0){
     if(c->temps_zero_special_t+c->temps_co_special_t<=temps_actu){
-      c->spe_t=1;
+      c->spe_peux_active_t=1;
       rep.type=31;
       envoyer_au_serveur(id_fm,rep);
-      fprintf(stderr,"envoie \n");
     }
   }
-  if(c->spe_b==0){
+  if(c->spe_peux_active_b==0){
     if(c->temps_zero_special_b+c->temps_co_special_b<=temps_actu){
-      c->spe_b=1;
+      c->spe_peux_active_b=1;
       rep.type=32;
       envoyer_au_serveur(id_fm,rep);
-      fprintf(stderr,"envoie \n");
     }
   }
 }
@@ -462,5 +480,22 @@ void special_recharge_all_char(liste chars,double temps,int id_fm){
   if(!est_list_vide(chars)){
     special_recharge(renvoie_sommet_liste(chars),temps,id_fm);
     special_recharge_all_char(liste_sans_premier(chars),temps,id_fm);
+  }
+}
+
+
+void test_stop_special_c(char3p c,double temps){
+  if(c->spe_c){
+    if(c->temps_exec_spe_c+c->temps_max_exec_spe_c<=temps){
+      desactive_spe_c(c);
+      c->temps_zero_special_c=temps;
+    }
+  }
+}
+
+void test_stop_special_all_char(liste chars,double temps){
+  if(!est_list_vide(chars)){
+    test_stop_special_c(renvoie_sommet_liste(chars),temps);
+    test_stop_special_all_char(liste_sans_premier(chars),temps);
   }
 }

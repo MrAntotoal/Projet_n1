@@ -142,6 +142,10 @@ void boucle_de_traitement_liste_requete(t_liste tl,double time){
 	  case 12://stop bouclier
 	    stop_bouclier(get_index(r->numero_char-1,tl->l_char),time);
 	    break;
+	  case 20:
+	    c=get_index(r->numero_char-1,tl->l_char);
+	    activer_spe_c(c,time);
+	    break;
 	  }
 	  
 	}

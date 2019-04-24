@@ -40,12 +40,19 @@ typedef struct{
   //les spe
   double temps_co_special_c;
   double temps_zero_special_c;
+  double temps_exec_spe_c;
+  double temps_max_exec_spe_c;
+  int spe_peux_active_c;
   int spe_c;
+  
   double temps_co_special_t;
   double temps_zero_special_t;
+  int spe_peux_active_t;
   int spe_t;
+  
   double temps_co_special_b;
   double temps_zero_special_b;
+  int spe_peux_active_b;
   int spe_b;
   
   //idem pour tourelle et shield
@@ -82,3 +89,9 @@ void stop_bouclier(char3p c,double temps);
 void activer_bouclier(char3p c);
 void special_recharge(char3p c , double temps_actu,int id_fm);
 void special_recharge_all_char(liste chars,double temps,int id_fm);
+
+void test_stop_special_c(char3p c,double temps);
+void test_stop_special_all_char(liste chars,double temps);
+
+void desactive_spe_c(char3p c);
+void activer_spe_c(char3p c,double temps);
