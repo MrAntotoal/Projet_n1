@@ -291,7 +291,7 @@ void app(void)
                     }
                     else{
 
-                      sprintf(buffer,PSEUDO_REJOINT" %d %s\n",GL_equipe[clients[i].numEquipe].nb_joueur,get_lexeme(clients[i].pseudo));
+                      sprintf(buffer,PSEUDO_REJOINT" %d %s\n",GL_equipe[clients[i].numEquipe].numj,get_lexeme(clients[i].pseudo));
                       write_client(GL_equipe[clients[i].numEquipe].membre[0].sock,buffer);
 
                       rejoindre_equipe(&clients[i],rej - 1);
