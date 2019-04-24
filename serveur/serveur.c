@@ -127,7 +127,7 @@ void app(void)
       }
       if(pid == 0){
         execve("../jeux/run",args,myenvp);
-        fprintf(stderr,"$$$$$$$$$$$ EXECVE JEU\n");
+        fprintf(stderr,"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ EXECVE JEU\n");
         kill(getpid(),SIGINT);
       }
     }

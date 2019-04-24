@@ -27,8 +27,13 @@ void debut_html(){
   }
 
   fprintf(fichier, "<link rel=\"stylesheet\" type=\"text/css\" href=\"lobby.css\">");
-  fprintf(fichier, "<META HTTP-EQUIV=\"refresh\" CONTENT=\"2\">" );
-  fprintf(fichier, "<meta charset=\"UTF-8\">");
+  fprintf(fichier, "<META HTTP-EQUIV=\"refresh\" CONTENT=\"1\">" );
+  fprintf(fichier, "<meta charset=\"UTF-8\">"
+  "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"
+  "	<div id=\"page-wrap\">");
+  fprintf(fichier, "<h2>Bienvenue sur notre jeu, quelques règles / conseil : </h2><br>"
+  "<h3>Les équipes sont composées de 3 personnes,<br> il est <strong>fortement</strong> recommandé d'avoir des équipes complètes"
+  " et que les 3 joueurs soient assis à côtés.</h3><br>" );
   // fin
   fclose(fichier);
 }
@@ -49,7 +54,7 @@ void refresh_html(){
   for (int i = 0; i < nb; i++) {
     if(i%22 == 0){
       fprintf(fichier, "  </table><table class=\"table\"><thead><tr>"
-      "<th>Nom d'utilisateur</th><th>Numéro d'équipe</th></tr>"
+      "<th>Nom d'utilisateur</th><th>Numéro du char</th></tr>"
       "</thead><tbody>");
     }
     fprintf(fichier,"<tr><td>%s</td> <td>%d</td></tr>",get_lexeme(list[i].pseudo),list[i].numEquipe + 1);
@@ -75,7 +80,7 @@ void ajouterChamps(Client c){
 
   for (int i = 0; i < nb; i++) {
     if(i%22 == 0){
-      fprintf(fichier, "  </table><table class=\"table\"><thead><tr>"
+      fprintf(fichier, "  </div></table><table class=\"table\"><thead><tr>"
       "<th>Nom d'utilisateur</th><th>Numéro d'équipe</th></tr>"
       "</thead><tbody>");
     }
