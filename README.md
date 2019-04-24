@@ -63,11 +63,13 @@ exemple -1 = stop avance
 ## info pour reponse_t
 
 
-|type| info  |
-|:--:|:-----:|
-|100 |toucher|
-|-100|mort   |
-
+|type|         info        |
+|:--:|:-------------------:|
+|100 |        toucher      |
+|-100|         mort        |
+|30  |special conducteur ok|
+|31  |special tireur ok    |
+|32  |special bouclier ok  |
 
 ## lancement du jeux
 
