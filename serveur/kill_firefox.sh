@@ -1,1 +1,1 @@
-pkill firefox
+pkill chrome

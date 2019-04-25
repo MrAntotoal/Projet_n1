@@ -65,8 +65,17 @@ void quitter_equipe(Client *c){
 }
 
 void supprimer_equipe(int place){
+  int tmp = 0;
   for (int i = place; i <= index_equipe; i++) {
     GL_equipe[i] = GL_equipe[i+1];
+    for (int j = 0; j < GL_equipe[i].nb_joueur; j++) {
+      GL_equipe[i].membre[j]->numEquipe--;
+      while (list[tmp].pseudo != GL_equipe[i].membre[j]->pseudo) {
+        tmp++;
+      }
+      list[tmp].numEquipe--;
+      tmp = 0;
+    }
   }
   refresh_html();
 }

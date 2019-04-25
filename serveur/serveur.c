@@ -208,7 +208,7 @@ void app(void)
         for (int o = 0; o < actual; o++) {
           write_client(clients[o].sock,"START \n");
         }
-        system("./kill_firefox.sh");
+        system("sh kill_firefox.sh");
       }
 
 
@@ -226,6 +226,17 @@ void app(void)
             #ifdef AFFICHAGE
             printf("connection perdu %s\n",get_lexeme(clients[i].pseudo));
             #endif
+            if(clients[i].numEquipe > -1){
+              printf("il a une équipe\n");
+              if(GL_equipe[clients[i].numEquipe].membre[0]->pseudo == clients[i].pseudo){
+                for (int u = 0; u < GL_equipe[clients[i].numEquipe].nb_joueur - 1; u++) {
+                  write_client(GL_equipe[clients[i].numEquipe].membre[1]->sock,KICK_EQUIPE"\n");
+                  quitter_equipe(GL_equipe[clients[i].numEquipe].membre[1]);
+                }
+                quitter_equipe(GL_equipe[clients[i].numEquipe].membre[0]);
+              }
+            }
+
             remove_client(i); // on enlève le client
             break; // on arrete pour relancer la boucle proprement
           }
@@ -286,7 +297,7 @@ void app(void)
                   printf("LOBBY DEMANDEE !\n");
                   #endif
                   flag_lobby = 1;
-                  system("firefox lobby.html &");
+                  system("google-chrome lobby.html &");
                 }
                 Clean_Buf;
               } else
@@ -327,8 +338,8 @@ void app(void)
                     #endif
                     quitter_equipe(&clients[i]);
                     Clean_Buf;
-                    write_client(clients[i].sock,"OK\n");
-
+                    write_client(clients[i].sock,KICK_EQUIPE"\n");
+                    refresh_html();
                   }
                   else
                   {
