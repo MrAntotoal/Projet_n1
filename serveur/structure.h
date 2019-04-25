@@ -3,7 +3,7 @@
 
 //#include "serveur.h"
 
-#define NB_J_EQUIPE_MAX 2
+#define NB_J_EQUIPE_MAX 3
 #define NB_EQUIPE_MAX 50
 
 
@@ -23,7 +23,7 @@ typedef struct
 {
   int nb_joueur;
   int numj;
-  Client membre[NB_J_EQUIPE_MAX]; // chef d'équipe = 0
+  Client *membre[NB_J_EQUIPE_MAX]; // chef d'équipe = 0
 }Equipe;
 
 

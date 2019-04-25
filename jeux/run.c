@@ -77,7 +77,7 @@ int main(int argc, char * argv[]){
   liste_chars=insere_elem_liste(liste_chars,c);
   //*/
 
-  cree_fen(1706,900,"run");
+  cree_fen(1706/1.2,900/1.2,"run");
   TTF_Init();
   sauv=charger_map(nom_map);
   map=renvoie_sommet_liste(sauv);

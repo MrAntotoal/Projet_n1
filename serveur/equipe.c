@@ -12,7 +12,7 @@ void creer_equipe(Client * c){
   e.numj = 1;
   GL_equipe[index_equipe] = e;
   c->numEquipe = index_equipe;
-  GL_equipe[index_equipe].membre[0] = *c;
+  GL_equipe[index_equipe].membre[0] = c;
   index_equipe++;
   ajouterChamps(*c);
 }
@@ -20,7 +20,7 @@ void creer_equipe(Client * c){
 /*  avec num le numéro de l'équipe dans le tableau global */
 void rejoindre_equipe(Client * c, int num){
   GL_equipe[num].nb_joueur++;
-  GL_equipe[num].membre[GL_equipe[num].numj] = *c;
+  GL_equipe[num].membre[GL_equipe[num].numj] = c;
   GL_equipe[num].numj++;
   c->numEquipe = num;
   ajouterChamps(*c);
@@ -28,35 +28,40 @@ void rejoindre_equipe(Client * c, int num){
 
 
 void quitter_equipe(Client *c){
-
+  printf("LE SPEUDO DU CLICLI %d\n",c->pseudo);
   int place = 0;
   for (int i = 0; i < GL_equipe[c->numEquipe].nb_joueur; i++) {
-    if(GL_equipe[c->numEquipe].membre[i].pseudo == c->pseudo) break;
+    if(GL_equipe[c->numEquipe].membre[i]->pseudo == c->pseudo) break;
     place++;
+    printf("place %d\n",place);
   }
-  for (int i = place; i < GL_equipe[c->numEquipe].nb_joueur - 1; i++) {
+  printf("PEUDO DU CLICLI %d\n",c->pseudo);
+  for (int i = place; i < GL_equipe[c->numEquipe].nb_joueur; i++) {
     GL_equipe[c->numEquipe].membre[i] = GL_equipe[c->numEquipe].membre[i + 1];
   }
+  printf("DU CLICLI %d\n",c->pseudo);
 
   place = c->numEquipe;
 
   GL_equipe[c->numEquipe].nb_joueur--;
   GL_equipe[c->numEquipe].numj--;
+  printf("la\n");
+  printf("tre\n");
   c->numEquipe = -1;
-
-  if(GL_equipe[c->numEquipe].nb_joueur == 0)
+  if(GL_equipe[place].nb_joueur == 0)
   {
     supprimer_equipe(place);
+    index_equipe--;
   }
-  index_equipe--;
+  printf("ici\n");
   int tmp = 0;
   while (list[tmp].pseudo != c->pseudo) {
     tmp++;
   }
-  for (int i = tmp; i <= nb; i++) {
-    list[i] = list[i+1];
-  }
+  printf("++++%d\n",tmp);
+  memmove(list + tmp, list + tmp + 1,(nb - tmp - 1) * sizeof(Client));
   nb--;
+  refresh_html();
 }
 
 void supprimer_equipe(int place){
@@ -68,7 +73,7 @@ void supprimer_equipe(int place){
 
 int position_equipe(Client c){
   for (int i = 0; i < GL_equipe[c.numEquipe].nb_joueur; i++) {
-    if(c.pseudo == GL_equipe[c.numEquipe].membre[i].pseudo)
+    if(c.pseudo == GL_equipe[c.numEquipe].membre[i]->pseudo)
     return i;
   }
   return -1;
@@ -77,10 +82,10 @@ int position_equipe(Client c){
 
 void affiche_equipe(int n){
   #ifdef AFFICHAGE
-  char *t = get_lexeme(GL_equipe[n].membre[0].pseudo);
+  char *t = get_lexeme(GL_equipe[n].membre[0]->pseudo);
   fprintf(stderr,"Chef d'équipe : %s\n",t);
   for (int i = 0; i < GL_equipe[n].nb_joueur; i++) {
-    printf("%d : %s\n",i,get_lexeme(GL_equipe[n].membre[i].pseudo));
+    printf("%d : %s\n",i,get_lexeme(GL_equipe[n].membre[i]->pseudo));
   }
   #endif
 }

@@ -74,8 +74,14 @@ void app(void)
     {
       switch (rcv.type)
       {
-        case 100:
-        // toucher
+        /*
+        case 30: // conducteur
+        case 31: // tireur
+        case 32: // bouclier
+        printf("Spécial prête\n");
+        break;
+        */
+        case 100:    // toucher
         numero_char = rcv.numero_char;
         #ifdef AFFICHAGE
         printf("Char %d changement de boutton\n",numero_char);
@@ -88,7 +94,7 @@ void app(void)
           #ifdef AFFICHAGE
           printf("NOUVEAU_BOUTTON %s\n",truc);
           #endif
-          write_client(GL_equipe[numero_char].membre[l].sock,truc);
+          write_client(GL_equipe[numero_char].membre[l]->sock,truc);
         }
 
         break;
@@ -100,7 +106,7 @@ void app(void)
         printf("Char %d Mort\n",numero_char);
         #endif
         for (int k = 0; k < GL_equipe[numero_char].nb_joueur; k++) {
-          write_client(GL_equipe[numero_char].membre[k].sock,MORT);
+          write_client(GL_equipe[numero_char].membre[k]->sock,MORT);
         }
         break;
       }
@@ -202,6 +208,7 @@ void app(void)
         for (int o = 0; o < actual; o++) {
           write_client(clients[o].sock,"START \n");
         }
+        system("./kill_firefox.sh");
       }
 
 
@@ -230,11 +237,21 @@ void app(void)
           char a_comparer[BUF_SIZE];
           strncpy(a_comparer,KICK_EQUIPE,BUF_SIZE - 1);
           if(fast_compare(a_comparer,buffer,TAILLE_KICK) == 0){
-            int role;
-            sscanf(buffer,"%s %d\n",truc,&role);
-            write_client(GL_equipe[clients[i].numEquipe].membre[role].sock,KICK_EQUIPE"\n");
-            quitter_equipe(&GL_equipe[clients[i].numEquipe].membre[role]);
+            char ps[20];
+            int role=1;
+            sscanf(buffer,"%s %s\n",truc,ps);
+            printf("%s\n",ps);
+            while(fast_compare(get_lexeme(GL_equipe[clients[i].numEquipe].membre[role]->pseudo),ps,strlen(ps)) != 0){
+              printf("strlen %ld\n",strlen(ps));
+              role++;
+            }
+            printf("le role trouver %d le pseudo %s d'id %d\n",role,get_lexeme(GL_equipe[clients[i].numEquipe].membre[role]->pseudo),GL_equipe[clients[i].numEquipe].membre[role]->pseudo);
+            affiche_tt_e();
+            write_client(GL_equipe[clients[i].numEquipe].membre[role]->sock,KICK_EQUIPE"\n");
+            quitter_equipe(GL_equipe[clients[i].numEquipe].membre[role]);
+            affiche_tt_e();
             Clean_Buf;
+            // ne pas envoyer OK
           }
           else{
             strncpy(a_comparer,ROLE,BUF_SIZE - 1);
@@ -284,17 +301,17 @@ void app(void)
                   sscanf(buffer,"%s %d\n",truc,&rej);
                   if(rej > index_equipe || rej <= 0){
                     write_client(clients[i].sock,ERREUR_REJOINDRE"\n");
+                    Clean_Buf;
                   }
                   else{
                     if(GL_equipe[i].nb_joueur == 3){
                       write_client(clients[i].sock,ERREUR_REJOINDRE"\n");
+                      Clean_Buf;
                     }
                     else{
-
                       sprintf(buffer,"%s\n",get_lexeme(clients[i].pseudo));
-                      write_client(GL_equipe[clients[i].numEquipe].membre[0].sock,buffer);
-
                       rejoindre_equipe(&clients[i],rej - 1);
+                      write_client(GL_equipe[clients[i].numEquipe].membre[0]->sock,buffer);
                       Clean_Buf;
                       write_client(clients[i].sock,"OK\n");
                     }
