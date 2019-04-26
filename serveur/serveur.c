@@ -106,7 +106,7 @@ void app(void)
         printf("Char %d Mort\n",numero_char);
         #endif
         for (int k = 0; k < GL_equipe[numero_char - 1].nb_joueur; k++) {
-          write_client(GL_equipe[numero_char - 1].membre[k]->sock,MORT);
+          write_client(GL_equipe[numero_char - 1].membre[k]->sock,MORT"\n");
         }
         break;
       }
