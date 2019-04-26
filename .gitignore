@@ -5,8 +5,9 @@ serveur/serveur
 serveur/start
 serveur/traitement_client
 serveur/gg
+serveur/poste_toucher
 serveur/tmp.txt
 serveur/lobby.html
-serveur/fork_html
 serveur/test0
+serveur/test.c
 serveur/.*
