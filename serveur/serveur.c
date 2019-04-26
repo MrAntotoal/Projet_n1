@@ -367,7 +367,7 @@ void app(void)
 
                       envoyer_requete(numero_char,type,repeter);
                       Clean_Buf;
-                      write_client(clients[i].sock,"OK\n");
+                      //write_client(clients[i].sock,"OK\n");
                     }
                     else
                     {
@@ -382,7 +382,7 @@ void app(void)
                         printf("TIR\n");
                         #endif
                         Clean_Buf;
-                        write_client(clients[i].sock,"OK\n");
+                        //write_client(clients[i].sock,"OK\n");
                       }
                       else
                       {
