@@ -54,20 +54,6 @@ static void end_connection(int sock)
    closesocket(sock);
 }
 
-static int read_server(SOCKET sock, char *buffer)
-{
-   int n = 0;
-
-   if((n = recv(sock, buffer, BUF_SIZE - 1, 0)) < 0)
-   {
-      perror("recv()");
-      exit(errno);
-   }
-
-   buffer[n] = 0;
-
-   return n;
-}
 
 static void write_server(SOCKET sock, const char *buffer)
 {

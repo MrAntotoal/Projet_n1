@@ -54,7 +54,7 @@ void refresh_html(){
   for (int i = 0; i < nb; i++) {
     if(i%22 == 0){
       fprintf(fichier, "  </table><table class=\"table\"><thead><tr>"
-      "<th>Nom d'utilisateur</th><th>Numéro du char</th></tr>"
+      "<th>Nom d'utilisateur</th><th>Numéro de l'équipe</th></tr>"
       "</thead><tbody>");
     }
     fprintf(fichier,"<tr><td>%s</td> <td>%d</td></tr>",get_lexeme(list[i].pseudo),list[i].numEquipe + 1);
