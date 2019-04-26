@@ -28,37 +28,29 @@ void rejoindre_equipe(Client * c, int num){
 
 
 void quitter_equipe(Client *c){
-  printf("LE SPEUDO DU CLICLI %d\n",c->pseudo);
   int place = 0;
   for (int i = 0; i < GL_equipe[c->numEquipe].nb_joueur; i++) {
     if(GL_equipe[c->numEquipe].membre[i]->pseudo == c->pseudo) break;
     place++;
-    printf("place %d\n",place);
   }
-  printf("PEUDO DU CLICLI %d\n",c->pseudo);
   for (int i = place; i < GL_equipe[c->numEquipe].nb_joueur; i++) {
     GL_equipe[c->numEquipe].membre[i] = GL_equipe[c->numEquipe].membre[i + 1];
   }
-  printf("DU CLICLI %d\n",c->pseudo);
 
   place = c->numEquipe;
 
   GL_equipe[c->numEquipe].nb_joueur--;
   GL_equipe[c->numEquipe].numj--;
-  printf("la\n");
-  printf("tre\n");
   c->numEquipe = -1;
   if(GL_equipe[place].nb_joueur == 0)
   {
     supprimer_equipe(place);
     index_equipe--;
   }
-  printf("ici\n");
   int tmp = 0;
   while (list[tmp].pseudo != c->pseudo) {
     tmp++;
   }
-  printf("++++%d\n",tmp);
   memmove(list + tmp, list + tmp + 1,(nb - tmp - 1) * sizeof(Client));
   nb--;
   refresh_html();

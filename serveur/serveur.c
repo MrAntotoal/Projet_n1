@@ -84,19 +84,19 @@ void app(void)
         case 100:    // toucher
         numero_char = rcv.numero_char;
         #ifdef AFFICHAGE
-        printf("Char %d changement de boutton\n",numero_char);
+        printf("++++++++++++++++++++équipe %d changement de boutton\n",numero_char);
         #endif
         changerBoutton();
-        for (int l = 0; l < GL_equipe[numero_char].nb_joueur; l++) {
-          Clean_Buf;
+        for (int l = 0; l < GL_equipe[numero_char - 1].nb_joueur; l++)
+        {
           sprintf(truc,NEW_BUTT);
           ecrireNouveauBouton(truc,l);
           #ifdef AFFICHAGE
-          printf("NOUVEAU_BOUTTON %s\n",truc);
+          printf("!!!!!!!!!!!!!!!!!!!!!!!!!! %s\n",truc);
           #endif
-          write_client(GL_equipe[numero_char].membre[l]->sock,truc);
+          write_client(GL_equipe[numero_char - 1].membre[l]->sock,truc);
         }
-
+        printf("fini\n");
         break;
 
         case -100:
