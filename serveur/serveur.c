@@ -132,7 +132,7 @@ void app(void)
         printf("******** FORK JEU ECHOUE\n");
       }
       if(pid == 0){
-        chdir("../jeux");        
+        chdir("../jeux");
         execve("../jeux/run",args,myenvp);
         fprintf(stderr,"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ EXECVE JEU\n");
         kill(getpid(),SIGINT);
@@ -571,6 +571,7 @@ void remove_client(int to_remove)
     fclose(fichier);
     // fin
 
+    srand(time(NULL));
 
     /***********************************/
     /*         File de message         */

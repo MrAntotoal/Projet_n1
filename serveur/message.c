@@ -1,7 +1,6 @@
 #include "message.h"
 
 void changerBoutton(){
-  srand(time(0));
 
   p3[0] = rand()%3 ;
   p3[1] = rand()%3 ;
