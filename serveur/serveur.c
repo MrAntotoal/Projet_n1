@@ -187,6 +187,7 @@ void app(void)
         Client c = { csock };
 
         c.pseudo = inserer_lexeme(truc);
+        c.numEquipe = -1;
         #ifdef AFFICHAGE
         printf("client : %s connecté\n",buffer);
         #endif
@@ -229,11 +230,19 @@ void app(void)
             if(clients[i].numEquipe > -1){
               printf("il a une équipe\n");
               if(GL_equipe[clients[i].numEquipe].membre[0]->pseudo == clients[i].pseudo){
-                for (int u = 0; u < GL_equipe[clients[i].numEquipe].nb_joueur - 1; u++) {
-                  write_client(GL_equipe[clients[i].numEquipe].membre[1]->sock,KICK_EQUIPE"\n");
-                  quitter_equipe(GL_equipe[clients[i].numEquipe].membre[1]);
+                if(GL_equipe[clients[i].numEquipe].nb_joueur == 1){
+                  printf("1 seul joueur dans l'equipe\n");
+                  quitter_equipe(GL_equipe[clients[i].numEquipe].membre[0]);
+                  printf("quitte\n");
                 }
-                quitter_equipe(GL_equipe[clients[i].numEquipe].membre[0]);
+                else{
+                  printf("est chef d'équipe mais ya des gens dedans\n");
+                  for (int u = 0; u <= GL_equipe[clients[i].numEquipe].nb_joueur - 1; u++) {
+                    write_client(GL_equipe[clients[i].numEquipe].membre[1]->sock,KICK_EQUIPE"\n");
+                    quitter_equipe(GL_equipe[clients[i].numEquipe].membre[1]);
+                  }
+                  quitter_equipe(GL_equipe[clients[i].numEquipe].membre[0]);
+                }
               }
             }
 
