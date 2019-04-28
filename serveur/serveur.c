@@ -245,12 +245,21 @@ void app(void)
                   quitter_equipe(GL_equipe[clients[i].numEquipe].membre[0]);
                 }
               }
+              else{
+                // pas chef d'équipe
+                int role = 1;
+                while (GL_equipe[clients[i].numEquipe].membre[role]->pseudo != clients[i].pseudo) {
+                  role++;
+                }
+                sprintf(truc,A_QUITTER" %s\n",get_lexeme(GL_equipe[clients[i].numEquipe].membre[role]->pseudo));
+                write_client(GL_equipe[clients[i].numEquipe].membre[0]->sock,truc);
+                quitter_equipe(GL_equipe[clients[i].numEquipe].membre[role]);
+              }
+
+              remove_client(i); // on enlève le client
+              break; // on arrete pour relancer la boucle proprement
             }
-
-            remove_client(i); // on enlève le client
-            break; // on arrete pour relancer la boucle proprement
           }
-
           /***********************************************/
           /* switch pour traitement des messages clients */
           /***********************************************/
@@ -261,12 +270,9 @@ void app(void)
             char ps[20];
             int role=1;
             sscanf(buffer,"%s %s\n",truc,ps);
-            printf("%s\n",ps);
             while(fast_compare(get_lexeme(GL_equipe[clients[i].numEquipe].membre[role]->pseudo),ps,strlen(ps)) != 0){
-              printf("strlen %ld\n",strlen(ps));
               role++;
             }
-            printf("le role trouver %d le pseudo %s d'id %d\n",role,get_lexeme(GL_equipe[clients[i].numEquipe].membre[role]->pseudo),GL_equipe[clients[i].numEquipe].membre[role]->pseudo);
             affiche_tt_e();
             write_client(GL_equipe[clients[i].numEquipe].membre[role]->sock,KICK_EQUIPE"\n");
             quitter_equipe(GL_equipe[clients[i].numEquipe].membre[role]);
@@ -325,7 +331,7 @@ void app(void)
                     Clean_Buf;
                   }
                   else{
-                    if(GL_equipe[i].nb_joueur == 3){
+                    if(GL_equipe[rej - 1].nb_joueur == 3){
                       write_client(clients[i].sock,ERREUR_REJOINDRE"\n");
                       Clean_Buf;
                     }
