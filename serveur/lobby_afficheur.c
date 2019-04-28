@@ -31,9 +31,9 @@ void debut_html(){
   fprintf(fichier, "<meta charset=\"UTF-8\">"
   "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"
   "	<div id=\"page-wrap\">");
-  fprintf(fichier, "<h2>Bienvenue sur notre jeu, quelques règles / conseil : </h2><br>"
+  fprintf(fichier, "<h2>Bienvenue sur notre jeu, quelques règles et conseils : </h2><br>"
   "<h3>Les équipes sont composées de 3 personnes,<br> il est <strong>fortement</strong> recommandé d'avoir des équipes complètes"
-  " et que les 3 joueurs soient assis à côtés.</h3><br>" );
+  " et que les 3 joueurs soient assis à côté.</h3><br>" );
   // fin
   fclose(fichier);
 }

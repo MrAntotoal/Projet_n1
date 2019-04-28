@@ -352,9 +352,18 @@ void app(void)
                     #ifdef AFFICHAGE
                     printf("%s\n",a_comparer);
                     #endif
-                    quitter_equipe(&clients[i]);
                     Clean_Buf;
                     write_client(clients[i].sock,KICK_EQUIPE"\n");
+                    if(GL_equipe[clients[i].numEquipe].membre[0]->pseudo != clients[i].pseudo){
+                      int role = 1;
+                      while (GL_equipe[clients[i].numEquipe].membre[role]->pseudo != clients[i].pseudo) {
+                        role++;
+                      }
+                      sprintf(truc,A_QUITTER" %s\n",get_lexeme(GL_equipe[clients[i].numEquipe].membre[role]->pseudo));
+                      write_client(GL_equipe[clients[i].numEquipe].membre[0]->sock,truc);
+                    }
+                    quitter_equipe(&clients[i]);
+
                     refresh_html();
                   }
                   else
