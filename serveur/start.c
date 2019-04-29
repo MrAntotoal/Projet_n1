@@ -9,7 +9,7 @@ int main(int argc, char const *argv[]) {
   fichier = fopen(nom_fichier, "r");
   fscanf(fichier,"%d\n",&pid);
   kill(pid,SIGUSR1);
-  remove("tmp.txt");
+  //remove("tmp.txt");
   system("./clients localhost _____________________________");
   return 0;
 }
