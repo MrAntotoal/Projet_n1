@@ -30,8 +30,19 @@ void enregistrer_reap(FILE *f,liste p){
   }
 }
 
+void enregistrer_bonus(FILE *f,liste p){
+  if(!est_list_vide(p)){
+    fprintf(f," debut_bonus \n");
+    while(!est_list_vide(p)){
+      enregistrer_point(f,renvoie_sommet_liste(p));
+      p=liste_sans_premier(p);
+    }
+    fprintf(f," fin_bonus \n");
+  }
+}
 
-int enregistrer_all(char * fichier_sortie,liste l_poly, liste l_zones,liste l_reap){
+
+int enregistrer_all(char * fichier_sortie,liste l_poly, liste l_zones,liste l_reap,liste l_bonus){
   FILE * f;
   liste l_inter_p,l_inter_z;
   polygone zone, obs;
@@ -61,6 +72,7 @@ int enregistrer_all(char * fichier_sortie,liste l_poly, liste l_zones,liste l_re
     l_inter_z=liste_sans_premier(l_inter_z);
   }
   enregistrer_reap(f,l_reap);
+  enregistrer_bonus(f,l_bonus);
   fclose(f);
   return 1;
 }
