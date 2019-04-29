@@ -18,6 +18,9 @@
 #define MORT "MORT"
 #define A_QUITTER "A_QUITTER"
 #define NOUVEAU_NUMERO "NOUVEAU_NUMERO"
+#define CONDUCTEUR_PRET "CONDUCTEUR_PRET"
+#define TIREUR_PRET "TIREUR_PRET"
+#define BOUCLIER_PRET "BOUCLIER_PRET"
 /* pour comparer sur ce nombre et pas les paramètres suivant */
 #define TAILLE_REJ 16
 #define TAILLE_DEP 11
