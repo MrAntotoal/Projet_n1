@@ -82,19 +82,23 @@ void app(void)
         for (int t = 0; t < GL_equipe[numero_char].nb_joueur; t++) {
           write_client(GL_equipe[numero_char].membre[t]->sock,truc);
         }
+        printf("Spécial prête conducteur %d\n",numero_char);
+        break;
         case 31: // tireur
         numero_char = rcv.numero_char;
         sprintf(truc,TIREUR_PRET"\n");
         for (int t = 0; t < GL_equipe[numero_char].nb_joueur; t++) {
           write_client(GL_equipe[numero_char].membre[t]->sock,truc);
         }
+        printf("Spécial prête tireur %d\n",numero_char);
+        break;
         case 32: // bouclier
         numero_char = rcv.numero_char;
         sprintf(truc,BOUCLIER_PRET"\n");
         for (int t = 0; t < GL_equipe[numero_char].nb_joueur; t++) {
           write_client(GL_equipe[numero_char].membre[t]->sock,truc);
         }
-        printf("Spécial prête\n");
+        printf("Spécial prête bouclier %d\n",numero_char);
         break;
 
         case 100:    // toucher
