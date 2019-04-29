@@ -14,6 +14,7 @@ donc komen kon utilize ?
 |rouge   | modification mode         |
 |vert    | ajoute points dans un poly|
 |gris    | respawn                   |
+|orange  | bonus                     |
 
 
 de base mode bleu
@@ -26,5 +27,6 @@ de base mode bleu
 |suppr   | supprimer le point selectioné | rouge      | rouge     |
 |s       | enregister                    | *          | *         |
 |r       | placer les point de respawn   | *          |gris       |
+|b       | placer les point de bonus     | *          |orange     |
 
 j'ai presque tous dit , mais je vais faire une video tuto :DDDDD
