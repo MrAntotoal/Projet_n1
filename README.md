@@ -15,16 +15,16 @@
 | END |	fin de partie	|	|	| 5-15 min|serveur|
 |DEPLACEMENT	||	annuler déplacement : Buff + ' ' + numero_char + ' ' + -(1,2,3,4) + ' ' + '0'|	Buff + ' ' + numero_char + ' ' + (1,2,3,4,...) + ' ' + (0,1)(appuie / relache) |	Durant partie|client|
 |TIR	|	|munition spécial|	Buff + ' ' + numero_char + (0-9)|	X|Client|
-|RECHARGEMENT| | |	Buff + ' ' + numero_char |Durant partie|client|
-|TIMEOUT	||	|Buff |2 s|
 |PSEUDO_POK |(le programme client recoit server disconnected mais doit relancer init_connection) le serveur déconnecte le client, le client doit donc se reconnecter avant de retenter| pseudo déjà utilisé ||Connection|serveur|
-|DISABLE_BUTT | désactive les boutons | ||Durant partie|serveur|
 |MODE_JEUX|+1 pour décision mode | numéro |Buff +' ' + (0-256)|Décision mode de jeux|client|
 |NEW_BUTT| change les boutons du joueur | code des boutons Tireur : F,TG,TD,TS Protecteur :P,PG,PD,PS Conducteur : AR,CG,CD,CS| Buff + ' ' + code bouton + ' ' x4 | 1 minute ou toucher |serveur|
 |NUM_CHAR|Le client enregistre le numéro du char|numéro du char (0-256)|Buff + ' ' + numéro|Début partie|serveur|
 |MORT|arrete envoyer requete||||serveur (via jeu)|
 |A_QUITTER|une place c'est libéré|pseudo joueur|Buff + ' ' + pseudo|equipe|serveur|
 |NOUVEAU_NUMERO|met a jour le num du char||Buff + ' ' + num|equipe|serveur|
+|CONDUCTEUR_PRET|permet de faire la spécial||Buff|durant partie|serveur|
+|TIREUR_PRET|permet de faire la spécial||Buff|durant partie|serveur|
+|BOUCLIER_PRET|permet de faire la spécial||Buff|durant partie|serveur|
 ## info valeurs requete_t
 * numero char -> ba le num du char (debut a 1)
 * type_action a_repeter
@@ -42,4 +42,4 @@
 |10 	      |tire            | 0|
 |11 |	activer bouclier |	0|
 |12 |	stop bouclier |	0|
-|100|changement boutton | 0|
+|20|special conducteur|0|

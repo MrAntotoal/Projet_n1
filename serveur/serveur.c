@@ -75,13 +75,28 @@ void app(void)
     {
       switch (rcv.type)
       {
-        /*
+
         case 30: // conducteur
+        numero_char = rcv.numero_char;
+        sprintf(truc,CONDUCTEUR_PRET"\n");
+        for (int t = 0; t < GL_equipe[numero_char].nb_joueur; t++) {
+          write_client(GL_equipe[numero_char].membre[t]->sock,truc);
+        }
         case 31: // tireur
+        numero_char = rcv.numero_char;
+        sprintf(truc,TIREUR_PRET"\n");
+        for (int t = 0; t < GL_equipe[numero_char].nb_joueur; t++) {
+          write_client(GL_equipe[numero_char].membre[t]->sock,truc);
+        }
         case 32: // bouclier
+        numero_char = rcv.numero_char;
+        sprintf(truc,BOUCLIER_PRET"\n");
+        for (int t = 0; t < GL_equipe[numero_char].nb_joueur; t++) {
+          write_client(GL_equipe[numero_char].membre[t]->sock,truc);
+        }
         printf("Spécial prête\n");
         break;
-        */
+
         case 100:    // toucher
         numero_char = rcv.numero_char;
         #ifdef AFFICHAGE
@@ -229,10 +244,13 @@ void app(void)
             #ifdef AFFICHAGE
             printf("connection perdu %s\n",get_lexeme(clients[i].pseudo));
             #endif
+            int oui = -1;
             //fprintf(stderr,"NUM E %d\n",clients[i].numEquipe);
             if(clients[i].numEquipe > -1)
             {
               //printf("il a une équipe\n");
+              oui = clients[i].numEquipe;
+              printf("%d\n",oui);
               if(GL_equipe[clients[i].numEquipe].membre[0]->pseudo == clients[i].pseudo)
               {
                 if(GL_equipe[clients[i].numEquipe].nb_joueur == 1)
@@ -244,7 +262,6 @@ void app(void)
                 }
                 else
                 {
-
                   //printf("est chef d'équipe mais ya des gens dedans\n");
                   for (int u = 0; u <= GL_equipe[clients[i].numEquipe].nb_joueur - 1; u++) {
                     write_client(GL_equipe[clients[i].numEquipe].membre[1]->sock,KICK_EQUIPE"\n");
@@ -258,7 +275,7 @@ void app(void)
               {
 
                 // pas chef d'équipe
-                //fprintf(stderr,"PAS CHEF EQUIPE \n");
+                fprintf(stderr,"PAS CHEF EQUIPE \n");
                 int role = 1;
                 while (GL_equipe[clients[i].numEquipe].membre[role]->pseudo != clients[i].pseudo) {
                   role++;
@@ -272,6 +289,17 @@ void app(void)
             }
             else{
               remove_client(i); // on enlève le client
+            }
+            if(oui != -1){
+              //printf("OUI \n");
+              for (int e = oui; e < index_equipe; e++) {
+                sprintf(truc,NOUVEAU_NUMERO" %d\n",e);
+                for (int f = 0; f < GL_equipe[e].nb_joueur; f++) {
+                  write_client(GL_equipe[e].membre[f]->sock,truc);
+                  //printf("env\n");
+                  //printf("%d %d\n",e,f);
+                }
+              }
             }
             break; // on arrete pour relancer la boucle proprement
           }
@@ -382,7 +410,9 @@ void app(void)
                     for (int e = oui; e < index_equipe; e++) {
                       for (int f = 0; f < GL_equipe[e].nb_joueur; f++) {
                         sprintf(truc,NOUVEAU_NUMERO" %d\n",e);
-                        write_client(GL_equipe[e].membre[f]->sock);
+                        if (!(e == oui && f == 0)) {
+                          write_client(GL_equipe[e].membre[f]->sock,truc);
+                        }
                       }
                     }
                     quitter_equipe(&clients[i]);
