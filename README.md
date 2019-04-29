@@ -54,6 +54,7 @@ typedef struct{
 |12         |stop bouclier     |0        |
 |20         |special conducteur|0        |
 |21         |special tireur    |0        |
+|22         |special bouclier  |0        |
 pour le reste on verra plus tard
 
 * a_reperter -> on repete cette action jusqu'au signe d'interuption
