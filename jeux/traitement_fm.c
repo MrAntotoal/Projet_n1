@@ -146,6 +146,9 @@ void boucle_de_traitement_liste_requete(t_liste tl,double time){
 	    c=get_index(r->numero_char-1,tl->l_char);
 	    activer_spe_c(c,time);
 	    break;
+	  case 21:
+	    c=get_index(r->numero_char-1,tl->l_char);
+	    activer_spe_t(c,time);
 	  }
 	  
 	}

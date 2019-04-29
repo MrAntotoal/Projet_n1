@@ -17,6 +17,7 @@ typedef struct{
   polygone c;//c pour chassi
   polygone t;//t pour tourelle
   polygone t_pour_afficher;
+  polygone laser;
   //bouclier mais apres
   double degre_c;
   double degre_t;
@@ -38,17 +39,24 @@ typedef struct{
   double temps_regene;
   double temps_stop_active;
   //les spe
+  //spe conducteur
   double temps_co_special_c;
   double temps_zero_special_c;
   double temps_exec_spe_c;
   double temps_max_exec_spe_c;
   int spe_peux_active_c;
   int spe_c;
-  
+
+  //spe tireur
   double temps_co_special_t;
   double temps_zero_special_t;
+  double temps_p1_laser_t;
+  double temps_p2_laser_t;
+  double temps_exec_spe_t;
   int spe_peux_active_t;
   int spe_t;
+  int mode_prepare;
+  int mode_laser;
   
   double temps_co_special_b;
   double temps_zero_special_b;
@@ -95,3 +103,9 @@ void test_stop_special_all_char(liste chars,double temps);
 
 void desactive_spe_c(char3p c);
 void activer_spe_c(char3p c,double temps);
+
+
+void activer_spe_t(char3p c,double temps);
+
+
+void all_laser_touche(liste chars,int id_fm);

@@ -121,6 +121,8 @@ int main(int argc, char * argv[]){
       boucle_de_traitement_liste_requete(t_listes,end/CLOCKS_PER_SEC);
       //printf("fin boucle t debut obus\n");
       t_listes->l_obus=traitement_tous_obus(t_listes->l_obus,t_listes->l_char,map,id_fm,texture_char);
+
+      all_laser_touche(t_listes->l_char,id_fm);
       //printf("fin obus\n");
 
 

@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "allocation_memoire.h"
+#include "point_vecteur.h"
 
 typedef void * elem;
 typedef struct cellule{
@@ -75,5 +75,7 @@ elem get_last_elem(liste l);
 
 elem get_index(int index,liste l);
 
+
+void libere_liste_point(liste l);
 
 #endif
