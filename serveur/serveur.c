@@ -25,7 +25,7 @@ void lancer_jeux(){
     sprintf(args[p+3],"%d",p);
   }
   args[3+index_equipe] = "test";
-  args[3+index_equipe+1] = "png";
+  args[3+index_equipe+1] = "jpg";
   args[5 + index_equipe] = NULL;
 }
 

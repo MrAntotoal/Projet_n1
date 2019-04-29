@@ -80,6 +80,8 @@ void supprime_liste(liste l){
   }
 }
 
+
+
 liste supprime_elem(liste l,elem e){
   liste prochaine;
   if(e==l->objet){
@@ -156,4 +158,12 @@ elem get_index(int index,liste l){
     return renvoie_sommet_liste(l);
   }
   return get_index(index-1,liste_sans_premier(l));
+}
+
+void libere_liste_point(liste l){
+  if(!est_list_vide(l)){
+    supprime_liste(l->suivant);
+    libere_points(l->objet);
+    libere(l);
+  }
 }

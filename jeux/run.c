@@ -77,7 +77,7 @@ int main(int argc, char * argv[]){
   liste_chars=insere_elem_liste(liste_chars,c);
   //*/
 
-  cree_fen(1706/1.2,900/1.2,"run");
+  cree_fen(1706,900,"run");
   TTF_Init();
   sauv=charger_map(nom_map);
   map=renvoie_sommet_liste(sauv);
@@ -121,6 +121,8 @@ int main(int argc, char * argv[]){
       boucle_de_traitement_liste_requete(t_listes,end/CLOCKS_PER_SEC);
       //printf("fin boucle t debut obus\n");
       t_listes->l_obus=traitement_tous_obus(t_listes->l_obus,t_listes->l_char,map,id_fm,texture_char);
+
+      all_laser_touche(t_listes->l_char,id_fm);
       //printf("fin obus\n");
 
 
@@ -138,7 +140,9 @@ int main(int argc, char * argv[]){
       go_ecran();
       
     }
+    test_stop_special_all_char(t_listes->l_char,end/CLOCKS_PER_SEC);
     regene_bouclier_all_char(t_listes->l_char,end/CLOCKS_PER_SEC);
+    special_recharge_all_char(t_listes->l_char,end/CLOCKS_PER_SEC,id_fm);
     start=end;
     somme+=diff;
     somme2+=diff;
