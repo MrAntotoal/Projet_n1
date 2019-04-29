@@ -33,7 +33,8 @@ void debut_html(){
   "	<div id=\"page-wrap\">");
   fprintf(fichier, "<h2>Bienvenue sur notre jeu, quelques règles et conseils : </h2><br>"
   "<h3>Les équipes sont composées de 3 personnes,<br> il est <strong>fortement</strong> recommandé d'avoir des équipes complètes"
-  " et que les 3 joueurs soient assis à côté.</h3><br>" );
+  " et que les 3 joueurs soient assis à côté.</h3><br><h3>Chaque fois que votre tank est touché les bouttons de toutes l'équipe sont"
+  " échangés aléatoirement entre les 3 personnes, si l'équipe n'est pas complète il lui manquera des bouttons!</h3>" );
   // fin
   fclose(fichier);
 }
