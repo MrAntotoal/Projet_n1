@@ -57,11 +57,15 @@ typedef struct{
   int spe_t;
   int mode_prepare;
   int mode_laser;
-  
+
+  //spe bouclier
   double temps_co_special_b;
   double temps_zero_special_b;
+  double temps_exec_spe_b;
+  double temps_max_exec_spe_b;
   int spe_peux_active_b;
   int spe_b;
+  int invincible;
   
   //idem pour tourelle et shield
 }char_3_places;
@@ -107,5 +111,9 @@ void activer_spe_c(char3p c,double temps);
 
 void activer_spe_t(char3p c,double temps);
 
+void desactive_spe_b(char3p c);
+void activer_spe_b(char3p c,double temps);
+
 
 void all_laser_touche(liste chars,int id_fm);
+void rotation_char_deg(char3p c,double deg);

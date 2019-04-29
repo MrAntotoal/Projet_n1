@@ -66,6 +66,9 @@ char3p init_char(Points centre,double largeur,double longueur,char numero,char n
 
   c3p->temps_exec_spe_c=0.0;
   c3p->temps_max_exec_spe_c=10.0;
+
+  c3p->temps_exec_spe_b=0.0;
+  c3p->temps_max_exec_spe_b=3.0;
   
   c3p->spe_peux_active_c=0;
   c3p->spe_peux_active_t=0;
@@ -75,7 +78,7 @@ char3p init_char(Points centre,double largeur,double longueur,char numero,char n
 
   c3p->temps_co_special_c=20.0;
   c3p->temps_co_special_t=30.0;
-  c3p->temps_co_special_b=60.0;
+  c3p->temps_co_special_b=10.0;
 
   c3p->temps_zero_special_c=0.0;
   c3p->temps_zero_special_t=0.0;
@@ -84,6 +87,8 @@ char3p init_char(Points centre,double largeur,double longueur,char numero,char n
   c3p->spe_c=0;
   c3p->spe_t=0;
   c3p->spe_b=0;
+
+  c3p->invincible=0;
 
   return c3p;
 }
@@ -223,10 +228,25 @@ void activer_spe_t(char3p c,double temps){
 }
 
 void desactive_spe_t(char3p c ){
-  printf("stop\n");
   c->spe_t=0;
   c->mode_prepare=0;
   c->mode_laser=0;
+}
+
+void activer_spe_b(char3p c,double temps){
+  if(c->spe_peux_active_b){
+    c->spe_b=1;
+    c->temps_exec_spe_b=temps;
+    c->spe_peux_active_b=0;
+    c->invincible=1;
+  }
+}
+
+void desactive_spe_b(char3p c){
+  c->spe_b=0;
+  c->spe_peux_active_b=0;
+  c->invincible=0;
+  
 }
 
 
@@ -238,7 +258,12 @@ void afficher_char(char3p c,GLuint t_c){
   activer_texturing();
   bind_texture(t_c);
   glBegin(GL_QUADS);
-  glColor3ub(255,255,255);
+  if(c->invincible){
+    glColor3ub(0,255,255);
+  }
+  else{
+    glColor3ub(255,255,255);
+  }
   //glColor3ub(((1000.0-c->pv)/1000.0)*255,(c->pv/1000.0)*255,0);
   p1=get_index(0,poly);
   p2=get_index(1,poly);
@@ -444,7 +469,6 @@ int laser_decoupe_collision(char3p c,char3p c2){
   
   v=cree_vecteur_2p(p2l,p3l);
 
-  printf(" vec %f %f \n",v->x,v->y);
   
   p1=cree_point(p1l->x,p1l->y);
   p2=cree_point(p2l->x,p2l->y);
@@ -482,7 +506,6 @@ void laser_touche(char3p c,liste chars,int id_fm){
 	if(c2->pv>0){
 	  if(laser_decoupe_collision(c,c2)){
 	    //retire hp
-	    printf("mort !!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 	    retirer_pv(c2,500,id_fm);
 	  }
 	}
@@ -636,7 +659,7 @@ void special_recharge(char3p c , double temps_actu,int id_fm){
       envoyer_au_serveur(id_fm,rep);
     }
   }
-  if(c->spe_peux_active_b==0){
+  if(c->spe_peux_active_b==0 && c->spe_b==0){
     if(c->temps_zero_special_b+c->temps_co_special_b<=temps_actu){
       c->spe_peux_active_b=1;
       rep.type=32;
@@ -670,6 +693,12 @@ void test_stop_special_c(char3p c,double temps){
       c->mode_laser=1;
     }
   }
+  if(c->spe_b){//special bouclier
+    if(c->temps_exec_spe_b+c->temps_max_exec_spe_b<=temps){
+      desactive_spe_b(c);
+      c->temps_zero_special_b=temps;
+    }
+  }
 }
 
 void test_stop_special_all_char(liste chars,double temps){
@@ -678,3 +707,22 @@ void test_stop_special_all_char(liste chars,double temps){
     test_stop_special_all_char(liste_sans_premier(chars),temps);
   }
 }
+
+void rotation_char_deg(char3p c,double deg){
+
+  rotation_points(c->devant,c->centre,deg);
+  rotation_points(c->devant_t,c->centre,deg);
+
+  re_calcule_un_vecteur(c->centre,c->devant,c->directionc);
+  re_calcule_un_vecteur(c->centre,c->devant_t,c->directiont);
+
+  c->degre_c+=deg;
+  c->degre_t+=deg;
+  
+  rotation_poly(c->c,c->centre,deg);
+  rotation_poly(c->t,c->centre,deg);
+  rotation_poly(c->t_pour_afficher,c->centre,deg);
+  rotation_poly(c->laser,c->centre,deg);
+  
+}
+

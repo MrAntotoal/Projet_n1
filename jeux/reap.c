@@ -28,6 +28,7 @@ void spawn_char(liste l_reap,liste l_char,char3p c){
     if(char_peux_reap_ici(c,
 			  get_index((i+deb)%len,l_reap),
 			  l_char)){
+      rotation_char_deg(c,rand()%360);
       return;
     }
     i++;
