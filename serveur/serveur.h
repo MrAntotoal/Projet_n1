@@ -48,4 +48,6 @@ void clear_clients();
 
 void get_msg_next(char *buffer, char *res);
 
+void my_handler(int s);
+
 #endif /* guard */

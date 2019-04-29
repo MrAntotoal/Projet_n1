@@ -62,6 +62,7 @@ void app(void)
     {
       if(errno != EINTR){
         perror("select()");
+        my_handler(1);
         exit(errno);
       }
     }
@@ -228,25 +229,36 @@ void app(void)
             #ifdef AFFICHAGE
             printf("connection perdu %s\n",get_lexeme(clients[i].pseudo));
             #endif
-            if(clients[i].numEquipe > -1){
+            fprintf(stderr,"NUM E %d\n",clients[i].numEquipe);
+            if(clients[i].numEquipe > -1)
+            {
               printf("il a une équipe\n");
-              if(GL_equipe[clients[i].numEquipe].membre[0]->pseudo == clients[i].pseudo){
-                if(GL_equipe[clients[i].numEquipe].nb_joueur == 1){
+              if(GL_equipe[clients[i].numEquipe].membre[0]->pseudo == clients[i].pseudo)
+              {
+                if(GL_equipe[clients[i].numEquipe].nb_joueur == 1)
+                {
                   printf("1 seul joueur dans l'equipe\n");
                   quitter_equipe(GL_equipe[clients[i].numEquipe].membre[0]);
                   printf("quitte\n");
+                  remove_client(i); // on enlève le client
                 }
-                else{
+                else
+                {
+
                   printf("est chef d'équipe mais ya des gens dedans\n");
                   for (int u = 0; u <= GL_equipe[clients[i].numEquipe].nb_joueur - 1; u++) {
                     write_client(GL_equipe[clients[i].numEquipe].membre[1]->sock,KICK_EQUIPE"\n");
                     quitter_equipe(GL_equipe[clients[i].numEquipe].membre[1]);
                   }
                   quitter_equipe(GL_equipe[clients[i].numEquipe].membre[0]);
+                  remove_client(i); // on enlève le client
                 }
               }
-              else{
+              else
+              {
+
                 // pas chef d'équipe
+                fprintf(stderr,"PAS CHEF EQUIPE \n");
                 int role = 1;
                 while (GL_equipe[clients[i].numEquipe].membre[role]->pseudo != clients[i].pseudo) {
                   role++;
@@ -254,11 +266,14 @@ void app(void)
                 sprintf(truc,A_QUITTER" %s\n",get_lexeme(GL_equipe[clients[i].numEquipe].membre[role]->pseudo));
                 write_client(GL_equipe[clients[i].numEquipe].membre[0]->sock,truc);
                 quitter_equipe(GL_equipe[clients[i].numEquipe].membre[role]);
+                remove_client(i); // on enlève le client
+                printf("FIN\n");
               }
-
-              remove_client(i); // on enlève le client
-              break; // on arrete pour relancer la boucle proprement
             }
+            else{
+              remove_client(i); // on enlève le client
+            }
+            break; // on arrete pour relancer la boucle proprement
           }
           /***********************************************/
           /* switch pour traitement des messages clients */
@@ -431,173 +446,173 @@ void clear_clients()
   }
 }
 
-void remove_client(int to_remove)
-{
+void remove_client(int to_remove){
   /* we remove the client in the array */
-  memmove(clients + to_remove, clients + to_remove + 1,
-    (actual - to_remove - 1) * sizeof(Client));
-    /* number client - 1 */
-    actual--;
-  }
+  memmove(clients + to_remove, clients + to_remove + 1,(actual - to_remove - 1) * sizeof(Client));
+  /* number client - 1 */
+  actual--;
+}
 
 
-  int init_connection(void)
+int init_connection(void)
+{
+  SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
+  SOCKADDR_IN sin = { 0 };
+
+  if(sock == INVALID_SOCKET)
   {
-    SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
-    SOCKADDR_IN sin = { 0 };
-
-    if(sock == INVALID_SOCKET)
-    {
-      #ifdef AFFICHAGE
-      perror("socket()");
-      #endif
-      exit(errno);
-    }
-
-    sin.sin_addr.s_addr = htonl(INADDR_ANY);
-    sin.sin_port = htons(PORT);
-    sin.sin_family = AF_INET;
-    int true = 1;
-    setsockopt(sock,SOL_SOCKET,SO_REUSEADDR,&true,sizeof(int));
-    if(bind(sock,(SOCKADDR *) &sin, sizeof sin) == SOCKET_ERROR)
-    {
-      #ifdef AFFICHAGE
-      perror("bind()");
-      #endif
-      fermer_fdm();
-      exit(errno);
-    }
-
-    if(listen(sock, MAX_CLIENTS) == SOCKET_ERROR)
-    {
-      #ifdef AFFICHAGE
-      perror("listen()");
-      #endif
-      fermer_fdm();
-      exit(errno);
-    }
-
-    return sock;
-  }
-
-  void end_connection(int sock)
-  {
-    closesocket(sock);
-  }
-
-  int read_client(SOCKET sock, char *buffer)
-  {
-    int n = 0;
-
-    if((n = recv(sock, buffer, BUF_SIZE - 1, 0)) < 0)
-    {
-      #ifdef AFFICHAGE
-      perror("recv()");
-      #endif
-      /* if recv error we disonnect the client */
-      n = 0;
-    }
     #ifdef AFFICHAGE
-    printf("Reçue ~> %s\n",buffer);
+    perror("socket()");
     #endif
-    buffer[n] = 0;
-
-    return n;
+    exit(errno);
   }
 
-  void write_client(SOCKET sock, const char *buffer)
+  sin.sin_addr.s_addr = htonl(INADDR_ANY);
+  sin.sin_port = htons(PORT);
+  sin.sin_family = AF_INET;
+  int true = 1;
+  setsockopt(sock,SOL_SOCKET,SO_REUSEADDR,&true,sizeof(int));
+  if(bind(sock,(SOCKADDR *) &sin, sizeof sin) == SOCKET_ERROR)
   {
-    // https://linux.die.net/man/2/send
-    if(send(sock, buffer, strlen(buffer), 0) < 0)
-    {
-      #ifdef AFFICHAGE
-      perror("send()");
-      #endif
-      exit(errno);
-    }
-  }
-
-  void my_handler(int s){
-    for(int i = 0; i < actual; i++)
-    {
-      write_client(clients[i].sock,"ARRETE");
-    }
-    end_connection(GL_SOCK);
+    #ifdef AFFICHAGE
+    perror("bind()");
+    #endif
     fermer_fdm();
-    exit(-1);
-  }
-  void handler_usr1(int s){
-    flag_start = 2;
-  }
-  void handler_usr2(int s){
-    printf("usr2\n");
+    exit(errno);
   }
 
-  int main(int argc, char **argv,char **envp)
+  if(listen(sock, MAX_CLIENTS) == SOCKET_ERROR)
   {
-    /***********************************/
-    /*         CAPTURE DE CTRL C       */
-    /***********************************/
-    struct sigaction sigIntHandler;
-
-    sigIntHandler.sa_handler = my_handler;
-    sigemptyset(&sigIntHandler.sa_mask);
-    sigIntHandler.sa_flags = 0;
-
-    struct sigaction sigUSR1Handler;
-
-    sigUSR1Handler.sa_handler = handler_usr1;
-    sigemptyset(&sigUSR1Handler.sa_mask);
-    sigUSR1Handler.sa_flags = 0;
-
-
-    struct sigaction sigUSR2Handler;
-
-    sigUSR2Handler.sa_handler = handler_usr1;
-    sigemptyset(&sigUSR2Handler.sa_mask);
-    sigUSR2Handler.sa_flags = 0;
-
-    sigaction(SIGINT, &sigIntHandler, NULL);
-    sigaction(SIGUSR1, &sigUSR1Handler, NULL);
-    sigaction(SIGUSR2, &sigUSR2Handler, NULL);
-    /***********************************/
-    /*          Initialisation         */
-    /***********************************/
-    init_lexico(); // on initialise table hash pour pseudo
-    init_equipe();
-    init_html();
-    flag_lobby = 0;
-    flag_start = 0;
-    myenvp = envp;
-
-    FILE *fichier;
-    char *nom_fichier = "./tmp.txt";
-
-    fichier = fopen(nom_fichier, "w");
-
-    if (fichier == (FILE *)NULL)
-    {
-      printf("Erreur ouverture fichier\n");
-      exit(1);
-    }
-
-    // Ecriture du fichier
-    fprintf(fichier,"%d ", getpid());
-    fclose(fichier);
-    // fin
-
-    srand(time(NULL));
-
-    /***********************************/
-    /*         File de message         */
-    /***********************************/
-    if(creer_fdm() == 0)
-    {
-      #ifdef AFFICHAGE
-      printf("File De Message Créer \n");
-      #endif
-      ;
-    }
-    app();
-    return EXIT_SUCCESS;
+    #ifdef AFFICHAGE
+    perror("listen()");
+    #endif
+    fermer_fdm();
+    exit(errno);
   }
+
+  return sock;
+}
+
+void end_connection(int sock)
+{
+  closesocket(sock);
+}
+
+int read_client(SOCKET sock, char *buffer)
+{
+  int n = 0;
+
+  if((n = recv(sock, buffer, BUF_SIZE - 1, 0)) < 0)
+  {
+    #ifdef AFFICHAGE
+    perror("recv()");
+    #endif
+    /* if recv error we disonnect the client */
+    n = 0;
+  }
+  #ifdef AFFICHAGE
+  printf("Reçue ~> %s\n",buffer);
+  #endif
+  buffer[n] = 0;
+
+  return n;
+}
+
+void write_client(SOCKET sock, const char *buffer)
+{
+  // https://linux.die.net/man/2/send
+  if(send(sock, buffer, strlen(buffer), 0) < 0)
+  {
+    #ifdef AFFICHAGE
+    perror("send()");
+    #endif
+    fermer_fdm();
+    exit(errno);
+  }
+}
+
+void my_handler(int s){
+  for(int i = 0; i < actual; i++)
+  {
+    write_client(clients[i].sock,"ARRETE");
+  }
+  end_connection(GL_SOCK);
+  fermer_fdm();
+  exit(-1);
+}
+void handler_usr1(int s){
+  flag_start = 2;
+}
+void handler_usr2(int s){
+  printf("*************SIGSEGV\n");
+  my_handler(1);
+}
+
+int main(int argc, char **argv,char **envp)
+{
+  /***********************************/
+  /*         CAPTURE DE CTRL C       */
+  /***********************************/
+  struct sigaction sigIntHandler;
+
+  sigIntHandler.sa_handler = my_handler;
+  sigemptyset(&sigIntHandler.sa_mask);
+  sigIntHandler.sa_flags = 0;
+
+  struct sigaction sigUSR1Handler;
+
+  sigUSR1Handler.sa_handler = handler_usr1;
+  sigemptyset(&sigUSR1Handler.sa_mask);
+  sigUSR1Handler.sa_flags = 0;
+
+
+  struct sigaction sigUSR2Handler;
+
+  sigUSR2Handler.sa_handler = handler_usr1;
+  sigemptyset(&sigUSR2Handler.sa_mask);
+  sigUSR2Handler.sa_flags = 0;
+
+  sigaction(SIGINT, &sigIntHandler, NULL);
+  sigaction(SIGUSR1, &sigUSR1Handler, NULL);
+  sigaction(SIGSEGV, &sigUSR2Handler, NULL);
+  /***********************************/
+  /*          Initialisation         */
+  /***********************************/
+  init_lexico(); // on initialise table hash pour pseudo
+  init_equipe();
+  init_html();
+  flag_lobby = 0;
+  flag_start = 0;
+  myenvp = envp;
+
+  FILE *fichier;
+  char *nom_fichier = "./tmp.txt";
+
+  fichier = fopen(nom_fichier, "w");
+
+  if (fichier == (FILE *)NULL)
+  {
+    printf("Erreur ouverture fichier\n");
+    exit(1);
+  }
+
+  // Ecriture du fichier
+  fprintf(fichier,"%d ", getpid());
+  fclose(fichier);
+  // fin
+
+  srand(time(NULL));
+
+  /***********************************/
+  /*         File de message         */
+  /***********************************/
+  if(creer_fdm() == 0)
+  {
+    #ifdef AFFICHAGE
+    printf("File De Message Créer \n");
+    #endif
+    ;
+  }
+  app();
+  return EXIT_SUCCESS;
+}
