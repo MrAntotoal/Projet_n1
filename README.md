@@ -24,6 +24,7 @@
 |NUM_CHAR|Le client enregistre le numéro du char|numéro du char (0-256)|Buff + ' ' + numéro|Début partie|serveur|
 |MORT|arrete envoyer requete||||serveur (via jeu)|
 |A_QUITTER|une place c'est libéré|pseudo joueur|Buff + ' ' + pseudo|equipe|serveur|
+|NOUVEAU_NUMERO|met a jour le num du char||Buff + ' ' + num|equipe|serveur|
 ## info valeurs requete_t
 * numero char -> ba le num du char (debut a 1)
 * type_action a_repeter

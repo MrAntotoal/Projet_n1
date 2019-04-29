@@ -17,6 +17,7 @@
 #define PSEUDO_REJOINT "PSEUDO_REJOINT"
 #define MORT "MORT"
 #define A_QUITTER "A_QUITTER"
+#define NOUVEAU_NUMERO "NOUVEAU_NUMERO"
 /* pour comparer sur ce nombre et pas les paramètres suivant */
 #define TAILLE_REJ 16
 #define TAILLE_DEP 11

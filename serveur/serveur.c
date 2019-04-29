@@ -229,23 +229,23 @@ void app(void)
             #ifdef AFFICHAGE
             printf("connection perdu %s\n",get_lexeme(clients[i].pseudo));
             #endif
-            fprintf(stderr,"NUM E %d\n",clients[i].numEquipe);
+            //fprintf(stderr,"NUM E %d\n",clients[i].numEquipe);
             if(clients[i].numEquipe > -1)
             {
-              printf("il a une équipe\n");
+              //printf("il a une équipe\n");
               if(GL_equipe[clients[i].numEquipe].membre[0]->pseudo == clients[i].pseudo)
               {
                 if(GL_equipe[clients[i].numEquipe].nb_joueur == 1)
                 {
-                  printf("1 seul joueur dans l'equipe\n");
+                  //printf("1 seul joueur dans l'equipe\n");
                   quitter_equipe(GL_equipe[clients[i].numEquipe].membre[0]);
-                  printf("quitte\n");
+                  //printf("quitte\n");
                   remove_client(i); // on enlève le client
                 }
                 else
                 {
 
-                  printf("est chef d'équipe mais ya des gens dedans\n");
+                  //printf("est chef d'équipe mais ya des gens dedans\n");
                   for (int u = 0; u <= GL_equipe[clients[i].numEquipe].nb_joueur - 1; u++) {
                     write_client(GL_equipe[clients[i].numEquipe].membre[1]->sock,KICK_EQUIPE"\n");
                     quitter_equipe(GL_equipe[clients[i].numEquipe].membre[1]);
@@ -258,7 +258,7 @@ void app(void)
               {
 
                 // pas chef d'équipe
-                fprintf(stderr,"PAS CHEF EQUIPE \n");
+                //fprintf(stderr,"PAS CHEF EQUIPE \n");
                 int role = 1;
                 while (GL_equipe[clients[i].numEquipe].membre[role]->pseudo != clients[i].pseudo) {
                   role++;
@@ -267,7 +267,7 @@ void app(void)
                 write_client(GL_equipe[clients[i].numEquipe].membre[0]->sock,truc);
                 quitter_equipe(GL_equipe[clients[i].numEquipe].membre[role]);
                 remove_client(i); // on enlève le client
-                printf("FIN\n");
+                //printf("FIN\n");
               }
             }
             else{
@@ -368,7 +368,9 @@ void app(void)
                     printf("%s\n",a_comparer);
                     #endif
                     Clean_Buf;
+                    int oui;
                     write_client(clients[i].sock,KICK_EQUIPE"\n");
+                    oui = clients[i].numEquipe;
                     if(GL_equipe[clients[i].numEquipe].membre[0]->pseudo != clients[i].pseudo){
                       int role = 1;
                       while (GL_equipe[clients[i].numEquipe].membre[role]->pseudo != clients[i].pseudo) {
@@ -376,6 +378,12 @@ void app(void)
                       }
                       sprintf(truc,A_QUITTER" %s\n",get_lexeme(GL_equipe[clients[i].numEquipe].membre[role]->pseudo));
                       write_client(GL_equipe[clients[i].numEquipe].membre[0]->sock,truc);
+                    }
+                    for (int e = oui; e < index_equipe; e++) {
+                      for (int f = 0; f < GL_equipe[e].nb_joueur; f++) {
+                        sprintf(truc,NOUVEAU_NUMERO" %d\n",e);
+                        write_client(GL_equipe[e].membre[f]->sock);
+                      }
                     }
                     quitter_equipe(&clients[i]);
 
