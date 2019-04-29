@@ -78,6 +78,7 @@ void app(void)
 
         case 30: // conducteur
         numero_char = rcv.numero_char;
+        numero_char--;
         sprintf(truc,CONDUCTEUR_PRET"\n");
         for (int t = 0; t < GL_equipe[numero_char].nb_joueur; t++) {
           write_client(GL_equipe[numero_char].membre[t]->sock,truc);
@@ -86,6 +87,7 @@ void app(void)
         break;
         case 31: // tireur
         numero_char = rcv.numero_char;
+        numero_char--;
         sprintf(truc,TIREUR_PRET"\n");
         for (int t = 0; t < GL_equipe[numero_char].nb_joueur; t++) {
           write_client(GL_equipe[numero_char].membre[t]->sock,truc);
@@ -94,6 +96,7 @@ void app(void)
         break;
         case 32: // bouclier
         numero_char = rcv.numero_char;
+        numero_char--;
         sprintf(truc,BOUCLIER_PRET"\n");
         for (int t = 0; t < GL_equipe[numero_char].nb_joueur; t++) {
           write_client(GL_equipe[numero_char].membre[t]->sock,truc);
@@ -103,17 +106,11 @@ void app(void)
 
         case 100:    // toucher
         numero_char = rcv.numero_char;
-        #ifdef AFFICHAGE
-        printf("++++++++++++++++++++équipe %d changement de boutton\n",numero_char);
-        #endif
         changerBoutton();
         for (int l = 0; l < GL_equipe[numero_char - 1].nb_joueur; l++)
         {
           sprintf(truc,NEW_BUTT);
           ecrireNouveauBouton(truc,l);
-          #ifdef AFFICHAGE
-          printf("!!!!!!!!!!!!!!!!!!!!!!!!!! %s\n",truc);
-          #endif
           write_client(GL_equipe[numero_char - 1].membre[l]->sock,truc);
         }
         printf("fini\n");
