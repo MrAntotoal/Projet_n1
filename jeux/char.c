@@ -561,23 +561,25 @@ void retirer_pv(char3p c,double pv,int id_fm){
   reponse_t rep;
   Points p;
   Vecteurs v;
-  c->pv-=pv;
-  rep.mtype=1;
-  rep.numero_char=c->numero_char;
-  if(c->pv<=0){
-    //mort
-    p=cree_point(-100.0,-100.0);
-    v=cree_vecteur_2p(c->centre,p);
-    translation_char_vec(c,v,1.0);
-    rep.type=-100;
-    libere_points(p);
-    libere_points(v);
+  if(!c->invincible){
+    c->pv-=pv;
+    rep.mtype=1;
+    rep.numero_char=c->numero_char;
+    if(c->pv<=0){
+      //mort
+      p=cree_point(-100.0,-100.0);
+      v=cree_vecteur_2p(c->centre,p);
+      translation_char_vec(c,v,1.0);
+      rep.type=-100;
+      libere_points(p);
+      libere_points(v);
+    }
+    else{
+      //toucher mais toujours debout rassure toi
+      rep.type=100;
+    }
+    envoyer_au_serveur(id_fm,rep);
   }
-  else{
-    //toucher mais toujours debout rassure toi
-    rep.type=100;
-  }
-  envoyer_au_serveur(id_fm,rep);
 }
 
 int est_en_collision_avec_bouclier_point(char3p c,Points p){

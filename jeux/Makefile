@@ -3,8 +3,11 @@ option=-Wall
 o_sdl=`sdl-config --cflags --libs` -lSDL_image -lSDL_ttf
 o_opengl=-lGL -lGLU
 
-run: run.c reap.o obus.o texture.o affichage.o char.o sauvegarde.o map.o traitement_fm.o collisions.o file_msg.o liste.o point_vecteur.o allocation_memoire.o polygones.o
-	$(cc) $(option) run.c reap.o obus.o texture.o affichage.o char.o sauvegarde.o map.o traitement_fm.o collisions.o file_msg.o liste.o point_vecteur.o allocation_memoire.o polygones.o -o run -lm $(o_sdl) $(o_opengl)
+run: run.c bonus.o reap.o obus.o texture.o affichage.o char.o sauvegarde.o map.o traitement_fm.o collisions.o file_msg.o liste.o point_vecteur.o allocation_memoire.o polygones.o
+	$(cc) $(option) run.c bonus.o reap.o obus.o texture.o affichage.o char.o sauvegarde.o map.o traitement_fm.o collisions.o file_msg.o liste.o point_vecteur.o allocation_memoire.o polygones.o -o run -lm $(o_sdl) $(o_opengl)
+
+bonus.o: bonus.c bonus.h
+	$(cc) $(option) bonus.c -c
 
 reap.o: reap.c reap.h
 	$(cc) $(option) reap.c -c

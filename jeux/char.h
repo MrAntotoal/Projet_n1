@@ -68,6 +68,8 @@ typedef struct{
   int invincible;
   
   //idem pour tourelle et shield
+
+  double temps_de_tire;
 }char_3_places;
 
 typedef char_3_places * char3p;
