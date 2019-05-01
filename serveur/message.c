@@ -5,6 +5,7 @@ void changerBoutton(){
   p3[0] = rand()%3 ;
   p3[1] = rand()%3 ;
   p3[2] = rand()%3 ;
+  p3[3] = rand()%3 ;
 
   p2[0] = rand()%3 ;
   while(p2[0] == p3[0]) p2[0] = rand()%3 ;
@@ -12,6 +13,8 @@ void changerBoutton(){
   while(p2[1] == p3[1]) p2[1] = rand()%3 ;
   p2[2] = rand()%3;
   while(p2[2] == p3[2]) p2[2] = rand()%3 ;
+  p2[3] = rand()%3;
+  while(p2[3] == p3[3]) p2[3] = rand()%3 ;
 
   p1[0] = rand()%3 ;
   while(p1[0] == p3[0] || p1[0] == p2[0]) p1[0] = rand()%3 ;
@@ -19,6 +22,8 @@ void changerBoutton(){
   while(p1[1] == p3[1] || p1[1] == p2[1]) p1[1] = rand()%3;
   p1[2] = rand()%3;
   while(p1[2] == p3[2] || p1[2] == p2[2]) p1[2] = rand()%3;
+  p1[3] = rand()%3;
+  while(p1[3] == p3[3] || p1[3] == p2[3]) p1[3] = rand()%3;
 }
 
 
@@ -55,6 +60,17 @@ void ecrireNouveauBouton(char *truc, int n){
       break;
       case 2:
       sprintf(truc,"%s AR",truc);
+      break;
+    }
+    switch (p1[3]) {
+      case 0:
+      sprintf(truc,"%s CS",truc);
+      break;
+      case 1:
+      sprintf(truc,"%s PS",truc);
+      break;
+      case 2:
+      sprintf(truc,"%s TS",truc);
       break;
     }
     sprintf(truc,"%s \n",truc);
@@ -94,6 +110,17 @@ void ecrireNouveauBouton(char *truc, int n){
         sprintf(truc,"%s AR",truc);
         break;
       }
+      switch (p2[3]) {
+        case 0:
+        sprintf(truc,"%s CS",truc);
+        break;
+        case 1:
+        sprintf(truc,"%s PS",truc);
+        break;
+        case 2:
+        sprintf(truc,"%s TS",truc);
+        break;
+      }
       sprintf(truc,"%s \n",truc);
     }
     else{
@@ -129,6 +156,17 @@ void ecrireNouveauBouton(char *truc, int n){
         break;
         case 2:
         sprintf(truc,"%s AR",truc);
+        break;
+      }
+      switch (p3[3]) {
+        case 0:
+        sprintf(truc,"%s CS",truc);
+        break;
+        case 1:
+        sprintf(truc,"%s PS",truc);
+        break;
+        case 2:
+        sprintf(truc,"%s TS",truc);
         break;
       }
       sprintf(truc,"%s \n",truc);
