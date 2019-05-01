@@ -9,7 +9,7 @@ int main(int argc, char const *argv[]) {
   ouvrir_fdm();
 
   reponse_t msg = {0};
-  msg.m_type = 10;
+  msg.m_type = 1;
   msg.numero_char = atoi(argv[1]);
   msg.type = 100;
 
