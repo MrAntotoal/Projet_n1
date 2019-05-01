@@ -50,7 +50,7 @@ int envoyer_requete(char nc, char action, char a_repeter){
 }
 
 int prendre_reponse(){
-  if(msgrcv(id_fdm,&rcv,sizeof(reponse_t)- sizeof(long),10,IPC_NOWAIT)==-1){
+  if(msgrcv(id_fdm,&rcv,sizeof(reponse_t)- sizeof(long),1,IPC_NOWAIT)==-1){
     return -1;
   }
   return 0;
