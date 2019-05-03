@@ -582,6 +582,13 @@ void laser_touche(char3p c,liste chars,int id_fm){
 	  if(laser_decoupe_collision(c,c2)){
 	    //retire hp
 	    retirer_pv(c2,500,id_fm);
+
+	    if(c2->pv>0){//pas mort
+	      char_touche_un_char(c,c2->num_equipe);
+	    }
+	    else{//mort
+	      char_tue_char(c,c2->num_equipe);
+	    }
 	  }
 	}
       }
