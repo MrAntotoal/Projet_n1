@@ -2,10 +2,16 @@
 
 
 void cree_fen(int l,int h,char * nom){
+  const SDL_VideoInfo *info=NULL;
   SDL_Init(SDL_INIT_VIDEO);
-  SDL_WM_SetCaption(nom,NULL);
-  SDL_SetVideoMode(l,h,32,SDL_OPENGL);
 
+  info=SDL_GetVideoInfo();
+  
+  SDL_WM_SetCaption(nom,NULL);
+  //SDL_SetVideoMode(l,h,info->vfmt->BitsPerPixel,SDL_OPENGL | SDL_FULLSCREEN);
+  SDL_SetVideoMode(l,h,info->vfmt->BitsPerPixel,SDL_OPENGL);
+  
+  
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   gluOrtho2D(0,2048,0,1080);

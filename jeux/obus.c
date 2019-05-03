@@ -49,7 +49,15 @@ int obus_touche_cible(Obus o,liste l_char,int id_fm){
 	//inflige des dmg
 	retirer_pv(c2,o->dega,id_fm);
 	//envoie msg au serveur
+
+	//ici mise a jour des points
 	
+	if(c2->pv>0){//pas mort
+	  char_touche_un_char(o->tireur,c2->num_equipe);
+	}
+	else{//mort
+	  char_tue_char(o->tireur,c2->num_equipe);
+	}
 
 	//test pour les auters
 	obus_touche_cible(o,liste_sans_premier(l_char),id_fm);

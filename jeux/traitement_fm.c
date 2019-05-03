@@ -130,7 +130,6 @@ void boucle_de_traitement_liste_requete(t_liste tl,double time){
 	  case 10://tire
 	    c=get_index(r->numero_char-1,tl->l_char);
 	    if(c->pv >0){
-	      printf("tire!!\n");
 	      tl->l_obus=insere_elem_liste(tl->l_obus,cree_obus(c));
 	    }
 	    break;

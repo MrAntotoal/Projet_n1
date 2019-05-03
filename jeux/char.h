@@ -66,6 +66,10 @@ typedef struct{
   int spe_peux_active_b;
   int spe_b;
   int invincible;
+
+  int points;
+  int kill;
+  int mort;
   
   //idem pour tourelle et shield
 
@@ -81,9 +85,9 @@ void char_avance(char3p c);
 void char_recule(char3p c);
 void char_droite(char3p c);
 void char_gauche(char3p c);
-void afficher_char(char3p c,GLuint t_c);
-void afficher_tourelle(char3p c,GLuint t_c,TTF_Font *font);
-void afficher_liste_chars(liste chars,GLuint t_c,TTF_Font *font);
+void afficher_char(char3p c,GLuint t_c,int mode);
+void afficher_tourelle(char3p c,GLuint t_c,TTF_Font *font,int mode);
+void afficher_liste_chars(liste chars,GLuint t_c,TTF_Font *font,int mode);
 int est_en_collisions_avec_un_autre(char3p c,liste l_char);
 void tourelle_droite(char3p c);
 void tourelle_gauche(char3p c);
@@ -119,3 +123,10 @@ void activer_spe_b(char3p c,double temps);
 
 void all_laser_touche(liste chars,int id_fm);
 void rotation_char_deg(char3p c,double deg);
+void remise_a_zero_char(char3p c,double temps);
+
+void char_touche_un_char(char3p c,int equipe_en);
+void char_tue_char(char3p c,int equipe_en);
+
+void ecrire_tous_chars(FILE *f,liste l_char);
+void ecrire_resultats_char(FILE *f,char3p c);
