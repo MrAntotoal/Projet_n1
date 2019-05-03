@@ -66,13 +66,14 @@ exemple -1 = stop avance
 ## info pour reponse_t
 
 
-|type|         info        |
-|:--:|:-------------------:|
-|100 |        toucher      |
-|-100|         mort        |
-|30  |special conducteur ok|
-|31  |special tireur ok    |
-|32  |special bouclier ok  |
+|numero_char|type|         info        |
+|:---------:|:--:|:-------------------:|
+|char n     |100 |        toucher      |
+|char n     |-100|         mort        |
+|char n     |30  |special conducteur ok|
+|char n     |31  |special tireur ok    |
+|char n     |32  |special bouclier ok  |
+|-1         |0   |fin de partie        |
 
 ## lancement du jeux
 
@@ -89,9 +90,12 @@ pour l'instant il faut ``` test png ```
 
 ### petit tableau
 
-|num mode de jeux| mode|
-|:--------------:|:---:|
-|0               | ffa |
+les modes de jeux c'est avec des tickets et un timeout 
 
+|num mode de jeux|   mode  |
+|:--------------:|:-------:|
+|0               |ffa 1 vie|
+|1               |   ffa   |
+|2               |   tdm   |
 
 
