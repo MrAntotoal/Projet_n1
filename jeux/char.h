@@ -112,13 +112,13 @@ void test_stop_special_c(char3p c,double temps);
 void test_stop_special_all_char(liste chars,double temps);
 
 void desactive_spe_c(char3p c);
-void activer_spe_c(char3p c,double temps);
+void activer_spe_c(char3p c,double temps,Mix_Chunk *son_spe_conducteur);
 
 
-void activer_spe_t(char3p c,double temps);
+void activer_spe_t(char3p c,double temps,Mix_Chunk *son_laser);
 
 void desactive_spe_b(char3p c);
-void activer_spe_b(char3p c,double temps);
+void activer_spe_b(char3p c,double temps,Mix_Chunk *son_bouclier);
 
 
 void all_laser_touche(liste chars,int id_fm);

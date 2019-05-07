@@ -62,3 +62,16 @@ void afficher_fond(GLuint t){
   glEnd();
   desactiver_texturing();
 }
+
+void afficher_fin_game(GLuint t){
+  activer_texturing();
+  bind_texture(t);
+  glColor3ub(255,255,255);
+  glBegin(GL_QUADS);
+  glTexCoord2d(0.0,0.0); glVertex2d(0.0,1080);
+  glTexCoord2d(0.0,1.0); glVertex2d(0.0,0.0);
+  glTexCoord2d(1.0,1.0); glVertex2d(2048,0.0);
+  glTexCoord2d(1.0,0.0); glVertex2d(2048,1080);
+  glEnd();
+  desactiver_texturing();
+}

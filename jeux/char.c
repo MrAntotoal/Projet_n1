@@ -250,13 +250,14 @@ void stop_bouclier(char3p c,double temps){
   c->temps_stop_active=temps;
 }
 
-void activer_spe_c(char3p c,double temps){
+void activer_spe_c(char3p c,double temps,Mix_Chunk *son_spe_conducteur){
   if(c->spe_peux_active_c){
     c->spe_c=1;
     c->temps_exec_spe_c=temps;
     c->spe_peux_active_c=0;
     c->vitesse_c*=2.0;
     c->vitesse_rotation_c*=2.0;
+    Mix_PlayChannel(c->numero_char,son_spe_conducteur,0);
   }
 }
 
@@ -268,13 +269,13 @@ void desactive_spe_c(char3p c){
   
 }
 
-void activer_spe_t(char3p c,double temps){
+void activer_spe_t(char3p c,double temps,Mix_Chunk *son_laser){
   if(c->spe_peux_active_t){
     c->spe_t=1;
     c->temps_exec_spe_t=temps;
     c->spe_peux_active_t=0;
     c->mode_prepare=1;
-    
+    Mix_PlayChannel(c->numero_char+1,son_laser,0);
   }
 }
 
@@ -284,12 +285,13 @@ void desactive_spe_t(char3p c ){
   c->mode_laser=0;
 }
 
-void activer_spe_b(char3p c,double temps){
+void activer_spe_b(char3p c,double temps,Mix_Chunk *son_bouclier){
   if(c->spe_peux_active_b){
     c->spe_b=1;
     c->temps_exec_spe_b=temps;
     c->spe_peux_active_b=0;
     c->invincible=1;
+    Mix_PlayChannel(c->numero_char+2,son_bouclier,0);
   }
 }
 
@@ -649,6 +651,9 @@ void retirer_pv(char3p c,double pv,int id_fm){
     rep.numero_char=c->numero_char;
     if(c->pv<=0){
       //mort
+      Mix_HaltChannel(c->numero_char);
+      Mix_HaltChannel(c->numero_char+1);
+      Mix_HaltChannel(c->numero_char+2);
       c->mort+=1;
       p=cree_point(-100.0,-100.0);
       v=cree_vecteur_2p(c->centre,p);

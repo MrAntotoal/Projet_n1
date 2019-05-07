@@ -32,6 +32,7 @@ int main(int argc, char * argv[]){
   SDL_Event event;
   GLuint texture_char;
   GLuint texture_fond;
+  GLuint texture_fin_partie;
   int nbr_chars;
   int mode_de_jeux;
   int i;
@@ -57,7 +58,10 @@ int main(int argc, char * argv[]){
 
   //musique
   Mix_Music *musique_fond;
+  
   Mix_Chunk *son_laser;
+  Mix_Chunk *son_conducteur;
+  Mix_Chunk *son_bouclier;
 
 
 
@@ -106,11 +110,13 @@ int main(int argc, char * argv[]){
   cree_fen(1706,900,"run");
   TTF_Init();
   ouvrir_mixer();
-  Mix_AllocateChannels(nbr_chars);
+  Mix_AllocateChannels(nbr_chars*3);
   
   
   musique_fond=Mix_LoadMUS("assets/musique/Battlefield - 1.mp3");
   son_laser=Mix_LoadWAV("assets/effets_sonore/Ima - Firen.wav");
+  son_conducteur=Mix_LoadWAV("assets/effets_sonore/Ima - Firen.wav");
+  son_bouclier=Mix_LoadWAV("assets/effets_sonore/Ima - Firen.wav");
   
   sauv=charger_map(nom_map);
   map=renvoie_sommet_liste(sauv);
@@ -118,6 +124,7 @@ int main(int argc, char * argv[]){
   bonus=renvoie_sommet_liste(liste_sans_premier(liste_sans_premier(sauv)));
   texture_fond=charger_texture(nom_fond);
   texture_char=charger_texture("assets/sprite.png");
+  texture_fin_partie=charger_texture("assets/fin.jpg");
   font=TTF_OpenFont("assets/font.ttf",60);
   
   t_listes->l_requette=liste_action;
@@ -130,7 +137,7 @@ int main(int argc, char * argv[]){
 
   f=fopen("resultats.game","w");
   if(f==NULL){
-    fprintf(stderr,"impossible d'ouvrir le fichier %s\n",nom_map);
+    fprintf(stderr,"impossible d'ouvrir le fichier resultats.game \n");
     exit(-1);
   }
 
@@ -142,10 +149,12 @@ int main(int argc, char * argv[]){
   zero_bonus=temps_start.tv_sec;
   zero_respawn=temps_start.tv_sec;
 
-  //Mix_PlayMusic(musique_fond,-1);
+  Mix_PlayMusic(musique_fond,-1);
 
+
+  /* reglé le volume
   Mix_Volume(1,MIX_MAX_VOLUME);
-
+  */
   //Mix_PlayChannel(-1,son_laser,1);
 
   
@@ -191,7 +200,7 @@ int main(int argc, char * argv[]){
 	//printf("lire fm\n");
 	t_listes->l_requette=lire_fm(id_fm,t_listes->l_requette);
 	//printf("fin lire fm et boucle t\n");
-	boucle_de_traitement_liste_requete(t_listes,temps_end.tv_sec);
+	boucle_de_traitement_liste_requete(t_listes,temps_end.tv_sec,son_conducteur,son_laser,son_bouclier);
 	//printf("fin boucle t debut obus\n");
 	t_listes->l_obus=traitement_tous_obus(t_listes->l_obus,t_listes->l_char,map,id_fm,texture_char);
 
@@ -225,7 +234,7 @@ int main(int argc, char * argv[]){
       
       }
       else {
-      
+	afficher_fin_game(texture_fin_partie);
 	go_ecran();
       }
     }
@@ -321,6 +330,8 @@ int main(int argc, char * argv[]){
   }
  
   Mix_FreeChunk(son_laser);
+  Mix_FreeChunk(son_conducteur);
+  Mix_FreeChunk(son_bouclier);
 
   Mix_FreeMusic(musique_fond);
   

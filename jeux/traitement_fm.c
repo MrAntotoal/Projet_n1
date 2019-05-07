@@ -1,6 +1,15 @@
 #include "traitement_fm.h"
 
-
+void stop_char(char numero_char,liste l){
+  stop_requete(numero_char,1,l);
+  stop_requete(numero_char,2,l);
+  stop_requete(numero_char,3,l);
+  stop_requete(numero_char,4,l);
+  stop_requete(numero_char,5,l);
+  stop_requete(numero_char,6,l);
+  stop_requete(numero_char,7,l);
+  stop_requete(numero_char,8,l);
+}
 
 
 void stop_requete(char numero_char,char type_action,liste l){
@@ -103,7 +112,7 @@ void boucle_de_traitement_liste_requete(toutes_listes li){//liste l,liste l_char
 }*/
 
 
-void boucle_de_traitement_liste_requete(t_liste tl,double time){
+void boucle_de_traitement_liste_requete(t_liste tl,double time,Mix_Chunk *sc,Mix_Chunk *st,Mix_Chunk *sb){
   int nbr;
   int i;
   requete_t* r;
@@ -127,6 +136,9 @@ void boucle_de_traitement_liste_requete(t_liste tl,double time){
 	}
 	else{//actions unique
 	  switch (r->type_action){
+	  case 0: //stop tout!!
+	    stop_char(r->numero_char,tl->l_requette);
+	    break;
 	  case 10://tire
 	    c=get_index(r->numero_char-1,tl->l_char);
 	    if(c->pv >0){
@@ -143,15 +155,15 @@ void boucle_de_traitement_liste_requete(t_liste tl,double time){
 	    break;
 	  case 20:
 	    c=get_index(r->numero_char-1,tl->l_char);
-	    activer_spe_c(c,time);
+	    activer_spe_c(c,time,sc);
 	    break;
 	  case 21:
 	    c=get_index(r->numero_char-1,tl->l_char);
-	    activer_spe_t(c,time);
+	    activer_spe_t(c,time,st);
 	    break;
 	  case 22:
 	    c=get_index(r->numero_char-1,tl->l_char);
-	    activer_spe_b(c,time);
+	    activer_spe_b(c,time,sb);
 	    break;
 	  }
 	  
