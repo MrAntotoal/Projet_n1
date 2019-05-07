@@ -10,6 +10,8 @@ Projet Tuteuré L3 Info
 
 ``` sudo apt-get install libsdl-ttf2.0-dev```
 
+``` sudo apt-get install libsdl-mixer1.2-dev```
+
 # doc pour communication avec la file de message + lancement jeux a la fin 
 
 rapelle des struct :
