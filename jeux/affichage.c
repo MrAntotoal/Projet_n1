@@ -1,6 +1,5 @@
 #include "affichage.h"
 
-
 void cree_fen(int l,int h,char * nom){
   const SDL_VideoInfo *info=NULL;
   SDL_Init(SDL_INIT_VIDEO);

@@ -1,10 +1,10 @@
 cc=gcc
 option=-Wall
-o_sdl=`sdl-config --cflags --libs` -lSDL_image -lSDL_ttf
+o_sdl=`sdl-config --cflags --libs` -lSDL_image -lSDL_ttf -lSDL_mixer
 o_opengl=-lGL -lGLU
 
-run: run.c mode_de_jeux.o bonus.o reap.o obus.o texture.o affichage.o char.o sauvegarde.o map.o traitement_fm.o collisions.o file_msg.o liste.o point_vecteur.o allocation_memoire.o polygones.o
-	$(cc) $(option) run.c mode_de_jeux.o bonus.o reap.o obus.o texture.o affichage.o char.o sauvegarde.o map.o traitement_fm.o collisions.o file_msg.o liste.o point_vecteur.o allocation_memoire.o polygones.o -o run -lm $(o_sdl) $(o_opengl)
+run: run.c mode_de_jeux.o bonus.o reap.o obus.o texture.o musique.o affichage.o char.o sauvegarde.o map.o traitement_fm.o collisions.o file_msg.o liste.o point_vecteur.o allocation_memoire.o polygones.o
+	$(cc) $(option) run.c mode_de_jeux.o bonus.o reap.o obus.o texture.o musique.o affichage.o char.o sauvegarde.o map.o traitement_fm.o collisions.o file_msg.o liste.o point_vecteur.o allocation_memoire.o polygones.o -o run -lm $(o_sdl) $(o_opengl)
 
 mode_de_jeux.o: mode_de_jeux.c mode_de_jeux.h
 	$(cc) $(option) mode_de_jeux.c -c
@@ -14,6 +14,9 @@ bonus.o: bonus.c bonus.h
 
 reap.o: reap.c reap.h
 	$(cc) $(option) reap.c -c
+
+musique.o: musique.c musique.h 
+	$(cc) $(option) musique.c -c 
 
 affichage.o:affichage.c affichage.h
 	$(cc) $(option) affichage.c -c

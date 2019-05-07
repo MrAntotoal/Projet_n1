@@ -1,5 +1,5 @@
 #include "mode_de_jeux.h"
-#include "time.h"
+#include <time.h>
 #include <sys/types.h>
 #include <unistd.h>
 
@@ -12,7 +12,7 @@ int main(int argc, char * argv[]){
   int run=1;
   int fps=120;
   double fps_d=1.0/(double)fps;
-  clock_t start, end; 
+  //clock_t start, end; 
   double diff;
   int nbr_fps=0;
   int nbr_fps_lf=0;
@@ -38,13 +38,13 @@ int main(int argc, char * argv[]){
   char3p c;
   char nom_map[500];
   char nom_fond[500];
-  double zero_bonus;
+  long zero_bonus;
   double temps_spawn_bonus=60.0;
 
-  double zero_respawn;
+  long zero_respawn;
   double temps_a_respawn=30.0;
 
-  double zero_fin_partie;
+  long zero_fin_partie;
   double temps_fin_de_partie=10.0;
   void * struct_mode=NULL;
   int team=0;
@@ -54,6 +54,17 @@ int main(int argc, char * argv[]){
   TTF_Font *font;
 
   int en_jeux=1;
+
+  //musique
+  Mix_Music *musique_fond;
+  Mix_Chunk *son_laser;
+
+
+
+  ///////test time
+  struct timespec temps_start,temps_end;
+
+  ////
 
   liste_action=list_vide();
   liste_chars=list_vide();
@@ -94,6 +105,13 @@ int main(int argc, char * argv[]){
 
   cree_fen(1706,900,"run");
   TTF_Init();
+  ouvrir_mixer();
+  Mix_AllocateChannels(nbr_chars);
+  
+  
+  musique_fond=Mix_LoadMUS("assets/musique/Battlefield - 1.mp3");
+  son_laser=Mix_LoadWAV("assets/effets_sonore/Ima - Firen.wav");
+  
   sauv=charger_map(nom_map);
   map=renvoie_sommet_liste(sauv);
   reap=renvoie_sommet_liste(liste_sans_premier(sauv));
@@ -115,26 +133,46 @@ int main(int argc, char * argv[]){
     fprintf(stderr,"impossible d'ouvrir le fichier %s\n",nom_map);
     exit(-1);
   }
+
+  clock_gettime(CLOCK_REALTIME,&temps_start);
+  //start = clock(); 
+  /*zero_bonus=start/CLOCKS_PER_SEC;
+    zero_respawn=start/CLOCKS_PER_SEC;*/
+
+  zero_bonus=temps_start.tv_sec;
+  zero_respawn=temps_start.tv_sec;
+
+  //Mix_PlayMusic(musique_fond,-1);
+
+  Mix_Volume(1,MIX_MAX_VOLUME);
+
+  //Mix_PlayChannel(-1,son_laser,1);
+
   
-  start = clock(); 
-  zero_bonus=start/CLOCKS_PER_SEC;
-  zero_respawn=start/CLOCKS_PER_SEC;
   if(mode_de_jeux==0){
     //ffa 1 vie
-    struct_mode=debut_ffa_1_vie(start/CLOCKS_PER_SEC);
+    struct_mode=debut_ffa_1_vie(temps_start.tv_sec);
   }
   if(mode_de_jeux==1){
     //ffa 
-    struct_mode=debut_ffa(start/CLOCKS_PER_SEC,20);
+    struct_mode=debut_ffa(temps_start.tv_sec,20);
   }
   if(mode_de_jeux==2){
     //tdm
-    struct_mode=debut_tdm(start/CLOCKS_PER_SEC,20);
+    struct_mode=debut_tdm(temps_start.tv_sec,20);
   }
   while(run){
     
-    end = clock(); 
-    diff = (double)(end - start) / CLOCKS_PER_SEC; 
+    //end = clock();
+    clock_gettime(CLOCK_REALTIME,&temps_end);
+    //diff = (double)(end - start) / CLOCKS_PER_SEC;
+    if(temps_end.tv_sec==temps_start.tv_sec){
+      diff=(temps_end.tv_nsec-temps_start.tv_nsec)/1000000000.0;
+    }
+    else{
+      diff=1000000000-temps_start.tv_nsec+temps_end.tv_nsec;
+    }
+    
     if(somme2>fps_d){
 
       SDL_PollEvent(&event);
@@ -153,7 +191,7 @@ int main(int argc, char * argv[]){
 	//printf("lire fm\n");
 	t_listes->l_requette=lire_fm(id_fm,t_listes->l_requette);
 	//printf("fin lire fm et boucle t\n");
-	boucle_de_traitement_liste_requete(t_listes,end/CLOCKS_PER_SEC);
+	boucle_de_traitement_liste_requete(t_listes,temps_end.tv_sec);
 	//printf("fin boucle t debut obus\n");
 	t_listes->l_obus=traitement_tous_obus(t_listes->l_obus,t_listes->l_char,map,id_fm,texture_char);
 
@@ -168,13 +206,13 @@ int main(int argc, char * argv[]){
 	//les modes aff
 	switch(mode_de_jeux){
 	case 0:
-	  afficher_ffa_1(struct_mode,550,1000,font,start/CLOCKS_PER_SEC,t_listes->l_char);
+	  afficher_ffa_1(struct_mode,550,1000,font,temps_end.tv_sec,t_listes->l_char);
 	  break;
 	case 1:
-	  afficher_ffa(struct_mode,750,1000,font,start/CLOCKS_PER_SEC);
+	  afficher_ffa(struct_mode,750,1000,font,temps_end.tv_sec);
 	  break;
 	case 2:
-	  afficher_tdm(struct_mode,750,1000,font,start/CLOCKS_PER_SEC);
+	  afficher_tdm(struct_mode,750,1000,font,temps_end.tv_sec);
 	  break;
 	}
 
@@ -195,52 +233,52 @@ int main(int argc, char * argv[]){
 
       
     if(en_jeux){
-      test_stop_special_all_char(t_listes->l_char,end/CLOCKS_PER_SEC);
-      regene_bouclier_all_char(t_listes->l_char,end/CLOCKS_PER_SEC);
-      special_recharge_all_char(t_listes->l_char,end/CLOCKS_PER_SEC,id_fm);
+      test_stop_special_all_char(t_listes->l_char,temps_end.tv_sec);
+      regene_bouclier_all_char(t_listes->l_char,temps_end.tv_sec);
+      special_recharge_all_char(t_listes->l_char,temps_end.tv_sec,id_fm);
 
-      if(zero_bonus+temps_spawn_bonus<start/CLOCKS_PER_SEC){
+      if(zero_bonus+temps_spawn_bonus<temps_end.tv_sec){
 	l_bonus=faire_spawn_bonus(t_listes->l_char,bonus,l_bonus);
-	zero_bonus=start/CLOCKS_PER_SEC;
+	zero_bonus=temps_end.tv_sec;
       }
 
-      if(zero_respawn+ temps_a_respawn<start/CLOCKS_PER_SEC){
+      if(zero_respawn+ temps_a_respawn<temps_end.tv_sec){
 	switch(mode_de_jeux){
 	case 1:
-	  faire_res_all_chars(t_listes->l_char,reap,start/CLOCKS_PER_SEC,mode_de_jeux,(Mode_ffa)struct_mode);
+	  faire_res_all_chars(t_listes->l_char,reap,temps_end.tv_sec,mode_de_jeux,(Mode_ffa)struct_mode);
 	  break;
 	case 2:
-	  faire_res_all_chars(t_listes->l_char,reap,start/CLOCKS_PER_SEC,mode_de_jeux,(Mode_tdm)struct_mode);
+	  faire_res_all_chars(t_listes->l_char,reap,temps_end.tv_sec,mode_de_jeux,(Mode_tdm)struct_mode);
 	  break;
 	}
       
-	zero_respawn=start/CLOCKS_PER_SEC;
+	zero_respawn=temps_end.tv_sec;
       }
 
       //mode de jeux
       switch(mode_de_jeux){
       case 0://ffa 1
-	if(fin_ffa_1((Mode_ffa_1_vie)struct_mode,t_listes->l_char,start/CLOCKS_PER_SEC)){
+	if(fin_ffa_1((Mode_ffa_1_vie)struct_mode,t_listes->l_char,temps_end.tv_sec)){
 	  printf("fin de la game\n");
 	  en_jeux=0;
-	  zero_fin_partie=start/CLOCKS_PER_SEC;
+	  zero_fin_partie=temps_end.tv_sec;
 	  ecrire_resultats_partie_ffa_1(f);
 	}
 	break;
       case 1://ffa
-	if(fin_ffa((Mode_ffa)struct_mode,start/CLOCKS_PER_SEC)){
+	if(fin_ffa((Mode_ffa)struct_mode,temps_end.tv_sec)){
 	  printf("fin de la game\n");
 	  en_jeux=0;
-	  zero_fin_partie=start/CLOCKS_PER_SEC;
+	  zero_fin_partie=temps_end.tv_sec;
 	  ecrire_resultats_partie_ffa(f);
 	}
 	break;
       case 2://tdm
-	team= fin_tdm((Mode_tdm)struct_mode,start/CLOCKS_PER_SEC);
+	team= fin_tdm((Mode_tdm)struct_mode,temps_end.tv_sec);
 	if(team!=0){
 	  printf("fin de la game %d win \n",team);
 	  en_jeux=0;
-	  zero_fin_partie=start/CLOCKS_PER_SEC;
+	  zero_fin_partie=temps_end.tv_sec;
 	  ecrire_resultats_partie_tdm(f);
 	}
 	break;
@@ -248,7 +286,7 @@ int main(int argc, char * argv[]){
       }
     }
     else{
-      if(start>=zero_fin_partie+temps_fin_de_partie){
+      if(temps_end.tv_sec>=zero_fin_partie+temps_fin_de_partie){
 	//redaction des resultats
 	ecrire_tous_chars(f,t_listes->l_char);
 
@@ -263,7 +301,9 @@ int main(int argc, char * argv[]){
       }
     }
     
-    start=end;
+    //start=end;
+
+    temps_start=temps_end;
     somme+=diff;
     somme2+=diff;
     if(somme>1.0){
@@ -273,8 +313,18 @@ int main(int argc, char * argv[]){
       nbr_fps=0;
       
     }
-  }
 
+    ///test temps
+    //clock_gettime(CLOCK_REALTIME,&tt);
+    // printf("sec %ld  nano %ld\n",tt.tv_sec,tt.tv_nsec);
+    //test fin 
+  }
+ 
+  Mix_FreeChunk(son_laser);
+
+  Mix_FreeMusic(musique_fond);
+  
+  fermeture_mixer();
   exit(0);
 
 }
