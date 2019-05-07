@@ -41,6 +41,7 @@ typedef struct{
 
 |type_action|      action      |a_repeter|
 |:---------:|:----------------:|:-------:|
+|0          |stop char         |0        |
 |1          |avance            |1        |
 |2          |recule            |1        |
 |3          |droite            |1        |
