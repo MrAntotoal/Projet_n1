@@ -111,3 +111,6 @@ liste charger_map(char *nom_map){
   all=insere_elem_liste(all,liste_bonus);
   return all;
 }
+
+
+

@@ -271,7 +271,7 @@ int main(int argc, char * argv[]){
 	  printf("fin de la game\n");
 	  en_jeux=0;
 	  zero_fin_partie=temps_end.tv_sec;
-	  ecrire_resultats_partie_ffa_1(f);
+	  enregistrer_ffa_1(t_listes->l_char,f);
 	}
 	break;
       case 1://ffa
@@ -279,7 +279,7 @@ int main(int argc, char * argv[]){
 	  printf("fin de la game\n");
 	  en_jeux=0;
 	  zero_fin_partie=temps_end.tv_sec;
-	  ecrire_resultats_partie_ffa(f);
+	  enregistrer_ffa(t_listes->l_char,f);
 	}
 	break;
       case 2://tdm
@@ -288,7 +288,7 @@ int main(int argc, char * argv[]){
 	  printf("fin de la game %d win \n",team);
 	  en_jeux=0;
 	  zero_fin_partie=temps_end.tv_sec;
-	  ecrire_resultats_partie_tdm(f);
+	  enregistrer_tdm(t_listes->l_char,f,team);
 	}
 	break;
       
@@ -297,7 +297,7 @@ int main(int argc, char * argv[]){
     else{
       if(temps_end.tv_sec>=zero_fin_partie+temps_fin_de_partie){
 	//redaction des resultats
-	ecrire_tous_chars(f,t_listes->l_char);
+	//ecrire_tous_chars(f,t_listes->l_char);
 
 	fclose(f);
 	
