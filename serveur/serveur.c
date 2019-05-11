@@ -84,21 +84,6 @@ void app(void)
         for (int o = 0; o < actual; o++) {
           clients[o].numEquipe = -1;
         }
-        /*printf("yoyoyo\n");
-        affiche_tt_e();
-
-        for (int i = 0; i < index_equipe; i++) {
-          printf("%d\n",i);
-          for (int u = 0; u <= GL_equipe[0].nb_joueur - 1; u++) {
-            printf("la\n");
-            write_client(GL_equipe[0].membre[1]->sock,KICK_EQUIPE"\n");
-            quitter_equipe(GL_equipe[0].membre[1]);
-            printf("ici\n");
-          }
-          printf("rt\n");
-          quitter_equipe(GL_equipe[0].membre[0]);
-          affiche_tt_e();
-        }*/
         break;
 
         case 30: // conducteur
@@ -110,6 +95,7 @@ void app(void)
         }
         printf("Spécial prête conducteur %d\n",numero_char);
         break;
+
         case 31: // tireur
         numero_char = rcv.numero_char;
         numero_char--;
@@ -119,6 +105,7 @@ void app(void)
         }
         printf("Spécial prête tireur %d\n",numero_char);
         break;
+
         case 32: // bouclier
         numero_char = rcv.numero_char;
         numero_char--;
@@ -272,6 +259,7 @@ void app(void)
             #endif
             int oui = -1;
             //fprintf(stderr,"NUM E %d\n",clients[i].numEquipe);
+            sprintf(lexico_table_lex[clients[i].pseudo].idf,"_");
             if(clients[i].numEquipe > -1)
             {
               //printf("il a une équipe\n");
