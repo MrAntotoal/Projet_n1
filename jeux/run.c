@@ -34,6 +34,7 @@ int main(int argc, char * argv[]){
   GLuint texture_fond;
   GLuint texture_fin_partie;
   GLuint texture_bonus;
+  GLuint texture_laser;
   int nbr_chars;
   int mode_de_jeux;
   int i;
@@ -128,6 +129,7 @@ int main(int argc, char * argv[]){
   texture_char=charger_texture("assets/sprite.png");
   texture_fin_partie=charger_texture("assets/fin.jpg");
   texture_bonus=charger_texture("assets/bonus.png");
+  texture_laser=charger_texture("assets/laser-red.png");
   font=TTF_OpenFont("assets/font.ttf",60);
   
   t_listes->l_requette=liste_action;
@@ -212,7 +214,7 @@ int main(int argc, char * argv[]){
 	//laser
 	all_laser_touche(t_listes->l_char,id_fm);
 	//printf("fin obus\n");
-	afficher_liste_chars(t_listes->l_char,texture_char,font,mode_de_jeux);
+	afficher_liste_chars(t_listes->l_char,texture_char,texture_laser,font,mode_de_jeux);
 	//printf("aff \n")
 	afficher_map(map);
 	//les modes aff

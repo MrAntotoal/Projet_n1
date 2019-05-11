@@ -146,10 +146,10 @@ void afficher_tdm(Mode_tdm m,int x,int y,TTF_Font * font,double temps_actu){
   ecrire_text(font,255,255,255,x-400,y,"tickets :");
   
   sprintf(t,"rouge : %d",m->ticket_t1);
-  ecrire_text(font,255,0,0,x-200,y,t);
+  ecrire_text(font,255,29,29,x-200,y,t);
 
   sprintf(t,"bleu : %d",m->ticket_t2);
-  ecrire_text(font,0,0,255,x+100,y,t);
+  ecrire_text(font,16,176,241,x+100,y,t);
 
   
   sprintf(t,"temps restants : %f",m->temps_debut+m->temps_max-temps_actu);
@@ -157,7 +157,7 @@ void afficher_tdm(Mode_tdm m,int x,int y,TTF_Font * font,double temps_actu){
 }
 void afficher_ffa_1(Mode_ffa_1_vie m,int x,int y,TTF_Font * font,double temps_actu,liste l_chars){
   char t[100];
-  sprintf(t,"temps restants : %f       joueurs restant : %d",m->temps_debut+m->temps_max-temps_actu,nombre_chars(l_chars));
+  sprintf(t,"temps restants : %f       joueurs restant : %d",m->temps_debut+m->temps_max-temps_actu,nombre_en_vie(l_chars));
   ecrire_text(font,255,255,255,x,y,t);
   
 }

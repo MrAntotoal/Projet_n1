@@ -87,7 +87,7 @@ void char_droite(char3p c);
 void char_gauche(char3p c);
 void afficher_char(char3p c,GLuint t_c,int mode);
 void afficher_tourelle(char3p c,GLuint t_c,TTF_Font *font,int mode);
-void afficher_liste_chars(liste chars,GLuint t_c,TTF_Font *font,int mode);
+void afficher_liste_chars(liste chars,GLuint t_c,GLuint t_l,TTF_Font *font,int mode);
 int est_en_collisions_avec_un_autre(char3p c,liste l_char);
 void tourelle_droite(char3p c);
 void tourelle_gauche(char3p c);
@@ -130,3 +130,5 @@ void char_tue_char(char3p c,int equipe_en);
 
 void ecrire_tous_chars(FILE *f,liste l_char);
 void ecrire_resultats_char(FILE *f,char3p c);
+
+void def_rotation_b(char3p c,double deg);

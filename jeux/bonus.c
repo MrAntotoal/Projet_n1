@@ -58,10 +58,11 @@ void bonus_conducteur(char3p c){
 }
 
 void bonus_tireur(char3p c){
-  c->temps_de_tire/=0.75;
+  c->vitesse_rotation_t*=1.25;
 }
 
 void bonus_bouclier(char3p c){
+  c->vitesse_rotation_b*=1.25;
   c->largeur_b*=1.25;
   c->regene_bouclier*=1.25;
 }
@@ -73,10 +74,10 @@ void afficher_bonus(Bonus b,GLuint t_b){
     glColor3ub(255,140,0);
     break;
   case 2:
-    glColor3ub(255,0,0);
+    glColor3ub(255,29,29);
     break;
   case 3:
-    glColor3ub(0,0,255);
+    glColor3ub(16,176,241);
     break;
   }
   activer_texturing();

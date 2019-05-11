@@ -52,10 +52,10 @@ char3p init_char(Points centre,double largeur,double longueur,char numero,char n
   c3p->vitesse_rotation_t=0.2;
   c3p->vitesse_rotation_b=0.2;
   c3p->pv=1000.0;
-  c3p->pv_bouclier=300.0;
+  c3p->pv_bouclier=500.0;
   c3p->bouclier_active=0;
-  c3p->regene_bouclier=100.0;
-  c3p->temps_regene=1.0;
+  c3p->regene_bouclier=50.0;
+  c3p->temps_regene=0.5;
   c3p->temps_stop_active=0.0;
   c3p->largeur_b=20;
   c3p->rayon_min_b=90.0;
@@ -68,13 +68,13 @@ char3p init_char(Points centre,double largeur,double longueur,char numero,char n
   c3p->temps_max_exec_spe_c=10.0;
 
   c3p->temps_exec_spe_b=0.0;
-  c3p->temps_max_exec_spe_b=3.0;
+  c3p->temps_max_exec_spe_b=4.0;
   
   c3p->spe_peux_active_c=0;
   c3p->spe_peux_active_t=0;
 
-  c3p->temps_p1_laser_t=3.0;
-  c3p->temps_p2_laser_t=6.0;
+  c3p->temps_p1_laser_t=4.0;
+  c3p->temps_p2_laser_t=2.0;
 
   c3p->temps_co_special_c=20.0;
   c3p->temps_co_special_t=30.0;
@@ -107,10 +107,10 @@ void remise_a_zero_char(char3p c3p,double temps){
   c3p->vitesse_rotation_t=0.2;
   c3p->vitesse_rotation_b=0.2;
   c3p->pv=1000.0;
-  c3p->pv_bouclier=300.0;
+  c3p->pv_bouclier=500.0;
   c3p->bouclier_active=0;
-  c3p->regene_bouclier=100.0;
-  c3p->temps_regene=1.0;
+  c3p->regene_bouclier=50.0;
+  c3p->temps_regene=0.5;
   c3p->temps_stop_active=0.0;
   c3p->largeur_b=20;
   c3p->rayon_min_b=90.0;
@@ -120,13 +120,13 @@ void remise_a_zero_char(char3p c3p,double temps){
   c3p->temps_max_exec_spe_c=10.0;
 
   c3p->temps_exec_spe_b=0.0;
-  c3p->temps_max_exec_spe_b=3.0;
+  c3p->temps_max_exec_spe_b=4.0;
   
   c3p->spe_peux_active_c=0;
   c3p->spe_peux_active_t=0;
 
-  c3p->temps_p1_laser_t=3.0;
-  c3p->temps_p2_laser_t=6.0;
+  c3p->temps_p1_laser_t=4.0;
+  c3p->temps_p2_laser_t=2.0;
 
   c3p->temps_co_special_c=20.0;
   c3p->temps_co_special_t=30.0;
@@ -266,6 +266,7 @@ void desactive_spe_c(char3p c){
   c->spe_peux_active_c=0;
   c->vitesse_c/=2.0;
   c->vitesse_rotation_c/=2.0;
+  Mix_HaltChannel(c->numero_char);
   
 }
 
@@ -283,6 +284,7 @@ void desactive_spe_t(char3p c ){
   c->spe_t=0;
   c->mode_prepare=0;
   c->mode_laser=0;
+  Mix_HaltChannel(c->numero_char+1);
 }
 
 void activer_spe_b(char3p c,double temps,Mix_Chunk *son_bouclier){
@@ -299,7 +301,7 @@ void desactive_spe_b(char3p c){
   c->spe_b=0;
   c->spe_peux_active_b=0;
   c->invincible=0;
-  
+  Mix_HaltChannel(c->numero_char+2);
 }
 
 
@@ -317,10 +319,10 @@ void afficher_char(char3p c,GLuint t_c,int mode){
   else{
     if(mode==2){
       if(c->num_equipe==1){
-	glColor3ub(255,80,80);
+	glColor3ub(255,100,80);
       }
       else{
-	glColor3ub(80,80,255);
+	glColor3ub(40,120,255);
       }
     }
     else{
@@ -357,10 +359,10 @@ void afficher_tourelle(char3p c,GLuint t_c,TTF_Font * font,int mode){
   else{
     if(mode==2){
       if(c->num_equipe==1){
-	glColor3ub(255,80,80);
+	glColor3ub(255,100,80);
       }
       else{
-	glColor3ub(80,80,255);
+	glColor3ub(40,120,255);
       }
     }
     else{
@@ -419,7 +421,7 @@ void afficher_bouclier(char3p c){
   double degre_actu=c->degre_b-c->largeur_b;
   double degre_step=c->largeur_b/20.0;
   if(c->bouclier_active){
-    glColor3ub(((300.0-c->pv_bouclier)/300.0)*255,0.0,(c->pv_bouclier/300.0)*255);
+    glColor3ub(((500.0-c->pv_bouclier)/300.0)*255,0.0,(c->pv_bouclier/500.0)*255);
   }
   else{
     glColor3ub(100.0,100.0,100.0);
@@ -442,7 +444,7 @@ void afficher_bouclier(char3p c){
   
 }
 
-void afficher_laser(char3p c){
+void afficher_laser(char3p c,GLuint t_l){
   if(c->spe_t){
     Points p1,p2,p3,p4;
     Points pc1,pc2;
@@ -480,14 +482,15 @@ void afficher_laser(char3p c){
       p2=get_index(1,c->laser);
       p3=get_index(2,c->laser);
       p4=get_index(3,c->laser);
-
+      activer_texturing();
+      bind_texture(t_l);
       glBegin(GL_QUADS);
-      glVertex2d(p1->x,p1->y);
-      glVertex2d(p2->x,p2->y);
-      glVertex2d(p4->x,p4->y);
-      glVertex2d(p3->x,p3->y);
+      glTexCoord2d(0,0.20);glVertex2d(p1->x,p1->y);
+      glTexCoord2d(0,0.8);glVertex2d(p2->x,p2->y);
+      glTexCoord2d(1,0.8);glVertex2d(p4->x,p4->y);
+      glTexCoord2d(1,0.20);glVertex2d(p3->x,p3->y);
       glEnd();
-      
+      desactiver_texturing();
     }
   }
 }
@@ -496,7 +499,7 @@ void afficher_laser(char3p c){
 
 
 
-void afficher_liste_chars(liste chars,GLuint t_c,TTF_Font *font,int mode){
+void afficher_liste_chars(liste chars,GLuint t_c,GLuint t_l,TTF_Font *font,int mode){
   
   char3p c;
   if(!est_list_vide(chars)){
@@ -507,9 +510,9 @@ void afficher_liste_chars(liste chars,GLuint t_c,TTF_Font *font,int mode){
       afficher_char(c,t_c,mode);
       afficher_tourelle(c,t_c,font,mode);
       afficher_bouclier(c);
-      afficher_laser(c);
+      afficher_laser(c,t_l);
     }
-    afficher_liste_chars(liste_sans_premier(chars),t_c,font,mode);
+    afficher_liste_chars(liste_sans_premier(chars),t_c,t_l,font,mode);
     
   }
 }
@@ -533,7 +536,7 @@ int est_en_collisions_avec_un_autre(char3p c,liste l_char){
 }
 
 int laser_decoupe_collision(char3p c,char3p c2){
-  int i,max=30;
+  int i,max=60;
   double actu;
   polygone p;
   Points p1l,p2l,p3l,p1,p2,p3,p4;
@@ -857,4 +860,11 @@ void ecrire_resultats_char(FILE *f,char3p c){
   fprintf(f,"nbr kill %d \n",c->kill);
   fprintf(f,"nbr mort %d \n",c->mort);
   fprintf(f,"fin_char \n");
+}
+
+void def_rotation_b(char3p c,double deg){
+  c->degre_b+=deg;
+  rotation_points(c->devant_b,c->centre,deg);
+  //re_calcule_un_vecteur(c->centre,c->devant_b,c->directionb);
+  c->degre_b=(double)((int)c->degre_b%360);
 }
