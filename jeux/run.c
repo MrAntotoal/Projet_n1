@@ -33,6 +33,7 @@ int main(int argc, char * argv[]){
   GLuint texture_char;
   GLuint texture_fond;
   GLuint texture_fin_partie;
+  GLuint texture_bonus;
   int nbr_chars;
   int mode_de_jeux;
   int i;
@@ -69,6 +70,7 @@ int main(int argc, char * argv[]){
   struct timespec temps_start,temps_end;
 
   ////
+  clock_gettime(CLOCK_REALTIME,&temps_start);
 
   liste_action=list_vide();
   liste_chars=list_vide();
@@ -84,7 +86,7 @@ int main(int argc, char * argv[]){
   }
 
   for(i=1;i<=nbr_chars;i++){
-    c=init_char(cree_point(-100.0,-100),24.0,36.0,i,atoi(argv[2+i]));
+    c=init_char(cree_point(-100.0,-100),24.0,36.0,i,atoi(argv[2+i]),temps_start.tv_sec);
     liste_chars=insere_elem_liste(liste_chars,c);
   }
 
@@ -125,6 +127,7 @@ int main(int argc, char * argv[]){
   texture_fond=charger_texture(nom_fond);
   texture_char=charger_texture("assets/sprite.png");
   texture_fin_partie=charger_texture("assets/fin.jpg");
+  texture_bonus=charger_texture("assets/bonus.png");
   font=TTF_OpenFont("assets/font.ttf",60);
   
   t_listes->l_requette=liste_action;
@@ -135,7 +138,7 @@ int main(int argc, char * argv[]){
 
   spawn_all_tank(reap,liste_chars);
 
-  f=fopen("resultats.game","w");
+  f=fopen("resultats.html","w");
   if(f==NULL){
     fprintf(stderr,"impossible d'ouvrir le fichier resultats.game \n");
     exit(-1);
@@ -227,7 +230,7 @@ int main(int argc, char * argv[]){
 
 	sprintf(fps_aff,"%d",nbr_fps_lf);
 	ecrire_text(font,255,255,255,1960,1000,fps_aff);
-	afficher_liste_bonus(l_bonus);
+	afficher_liste_bonus(l_bonus,texture_bonus);
 
 	//printf("%d \n",est_collision_avec_map(c,map));
 	go_ecran();
@@ -302,6 +305,7 @@ int main(int argc, char * argv[]){
 	fclose(f);
 	
 	//envoie au serveur que c'est fini
+	rep.mtype=1;
 	rep.numero_char=-1;
 	rep.type=0;
 	envoyer_au_serveur(id_fm,rep);

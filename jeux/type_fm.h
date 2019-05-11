@@ -16,4 +16,3 @@ typedef struct{
   char numero_char;
   char type;
 }reponse_t;
-

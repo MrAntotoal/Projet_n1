@@ -75,8 +75,11 @@ void app(void)
     {
       switch (rcv.type)
       {
-        case -1: // fin de partie
+        case 0: // fin de partie
         system("google-chrome ../jeux/resultats.html");
+        for (int o = 0; o < actual; o++) {
+          write_client(clients[o].sock,"END\n");
+        }
         break;
 
         case 30: // conducteur
