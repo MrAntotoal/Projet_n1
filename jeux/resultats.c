@@ -67,7 +67,7 @@ void enregistrer_tdm(liste l_char,FILE *html,int equipe_win){
   l1=liste_trier(l_char,1);
   l2=liste_trier(l_char,2);
 
-  fprintf(html, "<link rel=\"stylesheet\" type=\"text/css\" href=\"../jeux/fin_game.css\">");
+  fprintf(html, "<link rel=\"stylesheet\" type=\"text/css\" href=\"fin_game.css\">");
   fprintf(html, "<meta charset=\"UTF-8\">");
   fprintf(html, "<div class=\"container\">");
 
@@ -131,7 +131,7 @@ void enregistrer_ffa_1(liste l_char,FILE *html){
   l1=liste_trier(l_char,-1);
   c=char_qui_a_win_ffa_1(l_char);
 
-  fprintf(html, "<link rel=\"stylesheet\" type=\"text/css\" href=\"../jeux/fin_game.css\">");
+  fprintf(html, "<link rel=\"stylesheet\" type=\"text/css\" href=\"fin_game.css\">");
   fprintf(html, "<meta charset=\"UTF-8\">");
   fprintf(html, "<div class=\"container\">");
   fprintf(html,"<h1> L'équipe gagnante est la %d !</h1>",c->numero_char);
@@ -170,7 +170,7 @@ void enregistrer_ffa(liste l_char,FILE *html){
   char3p c;
   l1=liste_trier(l_char,-1);
   c=renvoie_sommet_liste(l1);
-  fprintf(html, "<link rel=\"stylesheet\" type=\"text/css\" href=\"../jeux/fin_game.css\">");
+  fprintf(html, "<link rel=\"stylesheet\" type=\"text/css\" href=\"fin_game.css\">");
   fprintf(html, "<meta charset=\"UTF-8\">");
   fprintf(html, "<div class=\"container\">");
   fprintf(html,"<h1> L'equipe gagnante est la %d !</h1>",c->numero_char);

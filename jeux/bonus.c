@@ -152,7 +152,7 @@ liste faire_spawn_bonus(liste l_chars,liste l_bonus,liste liste_bonus_actif){
       ok=1;
     }
     if(bonus_peux_ici(get_index((i+deb)%len,l_bonus),l_chars)){
-      liste_bonus_actif=empiler(liste_bonus_actif,cree_bonus(1+(rand()%2),get_index((i+deb)%len,l_bonus)));
+      liste_bonus_actif=empiler(liste_bonus_actif,cree_bonus(1+(rand()%3),get_index((i+deb)%len,l_bonus)));
       return liste_bonus_actif;
     }
     i++;

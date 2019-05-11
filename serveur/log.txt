@@ -1,0 +1,4471 @@
+File De Message Créer 
+Reçue ~> Antho
+PSEUDO_OK
+client : Antho connecté
+Reçue ~> Cam
+PSEUDO_OK
+client : Cam connecté
+Reçue ~> CREER_EQUIPE
+CREER_EQUIPE
+LOBBY DEMANDEE !
+Reçue ~> ROLE
+role : ROLE 0
+
+Reçue ~> mat
+PSEUDO_OK
+client : mat connecté
+Reçue ~> CREER_EQUIPE
+CREER_EQUIPE
+Reçue ~> ROLE
+role : ROLE 0
+
+Reçue ~> REJOINDRE_EQUIPE 1
+REJOINDRE_EQUIPE
+Reçue ~> ROLE
+role : ROLE 1
+
+envoie start
+Reçue ~> _____________________________
+PSEUDO_OK
+client : _____________________________ connecté
+Reçue ~> 
+connection perdu _____________________________
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 20 0
+** D char 1 Type 20 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 20 0
+** D char 1 Type 20 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 21 0
+** D char 1 Type 21 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0DEPLACEMENT 1 -2 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Typajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+ajoute 
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+ajoute 
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+ajoute 
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+ajoute 
+ajoute 
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+ajoute 
+ajoute 
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+ajoute 
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+ajoute 
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+ajoute 
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+ajoute 
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+viser
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+ajoute 
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+ajoute 
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+ajoute 
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+ajoute 
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+tirer
+e 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 21 0
+** D char 1 Type 21 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> 
+connection perdu mat
+0
+Reçue ~> 
+connection perdu Antho
+0
+Reçue ~> 
+connection perdu Cam
+0
+Reçue ~> je
+PSEUDO_OK
+client : je connecté
+Reçue ~> CREER_EQUIPE
+CREER_EQUIPE
+Reçue ~> ROLE
+role : ROLE 0
+
+Reçue ~> Anthony
+PSEUDO_OK
+client : Anthony connecté
+Reçue ~> CREER_EQUIPE
+CREER_EQUIPE
+Reçue ~> ROLE
+role : ROLE 0
+
+Reçue ~> QUITTER_EQUIPE
+QUITTER_EQUIPE
+Reçue ~> REJOINDRE_EQUIPE 1
+REJOINDRE_EQUIPE
+Reçue ~> ROLE
+role : ROLE 1
+
+Reçue ~> C1m
+PSEUDO_OK
+client : C1m connecté
+Reçue ~> CREER_EQUIPE
+CREER_EQUIPE
+Reçue ~> ROLE
+role : ROLE 0
+
+envoie start
+Reçue ~> _____________________________
+PSEUDO_POK
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 20 0
+** D char 1 Type 20 A repeter 0**
+Reçue ~> DEPLACEMENT 1 20 0
+** D char 1 Type 20 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -4 0DEPLACEMENT 2 -2 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 20 0
+** D char 1 Type 20 A repeter 0**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 20 0
+** D char 1 Type 20 A repeter 0**
+Reçue ~> DEPLACEMENT 1 20 0
+** D char 1 Type 20 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 2 1
+** D char 1 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 20 0
+** D char 1 Type 20 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 20 0
+** D char 1 Type 20 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -2 0
+** D char 1 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 1 1
+** D char 1 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 20 0
+** D char 1 Type 20 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 20 0
+** D char 1 Type 20 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 20 0
+** D char 1 Type 20 A repeter 0**
+Reçue ~> DEPLACEMENT 1 21 0
+** D char 1 Type 21 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 20 0
+** D char 1 Type 20 A repeter 0**
+Reçue ~> DEPLACEMENT 1 20 0
+** D char 1 Type 20 A repeter 0**
+Reçue ~> DEPLACEMENT 1 20 0
+** D char 1 Type 20 A repeter 0**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -1 0
+** D char 1 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+fini
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 5 1
+** D char 1 Type 5 A repeter 1**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -5 0
+** D char 1 Type -5 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> TIR 1 0
+TIR
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0DEPLACEMENT 1 6 1
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 6 1
+** D char 1 Type 6 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+fini
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -6 0
+** D char 1 Type -6 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 4 1
+** D char 1 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+tire!!
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+a-3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+fini
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -4 0
+** D char 1 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 1 7 1
+** D char 1 Type 7 A repeter 1**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 1 -7 0
+** D char 1 Type -7 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 1 3 1
+** D char 1 Type 3 A repeter 1**
+fini
+Reçue ~> DEPLACEMENT 1 -3 0
+** D char 1 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 2 1
+** D char 2 Type 2 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -2 0
+** D char 2 Type -2 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Tyjoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+ajoute 
+pe 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 4 1
+** D char 2 Type 4 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -4 0
+** D char 2 Type -4 A repeter 0**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> DEPLACEMENT 2 3 1
+** D char 2 Type 3 A repeter 1**
+Reçue ~> DEPLACEMENT 2 1 1
+** D char 2 Type 1 A repeter 1**
+Reçue ~> DEPLACEMENT 2 -3 0
+** D char 2 Type -3 A repeter 0**
+Reçue ~> DEPLACEMENT 2 -1 0
+** D char 2 Type -1 A repeter 0**
+Reçue ~> 
+connection perdu je
+0
+Reçue ~> 
+connection perdu Anthony
+Reçue ~> 
+connection perdu C1m
+0
