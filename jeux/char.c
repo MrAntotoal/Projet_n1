@@ -1,6 +1,6 @@
 #include "char.h"
 
-char3p init_char(Points centre,double largeur,double longueur,char numero,char num_equipe){
+char3p init_char(Points centre,double largeur,double longueur,char numero,char num_equipe,double temps_actu){
   char3p c3p;
   
   c3p=alloc_mem(1,sizeof(char_3_places));
@@ -80,9 +80,9 @@ char3p init_char(Points centre,double largeur,double longueur,char numero,char n
   c3p->temps_co_special_t=30.0;
   c3p->temps_co_special_b=10.0;
 
-  c3p->temps_zero_special_c=0.0;
-  c3p->temps_zero_special_t=0.0;
-  c3p->temps_zero_special_b=0.0;
+  c3p->temps_zero_special_c=temps_actu;
+  c3p->temps_zero_special_t=temps_actu;
+  c3p->temps_zero_special_b=temps_actu;
 
   c3p->spe_c=0;
   c3p->spe_t=0;

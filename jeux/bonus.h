@@ -16,7 +16,7 @@ void bonus_bouclier(char3p c);
 liste faire_spawn_bonus(liste l_chars,liste l_bonus,liste liste_bonus_actif);
 
 
-void afficher_liste_bonus(liste l_bonus);
+void afficher_liste_bonus(liste l_bonus,GLuint t_b);
 
 int char_touche_bonus(char3p c,Bonus b);
 liste char_touche_liste_bonus(char3p c,liste l_bonus);

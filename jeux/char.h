@@ -79,7 +79,7 @@ typedef struct{
 typedef char_3_places * char3p;
 
 
-char3p init_char(Points centre,double largeur,double longueur,char numero,char num_equipe);
+char3p init_char(Points centre,double largeur,double longueur,char numero,char num_equipe,double temps_actu);
 
 void char_avance(char3p c);
 void char_recule(char3p c);

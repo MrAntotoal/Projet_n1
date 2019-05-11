@@ -66,7 +66,7 @@ void bonus_bouclier(char3p c){
   c->regene_bouclier*=1.25;
 }
 
-void afficher_bonus(Bonus b){
+void afficher_bonus(Bonus b,GLuint t_b){
   Points p;
   switch(b->type){
   case 1:
@@ -79,29 +79,32 @@ void afficher_bonus(Bonus b){
     glColor3ub(0,0,255);
     break;
   }
+  activer_texturing();
+  bind_texture(t_b);
   glBegin(GL_QUADS);
   p=get_index(0,b->p);
-  glVertex2d(p->x,p->y);
+  glTexCoord2d(0,0);glVertex2d(p->x,p->y);
 
   
   p=get_index(1,b->p);
-  glVertex2d(p->x,p->y);
+  glTexCoord2d(0,1);glVertex2d(p->x,p->y);
 
   
   p=get_index(2,b->p);
-  glVertex2d(p->x,p->y);
+  glTexCoord2d(1,1);glVertex2d(p->x,p->y);
 
   
   p=get_index(3,b->p);
-  glVertex2d(p->x,p->y);
+  glTexCoord2d(1,0);glVertex2d(p->x,p->y);
   glEnd();
+  desactiver_texturing();
 }
 
-void afficher_liste_bonus(liste l_bonus){
+void afficher_liste_bonus(liste l_bonus,GLuint t_b){
   Bonus b;
    while(!est_list_vide(l_bonus)){
     b=renvoie_sommet_liste(l_bonus);
-    afficher_bonus(b);
+    afficher_bonus(b,t_b);
     l_bonus=liste_sans_premier(l_bonus);
   }
  
