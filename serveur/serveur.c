@@ -76,7 +76,7 @@ void app(void)
       switch (rcv.type)
       {
         case -1: // fin de partie
-        system("google-chrome ../resultats.html");
+        system("google-chrome ../jeux/resultats.html");
         break;
 
         case 30: // conducteur
