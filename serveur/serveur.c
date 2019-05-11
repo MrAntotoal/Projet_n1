@@ -80,6 +80,25 @@ void app(void)
         for (int o = 0; o < actual; o++) {
           write_client(clients[o].sock,"END\n");
         }
+        index_equipe = 0;
+        for (int o = 0; o < actual; o++) {
+          clients[o].numEquipe = -1;
+        }
+        /*printf("yoyoyo\n");
+        affiche_tt_e();
+
+        for (int i = 0; i < index_equipe; i++) {
+          printf("%d\n",i);
+          for (int u = 0; u <= GL_equipe[0].nb_joueur - 1; u++) {
+            printf("la\n");
+            write_client(GL_equipe[0].membre[1]->sock,KICK_EQUIPE"\n");
+            quitter_equipe(GL_equipe[0].membre[1]);
+            printf("ici\n");
+          }
+          printf("rt\n");
+          quitter_equipe(GL_equipe[0].membre[0]);
+          affiche_tt_e();
+        }*/
         break;
 
         case 30: // conducteur
