@@ -50,7 +50,7 @@ char3p init_char(Points centre,double largeur,double longueur,char numero,char n
   c3p->vitesse_c=0.2;
   c3p->vitesse_rotation_c=0.2;
   c3p->vitesse_rotation_t=0.2;
-  c3p->vitesse_rotation_b=0.2;
+  c3p->vitesse_rotation_b=0.35;
   c3p->pv=1000.0;
   c3p->pv_bouclier=500.0;
   c3p->bouclier_active=0;
@@ -105,7 +105,7 @@ void remise_a_zero_char(char3p c3p,double temps){
   c3p->vitesse_c=0.2;
   c3p->vitesse_rotation_c=0.2;
   c3p->vitesse_rotation_t=0.2;
-  c3p->vitesse_rotation_b=0.2;
+  c3p->vitesse_rotation_b=0.35;
   c3p->pv=1000.0;
   c3p->pv_bouclier=500.0;
   c3p->bouclier_active=0;
