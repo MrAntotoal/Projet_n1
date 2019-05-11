@@ -29,9 +29,7 @@ liste lire_fm(int id_fm,liste l){
     }
     else{
     /*ajoute a la liste*/
-      printf("ajoute \n");
       l=ajoute_requete(requete, l);
-      fprintf(stderr,"aprers ajout\n");
     }
   }
   return l;
@@ -48,7 +46,6 @@ void envoyer_au_serveur(int id_fm,reponse_t rep){
       fprintf(stderr,"jeux erreur file de message pleine \n");
     }
   }
-  fprintf(stderr,"jeux a envoyer un message\n");
 
 }
 

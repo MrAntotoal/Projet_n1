@@ -39,6 +39,25 @@ polygone charger_liste(FILE *f){
   return p;
 }
 
+polygone charger_liste_bonus(FILE *f){
+  polygone p=NULL;
+  Points po=NULL;
+  float x,y;
+  char res[500];
+  fscanf(f," %s ",res);
+  while(strcmp(res,"fin_bonus")!=0){
+    fscanf(f," %s ",res);
+    x=atof(res);
+    fscanf(f," %s ",res);
+    y=atof(res);
+    po=cree_point(x,y);
+    p=insere_elem_liste(p,po);
+    fscanf(f," %s ",res);
+    fscanf(f," %s ",res);
+  }
+  return p;
+}
+
 Zone charger_zone(FILE * f){
   Zone z;
   polygone p_z,p;
@@ -63,6 +82,7 @@ liste charger_map(char *nom_map){
   liste all=NULL;
   liste all_zones=NULL;
   liste liste_reap=NULL;
+  liste liste_bonus=NULL;
   char res[500];
   Zone z;
   FILE *f;
@@ -81,9 +101,16 @@ liste charger_map(char *nom_map){
     if(strcmp(res,"debut_reap")==0){
       liste_reap=charger_liste(f);
     }
+    if(strcmp(res,"debut_bonus")==0){
+      liste_bonus=charger_liste_bonus(f);
+    }
   }
 
   all=insere_elem_liste(all,all_zones);
   all=insere_elem_liste(all,liste_reap);
+  all=insere_elem_liste(all,liste_bonus);
   return all;
 }
+
+
+

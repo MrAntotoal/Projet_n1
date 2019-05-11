@@ -1,4 +1,4 @@
-#include "char.h"
+#include "resultats.h"
 #define TAILLE_X_O 3
 #define TAILLE_Y_O 9
 

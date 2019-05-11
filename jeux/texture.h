@@ -1,5 +1,5 @@
 #include <SDL/SDL_image.h>
-#include "affichage.h"
+#include "musique.h"
 
 
 //void vertex_texture(double xv,double yv,double xtex,double ytex);

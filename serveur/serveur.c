@@ -75,6 +75,9 @@ void app(void)
     {
       switch (rcv.type)
       {
+        case -1: // fin de partie
+        system("google-chrome ../resultats.html");
+        break;
 
         case 30: // conducteur
         numero_char = rcv.numero_char;

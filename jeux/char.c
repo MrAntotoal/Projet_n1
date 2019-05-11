@@ -90,7 +90,58 @@ char3p init_char(Points centre,double largeur,double longueur,char numero,char n
 
   c3p->invincible=0;
 
+  c3p->points=0;
+  c3p->kill=0;
+  c3p->mort=0;
+
   return c3p;
+}
+
+void remise_a_zero_char(char3p c3p,double temps){
+
+  c3p->degre_c=0.0;
+  c3p->degre_t=0.0;
+  c3p->degre_b=90.0;
+  c3p->vitesse_c=0.2;
+  c3p->vitesse_rotation_c=0.2;
+  c3p->vitesse_rotation_t=0.2;
+  c3p->vitesse_rotation_b=0.2;
+  c3p->pv=1000.0;
+  c3p->pv_bouclier=300.0;
+  c3p->bouclier_active=0;
+  c3p->regene_bouclier=100.0;
+  c3p->temps_regene=1.0;
+  c3p->temps_stop_active=0.0;
+  c3p->largeur_b=20;
+  c3p->rayon_min_b=90.0;
+  c3p->rayon_max_b=100.0;
+
+  c3p->temps_exec_spe_c=0.0;
+  c3p->temps_max_exec_spe_c=10.0;
+
+  c3p->temps_exec_spe_b=0.0;
+  c3p->temps_max_exec_spe_b=3.0;
+  
+  c3p->spe_peux_active_c=0;
+  c3p->spe_peux_active_t=0;
+
+  c3p->temps_p1_laser_t=3.0;
+  c3p->temps_p2_laser_t=6.0;
+
+  c3p->temps_co_special_c=20.0;
+  c3p->temps_co_special_t=30.0;
+  c3p->temps_co_special_b=10.0;
+
+  c3p->temps_zero_special_c=temps;
+  c3p->temps_zero_special_t=temps;
+  c3p->temps_zero_special_b=temps;
+
+  c3p->spe_c=0;
+  c3p->spe_t=0;
+  c3p->spe_b=0;
+
+  c3p->invincible=0;
+
 }
 
 void char_avance(char3p c){
@@ -199,13 +250,14 @@ void stop_bouclier(char3p c,double temps){
   c->temps_stop_active=temps;
 }
 
-void activer_spe_c(char3p c,double temps){
+void activer_spe_c(char3p c,double temps,Mix_Chunk *son_spe_conducteur){
   if(c->spe_peux_active_c){
     c->spe_c=1;
     c->temps_exec_spe_c=temps;
     c->spe_peux_active_c=0;
     c->vitesse_c*=2.0;
     c->vitesse_rotation_c*=2.0;
+    Mix_PlayChannel(c->numero_char,son_spe_conducteur,0);
   }
 }
 
@@ -217,13 +269,13 @@ void desactive_spe_c(char3p c){
   
 }
 
-void activer_spe_t(char3p c,double temps){
+void activer_spe_t(char3p c,double temps,Mix_Chunk *son_laser){
   if(c->spe_peux_active_t){
     c->spe_t=1;
     c->temps_exec_spe_t=temps;
     c->spe_peux_active_t=0;
     c->mode_prepare=1;
-    
+    Mix_PlayChannel(c->numero_char+1,son_laser,0);
   }
 }
 
@@ -233,12 +285,13 @@ void desactive_spe_t(char3p c ){
   c->mode_laser=0;
 }
 
-void activer_spe_b(char3p c,double temps){
+void activer_spe_b(char3p c,double temps,Mix_Chunk *son_bouclier){
   if(c->spe_peux_active_b){
     c->spe_b=1;
     c->temps_exec_spe_b=temps;
     c->spe_peux_active_b=0;
     c->invincible=1;
+    Mix_PlayChannel(c->numero_char+2,son_bouclier,0);
   }
 }
 
@@ -252,17 +305,27 @@ void desactive_spe_b(char3p c){
 
 
 
-void afficher_char(char3p c,GLuint t_c){
+void afficher_char(char3p c,GLuint t_c,int mode){
   polygone poly =c->c;
   Points p1,p2,p3,p4;
   activer_texturing();
   bind_texture(t_c);
   glBegin(GL_QUADS);
   if(c->invincible){
-    glColor3ub(0,255,255);
+    glColor3ub(255,147,0);
   }
   else{
-    glColor3ub(255,255,255);
+    if(mode==2){
+      if(c->num_equipe==1){
+	glColor3ub(255,80,80);
+      }
+      else{
+	glColor3ub(80,80,255);
+      }
+    }
+    else{
+      glColor3ub(255,255,255);
+    }
   }
   //glColor3ub(((1000.0-c->pv)/1000.0)*255,(c->pv/1000.0)*255,0);
   p1=get_index(0,poly);
@@ -277,7 +340,7 @@ void afficher_char(char3p c,GLuint t_c){
   desactiver_texturing();
 }
 
-void afficher_tourelle(char3p c,GLuint t_c,TTF_Font * font){
+void afficher_tourelle(char3p c,GLuint t_c,TTF_Font * font,int mode){
   polygone poly =c->t_pour_afficher;
   Points p1,p2,p3,p4;
   Points p5,p6,p7,p8;
@@ -288,7 +351,22 @@ void afficher_tourelle(char3p c,GLuint t_c,TTF_Font * font){
   activer_texturing();
   bind_texture(t_c);
   glBegin(GL_QUADS);
-  glColor3ub(255,255,255);
+  if(c->invincible){
+    glColor3ub(255,147,0);
+  }
+  else{
+    if(mode==2){
+      if(c->num_equipe==1){
+	glColor3ub(255,80,80);
+      }
+      else{
+	glColor3ub(80,80,255);
+      }
+    }
+    else{
+      glColor3ub(255,255,255);
+    }
+  }
   //glColor3ub(((1000.0-c->pv)/1000.0)*255,(c->pv/1000.0)*255,0);
   p1=get_index(0,poly);
   p2=get_index(1,poly);
@@ -378,7 +456,6 @@ void afficher_laser(char3p c){
       appliquer_vecteur_a_point(p1,v,0.4);
       appliquer_vecteur_a_point(p2,v,-0.4);
       glColor3ub(0,0,255);
-      printf("viser\n");
       p3=cree_point(p1->x,p1->y);
       p4=cree_point(p2->x,p2->y);
       appliquer_vecteur_a_point(p3,c->directiont,3000.0);
@@ -397,7 +474,6 @@ void afficher_laser(char3p c){
       libere_points(v);
     }
     else{//tire !!
-      printf("tirer\n");
       glColor3ub(255,0,0);
       
       p1=get_index(0,c->laser);
@@ -420,19 +496,20 @@ void afficher_laser(char3p c){
 
 
 
-void afficher_liste_chars(liste chars,GLuint t_c,TTF_Font *font){
+void afficher_liste_chars(liste chars,GLuint t_c,TTF_Font *font,int mode){
+  
   char3p c;
   if(!est_list_vide(chars)){
     c=renvoie_sommet_liste(chars);
 
     if(c->pv>0){
     
-      afficher_char(c,t_c);
-      afficher_tourelle(c,t_c,font);
+      afficher_char(c,t_c,mode);
+      afficher_tourelle(c,t_c,font,mode);
       afficher_bouclier(c);
       afficher_laser(c);
     }
-    afficher_liste_chars(liste_sans_premier(chars),t_c,font);
+    afficher_liste_chars(liste_sans_premier(chars),t_c,font,mode);
     
   }
 }
@@ -507,6 +584,13 @@ void laser_touche(char3p c,liste chars,int id_fm){
 	  if(laser_decoupe_collision(c,c2)){
 	    //retire hp
 	    retirer_pv(c2,500,id_fm);
+
+	    if(c2->pv>0){//pas mort
+	      char_touche_un_char(c,c2->num_equipe);
+	    }
+	    else{//mort
+	      char_tue_char(c,c2->num_equipe);
+	    }
 	  }
 	}
       }
@@ -561,23 +645,29 @@ void retirer_pv(char3p c,double pv,int id_fm){
   reponse_t rep;
   Points p;
   Vecteurs v;
-  c->pv-=pv;
-  rep.mtype=1;
-  rep.numero_char=c->numero_char;
-  if(c->pv<=0){
-    //mort
-    p=cree_point(-100.0,-100.0);
-    v=cree_vecteur_2p(c->centre,p);
-    translation_char_vec(c,v,1.0);
-    rep.type=-100;
-    libere_points(p);
-    libere_points(v);
+  if(!c->invincible){
+    c->pv-=pv;
+    rep.mtype=1;
+    rep.numero_char=c->numero_char;
+    if(c->pv<=0){
+      //mort
+      Mix_HaltChannel(c->numero_char);
+      Mix_HaltChannel(c->numero_char+1);
+      Mix_HaltChannel(c->numero_char+2);
+      c->mort+=1;
+      p=cree_point(-100.0,-100.0);
+      v=cree_vecteur_2p(c->centre,p);
+      translation_char_vec(c,v,1.0);
+      rep.type=-100;
+      libere_points(p);
+      libere_points(v);
+    }
+    else{
+      //toucher mais toujours debout rassure toi
+      rep.type=100;
+    }
+    envoyer_au_serveur(id_fm,rep);
   }
-  else{
-    //toucher mais toujours debout rassure toi
-    rep.type=100;
-  }
-  envoyer_au_serveur(id_fm,rep);
 }
 
 int est_en_collision_avec_bouclier_point(char3p c,Points p){
@@ -726,3 +816,45 @@ void rotation_char_deg(char3p c,double deg){
   
 }
 
+
+void char_touche_un_char(char3p c,int equipe_en){
+  if(c->num_equipe==equipe_en){
+    c->points-=10;
+  }
+  else{
+    c->points+=10;
+  }
+}
+
+void char_tue_char(char3p c,int equipe_en){
+  if(c->num_equipe==equipe_en){
+    c->points-=300;
+    c->kill-=1;
+  }
+  else{
+    c->points+=300;
+    c->kill+=1;
+  }
+}
+
+
+
+
+void ecrire_tous_chars(FILE *f,liste l_char){
+  char3p c;
+   while(!est_list_vide(l_char)){
+    c=renvoie_sommet_liste(l_char);
+    ecrire_resultats_char(f,c);
+    l_char=liste_sans_premier(l_char);
+   }
+}
+
+void ecrire_resultats_char(FILE *f,char3p c){
+  fprintf(f,"debut_char \n");
+  fprintf(f,"numero char %d \n",c->numero_char);
+  fprintf(f,"numero equipe %d \n",c->num_equipe);
+  fprintf(f,"nbr points %d \n",c->points);
+  fprintf(f,"nbr kill %d \n",c->kill);
+  fprintf(f,"nbr mort %d \n",c->mort);
+  fprintf(f,"fin_char \n");
+}

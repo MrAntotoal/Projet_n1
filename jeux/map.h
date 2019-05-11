@@ -20,5 +20,6 @@ void afficher_obstacle(Obstacle o);
 void afficher_zone(liste l_obs);
 void afficher_map(liste all_zone);
 void afficher_fond(GLuint t);
+void afficher_fin_game(GLuint t);
 
 
