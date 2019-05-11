@@ -41,7 +41,7 @@ int main(int argc, char * argv[]){
   char nom_map[500];
   char nom_fond[500];
   long zero_bonus;
-  double temps_spawn_bonus=60.0;
+  double temps_spawn_bonus=15.0;
 
   long zero_respawn;
   double temps_a_respawn=30.0;
@@ -275,6 +275,11 @@ int main(int argc, char * argv[]){
 	  en_jeux=0;
 	  zero_fin_partie=temps_end.tv_sec;
 	  enregistrer_ffa_1(t_listes->l_char,f);
+	  rep.mtype=1;
+	  rep.numero_char=-1;
+	  rep.type=0;
+	  envoyer_au_serveur(id_fm,rep);
+	  fclose(f);
 	}
 	break;
       case 1://ffa
@@ -283,6 +288,11 @@ int main(int argc, char * argv[]){
 	  en_jeux=0;
 	  zero_fin_partie=temps_end.tv_sec;
 	  enregistrer_ffa(t_listes->l_char,f);
+	  rep.mtype=1;
+	  rep.numero_char=-1;
+	  rep.type=0;
+	  envoyer_au_serveur(id_fm,rep);
+	  fclose(f);
 	}
 	break;
       case 2://tdm
@@ -292,6 +302,12 @@ int main(int argc, char * argv[]){
 	  en_jeux=0;
 	  zero_fin_partie=temps_end.tv_sec;
 	  enregistrer_tdm(t_listes->l_char,f,team);
+	  rep.mtype=1;
+	  rep.numero_char=-1;
+	  rep.type=0;
+	  envoyer_au_serveur(id_fm,rep);
+	  fclose(f);
+	  
 	}
 	break;
       
@@ -301,14 +317,6 @@ int main(int argc, char * argv[]){
       if(temps_end.tv_sec>=zero_fin_partie+temps_fin_de_partie){
 	//redaction des resultats
 	//ecrire_tous_chars(f,t_listes->l_char);
-
-	fclose(f);
-	
-	//envoie au serveur que c'est fini
-	rep.mtype=1;
-	rep.numero_char=-1;
-	rep.type=0;
-	envoyer_au_serveur(id_fm,rep);
 	
 	run=0;
       }
