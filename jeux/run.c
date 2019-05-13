@@ -118,8 +118,8 @@ int main(int argc, char * argv[]){
   
   musique_fond=Mix_LoadMUS("assets/musique/Battlefield - 1.mp3");
   son_laser=Mix_LoadWAV("assets/effets_sonore/Ima - Firen.wav");
-  son_conducteur=Mix_LoadWAV("assets/effets_sonore/Ima - Firen.wav");
-  son_bouclier=Mix_LoadWAV("assets/effets_sonore/Ima - Firen.wav");
+  son_conducteur=Mix_LoadWAV("assets/effets_sonore/etoile.wav");
+  son_bouclier=Mix_LoadWAV("assets/effets_sonore/cant.wav");
   
   sauv=charger_map(nom_map);
   map=renvoie_sommet_liste(sauv);
@@ -160,7 +160,15 @@ int main(int argc, char * argv[]){
   /* reglé le volume
   Mix_Volume(1,MIX_MAX_VOLUME);
   */
-  //Mix_PlayChannel(-1,son_laser,1);
+
+  Mix_VolumeMusic(MIX_MAX_VOLUME/10);//1/10
+
+  for(i=1;i<=nbr_chars;i++){
+    Mix_Volume((i*3)+1,MIX_MAX_VOLUME/10);//1/10
+    Mix_Volume((i*3)+2,MIX_MAX_VOLUME/10);//1/10
+    Mix_Volume((i*3)+3,MIX_MAX_VOLUME/10);//1/10
+  }
+
 
   
   if(mode_de_jeux==0){

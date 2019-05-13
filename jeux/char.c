@@ -54,7 +54,7 @@ char3p init_char(Points centre,double largeur,double longueur,char numero,char n
   c3p->pv=1000.0;
   c3p->pv_bouclier=500.0;
   c3p->bouclier_active=0;
-  c3p->regene_bouclier=50.0;
+  c3p->regene_bouclier=20.0;
   c3p->temps_regene=0.5;
   c3p->temps_stop_active=0.0;
   c3p->largeur_b=20;
@@ -109,7 +109,7 @@ void remise_a_zero_char(char3p c3p,double temps){
   c3p->pv=1000.0;
   c3p->pv_bouclier=500.0;
   c3p->bouclier_active=0;
-  c3p->regene_bouclier=50.0;
+  c3p->regene_bouclier=20.0;
   c3p->temps_regene=0.5;
   c3p->temps_stop_active=0.0;
   c3p->largeur_b=20;
@@ -257,7 +257,7 @@ void activer_spe_c(char3p c,double temps,Mix_Chunk *son_spe_conducteur){
     c->spe_peux_active_c=0;
     c->vitesse_c*=2.0;
     c->vitesse_rotation_c*=2.0;
-    Mix_PlayChannel(c->numero_char,son_spe_conducteur,0);
+    Mix_PlayChannel(c->numero_char*3,son_spe_conducteur,0);
   }
 }
 
@@ -266,7 +266,7 @@ void desactive_spe_c(char3p c){
   c->spe_peux_active_c=0;
   c->vitesse_c/=2.0;
   c->vitesse_rotation_c/=2.0;
-  Mix_HaltChannel(c->numero_char);
+  Mix_HaltChannel(c->numero_char*3);
   
 }
 
@@ -276,7 +276,7 @@ void activer_spe_t(char3p c,double temps,Mix_Chunk *son_laser){
     c->temps_exec_spe_t=temps;
     c->spe_peux_active_t=0;
     c->mode_prepare=1;
-    Mix_PlayChannel(c->numero_char+1,son_laser,0);
+    Mix_PlayChannel(c->numero_char*3+1,son_laser,0);
   }
 }
 
@@ -284,7 +284,7 @@ void desactive_spe_t(char3p c ){
   c->spe_t=0;
   c->mode_prepare=0;
   c->mode_laser=0;
-  Mix_HaltChannel(c->numero_char+1);
+  Mix_HaltChannel(c->numero_char*3+1);
 }
 
 void activer_spe_b(char3p c,double temps,Mix_Chunk *son_bouclier){
@@ -293,7 +293,8 @@ void activer_spe_b(char3p c,double temps,Mix_Chunk *son_bouclier){
     c->temps_exec_spe_b=temps;
     c->spe_peux_active_b=0;
     c->invincible=1;
-    Mix_PlayChannel(c->numero_char+2,son_bouclier,0);
+    Mix_PlayChannel(c->numero_char*3+2,son_bouclier,0);
+    
   }
 }
 
@@ -301,7 +302,7 @@ void desactive_spe_b(char3p c){
   c->spe_b=0;
   c->spe_peux_active_b=0;
   c->invincible=0;
-  Mix_HaltChannel(c->numero_char+2);
+  Mix_HaltChannel(c->numero_char*3+2);
 }
 
 
