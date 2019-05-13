@@ -81,7 +81,7 @@ void supprime_liste(liste l){
 }
 
 
-
+/*
 liste supprime_elem(liste l,elem e){
   liste prochaine;
   if(e==l->objet){
@@ -92,6 +92,21 @@ liste supprime_elem(liste l,elem e){
   else{
     return l->suivant=supprime_elem(l->suivant,e);
   }
+  }*/
+
+liste supprime_elem(liste l,elem e){
+  liste p;
+  if(l!=NULL){
+    if(e==l->objet){
+      p=l->suivant;
+      libere(l);
+      return p;
+    }else{
+      l->suivant=supprime_elem(l->suivant,e);
+      return l;
+    }
+  }
+  return l;
 }
 
 /*Fonction qui retourne un type "liste" sans le premier de celle passée en argument*/

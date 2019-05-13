@@ -194,7 +194,7 @@ int main(int argc, char * argv[]){
     else{
       diff=1000000000-temps_start.tv_nsec+temps_end.tv_nsec;
     }
-    
+
     if(somme2>fps_d){
 
       SDL_PollEvent(&event);

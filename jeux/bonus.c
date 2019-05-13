@@ -9,17 +9,19 @@ void libere_bonus(Bonus b){
 
 liste all_char_liste_bonus(liste l_char , liste l_bonus){
   liste l=l_char;
+  liste l_avant=l_bonus;
   char3p c;
   while(!est_list_vide(l)){
     c=renvoie_sommet_liste(l);
-    l_bonus=char_touche_liste_bonus(c,l_bonus);
+    l_avant=char_touche_liste_bonus(c,l_avant);
     l=liste_sans_premier(l);
   }
-  return l_bonus;
+  return l_avant;
 }
 
 liste char_touche_liste_bonus(char3p c,liste l_bonus){
   liste l=l_bonus;
+  liste l_avant=l_bonus;
   Bonus b;
   while(!est_list_vide(l)){
     b=renvoie_sommet_liste(l);
@@ -37,7 +39,7 @@ liste char_touche_liste_bonus(char3p c,liste l_bonus){
       }
       //suppr
       l=liste_sans_premier(l);
-      l_bonus=supprime_elem(l_bonus,b);
+      l_avant=supprime_elem(l_avant,b);
       libere_bonus(b);
     }
     else{
@@ -45,7 +47,7 @@ liste char_touche_liste_bonus(char3p c,liste l_bonus){
     }
     //actu
   }
-  return l_bonus;
+  return l_avant;
 }
 
 int char_touche_bonus(char3p c,Bonus b){

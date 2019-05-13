@@ -180,7 +180,7 @@ void char_droite(char3p c){
   re_calcule_un_vecteur(c->centre,c->devant_t,c->directiont);
   
   c->degre_c-=c->vitesse_rotation_c;
-  c->degre_t-=c->vitesse_rotation_t;
+  c->degre_t-=c->vitesse_rotation_c;
 
   rotation_poly(c->c,c->centre,-c->vitesse_rotation_c);
   rotation_poly(c->t,c->centre,-c->vitesse_rotation_c);
@@ -197,7 +197,7 @@ void char_gauche(char3p c){
   re_calcule_un_vecteur(c->centre,c->devant_t,c->directiont);
 
   c->degre_c+=c->vitesse_rotation_c;
-  c->degre_t+=c->vitesse_rotation_t;
+  c->degre_t+=c->vitesse_rotation_c;
 
   rotation_poly(c->c,c->centre,+c->vitesse_rotation_c);
   rotation_poly(c->t,c->centre,+c->vitesse_rotation_c);
